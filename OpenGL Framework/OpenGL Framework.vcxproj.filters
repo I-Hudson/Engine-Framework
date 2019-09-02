@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Platform">
+      <UniqueIdentifier>{25e10319-400d-43f1-b90c-2afbb084d5cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework">
+      <UniqueIdentifier>{c4e9ccda-1927-481f-a698-4acd91fb1c33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Renderer">
+      <UniqueIdentifier>{5a78287b-a8fa-45bf-9d23-2f20129b3479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Camera">
+      <UniqueIdentifier>{cb3097f1-0a4d-484f-9d5c-5c90e5c26f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform">
+      <UniqueIdentifier>{4d7d4158-3810-4fee-9226-95520266fe84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework">
+      <UniqueIdentifier>{40522e91-1bd0-49c6-82d4-2376991983d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Renderer">
+      <UniqueIdentifier>{abed297f-df68-4784-9815-cbcd769dfb0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Camera">
+      <UniqueIdentifier>{6ec4d2d7-8b5b-49c2-b1b5-06f52ff54b7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\OpenGL">
+      <UniqueIdentifier>{b98e4f4d-9939-4d37-85ee-0169f9ba323b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform\OpenGL">
+      <UniqueIdentifier>{0f2fffb5-1099-43bf-8b08-af23310d4060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Shape">
+      <UniqueIdentifier>{b916a8dd-fd56-4004-a75d-17602594d06b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Shape">
+      <UniqueIdentifier>{ad1b7a71-09b1-465c-bb66-623c276c6dce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Camera.cpp">
+      <Filter>Source Files\Framework\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Buffer.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Application.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RenderCommand.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RendererAPI.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Shader.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VertexArray.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Shape\Shape.cpp">
+      <Filter>Source Files\Framework\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Shape\Cube.cpp">
+      <Filter>Source Files\Framework\Shape</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Buffer.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RenderCommand.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\VertexArray.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Shader.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Camera.h">
+      <Filter>Header Files\Framework\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Application.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RendererAPI.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Time.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Shape\Shape.h">
+      <Filter>Header Files\Framework\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Shape\Cube.h">
+      <Filter>Header Files\Framework\Shape</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Minecraft\bin\Debug\x64\shaders\demoShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

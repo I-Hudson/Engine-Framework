@@ -1,0 +1,18 @@
+﻿  Cube.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1555,71): warning C4244:  'argument': conversion from '_Ty' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1555,71): warning C4244:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1555,71): warning C4244:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1555,71): warning C4244:             _Ty=unsigned __int64
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1555,71): warning C4244:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1607): message :  see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1607): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1607): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1607): message :             _Ty=Framework::OpenGLIndexBuffer
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1607): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1608): message :  see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1608): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1608): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1608): message :             _Ty=Framework::OpenGLIndexBuffer
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1608): message :         ]
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Shape\Cube.cpp(93): message :  see reference to function template instantiation 'std::shared_ptr<Framework::OpenGLIndexBuffer> std::make_shared<Framework::OpenGLIndexBuffer,unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
+  OpenGL Framework.vcxproj -> E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\OpenGL Framework\..\..\Minecraft\lib\OpenGL Framework.lib
