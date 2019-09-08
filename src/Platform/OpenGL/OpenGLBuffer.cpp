@@ -29,6 +29,39 @@ namespace Framework
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
+	void OpenGLVertexBuffer::SetData(float* a_data, const int a_start, const int& a_end)
+	{
+		Bind();
+		int nBufferSize = 0;
+		glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &nBufferSize);
+		int originalVertexArraySize = (nBufferSize / sizeof(float));
+
+		glBufferSubData(GL_ARRAY_BUFFER, a_start == 0 ? 0 : a_start, a_end == -1 ? nBufferSize : a_end, a_data);
+		Unbind();
+	}
+
+	void OpenGLVertexBuffer::GetData(float* a_data, const int& a_start, const int& a_end)
+	{
+		int nBufferSize = 0;
+		glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &nBufferSize);
+		int originalVertexArraySize = (nBufferSize / sizeof(float));
+		
+		if (a_data == nullptr)
+		{
+			a_data = new float[a_end];
+		}
+		Bind();
+		glGetBufferSubData(GL_ARRAY_BUFFER, a_start == 0 ? 0 : a_start, a_end == -1 ? nBufferSize : a_end, a_data);
+		Unbind();
+	}
+
+	int OpenGLVertexBuffer::GetBufferSize()
+	{
+		int nBufferSize = 0;
+		glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &nBufferSize);
+		return nBufferSize;
+	}
+
 	/////////////////////////////////////////////////////////////////////////
 	// INDEX BUFFER
 	/////////////////////////////////////////////////////////////////////////

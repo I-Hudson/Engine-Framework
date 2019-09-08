@@ -18,7 +18,12 @@ namespace Framework
 		virtual void SetLayout(const BufferLayout& aLayout) override { mLayout = aLayout; }
 		//Get the layout for this buffer
 		virtual const BufferLayout& GetLayout() const override { return mLayout; }
-	
+
+		virtual void SetData(float* a_data, const int a_start, const int& a_end) override;
+		virtual void GetData(float* a_data, const int& a_start = 0, const int& a_end = -1) override;
+
+		virtual int GetBufferSize() override;
+
 	private:
 		uint32_t m_ID;
 		BufferLayout mLayout;

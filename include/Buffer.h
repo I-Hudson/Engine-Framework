@@ -110,7 +110,6 @@ namespace Framework
 		//Get all layout elements
 		inline const std::vector<BufferElement>& GetElements() const { return mElements; }
 
-
 		//Iterators for the elements vector
 		std::vector<BufferElement>::iterator begin() { return mElements.begin(); }
 		std::vector<BufferElement>::iterator end() { return mElements.end(); }
@@ -154,6 +153,10 @@ namespace Framework
 		virtual void SetLayout(const BufferLayout& aLayout) = 0;
 		//Get the layout of this buffer 
 		virtual const BufferLayout& GetLayout() const = 0;
+
+		virtual void SetData(float* a_data, const int a_start, const int& a_end) = 0;
+		virtual void GetData(float* a_data, const int& a_start = 0, const int& a_end = -1) = 0;
+		virtual int GetBufferSize() = 0;
 
 		//Create this buffer
 		static VertexBuffer* Create(float* aVertices, uint32_t aSize);
