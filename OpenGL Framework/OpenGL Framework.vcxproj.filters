@@ -143,6 +143,9 @@
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLShader.h">
       <Filter>Header Files\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Log.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Minecraft\bin\Debug\x64\shaders\demoShader.glsl">
