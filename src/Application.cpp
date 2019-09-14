@@ -50,7 +50,7 @@ namespace Framework
 		//Create a demo cube and rotate
 		if (a_runDemo)
 		{
-			m_demoShader = std::make_shared<Shader>("./shaders/demoShader.glsl");
+			auto demoShader = m_shaderLibrary.Load("./shaders/demoShader.glsl");
 			m_demoCube = std::make_shared<Cube>(1.0f);
 			m_demoCube->Translate(glm::vec3(0, 0, 0));
 		}
@@ -88,7 +88,7 @@ namespace Framework
 			{
 				//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
 				//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
-				Renderer::Submit(m_demoShader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
+				Renderer::Submit(m_shaderLibrary.GetShader("demoShader"), m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
 			}
 			Draw();
 			Renderer::EndScene();

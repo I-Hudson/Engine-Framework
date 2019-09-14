@@ -4,44 +4,54 @@
 #include <unordered_map>
 #include <glad/glad.h>
 #include <glm/glm.hpp>
+#include <memory>
 
 namespace Framework
 {
 	class Shader
 	{
 	public:
-
-		Shader(const std::string& a_shaderFile);
-		Shader(const std::string& a_vertexSrc, const std::string& a_fragSrc);
-		~Shader();
+		virtual ~Shader() = default;
 
 		//Bind and unbind the shader
-		void Bind() const;
-		void Unbind() const;
-
-		//Upload uniforms to the GPU
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
 		//BASE TYPES
-		void UploadUniformBool(const std::string& a_name, const bool& a_value);
-		void UploadUniformInt(const std::string& a_name, const int& a_value);
-		void UploadUniformFloat(const std::string& a_name, const float& a_value);
+		virtual void UploadUniformBool(const std::string& a_name, const bool& a_value) = 0;
+		virtual void UploadUniformInt(const std::string& a_name, const int& a_value) = 0;
+		virtual void UploadUniformFloat(const std::string& a_name, const float& a_value) = 0;
 		//void UploadUniformString(const std::string& a_name, const std::string& a_value);
-
+		 
 		//VECTOR
-		void UploadUniformVec2(const std::string& a_name, const glm::vec2& a_value);
-		void UploadUniformVec3(const std::string& a_name, const glm::vec3& a_value);
-		void UploadUniformVec4(const std::string& a_name, const glm::vec4& a_value);
-																		   
+		virtual void UploadUniformVec2(const std::string& a_name, const glm::vec2& a_value) = 0;
+		virtual void UploadUniformVec3(const std::string& a_name, const glm::vec3& a_value) = 0;
+		virtual void UploadUniformVec4(const std::string& a_name, const glm::vec4& a_value) = 0;
+		 
 		//MATRIX														   
-		void UploadUniformMat2(const std::string& a_name, const glm::mat2& a_value);
-		void UploadUniformMat3(const std::string& a_name, const glm::mat3& a_value);
-		void UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value);
+		virtual void UploadUniformMat2(const std::string& a_name, const glm::mat2& a_value) = 0;
+		virtual void UploadUniformMat3(const std::string& a_name, const glm::mat3& a_value) = 0;
+		virtual void UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value) = 0;
 
+		virtual const std::string& GetName() = 0;
+
+		static std::shared_ptr<Shader> Create(const std::string& a_filePath);
+		static std::shared_ptr<Shader> Create(const std::string& a_name, const std::string& a_vertexSource, const std::string& a_fragSource);
+	};
+
+	class ShaderLibrary
+	{
+	public:
+		void Add(const std::string& a_name, const std::shared_ptr<Shader>& a_shader);
+		void Add(const std::shared_ptr<Shader>& a_shader);
+
+		std::shared_ptr<Shader> Load(const std::string& a_filePath);
+		std::shared_ptr<Shader> Load(const std::string& a_name, const std::string& a_filePath);
+	
+		std::shared_ptr<Shader> GetShader(const std::string& a_name);
+
+		bool Exists(const std::string& a_name);
 	private:
-		std::string ReadFromFile(const std::string& a_filePath);
-		std::unordered_map<GLenum, std::string> PreProcess(const std::string& a_source);
-		void Compile(const std::unordered_map<GLenum, std::string>& a_shaderSources);
-
-		uint32_t m_ID;
+		std::unordered_map<std::string, std::shared_ptr<Shader>> m_shaders;
 	};
 }

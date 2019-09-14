@@ -75,9 +75,6 @@
     <ClCompile Include="..\src\RendererAPI.cpp">
       <Filter>Source Files\Framework\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Shader.cpp">
-      <Filter>Source Files\Framework\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\VertexArray.cpp">
       <Filter>Source Files\Framework\Renderer</Filter>
     </ClCompile>
@@ -92,6 +89,12 @@
     </ClCompile>
     <ClCompile Include="..\src\Shape\Cube.cpp">
       <Filter>Source Files\Framework\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Shader.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Shape\Cube.h">
       <Filter>Header Files\Framework\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLShader.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
