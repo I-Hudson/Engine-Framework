@@ -9,7 +9,8 @@
 #include "Camera.h"
 #include "Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
-#include "Time.h"
+#include "Log.h"
+#include "FWTime.h"
 #include "Shape/Cube.h"
 #include "Shader.h"
 
