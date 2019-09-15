@@ -61,6 +61,7 @@ namespace Framework
 		bool exists = Exists(a_name);
 		return m_shaders[a_name];
 	}
+
 	bool ShaderLibrary::Exists(const std::string& a_name)
 	{
 		return m_shaders.find(a_name) != m_shaders.end();

@@ -97,8 +97,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps/imgui;$(SolutionDir)deps/glad/glm;$(SolutionDir)deps/glfw/include;$(SolutionDir)deps/glm;$(SolutionDir)deps/glad/include;$(ProjectDir)..\include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GLM_FORCE_SWIZZLE;GLM_FORCE_RADIANS;GLM_FORCE_PURE;GLM_ENABLE_EXPERIMENTAL;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps/spdlog/include;$(SolutionDir)deps/imgui;$(SolutionDir)deps/glad/glm;$(SolutionDir)deps/glfw/include;$(SolutionDir)deps/glm;$(SolutionDir)deps/glad/include;$(ProjectDir)..\include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;GLM_FORCE_SWIZZLE;GLM_FORCE_RADIANS;GLM_FORCE_PURE;GLM_ENABLE_EXPERIMENTAL;GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +142,7 @@
     <ClCompile Include="..\src\Application.cpp" />
     <ClCompile Include="..\src\Buffer.cpp" />
     <ClCompile Include="..\src\Camera.cpp" />
+    <ClCompile Include="..\src\Log.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLShader.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="..\include\Application.h" />
     <ClInclude Include="..\include\Buffer.h" />
     <ClInclude Include="..\include\Camera.h" />
+    <ClInclude Include="..\include\Log.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLShader.h" />
@@ -169,7 +171,7 @@
     <ClInclude Include="..\include\Shader.h" />
     <ClInclude Include="..\include\Shape\Cube.h" />
     <ClInclude Include="..\include\Shape\Shape.h" />
-    <ClInclude Include="..\include\Time.h" />
+    <ClInclude Include="..\include\FWTime.h" />
     <ClInclude Include="..\include\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>

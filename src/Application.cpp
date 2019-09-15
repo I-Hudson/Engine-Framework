@@ -43,6 +43,9 @@ namespace Framework
 			return false;
 		}
 
+		Log::Init();
+		EN_CORE_INFO("Core logger has been initialized");
+
 		//Setup the main camera
 		m_mainCamera = std::make_shared<Camera>();
 		m_mainCamera->SetProjMatrix(45.0f, (float)a_width / (float)a_height, 0.1f, 1000.0f);
