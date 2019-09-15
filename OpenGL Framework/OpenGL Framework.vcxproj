@@ -146,6 +146,7 @@
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="..\src\RenderCommand.cpp" />
     <ClCompile Include="..\src\Renderer.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="..\src\Shader.cpp" />
     <ClCompile Include="..\src\Shape\Cube.cpp" />
     <ClCompile Include="..\src\Shape\Shape.cpp" />
+    <ClCompile Include="..\src\Texture.cpp" />
     <ClCompile Include="..\src\Time.cpp" />
     <ClCompile Include="..\src\VertexArray.cpp" />
   </ItemGroup>
@@ -164,6 +166,7 @@
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="..\include\RendererAPI.h" />
     <ClInclude Include="..\include\RenderCommand.h" />
@@ -172,6 +175,7 @@
     <ClInclude Include="..\include\Shape\Cube.h" />
     <ClInclude Include="..\include\Shape\Shape.h" />
     <ClInclude Include="..\include\FWTime.h" />
+    <ClInclude Include="..\include\Texture.h" />
     <ClInclude Include="..\include\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>

@@ -99,6 +99,12 @@
     <ClCompile Include="..\src\Log.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Texture.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>Source Files\Platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Buffer.h">
@@ -148,6 +154,12 @@
     </ClInclude>
     <ClInclude Include="..\include\FWTime.h">
       <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Texture.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

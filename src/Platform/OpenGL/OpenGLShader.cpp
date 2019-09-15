@@ -102,6 +102,10 @@ namespace Framework
 		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(a_value));
 	}
 
+	void OpenGLShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture)
+	{
+	}
+
 	static GLenum ShaderTypeFromString(const std::string& a_type)
 	{
 		if (a_type == "vertex") return GL_VERTEX_SHADER;

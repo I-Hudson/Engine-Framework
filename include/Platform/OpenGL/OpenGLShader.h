@@ -35,6 +35,8 @@ namespace Framework
 		void UploadUniformMat3(const std::string& a_name, const glm::mat3& a_value);
 		void UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value);
 
+		void UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture) override;
+
 	private:
 		std::string ReadFromFile(const std::string& a_filePath);
 		std::unordered_map<GLenum, std::string> PreProcess(const std::string& a_source);
