@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <memory>
 #include "Log.h"
+#include "stbi/stb_image.h"
 
 namespace Framework
 {
@@ -12,6 +13,8 @@ namespace Framework
 	public:
 		virtual ~Texture() = default;
 
+		virtual void Bind() = 0;
+		virtual void Unbind() = 0;
 
 		virtual void Load(const std::string& a_filePath) = 0;
 		virtual void Release() = 0;

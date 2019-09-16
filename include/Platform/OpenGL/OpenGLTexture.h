@@ -10,6 +10,8 @@ namespace Framework
 		OpenGLTexture(const std::string& a_name, const std::string& a_shaderFile);
 		~OpenGLTexture() override;
 
+		virtual void Bind() override;
+		virtual void Unbind() override;
 		virtual void Load(const std::string& a_filePath) override;
 		virtual void Release() override;
 		virtual const std::string& GetName() override;
