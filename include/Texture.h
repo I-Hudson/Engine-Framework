@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <memory>
 #include "Log.h"
+
 #include "stbi/stb_image.h"
 
 namespace Framework
@@ -30,7 +31,7 @@ namespace Framework
 		void Add(const std::string& a_name, const std::shared_ptr<Texture>& a_texture);
 		std::shared_ptr<Texture> GetTexture(const std::string& a_name);
 
-		std::shared_ptr<Texture> Load(const std::string a_name, std::string& a_filePath);
+		std::shared_ptr<Texture> Load(const std::string a_name, const std::string& a_filePath);
 
 		void Release(const std::string a_name);
 		void ReleaseAll();

@@ -13,6 +13,7 @@
 #include "FWTime.h"
 #include "Shape/Cube.h"
 #include "Shader.h"
+#include "Texture.h"
 
 struct GLFWwindow;
 
@@ -40,6 +41,7 @@ namespace Framework
 		bool m_isRunning;
 
 		ShaderLibrary m_shaderLibrary;
+		TextureLibrary m_textureLibrary;
 		std::shared_ptr<Camera> m_mainCamera;
 		std::shared_ptr<Cube>m_demoCube;
 

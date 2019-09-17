@@ -7,7 +7,7 @@ namespace Framework
 	class OpenGLTexture : public Texture
 	{
 	public:
-		OpenGLTexture(const std::string& a_name, const std::string& a_shaderFile);
+		OpenGLTexture(const std::string& a_name, const std::string& a_textureFile);
 		~OpenGLTexture() override;
 
 		virtual void Bind() override;

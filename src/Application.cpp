@@ -1,7 +1,10 @@
-#include "..\include\Application.h"
+#include "Application.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "stbi/stb_image.h"
 
 namespace Framework
 {
@@ -107,6 +110,8 @@ namespace Framework
 	void Application::DestroyApp()
 	{
 		Destroy();
+		m_textureLibrary.ReleaseAll();
+
 		glfwTerminate();
 
 		if (m_window)

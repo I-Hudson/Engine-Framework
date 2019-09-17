@@ -38,7 +38,7 @@ namespace Framework
 		return nullptr;
 	}
 
-	std::shared_ptr<Texture> TextureLibrary::Load(const std::string a_name, std::string& a_filePath)
+	std::shared_ptr<Texture> TextureLibrary::Load(const std::string a_name, const std::string& a_filePath)
 	{
 		auto texture = Texture::Create(a_name, a_filePath);
 		Add(a_name, texture);
