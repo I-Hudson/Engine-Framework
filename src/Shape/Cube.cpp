@@ -26,39 +26,39 @@ namespace Framework
 		{
 			//FRONT
 			-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0, 0, 1, 0, 0, 0, //0
-			-a_size, a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 0, 0,
-			a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 0, 0,
-			a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 0, 0,
+			-a_size, a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 0, 1,
+			a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 1, 1,
+			a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 1, 0,
 
 			//RIGHT																	    
 			a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 0, //4
-			a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 0,
-			a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 0,
-			a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 0,
-
+			a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 1,
+			a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 1,
+			a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 0,
+			
 			//BACK
-			-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 0, //8
-			-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 0,
-			a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 0,
+			-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 0, //8
+			-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 1,
+			a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 1,
 			a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 0,
-
+			
 			//LEFT
 			-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 0, //12
-			-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 0,
-			-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 0,
-			-a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 0,
-
+			-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 1,
+			-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 1,
+			-a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 0,
+			
 			//TOP
 			-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 0, //16
-			-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 0,
-			a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 0,
-			a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 0,
-
+			-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 1,
+			a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 1,
+			a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 0,
+			
 			//BOTTOM
 			-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 0, //20
-			-a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 0,
-			a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 0,
-			a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 0
+			-a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 1,
+			a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 1, 1,
+			a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 1, 0
 		};
 		std::shared_ptr<OpenGLVertexBuffer> vertexBuffer = std::make_shared<OpenGLVertexBuffer>(vertices, (unsigned int)sizeof(vertices));
 		BufferLayout layout =

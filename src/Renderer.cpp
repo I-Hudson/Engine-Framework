@@ -72,8 +72,6 @@ namespace Framework
 		//m_batchArray->GetVertexBuffers()[0]->SetData(data, m_vertexBufferIndex, m_vertexBufferIndex + a_vertexArray->GetVertexBuffers()[0]->GetBufferSize());
 		//
 		//m_vertexBufferIndex += a_vertexArray->GetVertexBuffers()[0]->GetBufferSize();
-
-
 	}
 
 	void Renderer::Submit(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform)
@@ -81,6 +79,21 @@ namespace Framework
 		a_shader->Bind();
 		a_shader->UploadUniformMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
 		a_shader->UploadUniformMat4("u_ObjectMatrix", a_transform);
+
+		a_vertexArray->Bind();
+		RenderCommand::DrawIndexed(a_vertexArray);
+		++renderCalls;
+
+		a_shader->Unbind();
+		a_vertexArray->Unbind();
+	}
+
+	void Renderer::Submit(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, std::shared_ptr<Texture> a_texture, const glm::mat4 & a_transform)
+	{
+		a_shader->Bind();
+		a_shader->UploadUniformMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
+		a_shader->UploadUniformMat4("u_ObjectMatrix", a_transform);
+		a_shader->UploadTexture("texture1", a_texture);
 
 		a_vertexArray->Bind();
 		RenderCommand::DrawIndexed(a_vertexArray);

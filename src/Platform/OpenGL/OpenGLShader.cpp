@@ -104,6 +104,14 @@ namespace Framework
 
 	void OpenGLShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture)
 	{
+		glActiveTexture(GL_TEXTURE0);
+		a_texture->Bind();
+		UploadUniformInt(a_name, 0);
+	}
+
+	void OpenGLShader::Release()
+	{
+		glDeleteProgram(m_ID);
 	}
 
 	static GLenum ShaderTypeFromString(const std::string& a_type)

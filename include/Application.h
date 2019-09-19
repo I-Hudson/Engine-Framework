@@ -14,6 +14,7 @@
 #include "Shape/Cube.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 struct GLFWwindow;
 
@@ -45,7 +46,7 @@ namespace Framework
 		std::shared_ptr<Camera> m_mainCamera;
 		std::shared_ptr<Cube>m_demoCube;
 
-		GLFWwindow* m_window;
+		std::shared_ptr<GraphicsContext> m_context;
 
 	private:
 		static Application* sInstance;

@@ -37,11 +37,14 @@ namespace Framework
 
 		void UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture) override;
 
+		virtual void Release() override;
+
 	private:
 		std::string ReadFromFile(const std::string& a_filePath);
 		std::unordered_map<GLenum, std::string> PreProcess(const std::string& a_source);
 		void Compile(const std::unordered_map<GLenum, std::string>& a_shaderSources);
 
+		uint32_t m_textureIndex;
 		uint32_t m_ID;
 		std::string m_name;
 	};

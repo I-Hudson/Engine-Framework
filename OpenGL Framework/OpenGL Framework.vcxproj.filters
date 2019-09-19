@@ -105,6 +105,12 @@
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLTexture.cpp">
       <Filter>Source Files\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GraphicsContext.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Buffer.h">
@@ -160,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLTexture.h">
       <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLContext.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GraphicsContext.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

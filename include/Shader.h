@@ -39,6 +39,8 @@ namespace Framework
 
 		virtual const std::string& GetName() = 0;
 
+		virtual void Release() = 0;
+
 		static std::shared_ptr<Shader> Create(const std::string& a_filePath);
 		static std::shared_ptr<Shader> Create(const std::string& a_name, const std::string& a_vertexSource, const std::string& a_fragSource);
 	};
@@ -51,8 +53,10 @@ namespace Framework
 
 		std::shared_ptr<Shader> Load(const std::string& a_filePath);
 		std::shared_ptr<Shader> Load(const std::string& a_name, const std::string& a_filePath);
-	
+		
 		std::shared_ptr<Shader> GetShader(const std::string& a_name);
+
+		void ReleaseAll();
 
 		bool Exists(const std::string& a_name);
 	private:

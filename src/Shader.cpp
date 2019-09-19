@@ -62,6 +62,15 @@ namespace Framework
 		return m_shaders[a_name];
 	}
 
+	void ShaderLibrary::ReleaseAll()
+	{
+		for(auto& kv : m_shaders)
+		{
+			kv.second->Release();
+		}
+		m_shaders.clear();
+	}
+
 	bool ShaderLibrary::Exists(const std::string& a_name)
 	{
 		return m_shaders.find(a_name) != m_shaders.end();

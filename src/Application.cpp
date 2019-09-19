@@ -3,6 +3,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "Platform/OpenGL/OpenGLContext.h"
+
 #define STB_IMAGE_IMPLEMENTATION
 #include "stbi/stb_image.h"
 
@@ -11,7 +13,7 @@ namespace Framework
 	Application* Application::sInstance = nullptr;
 
 	Application::Application()
-		: m_isRunning(true), m_window(nullptr)
+		: m_isRunning(true)
 	{
 	}
 
@@ -21,30 +23,7 @@ namespace Framework
 
 	bool Application::CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
 	{
-		// Setup glfw,
-		if (!glfwInit())
-		{
-			//ERRSTR("GLFW failed to initialize");
-			DestroyApp();
-			return false;
-		}
-		m_window = glfwCreateWindow(a_width, a_height, a_title, nullptr, nullptr);
-		if (!m_window)
-		{
-			//ERRSTR("GLFW unable to create window");
-			DestroyApp();
-			return false;
-		}
-		glfwMakeContextCurrent(m_window);
-		glfwSetWindowUserPointer(m_window, this);
-
-		//Setup glad
-		if (!gladLoadGL())
-		{
-			//ERRSTR("GLAD failed to initialize");
-			DestroyApp();
-			return false;
-		}
+		m_context = GraphicsContext::Create(a_width, a_height, a_title);
 
 		Log::Init();
 		EN_CORE_INFO("Core logger has been initialized");
@@ -60,6 +39,9 @@ namespace Framework
 			m_demoCube = std::make_shared<Cube>(1.0f);
 			m_demoCube->Translate(glm::vec3(0, 0, 0));
 		}
+
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
 
 		if (!OnCreate())
 		{
@@ -82,7 +64,7 @@ namespace Framework
 		do
 		{
 			Time::UpdateTime();
-			m_isRunning = !glfwWindowShouldClose(m_window);
+			m_isRunning = !glfwWindowShouldClose(std::dynamic_pointer_cast<OpenGLContext>(m_context)->GetWindow());
 
 			m_mainCamera->Update(Time::GetDeltaTime());
 			Update();
@@ -94,14 +76,14 @@ namespace Framework
 			{
 				//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
 				//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
-				Renderer::Submit(m_shaderLibrary.GetShader("demoShader"), m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
+				//Renderer::Submit(m_shaderLibrary.GetShader("demoShader"), m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
 			}
 			Draw();
 			Renderer::EndScene();
 
 			//GLFW
-			glfwSwapBuffers(m_window);
-			glfwPollEvents();
+			m_context->SwapBuffers();
+
 		} while (m_isRunning);
 
 		DestroyApp();
@@ -111,12 +93,8 @@ namespace Framework
 	{
 		Destroy();
 		m_textureLibrary.ReleaseAll();
+		m_shaderLibrary.ReleaseAll();
 
 		glfwTerminate();
-
-		if (m_window)
-		{
-			glfwDestroyWindow(m_window);
-		}
 	}
 }

@@ -1,4 +1,11 @@
-﻿  OpenGLTexture.cpp
-  Texture.cpp
+﻿  Application.cpp
+c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\github\openglminecraft\deps\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
+  GraphicsContext.cpp
+c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\github\openglminecraft\deps\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
+  OpenGLContext.cpp
+c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\github\openglminecraft\deps\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
   Generating Code...
   OpenGL Framework.vcxproj -> D:\github\OpenGL-Framework\OpenGL Framework\..\..\OpenGLMinecraft\lib\OpenGL Framework.lib
