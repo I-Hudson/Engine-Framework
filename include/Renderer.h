@@ -36,8 +36,10 @@ namespace Framework
 		//Pointer to static scene data
 		static SceneData* m_sceneData;
 
+		static Vertex* m_batchVertex;
 		static std::unique_ptr<VertexArray> m_batchArray;
 		static int m_vertexBufferIndex;
 		static int m_indexCount;
+
 	};
 }

@@ -8,6 +8,7 @@ namespace Framework
 {
 	Renderer::SceneData* Renderer::m_sceneData = new Renderer::SceneData();
 	std::unique_ptr<VertexArray> Renderer::m_batchArray = nullptr;
+	Vertex* Renderer::m_batchVertex = new Vertex[65000];
 
 	static int renderCalls = 0;
 	int Renderer::m_vertexBufferIndex = 0;
@@ -65,6 +66,12 @@ namespace Framework
 
 	void Renderer::SubmitBatch(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform)
 	{
+		//TODO TEST
+		for (size_t i = 0; i < a_vertexArray->GetVertexBuffers()[0]->GetBufferSize(); i++)
+		{
+			a_vertexArray->GetVertexBuffers()[0]->GetData(m_batchVertex, 0, a_vertexArray->GetVertexBuffers()[0]->GetBufferSize());
+		}
+
 		//float* data = nullptr;
 		//a_vertexArray->GetVertexBuffers()[0]->GetData(data, 0, 1344);
 		//delete[] data;

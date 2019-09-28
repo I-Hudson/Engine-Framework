@@ -3,10 +3,10 @@
 #include <string>
 #include <cstdint>
 #include <vector>
+#include <glm/glm.hpp>
 
 namespace Framework
 {
-
 	//Define all data types
 	enum class ShaderDataType
 	{
@@ -137,6 +137,33 @@ namespace Framework
 		uint32_t mStride = 0;
 	};
 
+	struct Vertex
+	{
+		glm::vec4 Position;
+		glm::vec4 Color;
+		glm::vec4 Normal;
+		glm::vec2 UV;
+
+
+		Vertex()
+		{
+		}
+
+		Vertex(const glm::vec4& a_position, const glm::vec4& a_color, const glm::vec4& a_normal, const glm::vec2& a_uv)
+			: Position(a_position), Color(a_color), Normal(a_normal), UV(a_uv)
+		{
+		}
+
+		Vertex(const float& a_positionX, const float& a_positionY, const float& a_positionZ, const float& a_positionW,
+			const float& a_colorR, const float& a_colorG, const float& a_colorB, const float& a_colorA,
+			const float& a_normalX, const float& a_normalY, const float& a_normalZ, const float& a_normalW,
+			const float& a_uvX, const float& a_uxY)
+			: Position(glm::vec4(a_positionX, a_positionY, a_positionZ, a_positionW)), Color(glm::vec4(a_colorR, a_colorG, a_colorB, a_colorA)),
+			Normal(glm::vec4(a_normalX, a_normalY, a_normalZ, a_normalW)), UV(glm::vec2(a_uvX, a_uxY))
+		{
+		}
+	};
+
 	///
 	// BASE VERTEX BUFFER. ALL VERTEX BUFFER CLASS MUST DERIVE FROM THIS.
 	///
@@ -156,10 +183,12 @@ namespace Framework
 
 		virtual void SetData(float* a_data, const int a_start, const int& a_end) = 0;
 		virtual void GetData(float* a_data, const int& a_start = 0, const int& a_end = -1) = 0;
+		virtual void GetData(Vertex* a_data, const int& a_start = 0, const int& a_end = -1) = 0;
 		virtual int GetBufferSize() = 0;
 
 		//Create this buffer
 		static VertexBuffer* Create(float* aVertices, uint32_t aSize);
+		static VertexBuffer* Create(Vertex* aVertices, uint32_t aSize);
 	};
 
 	///

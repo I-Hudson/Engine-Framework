@@ -8,6 +8,7 @@ namespace Framework
 	{
 	public:
 		OpenGLVertexBuffer(float* aVertices, uint32_t aSize);
+		OpenGLVertexBuffer(Vertex* aVertices, uint32_t aSize);
 		virtual ~OpenGLVertexBuffer();
 	
 		//Bind and unbind
@@ -21,6 +22,7 @@ namespace Framework
 
 		virtual void SetData(float* a_data, const int a_start, const int& a_end) override;
 		virtual void GetData(float* a_data, const int& a_start = 0, const int& a_end = -1) override;
+		virtual void GetData(Vertex* a_data, const int& a_start = 0, const int& a_end = -1) override;
 
 		virtual int GetBufferSize() override;
 
