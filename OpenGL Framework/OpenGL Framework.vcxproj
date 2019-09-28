@@ -104,8 +104,8 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)deps/imgui/lib;$(SolutionDir)deps/directx;$(SolutionDir)deps/glfw/lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64;$(SolutionDir)deps/imgui/lib;$(SolutionDir)deps/directx;$(SolutionDir)deps/glfw/lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d12.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

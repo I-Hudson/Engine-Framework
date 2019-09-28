@@ -1,73 +1,13 @@
-﻿  Application.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  Buffer.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  Camera.cpp
-  GraphicsContext.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  Log.cpp
-  DirectXContext.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+﻿  DirectXContext.cpp
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(95,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(95,62): warning C4244:         with
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(95,62): warning C4244:         [
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(95,62): warning C4244:             _Ty=int
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(95,62): warning C4244:         ]
-  OpenGLBuffer.cpp
-  OpenGLContext.cpp
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(96,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(96,64): warning C4244:         with
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(96,64): warning C4244:         [
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(96,64): warning C4244:             _Ty=int
 E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(96,64): warning C4244:         ]
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  OpenGLRendererAPI.cpp
-  OpenGLShader.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  OpenGLTexture.cpp
-  OpenGLVertexArray.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  RenderCommand.cpp
-  Renderer.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\OpenGL\OpenGLVertexArray.cpp(64,93): warning C4312: 'type cast': conversion from 'const uint32_t' to 'const void *' of greater size
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  RendererAPI.cpp
-  Shader.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  Cube.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(200,33): warning C4244: 'argument': conversion from '_Ty' to 'uint32_t', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(200,33): warning C4244:         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(200,33): warning C4244:         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(200,33): warning C4244:             _Ty=unsigned __int64
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory(200,33): warning C4244:         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1492): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,unsigned int(&)[36],unsigned __int64>(_Ty &,unsigned int (&)[36],unsigned __int64 &&) noexcept(false)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1492): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1492): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1492): message :             _Ty=Framework::OpenGLIndexBuffer
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1492): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1592): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1592): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1592): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1592): message :             _Ty=Framework::OpenGLIndexBuffer
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1592): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1593): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1593): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1593): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1593): message :             _Ty=Framework::OpenGLIndexBuffer
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(1593): message :         ]
-  Shape.cpp
-  Texture.cpp
-  Time.cpp
-  Generating Code...
-  Compiling...
-  VertexArray.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Shape\Cube.cpp(93): message : see reference to function template instantiation 'std::shared_ptr<Framework::OpenGLIndexBuffer> std::make_shared<Framework::OpenGLIndexBuffer,unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  Generating Code...
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in d3d12.lib(d3d12.dll); second definition ignored
   OpenGL Framework.vcxproj -> E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\OpenGL Framework\..\..\Minecraft\lib\OpenGL Framework.lib

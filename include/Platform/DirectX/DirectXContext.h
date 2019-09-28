@@ -31,6 +31,8 @@ using namespace Microsoft::WRL;
 #include <d3dcompiler.h>
 #include <DirectXMath.h>
 
+#pragma comment(lib, "dxgi.lib")
+
 // D3D12 extension library.
 #include <Platform/DirectX/d3dx12.h>
 
@@ -64,7 +66,10 @@ namespace Framework
 		HWND CreateWindow(const wchar_t* a_windowClassName, HINSTANCE a_hInst,
 			const wchar_t* a_windowTitle, const uint32_t& a_width, const uint32_t& a_height);
 		ComPtr<IDXGIAdapter4> GetAdapter(bool a_useWarp);
-
+		ComPtr<ID3D12Device2> CreateDevice(ComPtr<IDXGIAdapter4> a_adapter);
+		ComPtr<ID3D12CommandQueue> CreateCommandQueue(ComPtr<ID3D12Device2> a_device, D3D12_COMMAND_LIST_TYPE a_type);
+		bool CheckTearingSupport();
+		ComPtr<IDXGISwapChain4> CreateSwapChain(HWND a_hwnd, ComPtr <ID3D12CommandQueue> a_commandQueue, uint32_t a_width, uint32_t a_height, uint32_t a_bufferCount);
 
 		// The number of swap chain back buffers.
 		//Use WRAP adapter

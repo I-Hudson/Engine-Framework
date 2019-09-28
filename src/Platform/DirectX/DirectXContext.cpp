@@ -154,4 +154,129 @@ namespace Framework
 		}
 		return dxgiAdapter4;
 	}
+	ComPtr<ID3D12Device2> DirectXContext::CreateDevice(ComPtr<IDXGIAdapter4> a_adapter)
+	{
+		ComPtr<ID3D12Device2> device;
+		ThrowIfFailed(D3D12CreateDevice(a_adapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&a_adapter)));
+
+		// Enable debug messages in debug mode.
+#if defined(_DEBUG)
+		ComPtr<ID3D12InfoQueue> infoQueue;
+		if (SUCCEEDED(device.As(&infoQueue)))
+		{
+			infoQueue->SetBreakOnSeverity(D3D12_MESSAGE_SEVERITY_CORRUPTION, TRUE);
+			infoQueue->SetBreakOnSeverity(D3D12_MESSAGE_SEVERITY_ERROR, TRUE);
+			infoQueue->SetBreakOnSeverity(D3D12_MESSAGE_SEVERITY_WARNING, TRUE);
+
+			// Suppress whole categories of messages
+			//D3D12_MESSAGE_CATEGORY Categories[] = {};
+
+			// Suppress messages based on their severity level
+			D3D12_MESSAGE_SEVERITY severities[] =
+			{
+				D3D12_MESSAGE_SEVERITY_INFO
+			};
+
+			// Suppress individual messages by their ID
+			D3D12_MESSAGE_ID denyIds[] =
+			{
+				D3D12_MESSAGE_ID_CLEARRENDERTARGETVIEW_MISMATCHINGCLEARVALUE,   // I'm really not sure how to avoid this message.
+				D3D12_MESSAGE_ID_MAP_INVALID_NULLRANGE,                         // This warning occurs when using capture frame while graphics debugging.
+				D3D12_MESSAGE_ID_UNMAP_INVALID_NULLRANGE,                       // This warning occurs when using capture frame while graphics debugging.
+			};
+
+			D3D12_INFO_QUEUE_FILTER NewFilter = {};
+			//NewFilter.DenyList.NumCategories = _countof(Categories);
+			//NewFilter.DenyList.pCategoryList = Categories;
+			NewFilter.DenyList.NumSeverities = _countof(severities);
+			NewFilter.DenyList.pSeverityList = severities;
+			NewFilter.DenyList.NumIDs = _countof(denyIds);
+			NewFilter.DenyList.pIDList = denyIds;
+
+			ThrowIfFailed(infoQueue->PushStorageFilter(&NewFilter));
+		}
+#endif
+
+		return device;
+	}
+
+	ComPtr<ID3D12CommandQueue> DirectXContext::CreateCommandQueue(ComPtr<ID3D12Device2> a_device, D3D12_COMMAND_LIST_TYPE a_type)
+	{
+		ComPtr<ID3D12CommandQueue> commandQueue;
+		D3D12_COMMAND_QUEUE_DESC desc = {};
+		desc.Type = a_type;
+		desc.Priority = D3D12_COMMAND_QUEUE_PRIORITY_NORMAL;
+		desc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
+		desc.NodeMask = 0;
+
+
+		return commandQueue;
+	}
+
+	bool DirectXContext::CheckTearingSupport()
+	{
+		bool allowTearing = false;
+
+		// Rather than create the DXGI 1.5 factory interface directly, we create the
+		// DXGI 1.4 interface and query for the 1.5 interface. This is to enable the 
+		// graphics debugging tools which will not support the 1.5 factory interface 
+		// until a future update.
+		ComPtr<IDXGIAdapter4> factory4;
+		if (SUCCEEDED(CreateDXGIFactory1(IID_PPV_ARGS(&factory4))))
+		{
+			ComPtr<IDXGIFactory5> factory5;
+			if (SUCCEEDED(factory4.As(&factory5)))
+			{
+				if (FAILED(factory5->CheckFeatureSupport(DXGI_FEATURE_PRESENT_ALLOW_TEARING, &allowTearing, sizeof(allowTearing))))
+				{
+					allowTearing = false;
+				}
+			}
+		}
+		return allowTearing == true;
+	}
+
+	ComPtr<IDXGISwapChain4> DirectXContext::CreateSwapChain(HWND a_hwnd, ComPtr<ID3D12CommandQueue> a_commandQueue, uint32_t a_width, uint32_t a_height, uint32_t a_bufferCount)
+	{
+		ComPtr<IDXGISwapChain4> swapChain4;
+		ComPtr<IDXGIFactory4> factory4;
+		UINT createFactoryFlags = 0;
+#if defined(_DEBUG)
+		createFactoryFlags = DXGI_CREATE_FACTORY_DEBUG;
+#endif
+		ThrowIfFailed(CreateDXGIFactory2(createFactoryFlags, IID_PPV_ARGS(&factory4)));
+
+		DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
+		swapChainDesc.Width = a_width;
+		swapChainDesc.Height = a_height;
+		swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		swapChainDesc.Stereo = FALSE;
+		swapChainDesc.SampleDesc = { 1, 0 };
+		swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+		swapChainDesc.BufferCount = a_bufferCount;
+		swapChainDesc.Scaling = DXGI_SCALING_STRETCH;
+		swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+		swapChainDesc.AlphaMode = DXGI_ALPHA_MODE_UNSPECIFIED;
+		// It is recommended to always allow tearing if tearing support is available.
+		swapChainDesc.Flags = CheckTearingSupport() ? DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING : 0;
+
+		//Create swap chain
+		ComPtr<IDXGISwapChain1> swapChain1;
+		ThrowIfFailed(factory4->CreateSwapChainForHwnd(
+			a_commandQueue.Get(),
+			a_hwnd,
+			&swapChainDesc,
+			nullptr,
+			nullptr,
+			&swapChain1
+		));
+
+		// Disable the Alt+Enter fullscreen toggle feature. Switching to fullscreen
+		// will be handled manually.
+		ThrowIfFailed(factory4->MakeWindowAssociation(a_hwnd, DXGI_MWA_NO_ALT_ENTER));
+
+		ThrowIfFailed(swapChain1.As(&swapChain4));
+
+		return swapChain4;
+	}
 }
