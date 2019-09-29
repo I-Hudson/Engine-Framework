@@ -29,7 +29,9 @@ namespace Framework
 				break;
 
 			case WM_SYSKEYDOWN:
+				__fallthrough;
 			case WM_KEYDOWN:
+			{
 				bool alt = (::GetAsyncKeyState(VK_MENU) & 0x8000) != 0;
 
 				switch (a_wParam)
@@ -43,12 +45,13 @@ namespace Framework
 				case VK_RETURN:
 					if (alt)
 					{
-						case VK_F11:
-							context->SetFullScreen(!context->m_fullScreen);
-						break;
+				case VK_F11:
+					context->SetFullScreen(!context->m_fullScreen);
+					break;
 					}
 					break;
 				}
+			}
 				break;
 			
 			// The default window procedure will play a system notification sound 
@@ -57,6 +60,7 @@ namespace Framework
 			case WM_SYSCHAR:
 				break;
 			case WM_SIZE:
+			{
 				RECT clientRect = {};
 				::GetClientRect(context->m_hwnd, &clientRect);
 
@@ -65,6 +69,7 @@ namespace Framework
 
 				context->Resize(width, height);
 				break;
+			}
 			case WM_DESTROY:
 				::PostQuitMessage(0);
 				break;
@@ -142,7 +147,9 @@ namespace Framework
 
 		ComPtr<IDXGIAdapter4> dxgiAdapter4 = GetAdapter(m_useWarp);
 
-		m_device = CreateCommandQueue(m_device, D3D12_COMMAND_LIST_TYPE_DIRECT);
+		m_device = CreateDevice(dxgiAdapter4);
+
+		m_commandQueue = CreateCommandQueue(m_device, D3D12_COMMAND_LIST_TYPE_DIRECT);
 
 		m_swapChain = CreateSwapChain(m_hwnd, m_commandQueue, m_clientWidth, m_clientHeight, m_numFrames);
 
@@ -344,7 +351,6 @@ namespace Framework
 		desc.Priority = D3D12_COMMAND_QUEUE_PRIORITY_NORMAL;
 		desc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
 		desc.NodeMask = 0;
-
 
 		return commandQueue;
 	}

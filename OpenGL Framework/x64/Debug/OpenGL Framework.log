@@ -1,49 +1,23 @@
-﻿  Application.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  GraphicsContext.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\GraphicsContext.h(13,14): error C2061: syntax error: identifier 'HINSTANCE'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\GraphicsContext.h(13,83): error C2535: 'void Framework::GraphicsContext::Init(const int &,const int &,const std::string &,const bool &)': member function already defined or declared
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\GraphicsContext.h(11): message : see declaration of 'Framework::GraphicsContext::Init'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  DirectXContext.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\DirectX\DirectXContext.h(59,16): error C3668: 'Framework::DirectXContext::Init': method with override specifier 'override' did not override any base class methods
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(57,4): error C2360: initialization of 'alt' is skipped by 'case' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(33): message : see declaration of 'alt'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(59,4): error C2360: initialization of 'alt' is skipped by 'case' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(33): message : see declaration of 'alt'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(68,4): error C2360: initialization of 'height' is skipped by 'case' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(64): message : see declaration of 'height'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(68,4): error C2360: initialization of 'width' is skipped by 'case' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(63): message : see declaration of 'width'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(68,4): error C2360: initialization of 'clientRect' is skipped by 'case' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(60): message : see declaration of 'clientRect'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(68,4): error C2360: initialization of 'alt' is skipped by 'case' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(33): message : see declaration of 'alt'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(71,4): error C2361: initialization of 'height' is skipped by 'default' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(64): message : see declaration of 'height'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(71,4): error C2361: initialization of 'width' is skipped by 'default' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(63): message : see declaration of 'width'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(71,4): error C2361: initialization of 'clientRect' is skipped by 'default' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(60): message : see declaration of 'clientRect'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(71,4): error C2361: initialization of 'alt' is skipped by 'default' label
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(33): message : see declaration of 'alt'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(227,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(227,62): warning C4244:         with
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(227,62): warning C4244:         [
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(227,62): warning C4244:             _Ty=int
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(227,62): warning C4244:         ]
+﻿  DirectXContext.cpp
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244:         with
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244:         [
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244:             _Ty=int
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244:         ]
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244:         with
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244:         [
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244:             _Ty=int
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244:         ]
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt\wrl\client.h(283,1): error C2440: '<function-style-cast>': cannot convert from 'Microsoft::WRL::ComPtr<ID3D12CommandQueue>' to 'Microsoft::WRL::ComPtr<ID3D12Device2>'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt\wrl\client.h(283,1): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(150): message : see reference to function template instantiation 'Microsoft::WRL::ComPtr<ID3D12Device2> &Microsoft::WRL::ComPtr<ID3D12Device2>::operator =<ID3D12CommandQueue>(Microsoft::WRL::ComPtr<ID3D12CommandQueue> &&) throw()' being compiled
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(150): message : see reference to function template instantiation 'Microsoft::WRL::ComPtr<ID3D12Device2> &Microsoft::WRL::ComPtr<ID3D12Device2>::operator =<ID3D12CommandQueue>(Microsoft::WRL::ComPtr<ID3D12CommandQueue> &&) throw()' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(669): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(177): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
   DirectXRendererAPI.cpp
   OpenGLContext.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(228,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(228,64): warning C4244:         with
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(228,64): warning C4244:         [
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(228,64): warning C4244:             _Ty=int
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(228,64): warning C4244:         ]
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\GraphicsContext.h(13,14): error C2061: syntax error: identifier 'HINSTANCE'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\GraphicsContext.h(13,83): error C2535: 'void Framework::GraphicsContext::Init(const int &,const int &,const std::string &,const bool &)': member function already defined or declared
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\GraphicsContext.h(11): message : see declaration of 'Framework::GraphicsContext::Init'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(647): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::steady_clock::duration>' being compiled
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
   Generating Code...
 E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
