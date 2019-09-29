@@ -145,6 +145,7 @@
     <ClCompile Include="..\src\GraphicsContext.cpp" />
     <ClCompile Include="..\src\Log.cpp" />
     <ClCompile Include="..\src\Platform\DirectX\DirectXContext.cpp" />
+    <ClCompile Include="..\src\Platform\DirectX\DirectXRendererAPI.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="..\include\Log.h" />
     <ClInclude Include="..\include\Platform\DirectX\d3dx12.h" />
     <ClInclude Include="..\include\Platform\DirectX\DirectXContext.h" />
+    <ClInclude Include="..\include\Platform\DirectX\DirectXRendererAPI.h" />
     <ClInclude Include="..\include\Platform\DirectX\Helpers.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLContext.h" />

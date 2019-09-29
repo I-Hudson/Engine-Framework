@@ -120,6 +120,9 @@
     <ClCompile Include="..\src\Platform\DirectX\DirectXContext.cpp">
       <Filter>Source Files\Platform\DirectX</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXRendererAPI.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Buffer.h">
@@ -189,6 +192,9 @@
       <Filter>Header Files\Platform\DirectX</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Platform\DirectX\Helpers.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXRendererAPI.h">
       <Filter>Header Files\Platform\DirectX</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,13 +1,85 @@
 #include "Platform/DirectX/DirectXContext.h"
+#include "RenderCommand.h"
+#include "Application.h"
+
+#include <string>
+#include <sstream>
 
 namespace Framework
 {
-	LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM)
+	std::wstring widen(const std::string& str)
 	{
-		return TRUE;
+		std::wostringstream wstm;
+		const std::ctype<wchar_t>& ctfacet =
+			std::use_facet<std::ctype<wchar_t> >(wstm.getloc());
+		for (size_t i = 0; i < str.size(); ++i)
+			wstm << ctfacet.widen(str[i]);
+		return wstm.str();
 	}
 
-	void DirectXContext::ParseCommandLineArgumnets()
+	LRESULT CALLBACK WndProc(HWND a_hwnd, UINT a_message, WPARAM a_wParam, LPARAM a_lParam)
+	{
+		auto context = (DirectXContext*)Application::Get().GetGraphicsContext()->GetNativeContext();
+		if (context->m_isInitialized)
+		{
+			switch (a_message)
+			{
+			case WM_PAINT:
+				RenderCommand::Clear();
+				break;
+
+			case WM_SYSKEYDOWN:
+			case WM_KEYDOWN:
+				bool alt = (::GetAsyncKeyState(VK_MENU) & 0x8000) != 0;
+
+				switch (a_wParam)
+				{
+				case'V':
+					context->m_vSync = !context->m_vSync;
+					break;
+				case VK_ESCAPE:
+					::PostQuitMessage(0);
+					break;
+				case VK_RETURN:
+					if (alt)
+					{
+						case VK_F11:
+							context->SetFullScreen(!context->m_fullScreen);
+						break;
+					}
+					break;
+				}
+				break;
+			
+			// The default window procedure will play a system notification sound 
+			// when pressing the Alt+Enter keyboard combination if this message is 
+			// not handled.
+			case WM_SYSCHAR:
+				break;
+			case WM_SIZE:
+				RECT clientRect = {};
+				::GetClientRect(context->m_hwnd, &clientRect);
+
+				int width = clientRect.right - clientRect.left;
+				int height = clientRect.bottom - clientRect.top;
+
+				context->Resize(width, height);
+				break;
+			case WM_DESTROY:
+				::PostQuitMessage(0);
+				break;
+			default:
+				return ::DefWindowProcW(a_hwnd, a_message, a_wParam, a_lParam);
+			}
+		}
+		else
+		{
+			return ::DefWindowProcW(a_hwnd, a_message, a_wParam, a_lParam);
+		}
+		return 0;
+	}
+
+	void DirectXContext::ParseCommandLineArguments()
 	{
 		int argc;
 		wchar_t** argv = ::CommandLineToArgvW(::GetCommandLineW(), &argc);
@@ -34,7 +106,7 @@ namespace Framework
 
 	DirectXContext::DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen)
 	{
-		Init(a_width, a_height, a_title, a_fullscreen);
+		//Init(a_width, a_height, a_title, a_fullscreen);
 	}
 
 	DirectXContext::~DirectXContext()
@@ -43,11 +115,73 @@ namespace Framework
 
 	void DirectXContext::Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen)
 	{
-		GetAdapter(m_useWarp);
+	}
+
+	void DirectXContext::PostInit(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen,
+		HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR lpCmdLine, int nCmdShow)
+	{
+		// Windows 10 Creators update adds Per Monitor V2 DPI awareness context.
+		// Using this awareness context allows the client area of the window 
+		// to achieve 100% scaling while still allowing non-client window content to 
+		// be rendered in a DPI sensitive fashion.
+		SetThreadDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+
+		// Window class name. Used for registering / creating the window.
+		const wchar_t* windowClassName = widen(a_title).c_str();
+		ParseCommandLineArguments();
+
+		EnableDebugLayer();
+
+		m_tearingSupport = CheckTearingSupport();
+
+		RegisterWindowClass(hInstance, windowClassName);
+		m_hwnd = CreateWindow(windowClassName, hInstance, L"Learning DirectX 12", m_clientWidth, m_clientHeight);
+
+		// Initialize the global window rect variable.
+		::GetWindowRect(m_hwnd, &m_windowRect);
+
+		ComPtr<IDXGIAdapter4> dxgiAdapter4 = GetAdapter(m_useWarp);
+
+		m_device = CreateCommandQueue(m_device, D3D12_COMMAND_LIST_TYPE_DIRECT);
+
+		m_swapChain = CreateSwapChain(m_hwnd, m_commandQueue, m_clientWidth, m_clientHeight, m_numFrames);
+
+		m_currentBackBufferIndex = m_swapChain->GetCurrentBackBufferIndex();
+
+		m_rtvDescriptionHeap = CreateDescriptionHeap(m_device, D3D12_DESCRIPTOR_HEAP_TYPE_RTV, m_numFrames);
+		m_rtvDescriptionSize = m_device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+
+		UpdateRenderTargetView(m_device, m_swapChain, m_rtvDescriptionHeap);
+
+		for (int i = 0; i < m_numFrames; ++i)
+		{
+			m_commandAllocators[i] = CreateCommandAllocator(m_device, D3D12_COMMAND_LIST_TYPE_DIRECT);
+		}
+		m_commandList = CreateCommandList(m_device, m_commandAllocators[m_currentBackBufferIndex], D3D12_COMMAND_LIST_TYPE_DIRECT);
+
+		m_fence = CreateFence(m_device);
+		m_fenceEvent = CreateEventHandle();
+
+		m_isInitialized = true;
+
+		::ShowWindow(m_hwnd, SW_SHOW);
 	}
 
 	void DirectXContext::SwapBuffers()
 	{
+		MSG msg = {};
+		while (msg.message != WM_QUIT)
+		{
+			if (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+			{
+				::TranslateMessage(&msg);
+				::DispatchMessage(&msg);
+			}
+		}
+		// Make sure the command queue has finished all commands before closing.
+		Flush(m_commandQueue, m_fence, m_fenceValue, m_fenceEvent);
+
+		::CloseHandle(m_fenceEvent);
 	}
 
 	void DirectXContext::EnableDebugLayer()
@@ -61,6 +195,8 @@ namespace Framework
 		debugInterface->EnableDebugLayer();
 #endif
 	}
+
+
 	void DirectXContext::RegisterWindowClass(HINSTANCE a_hInst, const wchar_t* a_windowClassname)
 	{
 		WNDCLASSEXW windowClass = {};
@@ -278,5 +414,171 @@ namespace Framework
 		ThrowIfFailed(swapChain1.As(&swapChain4));
 
 		return swapChain4;
+	}
+
+	ComPtr<ID3D12DescriptorHeap> DirectXContext::CreateDescriptionHeap(ComPtr<ID3D12Device2> a_device, D3D12_DESCRIPTOR_HEAP_TYPE a_type, uint32_t a_numDescriptors)
+	{
+		ComPtr<ID3D12DescriptorHeap> desciprtionHeap;
+
+		D3D12_DESCRIPTOR_HEAP_DESC desc = {};
+		desc.NumDescriptors = a_numDescriptors;
+		desc.Type = a_type;
+
+		ThrowIfFailed(a_device->CreateDescriptorHeap(&desc, IID_PPV_ARGS(&desciprtionHeap)));
+		return desciprtionHeap;
+	}
+
+	void DirectXContext::UpdateRenderTargetView(ComPtr<ID3D12Device2> a_device, ComPtr<IDXGISwapChain4> a_swapChain, ComPtr<ID3D12DescriptorHeap> a_descriptionHeap)
+	{
+		auto dtvDescriptorSize = a_device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+		
+		CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(a_descriptionHeap->GetCPUDescriptorHandleForHeapStart());
+		for (int i = 0; i < m_numFrames; i++)
+		{
+			ComPtr<ID3D12Resource> backBuffer;
+			ThrowIfFailed(a_swapChain->GetBuffer(i, IID_PPV_ARGS(&backBuffer)));
+
+			a_device->CreateRenderTargetView(backBuffer.Get(), nullptr, rtvHandle);
+			m_backBuffers[i] = backBuffer;
+			rtvHandle.Offset(m_rtvDescriptionSize);
+		}
+
+
+	}
+	ComPtr<ID3D12CommandAllocator> DirectXContext::CreateCommandAllocator(ComPtr<ID3D12Device2> a_device, D3D12_COMMAND_LIST_TYPE a_type)
+	{
+		ComPtr<ID3D12CommandAllocator> commandAllocator;
+		ThrowIfFailed(a_device->CreateCommandAllocator(a_type, IID_PPV_ARGS(&commandAllocator)));
+		return commandAllocator;
+	}
+
+	ComPtr<ID3D12GraphicsCommandList> DirectXContext::CreateCommandList(ComPtr<ID3D12Device2> a_device, ComPtr<ID3D12CommandAllocator> a_commandAllocator, D3D12_COMMAND_LIST_TYPE a_type)
+	{
+		ComPtr<ID3D12GraphicsCommandList> commandList;
+		ThrowIfFailed(a_device->CreateCommandList(0, a_type, a_commandAllocator.Get(), nullptr, IID_PPV_ARGS(&commandList)));
+		
+		ThrowIfFailed(commandList->Close());
+
+		return commandList;
+	}
+	ComPtr<ID3D12Fence> DirectXContext::CreateFence(ComPtr<ID3D12Device2> a_device)
+	{
+		ComPtr<ID3D12Fence> fence;
+
+		ThrowIfFailed(a_device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence)));
+
+		return fence;
+	}
+
+	HANDLE DirectXContext::CreateEventHandle()
+	{
+		HANDLE fenceEvent;
+		fenceEvent = ::CreateEvent(NULL, false, false, NULL);
+		assert(fenceEvent && "Failed to create fence event");
+		return fenceEvent;
+	}
+
+	uint64_t DirectXContext::Single(ComPtr<ID3D12CommandQueue> a_commandQueue, ComPtr<ID3D12Fence> a_fence, uint64_t& a_fenceValue)
+	{
+		uint64_t fenceValueForSignal = ++a_fenceValue;
+		ThrowIfFailed(a_commandQueue->Signal(a_fence.Get(), fenceValueForSignal));
+		return fenceValueForSignal;
+
+	}
+
+	void DirectXContext::WaitForFenceValue(ComPtr<ID3D12Fence> a_fence, uint64_t a_fenceValue, HANDLE a_fenceEvent, std::chrono::milliseconds a_duration)
+	{
+		if (a_fence->GetCompletedValue() < a_fenceValue)
+		{
+			ThrowIfFailed(a_fence->SetEventOnCompletion(a_fenceValue, a_fenceEvent));
+			::WaitForSingleObject(a_fenceEvent, static_cast<DWORD>(a_duration.count()));
+		}
+	}
+
+	void DirectXContext::Flush(ComPtr<ID3D12CommandQueue> a_commandQueue, ComPtr<ID3D12Fence> a_fence, uint64_t a_fenceValue, HANDLE a_fenceEvent)
+	{
+		uint64_t fenceValueForSignal = Single(a_commandQueue, a_fence, a_fenceValue);
+		WaitForFenceValue(a_fence, fenceValueForSignal, a_fenceEvent);
+	}
+
+	void DirectXContext::Resize(uint32_t a_width, uint32_t a_height)
+	{
+		if (m_clientWidth != a_width || m_clientHeight != a_height)
+		{
+			//Don't allow 0 size swap chain back buffers.
+			m_clientWidth = std::max(1u, a_width);
+			m_clientHeight = std::max(1u, a_height);
+
+			// Flush the GPU queue to make sure the swap chain's back buffers
+			// are not being referenced by an in-flight command list.
+			Flush(m_commandQueue, m_fence, m_fenceValue, m_fenceEvent);
+
+			for (int i = 0; i < m_numFrames; ++i)
+			{
+				// Any references to the back buffers must be released
+				// before the swap chain can be resized.
+				m_backBuffers[i].Reset();
+				m_frameFenceValues[i] = m_frameFenceValues[m_currentBackBufferIndex];
+			}
+
+			DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
+			ThrowIfFailed(m_swapChain->GetDesc(&swapChainDesc));
+			ThrowIfFailed(m_swapChain->ResizeBuffers(m_numFrames, m_clientWidth, m_clientHeight, 
+				swapChainDesc.BufferDesc.Format, swapChainDesc.Flags));
+			m_currentBackBufferIndex = m_swapChain->GetCurrentBackBufferIndex();
+			UpdateRenderTargetView(m_device, m_swapChain, m_rtvDescriptionHeap);
+		}
+	}
+
+	void DirectXContext::SetFullScreen(bool a_fullscreen)
+	{
+		if (m_fullScreen != a_fullscreen)
+		{
+			m_fullScreen = a_fullscreen;
+			//Switching to fullscreen
+			if (m_fullScreen)
+			{
+				// Store the current window dimensions so they can be restored 
+				// when switching out of fullscreen state.
+				::GetWindowRect(m_hwnd, &m_windowRect);
+
+				// Set the window style to a borderless window so the client area fills
+				// the entire screen.
+				UINT windowStyle = WS_OVERLAPPEDWINDOW & ~(WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+
+				::SetWindowLongW(m_hwnd, GWL_STYLE, windowStyle);
+
+				// Query the name of the nearest display device for the window.
+				// This is required to set the fullscreen dimensions of the window
+				// when using a multi-monitor setup.
+				HMONITOR hMonitor = ::MonitorFromWindow(m_hwnd, MONITOR_DEFAULTTONEAREST);
+				MONITORINFOEX monitorInfo = {};
+				monitorInfo.cbSize = sizeof(MONITORINFOEX);
+				::GetMonitorInfo(hMonitor, &monitorInfo);
+
+				::SetWindowPos(m_hwnd, HWND_TOP,
+					monitorInfo.rcMonitor.left,
+					monitorInfo.rcMonitor.top,
+					monitorInfo.rcMonitor.right - monitorInfo.rcMonitor.left,
+					monitorInfo.rcMonitor.bottom - monitorInfo.rcMonitor.top,
+					SWP_FRAMECHANGED | SWP_NOACTIVATE);
+
+				::ShowWindow(m_hwnd, SW_MAXIMIZE);
+			}
+			else
+			{
+				// Restore all the window decorators.
+				::SetWindowLong(m_hwnd, GWL_STYLE, WS_OVERLAPPEDWINDOW);
+
+				::SetWindowPos(m_hwnd, HWND_NOTOPMOST,
+					m_windowRect.left,
+					m_windowRect.top,
+					m_windowRect.right - m_windowRect.left,
+					m_windowRect.bottom - m_windowRect.top,
+					SWP_FRAMECHANGED | SWP_NOACTIVATE);
+
+				::ShowWindow(m_hwnd, SW_NORMAL);
+			}
+		}
 	}
 }

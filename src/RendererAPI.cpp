@@ -2,5 +2,5 @@
 
 namespace Framework
 {
-	RendererAPI::API RendererAPI::sAPI = RendererAPI::API::DirectX;
+	RendererAPI::API RendererAPI::sAPI = RendererAPI::API::OpenGL;
 }

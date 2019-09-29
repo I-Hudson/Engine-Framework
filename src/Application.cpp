@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Platform/OpenGL/OpenGLContext.h"
+#include "Platform/DirectX/DirectXContext.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stbi/stb_image.h"
@@ -64,23 +65,32 @@ namespace Framework
 		do
 		{
 			Time::UpdateTime();
-			m_isRunning = !glfwWindowShouldClose(std::dynamic_pointer_cast<OpenGLContext>(m_context)->GetWindow());
 
-			m_mainCamera->Update(Time::GetDeltaTime());
-			Update();
-
-			RenderCommand::Clear();
-
-			Renderer::Begin(*m_mainCamera);
-			if (a_runDemo)
+			if (RendererAPI::GetAPI() == RendererAPI::API::DirectX)
 			{
-				//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
-				//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
-				//Renderer::Submit(m_shaderLibrary.GetShader("demoShader"), m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
+				RenderCommand::Clear();
+				m_context->SwapBuffers();
 			}
-			Draw();
-			Renderer::EndScene();
+			else
+			{
 
+				m_isRunning = !glfwWindowShouldClose(std::dynamic_pointer_cast<OpenGLContext>(m_context)->GetWindow());
+
+				m_mainCamera->Update(Time::GetDeltaTime());
+				Update();
+
+				RenderCommand::Clear();
+
+				Renderer::Begin(*m_mainCamera);
+				if (a_runDemo)
+				{
+					//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
+					//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
+					//Renderer::Submit(m_shaderLibrary.GetShader("demoShader"), m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
+				}
+				Draw();
+				Renderer::EndScene();
+			}
 			//GLFW
 			m_context->SwapBuffers();
 

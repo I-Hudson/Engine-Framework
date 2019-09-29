@@ -30,7 +30,8 @@ namespace Framework
 		void RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo);
 		void DestroyApp();
 
-		inline Application& Get() { return *sInstance; }
+		inline static Application& Get() { return *sInstance; }
+		inline std::shared_ptr<GraphicsContext>& GetGraphicsContext() { return m_context; }
 
 	protected:
 

@@ -57,19 +57,53 @@ namespace Framework
 		~DirectXContext();
 
 		virtual void Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen) override;
+		void PostInit(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen,
+			HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR lpCmdLine, int nCmdShow);
+
 		virtual void SwapBuffers() override;
 
-	private:
-		void ParseCommandLineArgumnets();
+		virtual void* GetNativeContext() override { return this; }
+
+	public:
+		//LRESULT CALLBACK WndProc(HWND a_hwnd, UINT a_message, WPARAM a_wParam, LPARAM a_lParam);
+
+		void ParseCommandLineArguments();
 		void EnableDebugLayer();
 		void RegisterWindowClass(HINSTANCE a_hInst, const wchar_t* a_windowClassname);
+		
 		HWND CreateWindow(const wchar_t* a_windowClassName, HINSTANCE a_hInst,
 			const wchar_t* a_windowTitle, const uint32_t& a_width, const uint32_t& a_height);
+		
 		ComPtr<IDXGIAdapter4> GetAdapter(bool a_useWarp);
 		ComPtr<ID3D12Device2> CreateDevice(ComPtr<IDXGIAdapter4> a_adapter);
 		ComPtr<ID3D12CommandQueue> CreateCommandQueue(ComPtr<ID3D12Device2> a_device, D3D12_COMMAND_LIST_TYPE a_type);
+		
 		bool CheckTearingSupport();
+		
 		ComPtr<IDXGISwapChain4> CreateSwapChain(HWND a_hwnd, ComPtr <ID3D12CommandQueue> a_commandQueue, uint32_t a_width, uint32_t a_height, uint32_t a_bufferCount);
+		ComPtr<ID3D12DescriptorHeap> CreateDescriptionHeap(ComPtr<ID3D12Device2> a_device,
+			D3D12_DESCRIPTOR_HEAP_TYPE a_type, uint32_t a_numDescriptors);
+		
+		void UpdateRenderTargetView(ComPtr<ID3D12Device2> a_device, ComPtr<IDXGISwapChain4> a_swapChain,
+			
+			ComPtr<ID3D12DescriptorHeap> a_descriptionHeap);
+		ComPtr<ID3D12CommandAllocator> CreateCommandAllocator(ComPtr<ID3D12Device2> a_device,
+			D3D12_COMMAND_LIST_TYPE a_type);
+		ComPtr<ID3D12GraphicsCommandList> CreateCommandList(ComPtr<ID3D12Device2> a_device,
+			ComPtr<ID3D12CommandAllocator> a_commandAllocator, D3D12_COMMAND_LIST_TYPE a_type);
+		ComPtr<ID3D12Fence> CreateFence(ComPtr<ID3D12Device2> a_device);
+
+		HANDLE CreateEventHandle();
+
+		uint64_t Single(ComPtr<ID3D12CommandQueue> a_commandQueue, ComPtr<ID3D12Fence> a_fence,
+			uint64_t& a_fenceValue);
+
+		void WaitForFenceValue(ComPtr<ID3D12Fence> a_fence, uint64_t a_fenceValue, HANDLE a_fenceEvent,
+			std::chrono::milliseconds a_duration = std::chrono::milliseconds::max());
+		void Flush(ComPtr<ID3D12CommandQueue> a_commandQueue, ComPtr<ID3D12Fence> a_fence,
+			uint64_t a_fenceValue, HANDLE a_fenceEvent);
+		void Resize(uint32_t a_width, uint32_t a_height);
+		void SetFullScreen(bool a_fullscreen);
 
 		// The number of swap chain back buffers.
 		//Use WRAP adapter
