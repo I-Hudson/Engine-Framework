@@ -16,15 +16,23 @@ namespace Framework
 	Application::Application()
 		: m_isRunning(true)
 	{
+		sInstance = this;
 	}
 
 	Application::~Application()
 	{
 	}
 
-	bool Application::CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
+	bool Application::CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
+									HINSTANCE* a_hInstance, HINSTANCE* a_hPrevInstance, LPSTR* a_lpCmdLine, int a_nCmdShow)
 	{
 		m_context = GraphicsContext::Create(a_width, a_height, a_title);
+
+		if (Renderer::GetAPI() == RendererAPI::API::DirectX)
+		{
+			auto context = std::dynamic_pointer_cast<DirectXContext>(m_context);
+			context->PostInit(a_width, a_height, a_title, false, *a_hInstance, *a_hPrevInstance, *a_lpCmdLine, a_nCmdShow);
+		}
 
 		Log::Init();
 		EN_CORE_INFO("Core logger has been initialized");
@@ -53,9 +61,10 @@ namespace Framework
 		return true;
 	}
 
-	void Application::RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
+	void Application::RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
+							HINSTANCE* a_hInstance, HINSTANCE* a_hPrevInstance, LPSTR* a_lpCmdLine, int a_nCmdShow)
 	{
-		if (!CreateApp(a_width, a_height, a_title, a_runDemo))
+		if (!CreateApp(a_width, a_height, a_title, a_runDemo, a_hInstance, a_hPrevInstance, a_lpCmdLine, a_nCmdShow))
 		{
 			DestroyApp();
 			return;

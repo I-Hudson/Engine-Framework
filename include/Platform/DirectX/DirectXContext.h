@@ -26,7 +26,7 @@
 using namespace Microsoft::WRL;
 
 // DirectX 12 specific headers.
-#include <d3d12.h>
+#include <d3d11.h>
 #include <dxgi1_6.h>
 #include <d3dcompiler.h>
 #include <DirectXMath.h>
@@ -58,7 +58,7 @@ namespace Framework
 
 		virtual void Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen) override;
 		void PostInit(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen,
-			HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR lpCmdLine, int nCmdShow);
+			HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 
 		virtual void SwapBuffers() override;
 

@@ -1,23 +1,13 @@
 ﻿  DirectXContext.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244:         with
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244:         [
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244:             _Ty=int
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(236,62): warning C4244:         ]
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244:         with
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244:         [
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244:             _Ty=int
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(237,64): warning C4244:         ]
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt\wrl\client.h(283,1): error C2440: '<function-style-cast>': cannot convert from 'Microsoft::WRL::ComPtr<ID3D12CommandQueue>' to 'Microsoft::WRL::ComPtr<ID3D12Device2>'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt\wrl\client.h(283,1): message : No constructor could take the source type, or constructor overload resolution was ambiguous
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(150): message : see reference to function template instantiation 'Microsoft::WRL::ComPtr<ID3D12Device2> &Microsoft::WRL::ComPtr<ID3D12Device2>::operator =<ID3D12CommandQueue>(Microsoft::WRL::ComPtr<ID3D12CommandQueue> &&) throw()' being compiled
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(150): message : see reference to function template instantiation 'Microsoft::WRL::ComPtr<ID3D12Device2> &Microsoft::WRL::ComPtr<ID3D12Device2>::operator =<ID3D12CommandQueue>(Microsoft::WRL::ComPtr<ID3D12CommandQueue> &&) throw()' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(669): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(177): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
-  DirectXRendererAPI.cpp
-  OpenGLContext.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(647): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::steady_clock::duration>' being compiled
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  Generating Code...
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244:         with
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244:         [
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244:             _Ty=int
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244:         ]
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244:         with
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244:         [
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244:             _Ty=int
+E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244:         ]
+opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in d3d12.lib(d3d12.dll); second definition ignored
+  OpenGL Framework.vcxproj -> E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\OpenGL Framework\..\..\Minecraft\lib\OpenGL Framework.lib

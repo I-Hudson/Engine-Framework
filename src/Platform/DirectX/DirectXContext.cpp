@@ -123,7 +123,7 @@ namespace Framework
 	}
 
 	void DirectXContext::PostInit(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen,
-		HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR lpCmdLine, int nCmdShow)
+		HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 	{
 		// Windows 10 Creators update adds Per Monitor V2 DPI awareness context.
 		// Using this awareness context allows the client area of the window 
@@ -287,7 +287,7 @@ namespace Framework
 				// is favored.
 				if ((dxgiAdapterDesc1.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) == 0 &&
 					SUCCEEDED(D3D12CreateDevice(dxgiAdapter1.Get(),
-						D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), nullptr)) &&
+						D3D_FEATURE_LEVEL_12_0, __uuidof(ID3D12Device), nullptr)) &&
 					dxgiAdapterDesc1.DedicatedVideoMemory > maxDedicatedVideoMemory)
 				{
 					maxDedicatedVideoMemory = dxgiAdapterDesc1.DedicatedVideoMemory;
@@ -300,7 +300,7 @@ namespace Framework
 	ComPtr<ID3D12Device2> DirectXContext::CreateDevice(ComPtr<IDXGIAdapter4> a_adapter)
 	{
 		ComPtr<ID3D12Device2> device;
-		ThrowIfFailed(D3D12CreateDevice(a_adapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(&a_adapter)));
+		ThrowIfFailed(D3D12CreateDevice(a_adapter.Get(), D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&a_adapter)));
 
 		// Enable debug messages in debug mode.
 #if defined(_DEBUG)

@@ -26,8 +26,10 @@ namespace Framework
 		Application();
 		~Application();
 
-		bool CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo);
-		void RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo);
+		bool CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
+						HINSTANCE* a_hInstance, HINSTANCE* a_hPrevInstance, LPSTR* a_lpCmdLine, int a_nCmdShow);
+		void RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
+						HINSTANCE* a_hInstance = nullptr, HINSTANCE* a_hPrevInstance = nullptr, LPSTR* a_lpCmdLine = nullptr, int a_nCmdShow = 0);
 		void DestroyApp();
 
 		inline static Application& Get() { return *sInstance; }
