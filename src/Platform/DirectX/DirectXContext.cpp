@@ -300,7 +300,7 @@ namespace Framework
 	ComPtr<ID3D12Device2> DirectXContext::CreateDevice(ComPtr<IDXGIAdapter4> a_adapter)
 	{
 		ComPtr<ID3D12Device2> device;
-		ThrowIfFailed(D3D12CreateDevice(a_adapter.Get(), D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&a_adapter)));
+		ThrowIfFailed(D3D12CreateDevice(a_adapter.Get(), D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&device)));
 
 		// Enable debug messages in debug mode.
 #if defined(_DEBUG)
