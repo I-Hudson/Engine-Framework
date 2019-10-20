@@ -4,6 +4,7 @@
 
 #include <string>
 #include <sstream>
+#include <iostream>
 
 namespace Framework
 {
@@ -20,6 +21,7 @@ namespace Framework
 	LRESULT CALLBACK WndProc(HWND a_hwnd, UINT a_message, WPARAM a_wParam, LPARAM a_lParam)
 	{
 		auto context = (DirectXContext*)Application::Get().GetGraphicsContext()->GetNativeContext();
+
 		if (context->m_isInitialized)
 		{
 			switch (a_message)
@@ -29,11 +31,10 @@ namespace Framework
 				break;
 
 			case WM_SYSKEYDOWN:
-				__fallthrough;
 			case WM_KEYDOWN:
 			{
+				WPARAM keyPressed = a_wParam;
 				bool alt = (::GetAsyncKeyState(VK_MENU) & 0x8000) != 0;
-
 				switch (a_wParam)
 				{
 				case'V':
@@ -351,6 +352,8 @@ namespace Framework
 		desc.Priority = D3D12_COMMAND_QUEUE_PRIORITY_NORMAL;
 		desc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
 		desc.NodeMask = 0;
+
+		ThrowIfFailed(a_device->CreateCommandQueue(&desc, IID_PPV_ARGS(&commandQueue)));
 
 		return commandQueue;
 	}

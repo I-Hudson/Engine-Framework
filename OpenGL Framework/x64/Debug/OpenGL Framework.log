@@ -1,21 +1,5 @@
 ﻿  Application.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  GraphicsContext.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  DirectXContext.cpp
-E:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244:         with
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244:         [
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244:             _Ty=int
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(238,62): warning C4244:         ]
-  DirectXRendererAPI.cpp
-  Generating Code...
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244:         with
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244:         [
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244:             _Ty=int
-E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(239,64): warning C4244:         ]
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
 opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in d3d12.lib(d3d12.dll); second definition ignored
-  OpenGL Framework.vcxproj -> E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\OpenGL Framework\..\..\Minecraft\lib\OpenGL Framework.lib
+  OpenGL Framework.vcxproj -> F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\OpenGL Framework\..\..\Minecraft\lib\OpenGL Framework.lib

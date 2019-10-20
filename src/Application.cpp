@@ -49,8 +49,8 @@ namespace Framework
 			m_demoCube->Translate(glm::vec3(0, 0, 0));
 		}
 
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+		//glEnable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
 
 		if (!OnCreate())
 		{
@@ -70,15 +70,14 @@ namespace Framework
 			return;
 		}
 
-		RenderCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+		//RenderCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 		do
 		{
 			Time::UpdateTime();
 
 			if (RendererAPI::GetAPI() == RendererAPI::API::DirectX)
 			{
-				RenderCommand::Clear();
-				m_context->SwapBuffers();
+				RenderCommand::SetClearColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 			}
 			else
 			{
