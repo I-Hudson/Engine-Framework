@@ -6,6 +6,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "Events/ApplicationEvent.h"
+
 namespace Framework
 {
 	std::wstring widen(const std::string& str)
@@ -41,6 +43,7 @@ namespace Framework
 					context->m_vSync = !context->m_vSync;
 					break;
 				case VK_ESCAPE:
+					WindowCloseEvent event();
 					::PostQuitMessage(0);
 					break;
 				case VK_RETURN:

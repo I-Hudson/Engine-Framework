@@ -16,9 +16,6 @@ namespace Framework
 		return nullptr;
 	}
 
-
-
-
 	void TextureLibrary::Add(const std::string& a_name, const std::shared_ptr<Texture>& a_texture)
 	{
 		if (Exists(a_name))
