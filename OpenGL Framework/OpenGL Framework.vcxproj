@@ -166,6 +166,8 @@
     <ClInclude Include="..\include\Application.h" />
     <ClInclude Include="..\include\Buffer.h" />
     <ClInclude Include="..\include\Camera.h" />
+    <ClInclude Include="..\include\Events\ApplicationEvent.h" />
+    <ClInclude Include="..\include\Events\Event.h" />
     <ClInclude Include="..\include\GraphicsContext.h" />
     <ClInclude Include="..\include\Log.h" />
     <ClInclude Include="..\include\Platform\DirectX\d3dx12.h" />

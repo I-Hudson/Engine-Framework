@@ -55,6 +55,9 @@
     <Filter Include="Source Files\Platform\DirectX">
       <UniqueIdentifier>{c919c922-2aa3-410d-8fc6-91b6f00ed4ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Events">
+      <UniqueIdentifier>{3d0e647c-afdd-4255-ac9b-3651fc9f6716}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Camera.cpp">
@@ -196,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="..\include\Platform\DirectX\DirectXRendererAPI.h">
       <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Events\Event.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Events\ApplicationEvent.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
