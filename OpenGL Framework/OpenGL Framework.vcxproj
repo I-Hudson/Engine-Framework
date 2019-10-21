@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{EFC192F0-E457-4D28-9946-597161C78F34}</ProjectGuid>
     <RootNamespace>OpenGLFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -34,7 +34,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -73,7 +73,7 @@
     <OutDir>..\..\Minecraft\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\..\OpenGLMinecraft\lib\</OutDir>
+    <OutDir>..\..\Minecraft\lib\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -104,8 +104,8 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)deps/imgui/lib;$(SolutionDir)deps/glfw/lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64;$(SolutionDir)deps/imgui/lib;$(SolutionDir)deps/directx;$(SolutionDir)deps/glfw/lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d12.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -144,6 +144,8 @@
     <ClCompile Include="..\src\Camera.cpp" />
     <ClCompile Include="..\src\GraphicsContext.cpp" />
     <ClCompile Include="..\src\Log.cpp" />
+    <ClCompile Include="..\src\Platform\DirectX\DirectXContext.cpp" />
+    <ClCompile Include="..\src\Platform\DirectX\DirectXRendererAPI.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
@@ -166,6 +168,10 @@
     <ClInclude Include="..\include\Camera.h" />
     <ClInclude Include="..\include\GraphicsContext.h" />
     <ClInclude Include="..\include\Log.h" />
+    <ClInclude Include="..\include\Platform\DirectX\d3dx12.h" />
+    <ClInclude Include="..\include\Platform\DirectX\DirectXContext.h" />
+    <ClInclude Include="..\include\Platform\DirectX\DirectXRendererAPI.h" />
+    <ClInclude Include="..\include\Platform\DirectX\Helpers.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLRendererAPI.h" />

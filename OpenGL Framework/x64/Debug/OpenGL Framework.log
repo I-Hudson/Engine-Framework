@@ -1,42 +1,5 @@
 ﻿  Application.cpp
-c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  d:\github\openglminecraft\deps\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-  Buffer.cpp
-c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  d:\github\openglminecraft\deps\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-  GraphicsContext.cpp
-c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  d:\github\openglminecraft\deps\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-  OpenGLBuffer.cpp
-  OpenGLRendererAPI.cpp
-  OpenGLVertexArray.cpp
-d:\github\opengl-framework\src\platform\opengl\openglvertexarray.cpp(64): warning C4312: 'type cast': conversion from 'const uint32_t' to 'const void *' of greater size
-  RenderCommand.cpp
-  Renderer.cpp
-c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  d:\github\openglminecraft\deps\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-  RendererAPI.cpp
-  Shader.cpp
-c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  d:\github\openglminecraft\deps\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-  Cube.cpp
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\memory(1801): warning C4244: 'argument': conversion from '_Ty' to 'uint32_t', possible loss of data
-          with
-          [
-              _Ty=unsigned __int64
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\memory(1865): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
-          with
-          [
-              _Ty=Framework::OpenGLIndexBuffer
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\memory(1866): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
-          with
-          [
-              _Ty=Framework::OpenGLIndexBuffer
-          ]
-  d:\github\opengl-framework\src\shape\cube.cpp(93): note: see reference to function template instantiation 'std::shared_ptr<Framework::OpenGLIndexBuffer> std::make_shared<Framework::OpenGLIndexBuffer,unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
-  Shape.cpp
-  Texture.cpp
-  Generating Code...
-  OpenGL Framework.vcxproj -> D:\github\OpenGL-Framework\OpenGL Framework\..\..\OpenGLMinecraft\lib\OpenGL Framework.lib
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in d3d12.lib(d3d12.dll); second definition ignored
+  OpenGL Framework.vcxproj -> F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\OpenGL Framework\..\..\Minecraft\lib\OpenGL Framework.lib

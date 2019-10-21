@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Framework\Shape">
       <UniqueIdentifier>{ad1b7a71-09b1-465c-bb66-623c276c6dce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Platform\DirectX">
+      <UniqueIdentifier>{9d3c8658-dab3-4588-bef0-5c0dbbc912bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\DirectX">
+      <UniqueIdentifier>{c919c922-2aa3-410d-8fc6-91b6f00ed4ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Camera.cpp">
@@ -111,6 +117,12 @@
     <ClCompile Include="..\src\GraphicsContext.cpp">
       <Filter>Source Files\Framework\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXContext.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXRendererAPI.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Buffer.h">
@@ -172,6 +184,18 @@
     </ClInclude>
     <ClInclude Include="..\include\GraphicsContext.h">
       <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXContext.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\d3dx12.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\Helpers.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXRendererAPI.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

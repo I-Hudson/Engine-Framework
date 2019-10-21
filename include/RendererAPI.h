@@ -16,7 +16,8 @@ namespace Framework
 		enum class API
 		{
 			None = 0,
-			OpenGL = 1
+			OpenGL = 1,
+			DirectX = 2
 		};
 
 		//Define all render API calls needed. These are overridden later by the specific API
