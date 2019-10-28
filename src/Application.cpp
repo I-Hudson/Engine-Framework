@@ -26,13 +26,10 @@ namespace Framework
 	bool Application::CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
 									HINSTANCE* a_hInstance, HINSTANCE* a_hPrevInstance, LPSTR* a_lpCmdLine, int a_nCmdShow)
 	{
-		m_context = GraphicsContext::Create(a_width, a_height, a_title);
+		WindowProps props = WindowProps(a_title, a_width, a_height, a_hInstance, a_hPrevInstance, a_lpCmdLine, a_nCmdShow);
 
-		if (Renderer::GetAPI() == RendererAPI::API::DirectX)
-		{
-			auto context = std::dynamic_pointer_cast<DirectXContext>(m_context);
-			context->PostInit(a_width, a_height, a_title, false, *a_hInstance, *a_hPrevInstance, *a_lpCmdLine, a_nCmdShow);
-		}
+		m_window = std::make_unique<Window>(Window::Create(props));
+		//m_window = Window::Create(props);
 
 		Log::Init();
 		EN_CORE_INFO("Core logger has been initialized");
@@ -81,9 +78,6 @@ namespace Framework
 			}
 			else
 			{
-
-				m_isRunning = !glfwWindowShouldClose(std::dynamic_pointer_cast<OpenGLContext>(m_context)->GetWindow());
-
 				m_mainCamera->Update(Time::GetDeltaTime());
 				Update();
 
@@ -100,7 +94,7 @@ namespace Framework
 				Renderer::EndScene();
 			}
 			//GLFW
-			m_context->SwapBuffers();
+			//m_window->OnUpdate();
 
 		} while (m_isRunning);
 

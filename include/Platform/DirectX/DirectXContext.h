@@ -54,6 +54,8 @@ namespace Framework
 	{
 	public:
 		DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen = false);
+		DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen,
+					HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 		~DirectXContext();
 
 		virtual void Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen) override;

@@ -14,7 +14,7 @@ namespace Framework
 
 	void DirectXRendererAPI::Clear()
 	{
-		auto context = (DirectXContext*)Application::Get().GetGraphicsContext()->GetNativeContext();
+		auto context = (DirectXContext*)(Application::Get().GetWindow().GetContext());
 		auto commandAllocator = context->m_commandAllocators[context->m_currentBackBufferIndex];
 		auto backBuffer = context->m_backBuffers[context->m_currentBackBufferIndex];
 

@@ -14,7 +14,7 @@
 #include "Shape/Cube.h"
 #include "Shader.h"
 #include "Texture.h"
-#include "Platform/OpenGL/OpenGLContext.h"
+#include "Platform/Windows/WindowsWindow.h"
 
 struct GLFWwindow;
 
@@ -33,7 +33,8 @@ namespace Framework
 		void DestroyApp();
 
 		inline static Application& Get() { return *sInstance; }
-		inline std::shared_ptr<GraphicsContext>& GetGraphicsContext() { return m_context; }
+		inline Window& GetWindow() { return *m_window; }
+		//inline Window* GetWindow() { return m_window; }
 
 	protected:
 
@@ -49,7 +50,7 @@ namespace Framework
 		std::shared_ptr<Camera> m_mainCamera;
 		std::shared_ptr<Cube>m_demoCube;
 
-		std::shared_ptr<GraphicsContext> m_context;
+		std::unique_ptr<Window> m_window;
 
 	private:
 		static Application* sInstance;

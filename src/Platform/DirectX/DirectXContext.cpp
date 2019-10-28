@@ -118,6 +118,11 @@ namespace Framework
 		//Init(a_width, a_height, a_title, a_fullscreen);
 	}
 
+	DirectXContext::DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+	{
+		PostInit(a_width, a_height, a_title, a_fullscreen, hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+	}
+
 	DirectXContext::~DirectXContext()
 	{
 	}
