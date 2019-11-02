@@ -4,8 +4,8 @@
 
 namespace Framework
 {
-	Window* Window::Create(const WindowProps& props)
+	std::shared_ptr<Window> Window::Create(const WindowProps& aProps)
 	{
-		return new WindowsWindow(props);
+		return std::make_shared<WindowsWindow>(aProps);
 	}
 }

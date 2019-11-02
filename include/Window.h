@@ -6,6 +6,8 @@
 
 namespace Framework
 {
+	class GraphicsContext;
+	
 	//window props
 	struct WindowProps
 	{
@@ -14,18 +16,11 @@ namespace Framework
 		unsigned int Width;
 		unsigned int Height;
 
-		HINSTANCE* HInstance;
-		HINSTANCE* HPrevInstance;
-		LPSTR* LpCmdLine;
-		int NCmdShow;
-
 		//Constructor
 		WindowProps(const std::string& aTitle = "InSight Engine",
-			unsigned int aWidth = 1920, unsigned int aHeight = 1080,
-			HINSTANCE* a_hInstance = nullptr, HINSTANCE* a_hPrevInstance = nullptr,
-			LPSTR* a_lpCmdLine = nullptr, int a_nCmdShow = 0)
+			unsigned int aWidth = 1920, unsigned int aHeight = 1080)
 			:Title(aTitle), Width(aWidth), Height(aHeight)
-		{}
+		{ }
 	};
 
 	//Interface representing a desktop system based window
@@ -39,25 +34,26 @@ namespace Framework
 		virtual ~Window() {}
 
 		//update
-		virtual void OnUpdate() = 0;
+		virtual void OnUpdate() {}
+		virtual void Destroy() = 0;
 
 		//width
-		virtual unsigned int GetWidth() const = 0;
+		virtual unsigned int GetWidth() const { return 0; }
 		//height
-		virtual unsigned int GetHeight() const = 0;
+		virtual unsigned int GetHeight() const { return 0; }
 
 		//set the event callback
-		virtual void SetEventCallback(const EventCallbackFn& aCallback) = 0;
+		virtual void SetEventCallback(const EventCallbackFn& aCallback) {}
 		//set vsync
-		virtual void SetVSync(bool aEnabled) = 0;
+		virtual void SetVSync(bool aEnabled) {}
 		//is vsync on or off
-		virtual bool IsVSync() const = 0;
+		virtual bool IsVSync() const { return false; }
 
 		//get the window pointer
-		virtual void* GetNativeWindow() const = 0;
+		virtual void* GetNativeWindow() const { return nullptr; }
+		virtual std::shared_ptr<GraphicsContext> GetGraphicsContext() const = 0;
 
 		//create window
-		static Window* Create(const WindowProps& aProps = WindowProps());
+		static std::shared_ptr<Window> Create(const WindowProps& aProps);
 	};
-
 }

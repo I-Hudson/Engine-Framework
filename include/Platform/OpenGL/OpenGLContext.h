@@ -14,8 +14,8 @@ namespace Framework
 		OpenGLContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen = false);
 		~OpenGLContext();
 
-		virtual void Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen) override;
-
+		virtual void Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* a_window) override;
+		virtual void Destroy() override;
 
 		virtual void SwapBuffers() override;
 

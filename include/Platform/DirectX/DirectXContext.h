@@ -53,14 +53,11 @@ namespace Framework
 	class DirectXContext : public GraphicsContext
 	{
 	public:
-		DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen = false);
-		DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen,
-					HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
+		DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen = false, void* window = nullptr);
 		~DirectXContext();
 
-		virtual void Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen) override;
-		void PostInit(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen,
-			HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
+		virtual void Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* a_window) override;
+		virtual void Destroy() override;
 
 		virtual void SwapBuffers() override;
 
@@ -71,9 +68,9 @@ namespace Framework
 
 		void ParseCommandLineArguments();
 		void EnableDebugLayer();
-		void RegisterWindowClass(HINSTANCE a_hInst, const wchar_t* a_windowClassname);
+		void RegisterWindowClass(const wchar_t* a_windowClassname);
 		
-		HWND CreateWindow(const wchar_t* a_windowClassName, HINSTANCE a_hInst,
+		HWND CreateWindow(const wchar_t* a_windowClassName, HWND a_hInst,
 			const wchar_t* a_windowTitle, const uint32_t& a_width, const uint32_t& a_height);
 		
 		ComPtr<IDXGIAdapter4> GetAdapter(bool a_useWarp);
@@ -147,6 +144,6 @@ namespace Framework
 		// Can be toggled with the Alt+Enter or F11
 		bool m_fullScreen = false;
 
-
+		static DirectXContext* m_context;
 	};
 }

@@ -9,7 +9,7 @@ namespace Framework
 {
 	OpenGLContext::OpenGLContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen)
 	{
-		Init(a_width,a_height, a_title, a_fullscreen);
+		Init(a_width,a_height, a_title, a_fullscreen, nullptr);
 	}
 
 	OpenGLContext::~OpenGLContext()
@@ -17,7 +17,7 @@ namespace Framework
 		glfwDestroyWindow(m_window);
 	}
 
-	void OpenGLContext::Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen)
+	void OpenGLContext::Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* a_window)
 	{
 		// Setup glfw,
 		if (!glfwInit())
@@ -34,6 +34,10 @@ namespace Framework
 		if (!gladLoadGL())
 		{
 		}
+	}
+
+	void OpenGLContext::Destroy()
+	{
 	}
 
 	void OpenGLContext::SwapBuffers()

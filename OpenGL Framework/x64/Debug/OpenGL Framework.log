@@ -1,141 +1,20 @@
 ﻿  Application.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): error C2259: 'Framework::Window': cannot instantiate abstract class
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): message : due to following members:
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): message : 'void Framework::Window::OnUpdate(void)': is abstract
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(42): message : see declaration of 'Framework::Window::OnUpdate'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): message : 'unsigned int Framework::Window::GetWidth(void) const': is abstract
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(45): message : see declaration of 'Framework::Window::GetWidth'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): message : 'unsigned int Framework::Window::GetHeight(void) const': is abstract
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(47): message : see declaration of 'Framework::Window::GetHeight'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): message : 'void Framework::Window::SetEventCallback(const Framework::Window::EventCallbackFn &)': is abstract
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(50): message : see declaration of 'Framework::Window::SetEventCallback'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): message : 'void Framework::Window::SetVSync(bool)': is abstract
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(52): message : see declaration of 'Framework::Window::SetVSync'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): message : 'bool Framework::Window::IsVSync(void) const': is abstract
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(54): message : see declaration of 'Framework::Window::IsVSync'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056): message : 'void *Framework::Window::GetNativeWindow(void) const': is abstract
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(57): message : see declaration of 'Framework::Window::GetNativeWindow'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Application.cpp(31): message : see reference to function template instantiation 'std::unique_ptr<Framework::Window,std::default_delete<_Ty>> std::make_unique<Framework::Window,Framework::Window*,0>(Framework::Window *&&)' being compiled
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Application.cpp(31): message :         with
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Application.cpp(31): message :         [
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Application.cpp(31): message :             _Ty=Framework::Window
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Application.cpp(31): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(669): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(177): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\chrono(647): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::steady_clock::duration>' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,35): error C2664: 'Framework::Window::Window(const Framework::Window &)': cannot convert argument 1 from '_Ty' to 'const Framework::Window &'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,35): error C2664:         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,35): error C2664:         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,35): error C2664:             _Ty=Framework::Window *
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2057,35): error C2664:         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056,59): message : Reason: cannot convert from '_Ty' to 'const Framework::Window'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056,59): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056,59): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056,59): message :             _Ty=Framework::Window *
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056,59): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\memory(2056,59): message : No constructor could take the source type, or constructor overload resolution was ambiguous
+  GraphicsContext.cpp
   DirectXContext.cpp
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(61,2): message : see declaration of 'Framework::Window::Window'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Events\ApplicationEvent.h(13,3): error C3668: 'Framework::WindowCloseEvent::GetCategoryFlags': method with override specifier 'override' did not override any base class methods
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(25,72): error C2039: 'GetGraphicsContext': is not a member of 'Framework::Application'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Application.h(23): message : see declaration of 'Framework::Application'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(27,6): error C3536: 'context': cannot be used before it is initialized
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(46): error C2259: 'Framework::WindowCloseEvent': cannot instantiate abstract class
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(46): message : due to following members:
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(46): message : 'int Framework::Event::GetGategoryFlags(void) const': is abstract
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Events\Event.h(51): message : see declaration of 'Framework::Event::GetGategoryFlags'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(247,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(247,62): warning C4244:         with
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(247,62): warning C4244:         [
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(247,62): warning C4244:             _Ty=int
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(247,62): warning C4244:         ]
-  DirectXRendererAPI.cpp
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(248,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(248,64): warning C4244:         with
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(248,64): warning C4244:         [
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(248,64): warning C4244:             _Ty=int
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(248,64): warning C4244:         ]
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXRendererAPI.cpp(17,77): error C2039: 'GetContext': is not a member of 'Framework::Window'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Window.h(32): message : see declaration of 'Framework::Window'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXRendererAPI.cpp(18,34): error C3536: 'context': cannot be used before it is initialized
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXRendererAPI.cpp(21,19): error C3536: 'commandAllocator': cannot be used before it is initialized
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXRendererAPI.cpp(26,86): error C3536: 'backBuffer': cannot be used before it is initialized
-  WindowsWindow.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Minecraft\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(274,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(274,62): warning C4244:         with
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(274,62): warning C4244:         [
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(274,62): warning C4244:             _Ty=int
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(274,62): warning C4244:         ]
+  OpenGLContext.cpp
   Window.cpp
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXRendererAPI.cpp(46,29): error C2466: cannot allocate an array of constant size 0
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(435,23): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4519): message : see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::_Insert_string<char,std::char_traits<char>,unsigned __int64>(std::basic_ostream<char,std::char_traits<char>> &,const _Elem *const ,const _SizeT)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4519): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4519): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4519): message :             _Elem=char,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4519): message :             _SizeT=unsigned __int64
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4519): message :         ]
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Events\Event.h(86): message : see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<char,std::char_traits<char>,std::allocator<char>>(std::basic_ostream<char,std::char_traits<char>> &,const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(435,1): error C2065: 'iostate': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(435,31): error C2146: syntax error: missing ';' before identifier '_State'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(435,31): error C2065: '_State': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(435,49): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(435,1): error C2065: 'goodbit': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(438,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(441,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(444,29): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(444,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(444,36): error C2146: syntax error: missing ';' before identifier '_Ok'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(444,36): error C3861: '_Ok': identifier not found
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(446,10): error C2065: '_Ok': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(447,9): error C2065: '_State': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(447,28): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(447,1): error C2065: 'badbit': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(450,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(450,39): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(450,1): error C2065: 'adjustfield': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(450,64): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(450,1): error C2065: 'left': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(452,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(452,1): error C2660: 'std::_Narrow_char_traits<char,int>::eq_int_type': function does not take 1 arguments
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(401,38): message : see declaration of 'std::_Narrow_char_traits<char,int>::eq_int_type'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(453,21): error C2065: '_State': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(453,40): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(453,1): error C2065: 'badbit': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(459,13): error C2065: '_State': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(459,32): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(459,1): error C2065: 'goodbit': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(460,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(461,13): error C2065: '_State': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(461,32): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(461,1): error C2065: 'badbit': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(464,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(464,1): error C2660: 'std::_Narrow_char_traits<char,int>::eq_int_type': function does not take 1 arguments
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(401,38): message : see declaration of 'std::_Narrow_char_traits<char,int>::eq_int_type'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(465,21): error C2065: '_State': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(465,40): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(465,1): error C2065: 'badbit': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(471,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(472,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(472,9): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(472,1): error C2065: 'badbit': undeclared identifier
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(475,1): error C2027: use of undefined type 'std::basic_ostream<char,std::char_traits<char>>'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\iosfwd(216): message : see declaration of 'std::basic_ostream<char,std::char_traits<char>>'
   Generating Code...
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(475,20): error C2065: '_State': undeclared identifier
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(275,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(275,64): warning C4244:         with
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(275,64): warning C4244:         [
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(275,64): warning C4244:             _Ty=int
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(275,64): warning C4244:         ]
+opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in d3d12.lib(d3d12.dll); second definition ignored
+  OpenGL Framework.vcxproj -> F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\OpenGL Framework\..\..\Minecraft\lib\OpenGL Framework.lib

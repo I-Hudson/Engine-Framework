@@ -15,6 +15,7 @@ namespace Framework
 
 		//update
 		void OnUpdate() override;
+		void Destroy() override;
 
 		//width
 		inline unsigned int GetWidth() const override { return mData.Width; };
@@ -23,14 +24,14 @@ namespace Framework
 
 		//set event callback
 		inline void SetEventCallback(const EventCallbackFn& aCallback) override { mData.EventCallback = aCallback; };
-		GraphicsContext* GetContext() { return m_context; }
 
 		//set vsync
 		void SetVSync(bool aEnabled) override;
 		//is vsync on or off
 		bool IsVSync() const override;
 
-		inline virtual void* GetNativeWindow() const { return mWindow; };
+		inline virtual void* GetNativeWindow() const { return m_window; };
+		inline virtual std::shared_ptr<GraphicsContext> GetGraphicsContext() const { return m_context; }
 
 	private:
 		//init func
@@ -39,8 +40,8 @@ namespace Framework
 		virtual void Shutdown();
 
 		//glfww window pointer
-		void* mWindow;
-		GraphicsContext* m_context;
+		void* m_window;
+		std::shared_ptr<GraphicsContext> m_context;
 
 		//window data
 		struct WindowData
