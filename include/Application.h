@@ -14,7 +14,7 @@
 #include "Shape/Cube.h"
 #include "Shader.h"
 #include "Texture.h"
-#include "Platform/OpenGL/OpenGLContext.h"
+#include "Platform/Windows/WindowsWindow.h"
 
 struct GLFWwindow;
 
@@ -26,14 +26,12 @@ namespace Framework
 		Application();
 		~Application();
 
-		bool CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
-						HINSTANCE* a_hInstance, HINSTANCE* a_hPrevInstance, LPSTR* a_lpCmdLine, int a_nCmdShow);
-		void RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
-						HINSTANCE* a_hInstance = nullptr, HINSTANCE* a_hPrevInstance = nullptr, LPSTR* a_lpCmdLine = nullptr, int a_nCmdShow = 0);
+		bool CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo);
+		void RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo);
 		void DestroyApp();
 
 		inline static Application& Get() { return *sInstance; }
-		inline std::shared_ptr<GraphicsContext>& GetGraphicsContext() { return m_context; }
+		inline std::shared_ptr<Window> GetWindow() { return m_window; }
 
 	protected:
 
@@ -49,7 +47,7 @@ namespace Framework
 		std::shared_ptr<Camera> m_mainCamera;
 		std::shared_ptr<Cube>m_demoCube;
 
-		std::shared_ptr<GraphicsContext> m_context;
+		std::shared_ptr<Window> m_window;
 
 	private:
 		static Application* sInstance;

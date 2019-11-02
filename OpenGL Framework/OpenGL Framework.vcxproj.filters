@@ -58,6 +58,12 @@
     <Filter Include="Header Files\Events">
       <UniqueIdentifier>{3d0e647c-afdd-4255-ac9b-3651fc9f6716}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Platform\Windows">
+      <UniqueIdentifier>{1f635848-7863-4b60-b149-e56307c2c3b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Windows">
+      <UniqueIdentifier>{84c13df0-c818-4fe6-ad61-7eafb52a07a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Camera.cpp">
@@ -125,6 +131,12 @@
     </ClCompile>
     <ClCompile Include="..\src\Platform\DirectX\DirectXRendererAPI.cpp">
       <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Source Files\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Window.cpp">
+      <Filter>Source Files\Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +217,12 @@
     </ClInclude>
     <ClInclude Include="..\include\Events\ApplicationEvent.h">
       <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Window.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Windows\WindowsWindow.h">
+      <Filter>Header Files\Platform\Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

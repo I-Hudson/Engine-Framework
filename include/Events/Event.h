@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <functional>
 #include <string>
+#include <ostream>
 
 namespace Framework
 {
@@ -48,12 +49,12 @@ namespace Framework
 
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
-		virtual int GetGategoryFlags() const = 0;
+		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 
 		inline bool IsInCatgeory(EventCategory a_catgeory)
 		{
-			return GetGategoryFlags() & a_catgeory;
+			return GetCategoryFlags() & a_catgeory;
 		}
 	};
 

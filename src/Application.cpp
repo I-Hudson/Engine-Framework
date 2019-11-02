@@ -23,16 +23,11 @@ namespace Framework
 	{
 	}
 
-	bool Application::CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
-									HINSTANCE* a_hInstance, HINSTANCE* a_hPrevInstance, LPSTR* a_lpCmdLine, int a_nCmdShow)
+	bool Application::CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
 	{
-		m_context = GraphicsContext::Create(a_width, a_height, a_title);
+		WindowProps props = WindowProps(a_title, a_width, a_height);
 
-		if (Renderer::GetAPI() == RendererAPI::API::DirectX)
-		{
-			auto context = std::dynamic_pointer_cast<DirectXContext>(m_context);
-			context->PostInit(a_width, a_height, a_title, false, *a_hInstance, *a_hPrevInstance, *a_lpCmdLine, a_nCmdShow);
-		}
+		m_window = Window::Create(props);
 
 		Log::Init();
 		EN_CORE_INFO("Core logger has been initialized");
@@ -61,10 +56,9 @@ namespace Framework
 		return true;
 	}
 
-	void Application::RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo,
-							HINSTANCE* a_hInstance, HINSTANCE* a_hPrevInstance, LPSTR* a_lpCmdLine, int a_nCmdShow)
+	void Application::RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
 	{
-		if (!CreateApp(a_width, a_height, a_title, a_runDemo, a_hInstance, a_hPrevInstance, a_lpCmdLine, a_nCmdShow))
+		if (!CreateApp(a_width, a_height, a_title, a_runDemo))
 		{
 			DestroyApp();
 			return;
@@ -77,13 +71,10 @@ namespace Framework
 
 			if (RendererAPI::GetAPI() == RendererAPI::API::DirectX)
 			{
-				RenderCommand::SetClearColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+				//RenderCommand::SetClearColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 			}
 			else
 			{
-
-				m_isRunning = !glfwWindowShouldClose(std::dynamic_pointer_cast<OpenGLContext>(m_context)->GetWindow());
-
 				m_mainCamera->Update(Time::GetDeltaTime());
 				Update();
 
@@ -100,7 +91,7 @@ namespace Framework
 				Renderer::EndScene();
 			}
 			//GLFW
-			m_context->SwapBuffers();
+			m_window->OnUpdate();
 
 		} while (m_isRunning);
 
@@ -113,6 +104,6 @@ namespace Framework
 		m_textureLibrary.ReleaseAll();
 		m_shaderLibrary.ReleaseAll();
 
-		glfwTerminate();
+		m_window->Destroy();
 	}
 }

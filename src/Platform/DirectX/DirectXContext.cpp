@@ -10,6 +10,8 @@
 
 namespace Framework
 {
+	DirectXContext* DirectXContext::m_context = nullptr;
+
 	std::wstring widen(const std::string& str)
 	{
 		std::wostringstream wstm;
@@ -22,7 +24,12 @@ namespace Framework
 
 	LRESULT CALLBACK WndProc(HWND a_hwnd, UINT a_message, WPARAM a_wParam, LPARAM a_lParam)
 	{
-		auto context = (DirectXContext*)Application::Get().GetGraphicsContext()->GetNativeContext();
+		auto context = DirectXContext::m_context;
+
+		if (context == nullptr)
+		{
+			return 0;
+		}
 
 		if (context->m_isInitialized)
 		{
@@ -39,11 +46,24 @@ namespace Framework
 				bool alt = (::GetAsyncKeyState(VK_MENU) & 0x8000) != 0;
 				switch (a_wParam)
 				{
-				case'V':
+				case 'V':
 					context->m_vSync = !context->m_vSync;
 					break;
+
+				case '1':
+					RenderCommand::SetClearColor({ 1.0f, 0.0f, 0.0f, 1.0f });
+					break;
+				case '2':
+					RenderCommand::SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
+					break; 
+				case '3':
+					RenderCommand::SetClearColor({ 0.0f, 0.0f, 1.0f, 1.0f });
+					break; 
+				case '4':
+					RenderCommand::SetClearColor({ 1.0f, 1.0f, 1.0f, 1.0f });
+					break;
+
 				case VK_ESCAPE:
-					WindowCloseEvent event();
 					::PostQuitMessage(0);
 					break;
 				case VK_RETURN:
@@ -56,6 +76,9 @@ namespace Framework
 					break;
 				}
 			}
+				break;
+
+			case WM_QUIT:
 				break;
 			
 			// The default window procedure will play a system notification sound 
@@ -113,22 +136,20 @@ namespace Framework
 		::LocalFree(argv);
 	}
 
-	DirectXContext::DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen)
+	DirectXContext::DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* window)
 	{
-		//Init(a_width, a_height, a_title, a_fullscreen);
+		Init(a_width, a_height, a_title, a_fullscreen, window);
 	}
 
 	DirectXContext::~DirectXContext()
 	{
 	}
 
-	void DirectXContext::Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen)
+	void DirectXContext::Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* a_window)
 	{
-	}
+		//m_hwnd = (HWND)a_window;
+		m_context = this;
 
-	void DirectXContext::PostInit(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen,
-		HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-	{
 		// Windows 10 Creators update adds Per Monitor V2 DPI awareness context.
 		// Using this awareness context allows the client area of the window 
 		// to achieve 100% scaling while still allowing non-client window content to 
@@ -143,8 +164,14 @@ namespace Framework
 
 		m_tearingSupport = CheckTearingSupport();
 
-		RegisterWindowClass(hInstance, windowClassName);
-		m_hwnd = CreateWindow(windowClassName, hInstance, L"Learning DirectX 12", m_clientWidth, m_clientHeight);
+		RegisterWindowClass(windowClassName);
+		m_hwnd = CreateWindow(windowClassName, m_hwnd, L"Learning DirectX 12", m_clientWidth, m_clientHeight);
+
+		//SetParent(m_hwnd, hwnd);
+		//long style = GetWindowLong(m_hwnd, GWL_STYLE);
+		//style &= ~WS_POPUP; // remove popup style
+		//style |= WS_CHILDWINDOW; // add childwindow style
+		//SetWindowLong(m_hwnd, GWL_STYLE, style);
 
 		// Initialize the global window rect variable.
 		::GetWindowRect(m_hwnd, &m_windowRect);
@@ -175,24 +202,30 @@ namespace Framework
 
 		m_isInitialized = true;
 
-		::ShowWindow(m_hwnd, SW_SHOW);
+		ShowWindow(m_hwnd, SW_SHOW);
+	}
+	
+	void DirectXContext::Destroy()
+	{
+		Flush(m_commandQueue, m_fence, m_fenceValue, m_fenceEvent);
+		::CloseHandle(m_fenceEvent);
 	}
 
 	void DirectXContext::SwapBuffers()
 	{
 		MSG msg = {};
-		while (msg.message != WM_QUIT)
-		{
+		//while (msg.message != WM_QUIT)
+		//{
 			if (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 			{
 				::TranslateMessage(&msg);
 				::DispatchMessage(&msg);
 			}
-		}
+		//}
 		// Make sure the command queue has finished all commands before closing.
-		Flush(m_commandQueue, m_fence, m_fenceValue, m_fenceEvent);
+		//Flush(m_commandQueue, m_fence, m_fenceValue, m_fenceEvent);
 
-		::CloseHandle(m_fenceEvent);
+		//::CloseHandle(m_fenceEvent);
 	}
 
 	void DirectXContext::EnableDebugLayer()
@@ -207,28 +240,30 @@ namespace Framework
 #endif
 	}
 
-
-	void DirectXContext::RegisterWindowClass(HINSTANCE a_hInst, const wchar_t* a_windowClassname)
+	void DirectXContext::RegisterWindowClass(const wchar_t* a_windowClassname)
 	{
 		WNDCLASSEXW windowClass = {};
+
+		HINSTANCE hInstance = GetModuleHandle(nullptr);
 
 		windowClass.cbSize = sizeof(WNDCLASSEX);
 		windowClass.style = CS_HREDRAW | CS_VREDRAW;
 		windowClass.lpfnWndProc = &WndProc;
 		windowClass.cbClsExtra = 0;
 		windowClass.cbWndExtra = 0;
-		windowClass.hInstance = a_hInst;
-		windowClass.hIcon = ::LoadIcon(a_hInst, nullptr);
-		windowClass.hCursor = ::LoadCursor(a_hInst, IDC_ARROW);
+		windowClass.hInstance = hInstance;
+		windowClass.hIcon = ::LoadIcon(hInstance, nullptr);
+		windowClass.hCursor = ::LoadCursor(hInstance, IDC_ARROW);
 		windowClass.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 		windowClass.lpszMenuName = NULL;
 		windowClass.lpszClassName = a_windowClassname;
-		windowClass.hIconSm = ::LoadIcon(a_hInst, nullptr);
+		windowClass.hIconSm = ::LoadIcon(hInstance, nullptr);
 
 		static ATOM atom = ::RegisterClassExW(&windowClass);
 		assert(atom > 0);
 	}
-	HWND DirectXContext::CreateWindow(const wchar_t* a_windowClassName, HINSTANCE a_hInst, const wchar_t* a_windowTitle, const uint32_t& a_width, const uint32_t& a_height)
+
+	HWND DirectXContext::CreateWindow(const wchar_t* a_windowClassName, HWND a_hInst, const wchar_t* a_windowTitle, const uint32_t& a_width, const uint32_t& a_height)
 	{
 		int screenWidth = ::GetSystemMetrics(SM_CXSCREEN);
 		int screenHeight = ::GetSystemMetrics(SM_CYSCREEN);
@@ -253,7 +288,7 @@ namespace Framework
 			windowHeight,
 			NULL,
 			NULL,
-			a_hInst,
+			GetModuleHandle(nullptr),
 			nullptr
 		);
 
@@ -301,6 +336,7 @@ namespace Framework
 		}
 		return dxgiAdapter4;
 	}
+
 	ComPtr<ID3D12Device2> DirectXContext::CreateDevice(ComPtr<IDXGIAdapter4> a_adapter)
 	{
 		ComPtr<ID3D12Device2> device;
@@ -457,6 +493,7 @@ namespace Framework
 
 
 	}
+	
 	ComPtr<ID3D12CommandAllocator> DirectXContext::CreateCommandAllocator(ComPtr<ID3D12Device2> a_device, D3D12_COMMAND_LIST_TYPE a_type)
 	{
 		ComPtr<ID3D12CommandAllocator> commandAllocator;
@@ -473,6 +510,7 @@ namespace Framework
 
 		return commandList;
 	}
+	
 	ComPtr<ID3D12Fence> DirectXContext::CreateFence(ComPtr<ID3D12Device2> a_device)
 	{
 		ComPtr<ID3D12Fence> fence;
