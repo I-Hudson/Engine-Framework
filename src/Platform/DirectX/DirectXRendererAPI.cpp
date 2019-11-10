@@ -15,23 +15,23 @@ namespace Framework
 	void DirectXRendererAPI::Clear()
 	{
 		auto context = std::dynamic_pointer_cast<DirectXContext>(Application::Get().GetWindow()->GetGraphicsContext());
-		auto commandAllocator = context->m_commandAllocators[context->m_currentBackBufferIndex];
-		auto backBuffer = context->m_backBuffers[context->m_currentBackBufferIndex];
+		auto commandQueue = context->m_commandQueue.get();
+		auto commandList = commandQueue->GetCommandList();
 
-		commandAllocator->Reset();
-		context->m_commandList->Reset(commandAllocator.Get(), nullptr);
+		auto currentBackbufferIndex = context->m_currentBackBufferIndex;
+		auto backBuffer = context->m_backBuffers[currentBackbufferIndex];
 
 		//Clear the rneder target
 		{
 			CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(backBuffer.Get(),
 				D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
 
-			context->m_commandList->ResourceBarrier(1, &barrier);
+			commandList->ResourceBarrier(1, &barrier);
 
 			CD3DX12_CPU_DESCRIPTOR_HANDLE rtv(context->m_rtvDescriptionHeap->GetCPUDescriptorHandleForHeapStart(),
 				context->m_currentBackBufferIndex, context->m_rtvDescriptionSize);
 
-			context->m_commandList->ClearRenderTargetView(rtv, m_clearColor, 0, nullptr);
+			commandList->ClearRenderTargetView(rtv, m_clearColor, 0, nullptr);
 		}
 
 		//Present
@@ -39,28 +39,21 @@ namespace Framework
 			CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(backBuffer.Get(),
 				D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
 
-			context->m_commandList->ResourceBarrier(1, &barrier);
+			commandList->ResourceBarrier(1, &barrier);
 
-			ThrowIfFailed(context->m_commandList->Close());
+			context->m_frameFenceValues[currentBackbufferIndex] = commandQueue->ExecuteCommandList(commandList);
 
-			ID3D12CommandList* const commandList[] =
-			{
-				context->m_commandList.Get()
-			};
-			context->m_commandQueue->ExecuteCommandLists(_countof(commandList), commandList);
+			currentBackbufferIndex = context->Present();
 
-			UINT syncInterval = context->m_vSync ? 1 : 0;
-			UINT presentFlags = context->m_tearingSupport && !context->m_vSync ? DXGI_PRESENT_ALLOW_TEARING : 0;
-			ThrowIfFailed(context->m_swapChain->Present(syncInterval, presentFlags));
-
-			context->m_frameFenceValues[context->m_currentBackBufferIndex] = context->Single(context->m_commandQueue, context->m_fence, context->m_fenceValue);
-
-			context->m_currentBackBufferIndex = context->m_swapChain->GetCurrentBackBufferIndex();
-			context->WaitForFenceValue(context->m_fence, context->m_frameFenceValues[context->m_currentBackBufferIndex], context->m_fenceEvent);
+			commandQueue->WaitForFenceValue(context->m_frameFenceValues[currentBackbufferIndex]);
 		}
 	}
 
 	void DirectXRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& a_vertexArray)
+	{
+	}
+
+	void DirectXRendererAPI::ClearDepth(Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList2> commandList, D3D12_CPU_DESCRIPTOR_HANDLE dsv, FLOAT depth)
 	{
 	}
 }

@@ -44,6 +44,7 @@ using namespace Microsoft::WRL;
 //Helper functions
 #include <Platform/DirectX/Helpers.h>
 
+#include "Platform/DirectX/CommandQueue.h"
 #include "GraphicsContext.h"
 
 namespace Framework
@@ -64,7 +65,6 @@ namespace Framework
 		virtual void* GetNativeContext() override { return this; }
 
 	public:
-		//LRESULT CALLBACK WndProc(HWND a_hwnd, UINT a_message, WPARAM a_wParam, LPARAM a_lParam);
 
 		void ParseCommandLineArguments();
 		void EnableDebugLayer();
@@ -83,26 +83,13 @@ namespace Framework
 		ComPtr<ID3D12DescriptorHeap> CreateDescriptionHeap(ComPtr<ID3D12Device2> a_device,
 			D3D12_DESCRIPTOR_HEAP_TYPE a_type, uint32_t a_numDescriptors);
 		
-		void UpdateRenderTargetView(ComPtr<ID3D12Device2> a_device, ComPtr<IDXGISwapChain4> a_swapChain,
-			
-			ComPtr<ID3D12DescriptorHeap> a_descriptionHeap);
-		ComPtr<ID3D12CommandAllocator> CreateCommandAllocator(ComPtr<ID3D12Device2> a_device,
-			D3D12_COMMAND_LIST_TYPE a_type);
-		ComPtr<ID3D12GraphicsCommandList> CreateCommandList(ComPtr<ID3D12Device2> a_device,
-			ComPtr<ID3D12CommandAllocator> a_commandAllocator, D3D12_COMMAND_LIST_TYPE a_type);
+		void UpdateRenderTargetView(ComPtr<ID3D12Device2> a_device, ComPtr<IDXGISwapChain4> a_swapChain, ComPtr<ID3D12DescriptorHeap> a_descriptionHeap);
 		ComPtr<ID3D12Fence> CreateFence(ComPtr<ID3D12Device2> a_device);
 
-		HANDLE CreateEventHandle();
-
-		uint64_t Single(ComPtr<ID3D12CommandQueue> a_commandQueue, ComPtr<ID3D12Fence> a_fence,
-			uint64_t& a_fenceValue);
-
-		void WaitForFenceValue(ComPtr<ID3D12Fence> a_fence, uint64_t a_fenceValue, HANDLE a_fenceEvent,
-			std::chrono::milliseconds a_duration = std::chrono::milliseconds::max());
-		void Flush(ComPtr<ID3D12CommandQueue> a_commandQueue, ComPtr<ID3D12Fence> a_fence,
-			uint64_t a_fenceValue, HANDLE a_fenceEvent);
 		void Resize(uint32_t a_width, uint32_t a_height);
 		void SetFullScreen(bool a_fullscreen);
+
+		UINT Present();
 
 		// The number of swap chain back buffers.
 		//Use WRAP adapter
@@ -121,20 +108,28 @@ namespace Framework
 
 		//DriectX 12 objects
 		ComPtr<ID3D12Device2> m_device;
-		ComPtr<ID3D12CommandQueue> m_commandQueue;
+
+		std::unique_ptr<CommandQueue> m_commandQueue;
+
 		ComPtr<IDXGISwapChain4> m_swapChain;
 		ComPtr<ID3D12Resource> m_backBuffers[m_numFrames];
 		ComPtr<ID3D12GraphicsCommandList> m_commandList;
-		ComPtr<ID3D12CommandAllocator> m_commandAllocators[m_numFrames];
 		ComPtr<ID3D12DescriptorHeap> m_rtvDescriptionHeap;
 		UINT m_rtvDescriptionSize;
 		UINT m_currentBackBufferIndex;
 
-		// Synchronization objects
-		ComPtr<ID3D12Fence> m_fence;
-		uint64_t m_fenceValue = 0;
+		D3D12_VIEWPORT m_viewport;
+		D3D12_RECT m_scissorRect;
+
+		float m_FoV;
+
+		DirectX::XMMATRIX m_ModelMatrix;
+		DirectX::XMMATRIX m_ViewMatrix;
+		DirectX::XMMATRIX m_ProjectionMatrix;
+
+		bool m_ContentLoaded;
+
 		uint64_t m_frameFenceValues[m_numFrames] = {};
-		HANDLE m_fenceEvent;
 
 		// By default, enable V-Sync.
 		// Can be toggled with the V key.

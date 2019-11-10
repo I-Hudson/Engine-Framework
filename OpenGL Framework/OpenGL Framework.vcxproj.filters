@@ -138,6 +138,18 @@
     <ClCompile Include="..\src\Window.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\CommandQueue.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXVertexArray.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXBuffer.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXShader.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Buffer.h">
@@ -223,6 +235,18 @@
     </ClInclude>
     <ClInclude Include="..\include\Platform\Windows\WindowsWindow.h">
       <Filter>Header Files\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\CommandQueue.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXShader.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXVertexArray.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXBuffer.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -53,6 +53,7 @@ namespace Framework
 
 		std::shared_ptr<Shader> Load(const std::string& a_filePath);
 		std::shared_ptr<Shader> Load(const std::string& a_name, const std::string& a_filePath);
+		std::shared_ptr<Shader> Load(const std::string& a_name, const std::string& a_filePathVertex, const std::string& a_filePathFrag);
 		
 		std::shared_ptr<Shader> GetShader(const std::string& a_name);
 

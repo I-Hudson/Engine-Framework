@@ -39,9 +39,9 @@ namespace Framework
 		//Create a demo cube and rotate
 		if (a_runDemo)
 		{
-			auto demoShader = m_shaderLibrary.Load("./shaders/demoShader.glsl");
-			m_demoCube = std::make_shared<Cube>(1.0f);
-			m_demoCube->Translate(glm::vec3(0, 0, 0));
+			auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
+			//m_demoCube = std::make_shared<Cube>(1.0f);
+			//m_demoCube->Translate(glm::vec3(0, 0, 0));
 		}
 
 		//glEnable(GL_CULL_FACE);
@@ -75,6 +75,9 @@ namespace Framework
 			}
 			else
 			{
+				GLFWwindow* window = ((OpenGLContext*)m_window->GetGraphicsContext()->GetNativeContext())->GetWindow();
+				m_isRunning = !glfwWindowShouldClose(window);
+
 				m_mainCamera->Update(Time::GetDeltaTime());
 				Update();
 

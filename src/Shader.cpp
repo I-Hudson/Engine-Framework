@@ -2,6 +2,7 @@
 
 #include "Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
+#include <Platform\DirectX\DirectXShader.h>
 
 namespace Framework
 {
@@ -21,6 +22,7 @@ namespace Framework
 		{
 			case RendererAPI::API::None: exit(0);
 			case RendererAPI::API::OpenGL: return std::make_shared<OpenGLShader>(a_name, a_vertexSource, a_fragSource);
+			case RendererAPI::API::DirectX: return std::make_shared<DirectXShader>(a_name, a_vertexSource, a_fragSource);
 		}
 		printf("No shader was created!");
 		return nullptr;
@@ -52,6 +54,13 @@ namespace Framework
 	std::shared_ptr<Shader> ShaderLibrary::Load(const std::string& a_name, const std::string& a_filePath)
 	{
 		auto shader = Shader::Create(a_filePath);
+		Add(shader);
+		return shader;
+	}
+
+	std::shared_ptr<Shader> ShaderLibrary::Load(const std::string& a_name, const std::string& a_filePathVertex, const std::string& a_filePathFrag)
+	{
+		auto shader = Shader::Create(a_name, a_filePathVertex, a_filePathFrag);
 		Add(shader);
 		return shader;
 	}

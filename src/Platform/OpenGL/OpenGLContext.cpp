@@ -38,6 +38,8 @@ namespace Framework
 
 	void OpenGLContext::Destroy()
 	{
+		glfwDestroyWindow(m_window);
+		glfwTerminate();
 	}
 
 	void OpenGLContext::SwapBuffers()

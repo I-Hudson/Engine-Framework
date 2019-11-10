@@ -150,6 +150,10 @@ namespace Framework
 		//m_hwnd = (HWND)a_window;
 		m_context = this;
 
+		m_scissorRect = CD3DX12_RECT(0, 0, LONG_MAX, LONG_MAX);
+		m_viewport = CD3DX12_VIEWPORT(0.0f, 0.0f, static_cast<float>(a_width), static_cast<float>(a_height));
+		m_FoV = 45.0f;
+
 		// Windows 10 Creators update adds Per Monitor V2 DPI awareness context.
 		// Using this awareness context allows the client area of the window 
 		// to achieve 100% scaling while still allowing non-client window content to 
@@ -180,9 +184,9 @@ namespace Framework
 
 		m_device = CreateDevice(dxgiAdapter4);
 
-		m_commandQueue = CreateCommandQueue(m_device, D3D12_COMMAND_LIST_TYPE_DIRECT);
-
-		m_swapChain = CreateSwapChain(m_hwnd, m_commandQueue, m_clientWidth, m_clientHeight, m_numFrames);
+		m_commandQueue = std::make_unique<CommandQueue>(m_device, D3D12_COMMAND_LIST_TYPE_DIRECT);
+		
+		m_swapChain = CreateSwapChain(m_hwnd, m_commandQueue->GetD3D12CommandQueue(), m_clientWidth, m_clientHeight, m_numFrames);
 
 		m_currentBackBufferIndex = m_swapChain->GetCurrentBackBufferIndex();
 
@@ -191,15 +195,6 @@ namespace Framework
 
 		UpdateRenderTargetView(m_device, m_swapChain, m_rtvDescriptionHeap);
 
-		for (int i = 0; i < m_numFrames; ++i)
-		{
-			m_commandAllocators[i] = CreateCommandAllocator(m_device, D3D12_COMMAND_LIST_TYPE_DIRECT);
-		}
-		m_commandList = CreateCommandList(m_device, m_commandAllocators[m_currentBackBufferIndex], D3D12_COMMAND_LIST_TYPE_DIRECT);
-
-		m_fence = CreateFence(m_device);
-		m_fenceEvent = CreateEventHandle();
-
 		m_isInitialized = true;
 
 		ShowWindow(m_hwnd, SW_SHOW);
@@ -207,8 +202,8 @@ namespace Framework
 	
 	void DirectXContext::Destroy()
 	{
-		Flush(m_commandQueue, m_fence, m_fenceValue, m_fenceEvent);
-		::CloseHandle(m_fenceEvent);
+		m_commandQueue->Flush();
+		::CloseHandle(m_commandQueue->GetEventHandle());
 	}
 
 	void DirectXContext::SwapBuffers()
@@ -493,23 +488,7 @@ namespace Framework
 
 
 	}
-	
-	ComPtr<ID3D12CommandAllocator> DirectXContext::CreateCommandAllocator(ComPtr<ID3D12Device2> a_device, D3D12_COMMAND_LIST_TYPE a_type)
-	{
-		ComPtr<ID3D12CommandAllocator> commandAllocator;
-		ThrowIfFailed(a_device->CreateCommandAllocator(a_type, IID_PPV_ARGS(&commandAllocator)));
-		return commandAllocator;
-	}
 
-	ComPtr<ID3D12GraphicsCommandList> DirectXContext::CreateCommandList(ComPtr<ID3D12Device2> a_device, ComPtr<ID3D12CommandAllocator> a_commandAllocator, D3D12_COMMAND_LIST_TYPE a_type)
-	{
-		ComPtr<ID3D12GraphicsCommandList> commandList;
-		ThrowIfFailed(a_device->CreateCommandList(0, a_type, a_commandAllocator.Get(), nullptr, IID_PPV_ARGS(&commandList)));
-		
-		ThrowIfFailed(commandList->Close());
-
-		return commandList;
-	}
 	
 	ComPtr<ID3D12Fence> DirectXContext::CreateFence(ComPtr<ID3D12Device2> a_device)
 	{
@@ -518,37 +497,6 @@ namespace Framework
 		ThrowIfFailed(a_device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence)));
 
 		return fence;
-	}
-
-	HANDLE DirectXContext::CreateEventHandle()
-	{
-		HANDLE fenceEvent;
-		fenceEvent = ::CreateEvent(NULL, false, false, NULL);
-		assert(fenceEvent && "Failed to create fence event");
-		return fenceEvent;
-	}
-
-	uint64_t DirectXContext::Single(ComPtr<ID3D12CommandQueue> a_commandQueue, ComPtr<ID3D12Fence> a_fence, uint64_t& a_fenceValue)
-	{
-		uint64_t fenceValueForSignal = ++a_fenceValue;
-		ThrowIfFailed(a_commandQueue->Signal(a_fence.Get(), fenceValueForSignal));
-		return fenceValueForSignal;
-
-	}
-
-	void DirectXContext::WaitForFenceValue(ComPtr<ID3D12Fence> a_fence, uint64_t a_fenceValue, HANDLE a_fenceEvent, std::chrono::milliseconds a_duration)
-	{
-		if (a_fence->GetCompletedValue() < a_fenceValue)
-		{
-			ThrowIfFailed(a_fence->SetEventOnCompletion(a_fenceValue, a_fenceEvent));
-			::WaitForSingleObject(a_fenceEvent, static_cast<DWORD>(a_duration.count()));
-		}
-	}
-
-	void DirectXContext::Flush(ComPtr<ID3D12CommandQueue> a_commandQueue, ComPtr<ID3D12Fence> a_fence, uint64_t a_fenceValue, HANDLE a_fenceEvent)
-	{
-		uint64_t fenceValueForSignal = Single(a_commandQueue, a_fence, a_fenceValue);
-		WaitForFenceValue(a_fence, fenceValueForSignal, a_fenceEvent);
 	}
 
 	void DirectXContext::Resize(uint32_t a_width, uint32_t a_height)
@@ -561,15 +509,15 @@ namespace Framework
 
 			// Flush the GPU queue to make sure the swap chain's back buffers
 			// are not being referenced by an in-flight command list.
-			Flush(m_commandQueue, m_fence, m_fenceValue, m_fenceEvent);
+			m_commandQueue->Flush();
 
-			for (int i = 0; i < m_numFrames; ++i)
-			{
-				// Any references to the back buffers must be released
-				// before the swap chain can be resized.
-				m_backBuffers[i].Reset();
-				m_frameFenceValues[i] = m_frameFenceValues[m_currentBackBufferIndex];
-			}
+			//for (int i = 0; i < m_numFrames; ++i)
+			//{
+			//	// Any references to the back buffers must be released
+			//	// before the swap chain can be resized.
+			//	m_backBuffers[i].Reset();
+			//	m_frameFenceValues[i] = m_frameFenceValues[m_currentBackBufferIndex];
+			//}
 
 			DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
 			ThrowIfFailed(m_swapChain->GetDesc(&swapChainDesc));
@@ -630,5 +578,15 @@ namespace Framework
 				::ShowWindow(m_hwnd, SW_NORMAL);
 			}
 		}
+	}
+
+	UINT DirectXContext::Present()
+	{
+		UINT syncInterval = m_vSync ? 1 : 0;
+		UINT presentFlags = m_tearingSupport && !m_vSync ? DXGI_PRESENT_ALLOW_TEARING : 0;
+		ThrowIfFailed(m_swapChain->Present(syncInterval, presentFlags));
+		m_currentBackBufferIndex = m_swapChain->GetCurrentBackBufferIndex();
+
+		return m_currentBackBufferIndex;
 	}
 }
