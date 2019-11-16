@@ -25,6 +25,8 @@
 #include <wrl.h>
 using namespace Microsoft::WRL;
 
+#include <initguid.h>
+
 // DirectX 12 specific headers.
 #include <d3d12.h>
 #include <dxgi1_6.h>
@@ -32,6 +34,7 @@ using namespace Microsoft::WRL;
 #include <DirectXMath.h>
 
 #pragma comment(lib, "dxgi.lib")
+
 
 // D3D12 extension library.
 #include <Platform/DirectX/d3dx12.h>
@@ -86,10 +89,23 @@ namespace Framework
 		void UpdateRenderTargetView(ComPtr<ID3D12Device2> a_device, ComPtr<IDXGISwapChain4> a_swapChain, ComPtr<ID3D12DescriptorHeap> a_descriptionHeap);
 		ComPtr<ID3D12Fence> CreateFence(ComPtr<ID3D12Device2> a_device);
 
+		void TransitionResource(ComPtr<ID3D12GraphicsCommandList2> a_commandList, ComPtr<ID3D12Resource> a_resource,
+			D3D12_RESOURCE_STATES beforeState, D3D12_RESOURCE_STATES afterState);
+
+		CD3DX12_CPU_DESCRIPTOR_HANDLE GetCurrentRenderTargetView()
+		{
+			return CD3DX12_CPU_DESCRIPTOR_HANDLE(m_rtvDescriptionHeap->GetCPUDescriptorHandleForHeapStart(),
+				m_currentBackBufferIndex, m_rtvDescriptionSize);
+		}
+
 		void Resize(uint32_t a_width, uint32_t a_height);
 		void SetFullScreen(bool a_fullscreen);
 
 		UINT Present();
+		void Flush();
+
+		int GetClientWidth() { return m_clientWidth; }
+		int GetClientHeight() { return m_clientHeight; }
 
 		// The number of swap chain back buffers.
 		//Use WRAP adapter

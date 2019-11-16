@@ -42,10 +42,17 @@ namespace Framework
 
 		virtual void Release() override;
 
+		Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> GetDescriptorHeap() { return m_DSVHeap; }
+		Microsoft::WRL::ComPtr<ID3D12RootSignature> GetRootSignature() { return m_rootSignature; }
+		Microsoft::WRL::ComPtr<ID3D12PipelineState> GetPipeLineState() { return m_pipelineState; }
+	
+	
 	private:
 		std::string ReadFromFile(const std::string& a_filePath);
 		std::unordered_map<GLenum, std::string> PreProcess(const std::string& a_source);
 		void Compile(const std::unordered_map<GLenum, std::string>& a_shaderSources);
+
+		void ResizeDepthBuffer(const int& a_width, const int& a_height);
 
 		uint32_t m_textureIndex;
 		uint32_t m_ID;
