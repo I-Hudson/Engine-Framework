@@ -1,6 +1,4 @@
 #include "Platform/DirectX/DirectXBuffer.h"
-#include "Platform/DirectX/DirectXContext.h"
-#include "Application.h"
 
 namespace Framework
 {
@@ -28,11 +26,11 @@ namespace Framework
 					&CD3DX12_RESOURCE_DESC::Buffer(bufferSize),
 					D3D12_RESOURCE_STATE_GENERIC_READ,
 					nullptr,
-					IID_PPV_ARGS(a_pDestinationResource)));
+					IID_PPV_ARGS(a_pIntermediateResource)));
 			}
 
 			D3D12_SUBRESOURCE_DATA subresourceData = {};
-			subresourceData.pData = a_bufferData;
+			subresourceData.pData = &a_bufferData;
 			subresourceData.RowPitch = bufferSize;
 			subresourceData.SlicePitch = subresourceData.RowPitch;
 
@@ -41,63 +39,46 @@ namespace Framework
 				0, 1, &subresourceData);
 		}
 
-	DriectXVertexBuffer::DriectXVertexBuffer(float* aVertices, uint32_t aSize)
+	DirectXVertexBuffer::DirectXVertexBuffer(float* aVertices, uint32_t aSize)
 	{
 	}
 
-	DriectXVertexBuffer::DriectXVertexBuffer(Vertex* aVertices, uint32_t aSize)
+	DirectXVertexBuffer::DirectXVertexBuffer(VertexDX* aVertices, uint32_t aSize)
 	{
 		// Upload vertex buffer data.
 		ComPtr<ID3D12Resource> intermediateVertexBuffer;
 		auto context = std::dynamic_pointer_cast<DirectXContext>(Application::Get().GetWindow()->GetGraphicsContext());
 		UpdateBufferResources(context->m_commandQueue->GetCommandList(), &m_vertexBuffer, &intermediateVertexBuffer,
-			aSize / sizeof(Vertex), sizeof(Vertex), aVertices, D3D12_RESOURCE_FLAGS::D3D12_RESOURCE_FLAG_NONE);
+			aSize / sizeof(VertexDX), sizeof(VertexDX), aVertices, D3D12_RESOURCE_FLAGS::D3D12_RESOURCE_FLAG_NONE);
 
 		m_vertexBufferView.BufferLocation = m_vertexBuffer->GetGPUVirtualAddress();
 		m_vertexBufferView.SizeInBytes = aSize;
-		m_vertexBufferView.StrideInBytes = sizeof(Vertex);
+		m_vertexBufferView.StrideInBytes = sizeof(VertexDX);
 	}
 
-	DriectXVertexBuffer::~DriectXVertexBuffer()
+	DirectXVertexBuffer::~DirectXVertexBuffer()
 	{
 	}
 
-	void DriectXVertexBuffer::Bind() const
+	void DirectXVertexBuffer::Bind() const
 	{
 	}
 
-	void DriectXVertexBuffer::Unbind() const
+	void DirectXVertexBuffer::Unbind() const
 	{
 	}
 
-	void DriectXVertexBuffer::SetData(float* a_data, const int a_start, const int& a_end)
-	{
-	}
-
-	void DriectXVertexBuffer::GetData(float* a_data, const int& a_start, const int& a_end)
-	{
-	}
-
-	void DriectXVertexBuffer::GetData(Vertex* a_data, const int& a_start, const int& a_end)
-	{
-	}
-
-	int DriectXVertexBuffer::GetBufferSize()
-	{
-		return 0;
-	}
-
-	DirectXIndexBuffer::DirectXIndexBuffer(uint32_t* indices, uint32_t count)
+	DirectXIndexBuffer::DirectXIndexBuffer(WORD* indices, WORD count)
 	{
 		// Upload vertex buffer data.
 		ComPtr<ID3D12Resource> intermediateIndexBuffer;
 		auto context = std::dynamic_pointer_cast<DirectXContext>(Application::Get().GetWindow()->GetGraphicsContext());
 		UpdateBufferResources(context->m_commandQueue->GetCommandList(), &m_indexBuffer, &intermediateIndexBuffer,
-			sizeof(indices) / sizeof(WORD), sizeof(WORD), indices, D3D12_RESOURCE_FLAGS::D3D12_RESOURCE_FLAG_NONE);
+			36, sizeof(WORD), indices, D3D12_RESOURCE_FLAGS::D3D12_RESOURCE_FLAG_NONE);
 
 		m_indexBufferView.BufferLocation = m_indexBuffer->GetGPUVirtualAddress();
 		m_indexBufferView.Format = DXGI_FORMAT_R16_UINT;
-		m_indexBufferView.SizeInBytes = sizeof(indices);
+		m_indexBufferView.SizeInBytes = 72;
 	}
 
 	DirectXIndexBuffer::~DirectXIndexBuffer()

@@ -36,7 +36,7 @@ namespace Framework
 			switch (a_message)
 			{
 			case WM_PAINT:
-				RenderCommand::Clear();
+				//RenderCommand::Clear();
 				break;
 
 			case WM_SYSKEYDOWN:
@@ -489,7 +489,6 @@ namespace Framework
 
 	}
 
-	
 	ComPtr<ID3D12Fence> DirectXContext::CreateFence(ComPtr<ID3D12Device2> a_device)
 	{
 		ComPtr<ID3D12Fence> fence;
@@ -497,6 +496,13 @@ namespace Framework
 		ThrowIfFailed(a_device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence)));
 
 		return fence;
+	}
+
+	void DirectXContext::TransitionResource(ComPtr<ID3D12GraphicsCommandList2> a_commandList, ComPtr<ID3D12Resource> a_resource, D3D12_RESOURCE_STATES beforeState, D3D12_RESOURCE_STATES afterState)
+	{
+		CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(a_resource.Get(), beforeState, afterState);
+
+		a_commandList->ResourceBarrier(1, &barrier);
 	}
 
 	void DirectXContext::Resize(uint32_t a_width, uint32_t a_height)
@@ -588,5 +594,10 @@ namespace Framework
 		m_currentBackBufferIndex = m_swapChain->GetCurrentBackBufferIndex();
 
 		return m_currentBackBufferIndex;
+	}
+
+	void DirectXContext::Flush()
+	{
+		m_commandQueue->Flush();
 	}
 }

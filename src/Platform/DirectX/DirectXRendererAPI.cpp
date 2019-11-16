@@ -36,16 +36,16 @@ namespace Framework
 
 		//Present
 		{
-			CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(backBuffer.Get(),
-				D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
-
-			commandList->ResourceBarrier(1, &barrier);
-
-			context->m_frameFenceValues[currentBackbufferIndex] = commandQueue->ExecuteCommandList(commandList);
-
-			currentBackbufferIndex = context->Present();
-
-			commandQueue->WaitForFenceValue(context->m_frameFenceValues[currentBackbufferIndex]);
+			//CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(backBuffer.Get(),
+			//	D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
+			//
+			//commandList->ResourceBarrier(1, &barrier);
+			//
+			//context->m_frameFenceValues[currentBackbufferIndex] = commandQueue->ExecuteCommandList(commandList);
+			//
+			//currentBackbufferIndex = context->Present();
+			//
+			//commandQueue->WaitForFenceValue(context->m_frameFenceValues[currentBackbufferIndex]);
 		}
 	}
 
