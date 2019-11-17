@@ -40,11 +40,6 @@ namespace Framework
 	void Renderer::SubmitBatch(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform)
 	{
 		memcpy(m_batchVertex + m_vertexIndex, a_vertexArray->GetVertexBuffers()[0]->GetData(), a_vertexArray->GetVertexBuffers()[0]->GetBufferSize());
-		for (size_t i = 0; i < 48; ++i)
-		{
-			Vertex v = m_batchVertex[i];
-			//std::cout << v.Position.x << "-" << v.Position.y << "-" << v.Position.z << "\n";
-		}
 
 		memcpy(m_batchIndices + m_indiceIndex, a_vertexArray->GetIndexBuffer()->GetData(), a_vertexArray->GetIndexBuffer()->GetCount() * sizeof(unsigned int));
 		for (int i = 36 * m_batchCount; i < 36 * (m_batchCount + 1); ++i)
@@ -63,7 +58,7 @@ namespace Framework
 		a_shader->UploadUniformMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
 		a_shader->UploadUniformMat4("u_ObjectMatrix", a_transform);
 
-		//a_vertexArray->Bind();
+		a_vertexArray->Bind();
 		RenderCommand::DrawIndexed(a_vertexArray);
 		++renderCalls;
 
@@ -88,32 +83,34 @@ namespace Framework
 
 	void Renderer::SubmitBatched(const std::shared_ptr<Shader> a_shader, const glm::mat4& a_transform)
 	{
-		return;
-		a_shader->Bind();
-		a_shader->UploadUniformMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
-		a_shader->UploadUniformMat4("u_ObjectMatrix", a_transform);
-		
-		std::shared_ptr<OpenGLVertexBuffer> vertexBuffer = std::make_shared<OpenGLVertexBuffer>(m_batchVertex, sizeof(Vertex) * m_vertexIndex);
-		BufferLayout layout =
+		if (m_vertexIndex > 0 && m_indiceIndex > 0)
 		{
-			{ShaderDataType::Float4, "inPosition"},
-			{ShaderDataType::Float4, "inColor", true},
-			{ShaderDataType::Float4, "inNormal", true},
-			{ShaderDataType::Float2, "inUV", true},
-		};
-		vertexBuffer->SetLayout(layout);
-		
-		std::shared_ptr<OpenGLIndexBuffer> indexBuffer = std::make_shared<OpenGLIndexBuffer>(m_batchIndices, m_indiceIndex);
-		
-		std::shared_ptr<OpenGLVertexArray> vertexArray = std::make_shared<OpenGLVertexArray>();
-		vertexArray->AddVertexBuffer(vertexBuffer);
-		vertexArray->AddIndexBuffer(indexBuffer);
-		
-		vertexArray->Bind();
-		RenderCommand::DrawIndexed(vertexArray);
-		++renderCalls;
-		
-		a_shader->Unbind();
-		vertexArray->Unbind();
+			a_shader->Bind();
+			a_shader->UploadUniformMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
+			a_shader->UploadUniformMat4("u_ObjectMatrix", a_transform);
+
+			std::shared_ptr<OpenGLVertexBuffer> vertexBuffer = std::make_shared<OpenGLVertexBuffer>(m_batchVertex, sizeof(Vertex) * m_vertexIndex);
+			BufferLayout layout =
+			{
+				{ShaderDataType::Float4, "inPosition"},
+				{ShaderDataType::Float4, "inColor", true},
+				{ShaderDataType::Float4, "inNormal", true},
+				{ShaderDataType::Float2, "inUV", true},
+			};
+			vertexBuffer->SetLayout(layout);
+
+			std::shared_ptr<OpenGLIndexBuffer> indexBuffer = std::make_shared<OpenGLIndexBuffer>(m_batchIndices, m_indiceIndex);
+
+			std::shared_ptr<OpenGLVertexArray> vertexArray = std::make_shared<OpenGLVertexArray>();
+			vertexArray->AddVertexBuffer(vertexBuffer);
+			vertexArray->AddIndexBuffer(indexBuffer);
+
+			vertexArray->Bind();
+			RenderCommand::DrawIndexed(vertexArray);
+			++renderCalls;
+
+			a_shader->Unbind();
+			vertexArray->Unbind();
+		}
 	}
 }

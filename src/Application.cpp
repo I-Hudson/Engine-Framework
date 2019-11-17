@@ -45,7 +45,7 @@ namespace Framework
 			//auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
 			auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
 			m_demoCube = std::make_shared<Cube>(1.0f);
-			m_demoCube->Translate(glm::vec3(10, 0, 0));
+			m_demoCube->Translate(glm::vec3(0, 0, 0));
 
 			//RenderCommand::SetVSync(false);
 		}
@@ -70,7 +70,7 @@ namespace Framework
 			return;
 		}
 
-		RenderCommand::SetClearColor({ 1.0f, 0.0f, 0.0f, 1.0f });
+		RenderCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 		do
 		{
 			Time::UpdateTime();
@@ -152,11 +152,10 @@ namespace Framework
 				{
 					m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
 					m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
-					Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
+					//Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
 				}
 				Draw();
-
-				//Renderer::SubmitBatched(shader);
+				Renderer::SubmitBatched(shader);
 				Renderer::EndScene();
 			}
 			//GLFW

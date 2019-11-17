@@ -3,7 +3,7 @@
 namespace Framework
 {
 	Shape::Shape()
-		: m_objectMatrix(glm::mat4(1.0f))
+		: m_objectMatrix(glm::mat4())
 	{
 	}
 
