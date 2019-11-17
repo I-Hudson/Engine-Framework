@@ -64,6 +64,12 @@
     <Filter Include="Source Files\Platform\Windows">
       <UniqueIdentifier>{84c13df0-c818-4fe6-ad61-7eafb52a07a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Framework\Profile">
+      <UniqueIdentifier>{ef8e68a5-467c-4b29-a042-9e9624268324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Profile">
+      <UniqueIdentifier>{dce1b89b-73ce-42f7-a957-85ceb3d39a07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Camera.cpp">
@@ -149,6 +155,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Platform\DirectX\DirectXShader.cpp">
       <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Profile\Instrumentor.cpp">
+      <Filter>Source Files\Framework\Profile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +256,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Platform\DirectX\DirectXBuffer.h">
       <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Profile\Instrumentor.h">
+      <Filter>Header Files\Framework\Profile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

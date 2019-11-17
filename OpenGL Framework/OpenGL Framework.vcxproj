@@ -158,6 +158,7 @@
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="..\src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="..\src\Profile\Instrumentor.cpp" />
     <ClCompile Include="..\src\RenderCommand.cpp" />
     <ClCompile Include="..\src\Renderer.cpp" />
     <ClCompile Include="..\src\RendererAPI.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="..\include\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="..\include\Profile\Instrumentor.h" />
     <ClInclude Include="..\include\RendererAPI.h" />
     <ClInclude Include="..\include\RenderCommand.h" />
     <ClInclude Include="..\include\Renderer.h" />

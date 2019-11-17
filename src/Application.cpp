@@ -12,6 +12,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stbi/stb_image.h"
 
+#include "Profile/Instrumentor.h"
+
 namespace Framework
 {
 	Application* Application::sInstance = nullptr;
@@ -28,6 +30,8 @@ namespace Framework
 
 	bool Application::CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
 	{
+		PROFILE_FUNCTION();
+
 		WindowProps props = WindowProps(a_title, a_width, a_height);
 
 		m_window = Window::Create(props);
@@ -64,6 +68,8 @@ namespace Framework
 
 	void Application::RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
 	{
+		PROFILE_FUNCTION();
+
 		if (!CreateApp(a_width, a_height, a_title, a_runDemo))
 		{
 			DestroyApp();
@@ -168,6 +174,7 @@ namespace Framework
 
 	void Application::DestroyApp()
 	{
+		PROFILE_FUNCTION();
 		Destroy();
 		m_textureLibrary.ReleaseAll();
 		m_shaderLibrary.ReleaseAll();
