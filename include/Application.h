@@ -16,8 +16,6 @@
 #include "Texture.h"
 #include "Platform/Windows/WindowsWindow.h"
 
-struct GLFWwindow;
-
 namespace Framework
 {
 	class Application

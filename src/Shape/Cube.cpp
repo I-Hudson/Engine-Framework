@@ -1,5 +1,8 @@
 #include "Shape/Cube.h"
 
+#include "Platform/DirectX/DirectXBuffer.h"
+#include "Platform/DirectX/DirectXVertexArray.h"
+
 #include "Platform/OpenGL/OpenGLBuffer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
@@ -19,48 +22,97 @@ namespace Framework
 	{
 	}
 
+	void Cube::Translate(const glm::vec3& a_vec)
+	{
+		//for (size_t i = 0; i < m_vertexArray->GetVertexBuffers()[0]->GetBufferSize() / sizeof(Vertex); i++)
+		//{
+		//	m_vertexArray->GetVertexBuffers()[0]->GetData()[i].Position += glm::vec4(a_vec, 1.0f);
+		//}
+
+		Shape::Translate(a_vec);
+	}
+
 	void Cube::Create(const float& a_size)
 	{
 		// Setup the vertex buffer
 		Vertex vertices[] =
 		{
 			//FRONT
-			Vertex(-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0, 0, 1, 0, 0, 0), //0
-			Vertex(-a_size, a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 0, 1),
-			Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 1, 1),
-			Vertex(a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,1,0, 1, 0),
-			
+			Vertex({-a_size, -a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f , 1.0f}, {0, 0, 1, 0 }, { 0, 0 }), //0
+			Vertex({-a_size, a_size, a_size, 1.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0,0,1,0}, {0, 1}),
+			Vertex({a_size, a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0, 0, 1, 0}, {1, 1}),
+			Vertex({a_size, -a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0, 0, 1, 0}, {1, 0}),
+
 			//RIGHT																	    
 			Vertex(a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 0), //4
 			Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 1),
 			Vertex(a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 1),
 			Vertex(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 0),
-			
+
 			//BACK
 			Vertex(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 0), //8
 			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 1),
 			Vertex(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 1),
 			Vertex(a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 0),
-			
+
 			//LEFT
 			Vertex(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 0), //12
 			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 1),
 			Vertex(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 1),
 			Vertex(-a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 0),
-			
+
 			//TOP
 			Vertex(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 0), //16
 			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 1),
 			Vertex(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 1),
 			Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 0),
-			
+
 			//BOTTOM
 			Vertex(-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 0), //20
 			Vertex(-a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 1),
 			Vertex(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 1, 1),
 			Vertex(a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 1, 0)
 		};
-		std::shared_ptr<OpenGLVertexBuffer> vertexBuffer = std::make_shared<OpenGLVertexBuffer>(vertices, (unsigned int)sizeof(vertices));
+			// Setup the vertex buffer
+		//	VertexDX vertices[] =
+		//	{
+		//	//FRONT
+		//	VertexDX(-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f), //0
+		//	VertexDX(-a_size, a_size, a_size, 1.0f,1.0f, 1.0f),
+		//	VertexDX(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f),
+		//	VertexDX(a_size, -a_size, a_size, 1.0f,1.0f, 1.0f),
+		//
+		//	//RIGHT																	    
+		//	VertexDX(a_size, -a_size, a_size, 1.0f,1.0f, 1.0f), //4
+		//	VertexDX(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f),
+		//	VertexDX(a_size, a_size, -a_size, 1.0f,1.0f, 1.0f),
+		//	VertexDX(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f),
+		//
+		//	//BACK
+		//	VertexDX(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f), //8
+		//	VertexDX(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f),
+		//	VertexDX(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f),
+		//	VertexDX(a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f),
+		//
+		//	//LEFT
+		//	VertexDX(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f), //12
+		//	VertexDX(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f),
+		//	VertexDX(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f),
+		//	VertexDX(-a_size, -a_size, a_size, 1.0f,1.0f, 1.0f),
+		//
+		//	//TOP
+		//	VertexDX(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f), //16
+		//	VertexDX(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f),
+		//	VertexDX(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f),
+		//	VertexDX(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f),
+		//
+		//	//BOTTOM
+		//	VertexDX(-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f), //20
+		//	VertexDX(-a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f),
+		//	VertexDX(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f),
+		//	VertexDX(a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f)
+		//};
+		std::shared_ptr<OpenGLVertexBuffer> vertexBuffer = std::make_shared<OpenGLVertexBuffer>(vertices, sizeof(vertices));
 		BufferLayout layout =
 		{
 			{ShaderDataType::Float4, "inPosition"},

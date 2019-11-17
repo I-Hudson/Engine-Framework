@@ -22,6 +22,11 @@ namespace Framework
 			sRendererAPI->Clear();
 		}
 
+		inline static void SetVSync(bool a_state)
+		{
+			sRendererAPI->SetVSync(a_state);
+		}
+
 		//Draw the vertex array data
 		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& aVertexArray)
 		{

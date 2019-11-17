@@ -5,5 +5,5 @@
 
 namespace Framework
 {
-	RendererAPI* RenderCommand::sRendererAPI = new DirectXRendererAPI;
+	RendererAPI* RenderCommand::sRendererAPI = new OpenGLRendererAPI;
 }

@@ -10,7 +10,6 @@ f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl fra
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\openglcontext.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\openglbuffer.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\directxvertexarray.obj
-f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\directxshader.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\directxrendererapi.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\directxcontext.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\directxbuffer.obj
@@ -28,6 +27,7 @@ f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl fra
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\cube.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\shader.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\rendererapi.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\directxshader.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\minecraft\lib\opengl framework.lib
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\..\..\minecraft\lib\opengl framework.lib
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\opengl framework.tlog\cl.command.1.tlog

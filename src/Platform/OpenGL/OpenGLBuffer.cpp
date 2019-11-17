@@ -16,14 +16,21 @@ namespace Framework
 
 	OpenGLVertexBuffer::OpenGLVertexBuffer(Vertex* a_vertices, uint32_t a_size)
 	{
+		m_bufferSize = a_size;
+
 		glCreateBuffers(1, &m_ID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_ID);
 		glBufferData(GL_ARRAY_BUFFER, a_size, a_vertices, GL_STATIC_DRAW);
+
+
+		m_vertics = new Vertex[m_bufferSize];
+		memcpy(m_vertics, a_vertices, m_bufferSize);
 	}
 
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
 	{
 		glDeleteBuffers(1, &m_ID);
+		delete[] m_vertics;
 	}
 
 	void OpenGLVertexBuffer::Bind() const
@@ -36,68 +43,26 @@ namespace Framework
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	void OpenGLVertexBuffer::SetData(float* a_data, const int a_start, const int& a_end)
-	{
-		Bind();
-		int nBufferSize = 0;
-		glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &nBufferSize);
-		int originalVertexArraySize = (nBufferSize / sizeof(float));
-
-		glBufferSubData(GL_ARRAY_BUFFER, a_start == 0 ? 0 : a_start, a_end == -1 ? nBufferSize : a_end, a_data);
-		Unbind();
-	}
-
-	void OpenGLVertexBuffer::GetData(float* a_data, const int& a_start, const int& a_end)
-	{
-		int nBufferSize = 0;
-		glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &nBufferSize);
-		int originalVertexArraySize = (nBufferSize / sizeof(float));
-		
-		if (a_data == nullptr)
-		{
-			a_data = new float[a_end];
-		}
-		Bind();
-		glGetBufferSubData(GL_ARRAY_BUFFER, a_start == 0 ? 0 : a_start, a_end == -1 ? nBufferSize : a_end, a_data);
-		Unbind();
-	}
-
-	void OpenGLVertexBuffer::GetData(Vertex* a_data, const int & a_start, const int & a_end)
-	{
-		int nBufferSize = 0;
-		glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &nBufferSize);
-		int originalVertexArraySize = (nBufferSize / sizeof(float));
-
-		if (a_data == nullptr)
-		{
-			a_data = new Vertex[a_end];
-		}
-		Bind();
-		glGetBufferSubData(GL_ARRAY_BUFFER, a_start == 0 ? 0 : a_start, a_end == -1 ? nBufferSize : a_end, a_data);
-		Unbind();
-	}
-
-	int OpenGLVertexBuffer::GetBufferSize()
-	{
-		int nBufferSize = 0;
-		glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &nBufferSize);
-		return nBufferSize;
-	}
-
 	/////////////////////////////////////////////////////////////////////////
 	// INDEX BUFFER
 	/////////////////////////////////////////////////////////////////////////
-	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* a_indices, uint32_t a_count)
-		: m_count(a_count)
+	OpenGLIndexBuffer::OpenGLIndexBuffer(unsigned int* a_indices, unsigned int a_count)
 	{
+		m_count = a_count;
+
 		glCreateBuffers(1, &m_ID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, a_count * sizeof(uint32_t), a_indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, a_count * sizeof(unsigned int), a_indices, GL_STATIC_DRAW);
+
+		m_indices = new unsigned int[m_count];
+		int bufferSize = sizeof(unsigned int) * m_count;
+		memcpy(m_indices, a_indices, bufferSize);
 	}
 
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()
 	{
 		glDeleteBuffers(1, &m_ID);
+		delete[] m_indices;
 	}
 
 	void OpenGLIndexBuffer::Bind() const

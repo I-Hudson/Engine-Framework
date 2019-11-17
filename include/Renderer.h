@@ -22,6 +22,7 @@ namespace Framework
 		//Submit a shader and vertex array to render
 		static void Submit(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform = glm::mat4(1.0f));
 		static void Submit(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, std::shared_ptr<Texture> a_texture, const glm::mat4& a_transform = glm::mat4(1.0f));
+		static void SubmitBatched(const std::shared_ptr<Shader>, const glm::mat4& a_transform = glm::mat4(1.0f));
 
 		//Get the API in use
 		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
@@ -37,6 +38,13 @@ namespace Framework
 		static SceneData* m_sceneData;
 
 		static Vertex* m_batchVertex;
+		static unsigned int* m_batchIndices;
+
+		static unsigned int m_batchCount;
+
+		static int m_vertexIndex;
+		static int m_indiceIndex;
+
 		static std::unique_ptr<VertexArray> m_batchArray;
 		static int m_vertexBufferIndex;
 		static int m_indexCount;

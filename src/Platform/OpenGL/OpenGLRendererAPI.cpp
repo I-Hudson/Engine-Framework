@@ -1,6 +1,7 @@
 #include "Platform/OpenGL/OpenGLRendererAPI.h"
 
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 namespace Framework
 {
@@ -12,6 +13,11 @@ namespace Framework
 	void OpenGLRendererAPI::Clear()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
+
+	void OpenGLRendererAPI::SetVSync(bool a_state)
+	{
+		glfwSwapInterval(a_state);
 	}
 
 	void OpenGLRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& a_vertexArray)

@@ -23,6 +23,7 @@ namespace Framework
 		//Define all render API calls needed. These are overridden later by the specific API
 		virtual void SetClearColor(const glm::vec4& aColor) = 0;
 		virtual void Clear() = 0;
+		virtual void SetVSync(bool a_state) = 0;
 
 		//Draw the vertex array data
 		virtual void DrawIndexed(const std::shared_ptr<VertexArray>& aVertexArray) = 0;

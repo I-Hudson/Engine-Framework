@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <unordered_map>
+#include <map>
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <memory>
@@ -61,6 +61,6 @@ namespace Framework
 
 		bool Exists(const std::string& a_name);
 	private:
-		std::unordered_map<std::string, std::shared_ptr<Shader>> m_shaders;
+		std::map<std::string, std::shared_ptr<Shader>> m_shaders;
 	};
 }

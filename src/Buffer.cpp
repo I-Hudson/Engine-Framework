@@ -37,7 +37,7 @@ namespace Framework
 		return nullptr;
 	}
 
-	IndexBuffer* IndexBuffer::Create(uint32_t* aIndices, uint32_t aSize)
+	IndexBuffer* IndexBuffer::Create(unsigned int* aIndices, unsigned int aSize)
 	{
 		switch (Renderer::GetAPI())
 		{

@@ -49,6 +49,10 @@ namespace Framework
 		}
 	}
 
+	void DirectXRendererAPI::SetVSync(bool a_state)
+	{
+	}
+
 	void DirectXRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& a_vertexArray)
 	{
 	}

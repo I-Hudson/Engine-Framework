@@ -164,6 +164,23 @@ namespace Framework
 		}
 	};
 
+	struct VertexDX
+	{
+		glm::vec3 Position;
+		glm::vec3 Color;
+
+		VertexDX(const glm::vec3& a_position, const glm::vec3& a_colour)
+			: Position(a_position), Color(a_colour)
+		{
+		}
+
+		VertexDX(const float& a_positionX, const float& a_positionY, const float& a_positionZ,
+			const float& a_colorR, const float& a_colorG, const float& a_colorB)
+			: Position(glm::vec3(a_positionX, a_positionY, a_positionZ)), Color(glm::vec3(a_colorR, a_colorG, a_colorB))
+		{
+		}
+	};
+
 	///
 	// BASE VERTEX BUFFER. ALL VERTEX BUFFER CLASS MUST DERIVE FROM THIS.
 	///
@@ -181,14 +198,16 @@ namespace Framework
 		//Get the layout of this buffer 
 		virtual const BufferLayout& GetLayout() const = 0;
 
-		virtual void SetData(float* a_data, const int a_start, const int& a_end) = 0;
-		virtual void GetData(float* a_data, const int& a_start = 0, const int& a_end = -1) = 0;
-		virtual void GetData(Vertex* a_data, const int& a_start = 0, const int& a_end = -1) = 0;
-		virtual int GetBufferSize() = 0;
+		virtual Vertex* GetData() const { return m_vertics; }
+		virtual unsigned int GetBufferSize() { return m_bufferSize; }
 
 		//Create this buffer
 		static VertexBuffer* Create(float* aVertices, uint32_t aSize);
 		static VertexBuffer* Create(Vertex* aVertices, uint32_t aSize);
+
+	protected:
+		unsigned int m_bufferSize;
+		Vertex* m_vertics;
 	};
 
 	///
@@ -203,10 +222,15 @@ namespace Framework
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
+		virtual void* GetData() const { return m_indices; }
 		//Get the number of indices this buffer holds
-		virtual uint32_t GetCount() const = 0;
+		virtual unsigned int GetCount() const { return m_count; }
 
 		//Create this buffer
-		static IndexBuffer* Create(uint32_t* aIndices, uint32_t aSize);
+		static IndexBuffer* Create(unsigned int* aIndices, unsigned int aSize);
+
+	protected:
+		unsigned int m_count;
+		unsigned int* m_indices;
 	};
 }
