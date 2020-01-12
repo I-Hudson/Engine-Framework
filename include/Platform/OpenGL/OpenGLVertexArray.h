@@ -14,6 +14,9 @@ namespace Framework
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 
+		virtual void SetSubVertexData(const Vertex* a_vertices, const unsigned int& a_bufferSize) override;
+		virtual void SetSubIndexData(const unsigned int* a_indices, const unsigned int& a_count) override;
+
 		//Add a vertex buffer and index buffer
 		virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& a_vertexBuffer) override;
 		virtual void AddIndexBuffer(const std::shared_ptr<IndexBuffer>& a_indexBuffer) override;

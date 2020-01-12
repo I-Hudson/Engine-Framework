@@ -17,6 +17,9 @@ namespace Framework
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
+		virtual void SetSubVertexData(const Vertex* a_vertices, const unsigned int& a_bufferSize) {}
+		virtual void SetSubIndexData(const unsigned int* a_indices, const unsigned int& a_count) {}
+
 		//Add a vertex buffer and index buffer
 		virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& aVertexBuffer) = 0;
 		virtual void AddIndexBuffer(const std::shared_ptr<IndexBuffer>& aIndexBuffer) = 0;

@@ -2,7 +2,6 @@
 
 #include <string>
 #include "Events/Event.h"
-#include <Windows.h>
 
 namespace Framework
 {
@@ -51,9 +50,23 @@ namespace Framework
 
 		//get the window pointer
 		virtual void* GetNativeWindow() const { return nullptr; }
-		virtual std::shared_ptr<GraphicsContext> GetGraphicsContext() const = 0;
+		virtual GraphicsContext* GetGraphicsContext() const = 0;
 
 		//create window
-		static std::shared_ptr<Window> Create(const WindowProps& aProps);
+		static Window* Create(const WindowProps& aProps);
+
+		//window data
+		struct WindowData
+		{
+			//title
+			std::string Title;
+			//width, height
+			unsigned int Width, Height;
+			//vsync
+			bool VSync;
+
+			//event callback
+			EventCallbackFn EventCallback;
+		};
 	};
 }

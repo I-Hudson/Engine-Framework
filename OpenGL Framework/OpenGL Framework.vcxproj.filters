@@ -67,8 +67,20 @@
     <Filter Include="Header Files\Framework\Profile">
       <UniqueIdentifier>{ef8e68a5-467c-4b29-a042-9e9624268324}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Framework\Profile">
-      <UniqueIdentifier>{dce1b89b-73ce-42f7-a957-85ceb3d39a07}</UniqueIdentifier>
+    <Filter Include="Header Files\Framework\Assimp">
+      <UniqueIdentifier>{ea7807d0-546a-4b10-bfa5-69bd75667b41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Layer">
+      <UniqueIdentifier>{91c4bb62-cfce-4c3e-86a3-82c77a5482d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Layer">
+      <UniqueIdentifier>{fd3eb8f6-e5bc-48e0-9f32-77786407a034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Assimp">
+      <UniqueIdentifier>{b1210bbe-7eda-4ba9-9d73-32276cfc7296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{220722fe-7c52-4a01-a7b5-ef5dea6cc893}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -156,8 +168,38 @@
     <ClCompile Include="..\src\Platform\DirectX\DirectXShader.cpp">
       <Filter>Source Files\Platform\DirectX</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Profile\Instrumentor.cpp">
-      <Filter>Source Files\Framework\Profile</Filter>
+    <ClCompile Include="..\deps\glad\src\glad.c">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Layer\Layer.cpp">
+      <Filter>Source Files\Framework\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Layer\LayerStack.cpp">
+      <Filter>Source Files\Framework\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assimp\AssimpModel.cpp">
+      <Filter>Source Files\Framework\Assimp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assimp\AssimpMesh.cpp">
+      <Filter>Source Files\Framework\Assimp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\source\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\source\imgui_widgets.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\source\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\source\imgui_demo.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\impl\imgui_impl_opengl3.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\impl\imgui_impl_glfw.cpp">
+      <Filter>ImGui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -257,8 +299,50 @@
     <ClInclude Include="..\include\Platform\DirectX\DirectXBuffer.h">
       <Filter>Header Files\Platform\DirectX</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Profile\Instrumentor.h">
+    <ClInclude Include="..\..\C++Profiler\inc\Profile\Instrumentor.h">
       <Filter>Header Files\Framework\Profile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assimp\AssimpMesh.h">
+      <Filter>Header Files\Framework\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assimp\AssimpModel.h">
+      <Filter>Header Files\Framework\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Layer\Layer.h">
+      <Filter>Header Files\Framework\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Layer\LayerStack.h">
+      <Filter>Header Files\Framework\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Events\KeyEvent.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Events\MouseEvent.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imgui_internal.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imstb_rectpack.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imstb_textedit.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imstb_truetype.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imconfig.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imgui.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\impl\imgui_impl_opengl3.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\impl\imgui_impl_glfw.h">
+      <Filter>ImGui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

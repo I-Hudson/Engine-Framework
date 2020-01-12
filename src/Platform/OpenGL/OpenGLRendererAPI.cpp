@@ -20,6 +20,30 @@ namespace Framework
 		glfwSwapInterval(a_state);
 	}
 
+	void OpenGLRendererAPI::SetDepthTest(bool a_state)
+	{
+		if (a_state)
+		{
+			glEnable(GL_DEPTH_TEST);
+		}
+		else
+		{
+			glDisable(GL_DEPTH_TEST);
+		}
+	}
+
+	void OpenGLRendererAPI::SetCullFace(bool a_state)
+	{
+		if (a_state)
+		{
+			glEnable(GL_CULL_FACE);
+		}
+		else
+		{
+			glDisable(GL_CULL_FACE);
+		}
+	}
+
 	void OpenGLRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& a_vertexArray)
 	{
 		glDrawElements(GL_TRIANGLES, a_vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);

@@ -10,6 +10,15 @@ namespace Framework
 	class RenderCommand
 	{
 	public:
+
+		inline static void Destroy()
+		{
+			if (sRendererAPI != nullptr)
+			{
+				delete sRendererAPI;
+			}
+		}
+
 		//Set the clear colour
 		inline static void SetClearColor(const glm::vec4& aColor)
 		{
@@ -25,6 +34,16 @@ namespace Framework
 		inline static void SetVSync(bool a_state)
 		{
 			sRendererAPI->SetVSync(a_state);
+		}
+
+		inline static void SetDepthTest(bool a_state)
+		{
+			sRendererAPI->SetDepthTest(a_state);
+		}
+
+		inline static void SetCullFace(bool a_state)
+		{
+			sRendererAPI->SetCullFace(a_state);
 		}
 
 		//Draw the vertex array data

@@ -10,16 +10,16 @@
 #include "Platform/DirectX/DirectXBuffer.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "stbi/stb_image.h"
-
-#include "Profile/Instrumentor.h"
+#include <stbi/stb_image.h>
 
 namespace Framework
 {
+#define BIND_EVENT_FUNC(x) (std::bind(&Application::x, this, std::placeholders::_1))
+
 	Application* Application::sInstance = nullptr;
 
 	Application::Application()
-		: m_isRunning(true)
+		: m_isRunning(true), m_window(nullptr)
 	{
 		sInstance = this;
 	}
@@ -30,32 +30,33 @@ namespace Framework
 
 	bool Application::CreateApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
 	{
-		PROFILE_FUNCTION();
-
-		WindowProps props = WindowProps(a_title, a_width, a_height);
-
-		m_window = Window::Create(props);
-
 		Log::Init();
 		EN_CORE_INFO("Core logger has been initialized");
 
+		WindowProps props = WindowProps(a_title, a_width, a_height);
+		m_window = Window::Create(props);
+		m_window->SetEventCallback(BIND_EVENT_FUNC(OnEvent));
+		
+		OnImGuiCreate();
+
 		//Setup the main camera
 		m_mainCamera = std::make_shared<Camera>();
-		m_mainCamera->SetProjMatrix(90.0f, (float)a_width / (float)a_height, 0.1f, 1000.0f);
+		m_mainCamera->SetProjMatrix(45.0f, (float)a_width / (float)a_height, 0.1f, 1000.0f);
 
+		auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
+		//auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
+		
 		//Create a demo cube and rotate
 		if (a_runDemo)
 		{
-			//auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
-			auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
 			m_demoCube = std::make_shared<Cube>(1.0f);
-			m_demoCube->Translate(glm::vec3(0, 0, 0));
-
-			//RenderCommand::SetVSync(false);
 		}
 
-		glEnable(GL_CULL_FACE);
+		RenderCommand::SetDepthTest(true);
+		RenderCommand::SetCullFace(true);
 		glCullFace(GL_BACK);
+
+		RenderCommand::SetVSync(false);
 
 		if (!OnCreate())
 		{
@@ -68,8 +69,6 @@ namespace Framework
 
 	void Application::RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo)
 	{
-		PROFILE_FUNCTION();
-
 		if (!CreateApp(a_width, a_height, a_title, a_runDemo))
 		{
 			DestroyApp();
@@ -80,7 +79,7 @@ namespace Framework
 		do
 		{
 			Time::UpdateTime();
-
+		
 			if (RendererAPI::GetAPI() == RendererAPI::API::DirectX)
 			{
 				//RenderCommand::SetClearColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
@@ -146,27 +145,38 @@ namespace Framework
 			{
 				GLFWwindow* window = ((OpenGLContext*)m_window->GetGraphicsContext()->GetNativeContext())->GetWindow();
 				m_isRunning = !glfwWindowShouldClose(window);
+		
+				ImGui_ImplOpenGL3_NewFrame();
+				ImGui_ImplGlfw_NewFrame();
+				ImGui::NewFrame();
 
 				m_mainCamera->Update(Time::GetDeltaTime());
 				Update();
-
+				for (auto layer : m_layerStack)
+				{
+					layer->OnUpdate();
+				}
+				
 				RenderCommand::Clear();
-
+			
 				auto shader = m_shaderLibrary.GetShader("demoShader");
 				Renderer::Begin(*m_mainCamera);
 				if (a_runDemo)
 				{
-					m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
-					m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
-					//Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
+					//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
+					//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
+					Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
 				}
 				Draw();
-				Renderer::SubmitBatched(shader);
+				//Renderer::SubmitBatched(shader);
 				Renderer::EndScene();
+
+				ImGui::Render();
+				ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 			}
 			//GLFW
 			m_window->OnUpdate();
-
+		
 		} while (m_isRunning);
 
 		DestroyApp();
@@ -174,11 +184,59 @@ namespace Framework
 
 	void Application::DestroyApp()
 	{
-		PROFILE_FUNCTION();
 		Destroy();
+
+		OnImGuiDestroy();
+
+		m_layerStack.Destroy();
 		m_textureLibrary.ReleaseAll();
 		m_shaderLibrary.ReleaseAll();
+		
+		Renderer::Destroy();
+
+		RenderCommand::Destroy();
+		Log::Destroy();
 
 		m_window->Destroy();
+		delete m_window;
+	}
+
+	void Application::PushLayer(Layer* aLayer)
+	{
+		m_layerStack.PushLayer(aLayer);
+		aLayer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* aLayer)
+	{
+		m_layerStack.PushOverlay(aLayer);
+		aLayer->OnAttach();
+	}
+
+	void Application::OnEvent(Event& a_event)
+	{
+		EventDispatcher dispatcher(a_event);
+
+		EN_CORE_INFO("{0}", a_event.ToString());
+	}
+
+	void Application::OnImGuiCreate()
+	{
+		IMGUI_CHECKVERSION();
+		ImGui::CreateContext();
+		ImGuiIO& io = ImGui::GetIO();
+
+		GLFWwindow* w = static_cast<OpenGLContext*>(GetWindow()->GetGraphicsContext())->GetWindow();
+		ImGui_ImplGlfw_InitForOpenGL(w, true);
+		ImGui_ImplOpenGL3_Init("#version 400");
+
+		ImGui::StyleColorsClassic();
+	}
+
+	void Application::OnImGuiDestroy()
+	{
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+		ImGui::DestroyContext();
 	}
 }

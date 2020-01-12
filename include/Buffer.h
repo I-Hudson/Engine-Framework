@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 #include <glm/glm.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 namespace Framework
 {
@@ -198,8 +199,13 @@ namespace Framework
 		//Get the layout of this buffer 
 		virtual const BufferLayout& GetLayout() const = 0;
 
+		virtual void SetSubData(const Vertex* a_vertices, const unsigned int& a_bufferSize) {}
+
 		virtual Vertex* GetData() const { return m_vertics; }
 		virtual unsigned int GetBufferSize() { return m_bufferSize; }
+		unsigned int GetCount() const { return m_count; }
+
+		Vertex* GetVertex(const int& index);
 
 		//Create this buffer
 		static VertexBuffer* Create(float* aVertices, uint32_t aSize);
@@ -208,6 +214,7 @@ namespace Framework
 	protected:
 		unsigned int m_bufferSize;
 		Vertex* m_vertics;
+		unsigned int m_count;
 	};
 
 	///
@@ -222,9 +229,12 @@ namespace Framework
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
+		virtual void SetSubData(const unsigned int* a_indices, const unsigned int& a_count) {}
+
 		virtual void* GetData() const { return m_indices; }
 		//Get the number of indices this buffer holds
 		virtual unsigned int GetCount() const { return m_count; }
+		unsigned int GetIndice(const int& index);
 
 		//Create this buffer
 		static IndexBuffer* Create(unsigned int* aIndices, unsigned int aSize);

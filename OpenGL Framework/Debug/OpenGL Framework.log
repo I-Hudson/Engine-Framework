@@ -1,7 +1,56 @@
-﻿  OpenGLRendererAPI.cpp
+﻿  Application.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Camera.h(3,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Buffer.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Buffer.h(6,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Camera.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Camera.h(3,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  GraphicsContext.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\RendererAPI.h(7,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Log.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Log.h(4,10): fatal error C1083: Cannot open include file: 'spdlog/spdlog.h': No such file or directory
+  CommandQueue.cpp
+  DirectXBuffer.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Buffer.h(6,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  DirectXContext.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\RendererAPI.h(7,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  DirectXRendererAPI.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\RendererAPI.h(7,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  DirectXShader.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Shader.h(5,10): fatal error C1083: Cannot open include file: 'glad/glad.h': No such file or directory
+  DirectXVertexArray.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Buffer.h(6,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  OpenGLBuffer.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Buffer.h(6,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  OpenGLContext.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\OpenGL\OpenGLContext.cpp(3,10): fatal error C1083: Cannot open include file: 'glad/glad.h': No such file or directory
+  OpenGLRendererAPI.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\RendererAPI.h(7,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  OpenGLShader.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Shader.h(5,10): fatal error C1083: Cannot open include file: 'glad/glad.h': No such file or directory
+  OpenGLTexture.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Log.h(4,10): fatal error C1083: Cannot open include file: 'spdlog/spdlog.h': No such file or directory
   OpenGLVertexArray.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Buffer.h(6,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  WindowsWindow.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\RendererAPI.h(7,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
   RenderCommand.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\RendererAPI.h(7,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
   Renderer.cpp
-  VertexArray.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\RendererAPI.h(7,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
   Generating Code...
-  OpenGL Framework.vcxproj -> E:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\bin\Debug\Win32\OpenGL Framework.lib
+  Compiling...
+  RendererAPI.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\RendererAPI.h(7,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Shader.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Shader.h(5,10): fatal error C1083: Cannot open include file: 'glad/glad.h': No such file or directory
+  Cube.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Shape\Shape.h(3,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Shape.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Shape\Shape.h(3,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Texture.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Log.h(4,10): fatal error C1083: Cannot open include file: 'spdlog/spdlog.h': No such file or directory
+  Time.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Time.cpp(3,10): fatal error C1083: Cannot open include file: 'GLFW/glfw3.h': No such file or directory
+  VertexArray.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Buffer.h(6,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Generating Code...

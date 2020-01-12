@@ -1,0 +1,68 @@
+#pragma once
+
+#include "Events/Event.h"
+
+class KeyEvent : public Framework::Event
+{
+public:
+	inline int GetKeyCode() const { return mKeyCode; }
+
+	EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
+protected:
+	KeyEvent(int aKeyCode)
+		:mKeyCode(aKeyCode) {}
+	int mKeyCode;
+};
+
+class KeyPressedEvent : public KeyEvent
+{
+public:
+	KeyPressedEvent(int aKeyCode, int aRepeatCount)
+		:KeyEvent(aKeyCode), mRepeatCount(aRepeatCount) {}
+
+	inline int GetRepeatCount() const { return mRepeatCount; }
+
+	std::string ToString() const override
+	{
+		std::stringstream ss;
+		ss << "KeyPressedEvent: " << mKeyCode << " (" << mRepeatCount << " repeats)";
+		return ss.str();
+	}
+
+	EVENT_CLASS_TYPE(KeyPressed)
+private:
+	int mRepeatCount;
+};
+
+class KeyReleasedEvent : public KeyEvent
+{
+public:
+	KeyReleasedEvent(int aKeyCode)
+		:KeyEvent(aKeyCode){}
+
+
+	std::string ToString() const override
+	{
+		std::stringstream ss;
+		ss << "KeyReleasedEvent: " << mKeyCode;
+		return ss.str();
+	}
+
+	EVENT_CLASS_TYPE(KeyReleased)
+};
+
+class KeyTypedEvent : public KeyEvent
+{
+public:
+	KeyTypedEvent(int aKeycode)
+		: KeyEvent(aKeycode) {}
+
+	std::string ToString() const override
+	{
+		std::stringstream ss;
+		ss << "KeyTypedEvent: " << mKeyCode;
+		return ss.str();
+	}
+
+	EVENT_CLASS_TYPE(KeyTyped)
+};

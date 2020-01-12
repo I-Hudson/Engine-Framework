@@ -102,11 +102,11 @@ namespace Framework
 		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(a_value));
 	}
 
-	void OpenGLShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture)
+	void OpenGLShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint)
 	{
-		glActiveTexture(GL_TEXTURE0);
+		glActiveTexture(GL_TEXTURE0 + a_textureUint);
+		UploadUniformInt(a_name, a_textureUint);
 		a_texture->Bind();
-		UploadUniformInt(a_name, 0);
 	}
 
 	void OpenGLShader::Release()

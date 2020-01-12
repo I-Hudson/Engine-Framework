@@ -6,6 +6,7 @@
 #include <functional>
 #include <string>
 #include <ostream>
+#include <sstream>
 
 namespace Framework
 {
@@ -18,6 +19,9 @@ namespace Framework
 	enum class EventType
 	{
 		None = 0,
+
+		GraphicsInit,
+
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
 		KeyPressed, KeyReleased, KeyTyped,

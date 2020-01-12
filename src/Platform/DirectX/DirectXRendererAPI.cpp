@@ -14,7 +14,7 @@ namespace Framework
 
 	void DirectXRendererAPI::Clear()
 	{
-		auto context = std::dynamic_pointer_cast<DirectXContext>(Application::Get().GetWindow()->GetGraphicsContext());
+		auto context = (DirectXContext*)(Application::Get().GetWindow()->GetGraphicsContext());
 		auto commandQueue = context->m_commandQueue.get();
 		auto commandList = commandQueue->GetCommandList();
 
@@ -50,6 +50,14 @@ namespace Framework
 	}
 
 	void DirectXRendererAPI::SetVSync(bool a_state)
+	{
+	}
+
+	void DirectXRendererAPI::SetDepthTest(bool a_state)
+	{
+	}
+
+	void DirectXRendererAPI::SetCullFace(bool a_state)
 	{
 	}
 

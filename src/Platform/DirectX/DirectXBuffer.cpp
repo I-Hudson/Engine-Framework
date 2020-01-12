@@ -47,7 +47,7 @@ namespace Framework
 	{
 		// Upload vertex buffer data.
 		ComPtr<ID3D12Resource> intermediateVertexBuffer;
-		auto context = std::dynamic_pointer_cast<DirectXContext>(Application::Get().GetWindow()->GetGraphicsContext());
+		auto context = (DirectXContext*)(Application::Get().GetWindow()->GetGraphicsContext());
 		UpdateBufferResources(context->m_commandQueue->GetCommandList(), &m_vertexBuffer, &intermediateVertexBuffer,
 			aSize / sizeof(VertexDX), sizeof(VertexDX), aVertices, D3D12_RESOURCE_FLAGS::D3D12_RESOURCE_FLAG_NONE);
 
@@ -72,7 +72,7 @@ namespace Framework
 	{
 		// Upload vertex buffer data.
 		ComPtr<ID3D12Resource> intermediateIndexBuffer;
-		auto context = std::dynamic_pointer_cast<DirectXContext>(Application::Get().GetWindow()->GetGraphicsContext());
+		auto context = (DirectXContext*)(Application::Get().GetWindow()->GetGraphicsContext());
 		UpdateBufferResources(context->m_commandQueue->GetCommandList(), &m_indexBuffer, &intermediateIndexBuffer,
 			36, sizeof(WORD), indices, D3D12_RESOURCE_FLAGS::D3D12_RESOURCE_FLAG_NONE);
 

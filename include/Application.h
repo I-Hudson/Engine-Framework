@@ -6,6 +6,10 @@
 
 #include <memory>
 
+#include <imgui.h>
+#include <imgui_impl_opengl3.h>
+#include <imgui_impl_glfw.h>
+
 #include "Camera.h"
 #include "Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
@@ -15,6 +19,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "Platform/Windows/WindowsWindow.h"
+#include "Layer/LayerStack.h"
 
 namespace Framework
 {
@@ -28,8 +33,17 @@ namespace Framework
 		void RunApp(const int& a_width, const int& a_height, const char* a_title, const bool& a_runDemo);
 		void DestroyApp();
 
+		void PushLayer(Layer* aLayer);
+		void PushOverlay(Layer* aLayer);
+
+		void OnEvent(Event& a_event);
+
 		inline static Application& Get() { return *sInstance; }
-		inline std::shared_ptr<Window> GetWindow() { return m_window; }
+		inline static void Reset() { delete sInstance; }
+		inline Window* GetWindow() { return m_window; }
+
+		TextureLibrary& GetTextureLibrary() { return m_textureLibrary; }
+		ShaderLibrary& GetShaderLibrary() { return m_shaderLibrary; }
 
 	protected:
 
@@ -45,7 +59,13 @@ namespace Framework
 		std::shared_ptr<Camera> m_mainCamera;
 		std::shared_ptr<Cube>m_demoCube;
 
-		std::shared_ptr<Window> m_window;
+		LayerStack m_layerStack;
+
+		Window* m_window;
+
+	private:
+		void OnImGuiCreate(); 
+		void OnImGuiDestroy();
 
 	private:
 		static Application* sInstance;

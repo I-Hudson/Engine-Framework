@@ -24,10 +24,10 @@ namespace Framework
 
 	void Cube::Translate(const glm::vec3& a_vec)
 	{
-		//for (size_t i = 0; i < m_vertexArray->GetVertexBuffers()[0]->GetBufferSize() / sizeof(Vertex); i++)
-		//{
-		//	m_vertexArray->GetVertexBuffers()[0]->GetData()[i].Position += glm::vec4(a_vec, 1.0f);
-		//}
+		for (size_t i = 0; i < m_vertexArray->GetVertexBuffers()[0]->GetCount(); i++)
+		{
+			m_vertexArray->GetVertexBuffers()[0]->GetData()[i].Position += glm::vec4(a_vec, 1.0f);
+		}
 
 		Shape::Translate(a_vec);
 	}
@@ -48,25 +48,25 @@ namespace Framework
 			Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 1),
 			Vertex(a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 1),
 			Vertex(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 0),
-
+			
 			//BACK
 			Vertex(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 0), //8
 			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 1),
 			Vertex(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 1),
 			Vertex(a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 0),
-
+			
 			//LEFT
 			Vertex(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 0), //12
 			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 1),
 			Vertex(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 1),
 			Vertex(-a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 0),
-
+			
 			//TOP
 			Vertex(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 0), //16
 			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 1),
 			Vertex(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 1),
 			Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 0),
-
+			
 			//BOTTOM
 			Vertex(-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 0), //20
 			Vertex(-a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 1),
@@ -126,7 +126,7 @@ namespace Framework
 		{
 			0,2,1,
 			0,3,2,
-			//
+			
 			4,6,5,
 			4,7,6,
 			//

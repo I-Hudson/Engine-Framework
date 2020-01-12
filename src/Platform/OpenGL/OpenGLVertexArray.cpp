@@ -44,6 +44,16 @@ namespace Framework
 		glBindVertexArray(0);
 	}
 
+	void OpenGLVertexArray::SetSubVertexData(const Vertex* a_vertices, const unsigned int& a_bufferSize)
+	{
+		m_vertexBuffers[0]->SetSubData(a_vertices, a_bufferSize);
+	}
+
+	void OpenGLVertexArray::SetSubIndexData(const unsigned int* a_indices, const unsigned int& a_count)
+	{
+		m_indexBuffer->SetSubData(a_indices, a_count);
+	}
+
 	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& a_vertexBuffer)
 	{
 		if (a_vertexBuffer->GetLayout().GetElements().size() == 0)
@@ -51,7 +61,7 @@ namespace Framework
 			return;
 		}
 
-		glBindVertexArray(m_ID);
+		Bind();
 		a_vertexBuffer->Bind();
 
 		uint32_t index = 0;
@@ -66,13 +76,16 @@ namespace Framework
 		}
 
 		m_vertexBuffers.push_back(a_vertexBuffer);
+
+		Unbind();
 	}
 
 	void OpenGLVertexArray::AddIndexBuffer(const std::shared_ptr<IndexBuffer>& a_indexBuffer)
 	{
-		glBindVertexArray(m_ID);
+		Bind();
 		a_indexBuffer->Bind();
 		m_indexBuffer = a_indexBuffer;
+		Unbind();
 	}
 
 	const std::vector<std::shared_ptr<VertexBuffer>>& OpenGLVertexArray::GetVertexBuffers() const

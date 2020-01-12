@@ -35,7 +35,7 @@ namespace Framework
 		virtual void UploadUniformMat3(const std::string& a_name, const glm::mat3& a_value) = 0;
 		virtual void UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value) = 0;
 
-		virtual void UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture) = 0;
+		virtual void UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint = 0) = 0;
 
 		virtual const std::string& GetName() = 0;
 

@@ -10,6 +10,7 @@
 namespace Framework
 {
 	WindowsWindow::WindowsWindow(const WindowProps& a_props)
+		: m_context(nullptr)
 	{
 		Init(a_props);
 	}
@@ -25,7 +26,11 @@ namespace Framework
 
 	void WindowsWindow::Destroy()
 	{
-		m_context->Destroy();
+		if (m_context != nullptr)
+		{
+			m_context->Destroy();
+			delete m_context;
+		}
 	}
 
 	void WindowsWindow::SetVSync(bool aEnabled)
@@ -39,7 +44,12 @@ namespace Framework
 
 	void WindowsWindow::Init(const WindowProps& aProps)
 	{
-		m_context = GraphicsContext::Create(aProps.Width, aProps.Height, aProps.Title, false, nullptr);
+		mData = WindowData();
+		mData.Title = aProps.Title;
+		mData.Width = aProps.Width;
+		mData.Height = aProps.Height;
+
+		m_context = GraphicsContext::Create(aProps.Width, aProps.Height, aProps.Title, false, nullptr, &mData);
 	}
 
 	void WindowsWindow::Shutdown()

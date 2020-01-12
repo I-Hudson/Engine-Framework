@@ -11,7 +11,7 @@ namespace Framework
 
 	DirectXShader::DirectXShader(const std::string& a_name, const std::string& a_vertexSrc, const std::string& a_fragSrc)
 	{
-		auto context = std::dynamic_pointer_cast<DirectXContext>(Application::Get().GetWindow()->GetGraphicsContext());
+		auto context = (DirectXContext*)(Application::Get().GetWindow()->GetGraphicsContext());
 		auto device = context->m_device;
 		auto commandQueue = *context->m_commandQueue;
 		auto commandList = context->m_commandQueue->GetCommandList();
@@ -25,11 +25,11 @@ namespace Framework
 
 		// Load the vertex shader.
 		ComPtr<ID3DBlob> vertexShaderBlob;
-		ThrowIfFailed(D3DReadFileToBlob(L"VertexShader.cso", &vertexShaderBlob));
+		//ThrowIfFailed(D3DReadFileToBlob(L"VertexShader.cso", &vertexShaderBlob));
 
 		// Load the pixel shader.
 		ComPtr<ID3DBlob> pixelShaderBlob;
-		ThrowIfFailed(D3DReadFileToBlob(L"PixelShader.cso", &pixelShaderBlob));
+		//ThrowIfFailed(D3DReadFileToBlob(L"PixelShader.cso", &pixelShaderBlob));
 
 		// Create the vertex input layout
 		D3D12_INPUT_ELEMENT_DESC inputLayout[] = {
@@ -157,7 +157,7 @@ namespace Framework
 	{
 	}
 
-	void DirectXShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture)
+	void DirectXShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint)
 	{
 	}
 
@@ -191,7 +191,7 @@ namespace Framework
 
 	void DirectXShader::ResizeDepthBuffer(const int& a_width, const int& a_height)
 	{
-		auto context = std::dynamic_pointer_cast<DirectXContext>(Application::Get().GetWindow()->GetGraphicsContext());
+		auto context = (DirectXContext*)(Application::Get().GetWindow()->GetGraphicsContext());
 
 		context->Flush();
 

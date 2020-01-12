@@ -5,6 +5,15 @@
 
 namespace Framework
 {
+	Vertex* VertexBuffer::GetVertex(const int& index)
+	{
+		if (index > m_count)
+		{
+			return nullptr;
+		}
+		return &m_vertics[index];
+	}
+
 	VertexBuffer* VertexBuffer::Create(float* aVertices, uint32_t aSize)
 	{
 		switch (Renderer::GetAPI())
@@ -35,6 +44,15 @@ namespace Framework
 		}
 		//EN_CORE_ASSERT(false, "Unknow RendererAPI!");
 		return nullptr;
+	}
+
+	unsigned int IndexBuffer::GetIndice(const int& index)
+	{
+		if (index > m_count)
+		{
+			return 0;
+		}
+		return m_indices[index];
 	}
 
 	IndexBuffer* IndexBuffer::Create(unsigned int* aIndices, unsigned int aSize)

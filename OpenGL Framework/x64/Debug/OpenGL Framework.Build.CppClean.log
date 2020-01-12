@@ -1,9 +1,6 @@
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\opengl framework.pdb
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\opengl framework.idb
-f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\renderer.obj
-f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\rendercommand.obj
-f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\windowswindow.obj
-f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\openglvertexarray.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\glad.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\opengltexture.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\openglshader.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\openglrendererapi.obj
@@ -16,9 +13,13 @@ f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl fra
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\directxbuffer.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\commandqueue.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\log.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\layerstack.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\layer.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\graphicscontext.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\camera.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\buffer.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\assimpmodel.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\assimpmesh.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\application.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\window.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\vertexarray.obj
@@ -28,9 +29,12 @@ f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl fra
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\cube.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\shader.obj
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\rendererapi.obj
-f:\users\documents\sourcecontrol\github\c++ porjects\minecraft\lib\opengl framework.lib
-f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\renderer.new.obj.enc
-f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\..\..\minecraft\lib\opengl framework.lib
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\renderer.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\rendercommand.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\windowswindow.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\openglvertexarray.obj
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\lib\opengl framework.lib
+f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\lib\opengl framework.pdb
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\opengl framework.tlog\cl.command.1.tlog
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\opengl framework.tlog\cl.read.1.tlog
 f:\users\documents\sourcecontrol\github\c++ porjects\opengl framework\opengl framework\x64\debug\opengl framework.tlog\cl.write.1.tlog

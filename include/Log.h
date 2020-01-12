@@ -10,6 +10,7 @@ namespace Framework
 	{
 	public:
 		static void Init();
+		static void Destroy();
 
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_coreLogger; }
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_clientLogger; }

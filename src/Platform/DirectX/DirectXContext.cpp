@@ -138,14 +138,14 @@ namespace Framework
 
 	DirectXContext::DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* window)
 	{
-		Init(a_width, a_height, a_title, a_fullscreen, window);
+		Init(a_width, a_height, a_title, a_fullscreen, window, nullptr);
 	}
 
 	DirectXContext::~DirectXContext()
 	{
 	}
 
-	void DirectXContext::Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* a_window)
+	void DirectXContext::Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* a_window, Window::WindowData* a_windowData)
 	{
 		//m_hwnd = (HWND)a_window;
 		m_context = this;
