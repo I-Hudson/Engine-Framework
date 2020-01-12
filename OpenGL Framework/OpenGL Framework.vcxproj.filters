@@ -201,6 +201,9 @@
     <ClCompile Include="..\deps\imgui\impl\imgui_impl_glfw.cpp">
       <Filter>ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Material.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Buffer.h">
@@ -343,6 +346,9 @@
     </ClInclude>
     <ClInclude Include="..\deps\imgui\impl\imgui_impl_glfw.h">
       <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Material.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

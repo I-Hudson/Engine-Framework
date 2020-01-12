@@ -2,6 +2,7 @@
 
 #include "Assimp/AssimpMesh.h"
 #include "Texture.h"
+#include "Material.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -51,6 +52,8 @@ private:
 	std::string mDirectory;
 	std::vector<std::string> mLoadedTextures;
 	std::string mModelName;
+
+	Framework::Material m_material;
 
 	/*
 		Functions

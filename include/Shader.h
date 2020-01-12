@@ -7,6 +7,7 @@
 #include <memory>
 
 #include "Texture.h"
+#include <Buffer.h>
 
 namespace Framework
 {

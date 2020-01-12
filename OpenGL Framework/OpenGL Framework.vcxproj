@@ -160,6 +160,7 @@
     <ClCompile Include="..\src\Layer\Layer.cpp" />
     <ClCompile Include="..\src\Layer\LayerStack.cpp" />
     <ClCompile Include="..\src\Log.cpp" />
+    <ClCompile Include="..\src\Material.cpp" />
     <ClCompile Include="..\src\Platform\DirectX\CommandQueue.cpp" />
     <ClCompile Include="..\src\Platform\DirectX\DirectXBuffer.cpp" />
     <ClCompile Include="..\src\Platform\DirectX\DirectXContext.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="..\include\Layer\Layer.h" />
     <ClInclude Include="..\include\Layer\LayerStack.h" />
     <ClInclude Include="..\include\Log.h" />
+    <ClInclude Include="..\include\Material.h" />
     <ClInclude Include="..\include\Platform\DirectX\CommandQueue.h" />
     <ClInclude Include="..\include\Platform\DirectX\d3dx12.h" />
     <ClInclude Include="..\include\Platform\DirectX\DirectXShader.h" />
