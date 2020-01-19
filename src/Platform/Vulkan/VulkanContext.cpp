@@ -30,7 +30,7 @@ namespace Framework
 			glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 			m_window = glfwCreateWindow(a_width, a_height, a_title.c_str(), nullptr, nullptr);
 
-			CreateInstance();
+			CreateInstance(a_title);
 
 			if (m_vkDebug.SetupDebugger(m_instance, nullptr) != VK_SUCCESS)
 			{
@@ -78,7 +78,7 @@ namespace Framework
 			return this;
 		}
 
-		void VulkanContext::CreateInstance()
+		void VulkanContext::CreateInstance(const std::string& title)
 		{
 			m_vkValidationLayers.SetValidationLayersState(true);
 			if (!m_vkValidationLayers.CheckValidationLayerSupport({ "VK_LAYER_KHRONOS_validation" }))
@@ -88,7 +88,7 @@ namespace Framework
 
 			VkApplicationInfo appInfo = {};
 			appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-			appInfo.pApplicationName = "Vulkan Test";
+			appInfo.pApplicationName = title.c_str();
 			appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
 			appInfo.pEngineName = "No Engine";
 			appInfo.apiVersion = VK_API_VERSION_1_0;
