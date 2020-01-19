@@ -4,6 +4,8 @@
 #include "Platform/OpenGL/OpenGLShader.h"
 #include <Platform\DirectX\DirectXShader.h>
 
+#include <fstream>
+
 namespace Framework
 {
 	namespace Renderer
@@ -28,6 +30,43 @@ namespace Framework
 			}
 			printf("No shader was created!");
 			return nullptr;
+		}
+
+		std::string Shader::ReadFromFile(const std::string& a_filePath)
+		{
+			std::string result;
+			std::ifstream in(a_filePath, std::ios::in | std::ios::binary);
+			if (in)
+			{
+				in.seekg(0, std::ios::end);
+				result.resize(in.tellg());
+				in.seekg(0, std::ios::beg);
+				in.read(&result[0], result.size());
+				in.close();
+			}
+			return result;
+		}
+
+		std::unordered_map<GLenum, std::string> Shader::PreProcess(const std::string& a_source)
+		{
+			std::unordered_map<GLenum, std::string> shaderSources;
+
+			const char* typeToken = "#type";
+			size_t typeTokenLength = strlen(typeToken);
+			size_t pos = a_source.find(typeToken, 0);
+			while (pos != std::string::npos)
+			{
+				//eol = end of line
+				size_t eol = a_source.find_first_of("\r\n", pos);
+				size_t begin = pos + typeTokenLength + 1;
+				std::string type = a_source.substr(begin, eol - begin);
+
+				size_t nextLinePos = a_source.find_first_not_of("\r\n", eol);
+				pos = a_source.find(typeToken, nextLinePos);
+				shaderSources[ShaderTypeFromString(type)] = a_source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? a_source.size() - 1 : nextLinePos));
+			}
+
+			return shaderSources;
 		}
 
 		void ShaderLibrary::Add(const std::string& a_name, const std::shared_ptr<Shader>& a_shader)

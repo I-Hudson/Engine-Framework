@@ -165,6 +165,11 @@ namespace Framework
 	{
 	}
 
+	uint32_t DirectXShader::ShaderTypeFromString(const std::string& a_type)
+	{
+		return 0;
+	}
+
 	std::string DirectXShader::ReadFromFile(const std::string& a_filePath)
 	{
 		std::string result;

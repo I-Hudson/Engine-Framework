@@ -41,9 +41,10 @@ namespace Framework
 
 		virtual void Release() override;
 
+	protected:
+		virtual uint32_t ShaderTypeFromString(const std::string& a_type) override;
+
 	private:
-		std::string ReadFromFile(const std::string& a_filePath);
-		std::unordered_map<GLenum, std::string> PreProcess(const std::string& a_source);
 		void Compile(const std::unordered_map<GLenum, std::string>& a_shaderSources);
 
 		uint32_t m_ID;

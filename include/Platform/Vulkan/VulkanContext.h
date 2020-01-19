@@ -58,7 +58,7 @@ namespace Framework
 			VulkanPipeline* GetVulkanPipeline() { return &m_vkPipeline; }
 
 		private:
-			void CreateInstance();
+			void CreateInstance(const std::string& title);
 
 		private:
 			GLFWwindow* m_window;

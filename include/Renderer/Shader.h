@@ -47,6 +47,11 @@ namespace Framework
 
 			static std::shared_ptr<Shader> Create(const std::string& a_filePath);
 			static std::shared_ptr<Shader> Create(const std::string& a_name, const std::string& a_vertexSource, const std::string& a_fragSource);
+		
+		protected:
+			virtual std::string ReadFromFile(const std::string& a_filePath);
+			virtual std::unordered_map<GLenum, std::string> PreProcess(const std::string& a_source);
+			virtual uint32_t ShaderTypeFromString(const std::string& a_type) = 0;
 		};
 
 		class ShaderLibrary

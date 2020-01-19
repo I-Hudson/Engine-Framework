@@ -47,6 +47,8 @@ namespace Framework
 		Microsoft::WRL::ComPtr<ID3D12RootSignature> GetRootSignature() { return m_rootSignature; }
 		Microsoft::WRL::ComPtr<ID3D12PipelineState> GetPipeLineState() { return m_pipelineState; }
 	
+	protected:
+		virtual uint32_t ShaderTypeFromString(const std::string& a_type) override;
 	
 	private:
 		std::string ReadFromFile(const std::string& a_filePath);

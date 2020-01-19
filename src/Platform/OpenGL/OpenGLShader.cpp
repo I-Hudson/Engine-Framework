@@ -3,7 +3,6 @@
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <array>
-#include <fstream>
 
 namespace Framework
 {
@@ -114,7 +113,7 @@ namespace Framework
 		glDeleteProgram(m_ID);
 	}
 
-	static GLenum ShaderTypeFromString(const std::string& a_type)
+	uint32_t OpenGLShader::ShaderTypeFromString(const std::string& a_type)
 	{
 		if (a_type == "vertex") return GL_VERTEX_SHADER;
 		if (a_type == "fragment") return GL_FRAGMENT_SHADER;
@@ -122,41 +121,6 @@ namespace Framework
 		return 0;
 	}
 
-	std::string OpenGLShader::ReadFromFile(const std::string& a_filePath)
-	{
-		std::string result;
-		std::ifstream in(a_filePath, std::ios::in | std::ios::binary);
-		if (in)
-		{
-			in.seekg(0, std::ios::end);
-			result.resize(in.tellg());
-			in.seekg(0, std::ios::beg);
-			in.read(&result[0], result.size());
-			in.close();
-		}
-		return result;
-	}
-	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& a_source)
-	{
-		std::unordered_map<GLenum, std::string> shaderSources;
-
-		const char* typeToken = "#type";
-		size_t typeTokenLength = strlen(typeToken);
-		size_t pos = a_source.find(typeToken, 0);
-		while (pos != std::string::npos)
-		{
-			//eol = end of line
-			size_t eol = a_source.find_first_of("\r\n", pos);
-			size_t begin = pos + typeTokenLength + 1;
-			std::string type = a_source.substr(begin, eol - begin);
-
-			size_t nextLinePos = a_source.find_first_not_of("\r\n", eol);
-			pos = a_source.find(typeToken, nextLinePos);
-			shaderSources[ShaderTypeFromString(type)] = a_source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? a_source.size() - 1 : nextLinePos));
-		}
-
-		return shaderSources;
-	}
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& a_shaderSources)
 	{
 		unsigned int program = glCreateProgram();
