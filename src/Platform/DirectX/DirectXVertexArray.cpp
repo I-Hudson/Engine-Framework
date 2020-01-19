@@ -18,22 +18,22 @@ namespace Framework
 	{
 	}
 
-	void DirectXVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& a_vertexBuffer)
+	void DirectXVertexArray::AddVertexBuffer(const std::shared_ptr<Renderer::VertexBuffer>& a_vertexBuffer)
 	{
 		m_vertexBuffers.push_back(a_vertexBuffer);
 	}
 
-	void DirectXVertexArray::AddIndexBuffer(const std::shared_ptr<IndexBuffer>& a_indexBuffer)
+	void DirectXVertexArray::AddIndexBuffer(const std::shared_ptr<Renderer::IndexBuffer>& a_indexBuffer)
 	{
 		m_indexBuffer = a_indexBuffer;
 	}
 
-	const std::vector<std::shared_ptr<VertexBuffer>>& DirectXVertexArray::GetVertexBuffers() const
+	const std::vector<std::shared_ptr<Renderer::VertexBuffer>>& DirectXVertexArray::GetVertexBuffers() const
 	{
 		return m_vertexBuffers;
 	}
 
-	const std::shared_ptr<IndexBuffer>& DirectXVertexArray::GetIndexBuffer() const
+	const std::shared_ptr<Renderer::IndexBuffer>& DirectXVertexArray::GetIndexBuffer() const
 	{
 		return m_indexBuffer;
 	}

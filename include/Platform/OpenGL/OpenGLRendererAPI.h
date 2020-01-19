@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "Renderer/RendererAPI.h"
 
 namespace Framework
 {
-	class OpenGLRendererAPI : public RendererAPI
+	class OpenGLRendererAPI : public Renderer::RendererAPI
 	{
 	public:
 		virtual void SetClearColor(const glm::vec4& a_color) override;
@@ -13,6 +13,6 @@ namespace Framework
 		virtual void SetDepthTest(bool a_state) override;
 		virtual void SetCullFace(bool a_state) override;
 
-		virtual void DrawIndexed(const std::shared_ptr<VertexArray>& a_vertexArray) override;
+		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray) override;
 	};
 }

@@ -5,8 +5,11 @@
 
 namespace Framework
 {
-	class GraphicsContext;
-	
+	namespace Renderer
+	{
+		class GraphicsContext;
+	}
+
 	//window props
 	struct WindowProps
 	{
@@ -42,7 +45,7 @@ namespace Framework
 		virtual unsigned int GetHeight() const { return 0; }
 
 		//set the event callback
-		virtual void SetEventCallback(const EventCallbackFn& aCallback) {}
+		virtual void SetEventCallback(EventCallbackFn aCallback) { }
 		//set vsync
 		virtual void SetVSync(bool aEnabled) {}
 		//is vsync on or off
@@ -50,7 +53,7 @@ namespace Framework
 
 		//get the window pointer
 		virtual void* GetNativeWindow() const { return nullptr; }
-		virtual GraphicsContext* GetGraphicsContext() const = 0;
+		virtual Renderer::GraphicsContext* GetGraphicsContext() const = 0;
 
 		//create window
 		static Window* Create(const WindowProps& aProps);

@@ -43,17 +43,17 @@ namespace Framework
 	{
 	}
 
-	DirectXVertexBuffer::DirectXVertexBuffer(VertexDX* aVertices, uint32_t aSize)
+	DirectXVertexBuffer::DirectXVertexBuffer(Renderer::VertexDX* aVertices, uint32_t aSize)
 	{
 		// Upload vertex buffer data.
 		ComPtr<ID3D12Resource> intermediateVertexBuffer;
 		auto context = (DirectXContext*)(Application::Get().GetWindow()->GetGraphicsContext());
 		UpdateBufferResources(context->m_commandQueue->GetCommandList(), &m_vertexBuffer, &intermediateVertexBuffer,
-			aSize / sizeof(VertexDX), sizeof(VertexDX), aVertices, D3D12_RESOURCE_FLAGS::D3D12_RESOURCE_FLAG_NONE);
+			aSize / sizeof(Renderer::VertexDX), sizeof(Renderer::VertexDX), aVertices, D3D12_RESOURCE_FLAGS::D3D12_RESOURCE_FLAG_NONE);
 
 		m_vertexBufferView.BufferLocation = m_vertexBuffer->GetGPUVirtualAddress();
 		m_vertexBufferView.SizeInBytes = aSize;
-		m_vertexBufferView.StrideInBytes = sizeof(VertexDX);
+		m_vertexBufferView.StrideInBytes = sizeof(Renderer::VertexDX);
 	}
 
 	DirectXVertexBuffer::~DirectXVertexBuffer()

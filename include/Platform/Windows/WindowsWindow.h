@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GraphicsContext.h"
+#include "Renderer/GraphicsContext.h"
 #include "Window.h"
 
 namespace Framework
@@ -23,7 +23,7 @@ namespace Framework
 		inline unsigned int GetHeight() const override { return mData.Height; };
 
 		//set event callback
-		inline void SetEventCallback(const EventCallbackFn& aCallback) override { mData.EventCallback = aCallback; };
+		inline void SetEventCallback(EventCallbackFn aCallback) override { mData.EventCallback = aCallback; };
 
 		//set vsync
 		void SetVSync(bool aEnabled) override;
@@ -31,7 +31,9 @@ namespace Framework
 		bool IsVSync() const override;
 
 		inline virtual void* GetNativeWindow() const { return m_window; };
-		inline virtual GraphicsContext* GetGraphicsContext() const override { return m_context; }
+		inline virtual Renderer::GraphicsContext* GetGraphicsContext() const override { return m_context; }
+
+		void FireEvent(Event& event) { mData.EventCallback(event); }
 
 	private:
 		//init func
@@ -41,7 +43,7 @@ namespace Framework
 
 		//glfww window pointer
 		void* m_window;
-		GraphicsContext* m_context;
+		Renderer::GraphicsContext* m_context;
 
 		//Window data
 		WindowData mData;

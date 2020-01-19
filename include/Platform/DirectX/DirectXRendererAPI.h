@@ -22,11 +22,11 @@
 //Helper functions
 #include <Platform/DirectX/Helpers.h>
 
-#include "RendererAPI.h"
+#include "Renderer/RendererAPI.h"
 
 namespace Framework
 {
-	class DirectXRendererAPI : public RendererAPI
+	class DirectXRendererAPI : public Renderer::RendererAPI
 	{
 		virtual void SetClearColor(const glm::vec4& a_color) override;
 		virtual void Clear() override;
@@ -34,7 +34,7 @@ namespace Framework
 		virtual void SetDepthTest(bool a_state) override;
 		virtual void SetCullFace(bool a_state) override;
 
-		virtual void DrawIndexed(const std::shared_ptr<VertexArray>& a_vertexArray) override;
+		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray) override;
 
 		void ClearDepth(Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList2> commandList,
 			D3D12_CPU_DESCRIPTOR_HANDLE dsv, FLOAT depth = 1.0f);

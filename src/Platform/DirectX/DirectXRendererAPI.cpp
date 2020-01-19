@@ -61,7 +61,7 @@ namespace Framework
 	{
 	}
 
-	void DirectXRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& a_vertexArray)
+	void DirectXRendererAPI::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray)
 	{
 	}
 

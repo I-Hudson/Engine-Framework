@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 
 #include <glm/gtx/transform.hpp>
-#include "VertexArray.h"
+#include "Renderer/VertexArray.h"
 
 namespace Framework
 {
@@ -17,10 +17,10 @@ namespace Framework
 		virtual void Rotate(float a_angle, const glm::vec3& a_axis);
 		virtual const glm::mat4 GetTransform() { return m_objectMatrix; }
 
-		std::shared_ptr<VertexArray> GetVertexArray() { return m_vertexArray; }
+		std::shared_ptr<Renderer::VertexArray> GetVertexArray() { return m_vertexArray; }
 
 	protected:
-		std::shared_ptr<VertexArray> m_vertexArray;
+		std::shared_ptr<Renderer::VertexArray> m_vertexArray;
 		glm::mat4 m_objectMatrix;
 	};
 }

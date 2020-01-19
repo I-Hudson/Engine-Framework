@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Events/Event.h"
+#include <Renderer\Material.h>
 
 namespace Framework
 {
@@ -39,5 +40,26 @@ namespace Framework
 		}
 	private:
 		unsigned int m_width, m_height;
+	};
+
+	class RendererMaterialSelected : public Event
+	{
+	public:
+		RendererMaterialSelected(Framework::Renderer::Material* seltectedMaterial) 
+			: material(seltectedMaterial)
+		{ }
+
+		EVENT_CLASS_TYPE(WindowClose)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+
+			std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "New Material Selected";
+			return ss.str();
+		}
+
+	private:
+		Framework::Renderer::Material* material;
 	};
 }

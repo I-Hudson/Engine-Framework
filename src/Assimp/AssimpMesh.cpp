@@ -2,8 +2,8 @@
 #include "Log.h"
 
 #include "Application.h"
-#include "Shader.h"
-#include "Renderer.h"
+#include "Renderer/Shader.h"
+#include "Renderer/Renderer.h"
 
 AssimpMesh::AssimpMesh()
 {
@@ -65,6 +65,14 @@ AssimpMesh::AssimpMesh(std::vector<AssimpVertex> aVertices, std::vector<unsigned
 
 	//set the vertex buffers
 	setupMesh();
+
+	m_material = Framework::Renderer::Material::Create();
+	m_material->SetShader(Framework::Application::Get().GetShaderLibrary().GetShader("demoShader"));
+	int i = 0;
+	for (auto it : aTextures)
+	{
+		m_material->SetTexture(it, Framework::Application::Get().GetTextureLibrary().GetTexture(it), i++);
+	}
 }
 
 AssimpMesh::AssimpMesh(std::vector<AssimpVertex> aVertices, std::vector<unsigned int> aIndices)
@@ -137,27 +145,27 @@ void AssimpMesh::Draw()
 	//// always good practice to set everything back to defaults once configured.
 	//glActiveTexture(GL_TEXTURE0);
 
-	Framework::Renderer::Submit(Framework::Application::Get().GetShaderLibrary().GetShader("demoShader"), m_vertexArray, mTextures);
+	Framework::Renderer::Renderer::Submit(m_material, m_vertexArray, mTextures);
 }
 
 void AssimpMesh::setupMesh()
 {
-	std::shared_ptr<Framework::VertexBuffer> vb;
-	vb.reset(Framework::VertexBuffer::Create(&mVertices[0], sizeof(AssimpVertex) * mVertices.size()));
+	std::shared_ptr<Framework::Renderer::VertexBuffer> vb;
+	vb.reset(Framework::Renderer::VertexBuffer::Create(&mVertices[0], sizeof(AssimpVertex) * (uint32_t)mVertices.size()));
 	
-	Framework::BufferLayout layout =
+	Framework::Renderer::BufferLayout layout =
 	{
-			{Framework::ShaderDataType::Float4, "inPosition"},
-			{Framework::ShaderDataType::Float4, "inColor", true},
-			{Framework::ShaderDataType::Float4, "inNormal", true},
-			{Framework::ShaderDataType::Float2, "inUV", true},
+			{Framework::Renderer::ShaderDataType::Float4, "inPosition"},
+			{Framework::Renderer::ShaderDataType::Float4, "inColor", true},
+			{Framework::Renderer::ShaderDataType::Float4, "inNormal", true},
+			{Framework::Renderer::ShaderDataType::Float2, "inUV", true},
 	};
 	vb->SetLayout(layout);
 
-	std::shared_ptr<Framework::IndexBuffer> ib;
-	ib.reset(Framework::IndexBuffer::Create(&mIndices[0], mIndices.size()));
+	std::shared_ptr<Framework::Renderer::IndexBuffer> ib;
+	ib.reset(Framework::Renderer::IndexBuffer::Create(&mIndices[0], (uint32_t)mIndices.size()));
 
-	m_vertexArray.reset(Framework::VertexArray::Create());
+	m_vertexArray.reset(Framework::Renderer::VertexArray::Create());
 	m_vertexArray->AddVertexBuffer(vb);
 	m_vertexArray->AddIndexBuffer(ib);
 }
@@ -167,6 +175,9 @@ void AssimpMesh::unloadMesh()
 	//delete buffers
 	m_vertexArray.reset();
 	
+	m_material->Release();
+	delete m_material;
+
 	//delete all textures
 	mTextures.clear();
 }

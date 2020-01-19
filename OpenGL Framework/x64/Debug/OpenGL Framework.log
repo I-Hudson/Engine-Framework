@@ -1,130 +1,101 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(445,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  glad.c
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_widgets.cpp
   Application.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  AssimpMesh.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  VulkanDevice.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Assimp\AssimpMesh.cpp(146,97): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Assimp\AssimpMesh.cpp(158,71): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-  AssimpModel.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanPipeline.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Assimp\AssimpModel.cpp(247,54): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Assimp\AssimpModel.cpp(248,45): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Buffer.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanQueue.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Buffer.cpp(10,13): warning C4018: '>': signed/unsigned mismatch
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Buffer.cpp(51,13): warning C4018: '>': signed/unsigned mismatch
-  Camera.cpp
-  GraphicsContext.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  Layer.cpp
-  LayerStack.cpp
-  Log.cpp
-  Material.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  CommandQueue.cpp
-  DirectXBuffer.cpp
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXBuffer.cpp(12,50): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  DirectXContext.cpp
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(272,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\Vulkan\Internal\VulkanQueue.cpp(34,120): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(122,1): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(264): message : see reference to function template instantiation 'void std::_Optional_construct_base<_Ty>::_Assign<size_t&>(_Ty2)' being compiled
           with
           [
-              _Ty=int
+              _Ty=uint32_t,
+              _Ty2=size_t &
           ]
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\DirectX\DirectXContext.cpp(273,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(264): message : see reference to function template instantiation 'void std::_Optional_construct_base<_Ty>::_Assign<size_t&>(_Ty2)' being compiled
           with
           [
-              _Ty=int
+              _Ty=uint32_t,
+              _Ty2=size_t &
           ]
-  DirectXRendererAPI.cpp
-  Generating Code...
-  Compiling...
-  DirectXShader.cpp
-  DirectXVertexArray.cpp
-  OpenGLBuffer.cpp
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\OpenGL\OpenGLBuffer.cpp(22,20): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-  OpenGLContext.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  OpenGLRendererAPI.cpp
-  OpenGLShader.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  OpenGLTexture.cpp
-  OpenGLVertexArray.cpp
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\OpenGL\OpenGLVertexArray.cpp(74,93): warning C4312: 'type cast': conversion from 'const uint32_t' to 'const void *' of greater size
-  WindowsWindow.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  RenderCommand.cpp
-  Renderer.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Renderer.cpp(115,119): warning C4267: 'argument': conversion from 'size_t' to 'const uint8_t', possible loss of data
-  RendererAPI.cpp
-  Shader.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  Cube.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\xmemory(202,109): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1490): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Framework::Vertex(&)[24],unsigned __int64>(_Ty &,Framework::Vertex (&)[24],unsigned __int64 &&) noexcept(false)' being compiled
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\Vulkan\Internal\VulkanQueue.cpp(30): message : see reference to function template instantiation 'std::optional<uint32_t> &std::optional<uint32_t>::operator =<size_t&,0>(_Ty2)' being compiled
           with
           [
-              _Ty=Framework::OpenGLVertexBuffer
+              _Ty2=size_t &
           ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1590): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Framework::Vertex(&)[24],unsigned __int64>(Framework::Vertex (&)[24],unsigned __int64 &&)' being compiled
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\Vulkan\Internal\VulkanQueue.cpp(30): message : see reference to function template instantiation 'std::optional<uint32_t> &std::optional<uint32_t>::operator =<size_t&,0>(_Ty2)' being compiled
           with
           [
-              _Ty=Framework::OpenGLVertexBuffer
+              _Ty2=size_t &
           ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1591): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Framework::Vertex(&)[24],unsigned __int64>(Framework::Vertex (&)[24],unsigned __int64 &&)' being compiled
-          with
-          [
-              _Ty=Framework::OpenGLVertexBuffer
-          ]
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Shape\Cube.cpp(115): message : see reference to function template instantiation 'std::shared_ptr<Framework::OpenGLVertexBuffer> std::make_shared<Framework::OpenGLVertexBuffer,Framework::Vertex(&)[24],size_t>(Framework::Vertex (&)[24],size_t &&)' being compiled
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(632): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(178): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\xmemory(202,109): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1490): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,unsigned int(&)[36],unsigned __int64>(_Ty &,unsigned int (&)[36],unsigned __int64 &&) noexcept(false)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\xmemory(202,109): warning C4267: 'initializing': conversion from 'size_t' to '_Ty', possible loss of data
           with
           [
-              _Ty=Framework::OpenGLIndexBuffer
+              _Ty=unsigned int
           ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1590): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(112): message : see reference to function template instantiation 'void std::_Construct_in_place<unsigned int,size_t&>(_Ty &,size_t &) noexcept' being compiled
           with
           [
-              _Ty=Framework::OpenGLIndexBuffer
+              _Ty=unsigned int
           ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1591): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(124): message : see reference to function template instantiation '_Ty &std::_Optional_construct_base<_Ty>::_Construct<size_t&>(size_t &)' being compiled
           with
           [
-              _Ty=Framework::OpenGLIndexBuffer
+              _Ty=uint32_t
           ]
-F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Shape\Cube.cpp(145): message : see reference to function template instantiation 'std::shared_ptr<Framework::OpenGLIndexBuffer> std::make_shared<Framework::OpenGLIndexBuffer,unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
-  Shape.cpp
-  Texture.cpp
-  Time.cpp
-  VertexArray.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(124): message : see reference to function template instantiation '_Ty &std::_Optional_construct_base<_Ty>::_Construct<size_t&>(size_t &)' being compiled
+          with
+          [
+              _Ty=uint32_t
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(264): message : see reference to function template instantiation 'void std::_Optional_construct_base<_Ty>::_Assign<size_t&>(_Ty2)' being compiled
+          with
+          [
+              _Ty=uint32_t,
+              _Ty2=size_t &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(264): message : see reference to function template instantiation 'void std::_Optional_construct_base<_Ty>::_Assign<size_t&>(_Ty2)' being compiled
+          with
+          [
+              _Ty=uint32_t,
+              _Ty2=size_t &
+          ]
+  VulkanSurface.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanSwapchain.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp(186,33): warning C4838: conversion from 'int' to 'uint32_t' requires a narrowing conversion
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp(186,40): warning C4838: conversion from 'int' to 'uint32_t' requires a narrowing conversion
+  VulkanContext.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  GraphicsContext.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  Window.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\OpenGL Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
   Generating Code...
-d3d12.lib(d3d12.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in assimp.lib(assimp-vc140-mt.dll); second definition ignored
-opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in assimp.lib(assimp-vc140-mt.dll); second definition ignored
+assimp.lib(assimp-vc140-mt.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
+d3d12.lib(d3d12.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
+opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
 AssimpModel.obj : warning LNK4006: "public: unsigned int __cdecl aiMaterial::GetTextureCount(enum aiTextureType)const " (?GetTextureCount@aiMaterial@@QEBAIW4aiTextureType@@@Z) already defined in assimp.lib(assimp-vc140-mt.dll); second definition ignored
 AssimpModel.obj : warning LNK4006: "public: enum aiReturn __cdecl aiMaterial::GetTexture(enum aiTextureType,unsigned int,struct aiString *,enum aiTextureMapping *,unsigned int *,float *,enum aiTextureOp *,enum aiTextureMapMode *)const " (?GetTexture@aiMaterial@@QEBA?AW4aiReturn@@W4aiTextureType@@IPEAUaiString@@PEAW4aiTextureMapping@@PEAIPEAMPEAW4aiTextureOp@@PEAW4aiTextureMapMode@@@Z) already defined in assimp.lib(assimp-vc140-mt.dll); second definition ignored
 Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Separator(void)" (?Separator@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored

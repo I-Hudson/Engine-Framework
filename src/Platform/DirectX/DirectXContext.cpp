@@ -1,5 +1,5 @@
 #include "Platform/DirectX/DirectXContext.h"
-#include "RenderCommand.h"
+#include "Renderer/RenderCommand.h"
 #include "Application.h"
 
 #include <string>
@@ -51,16 +51,16 @@ namespace Framework
 					break;
 
 				case '1':
-					RenderCommand::SetClearColor({ 1.0f, 0.0f, 0.0f, 1.0f });
+					Renderer::RenderCommand::SetClearColor({ 1.0f, 0.0f, 0.0f, 1.0f });
 					break;
 				case '2':
-					RenderCommand::SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
+					Renderer::RenderCommand::SetClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 					break; 
 				case '3':
-					RenderCommand::SetClearColor({ 0.0f, 0.0f, 1.0f, 1.0f });
+					Renderer::RenderCommand::SetClearColor({ 0.0f, 0.0f, 1.0f, 1.0f });
 					break; 
 				case '4':
-					RenderCommand::SetClearColor({ 1.0f, 1.0f, 1.0f, 1.0f });
+					Renderer::RenderCommand::SetClearColor({ 1.0f, 1.0f, 1.0f, 1.0f });
 					break;
 
 				case VK_ESCAPE:

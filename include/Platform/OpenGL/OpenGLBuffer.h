@@ -1,33 +1,33 @@
 #pragma once
 
-#include "Buffer.h"
+#include "Renderer/Buffer.h"
 
 namespace Framework
 {
-	class OpenGLVertexBuffer : public VertexBuffer
+	class OpenGLVertexBuffer : public Renderer::VertexBuffer
 	{
 	public:
 		OpenGLVertexBuffer(float* aVertices, uint32_t aSize);
-		OpenGLVertexBuffer(Vertex* aVertices, uint32_t aSize);
+		OpenGLVertexBuffer(Renderer::Vertex* aVertices, uint32_t aSize);
 		virtual ~OpenGLVertexBuffer();
 	
 		//Bind and unbind
 		virtual void Bind()  const override;
 		virtual void Unbind() const override;
 	
-		virtual void SetSubData(const Vertex* a_vertices, const unsigned int& a_bufferSize) override;
+		virtual void SetSubData(const Renderer::Vertex* a_vertices, const unsigned int& a_bufferSize) override;
 
 		//Set the layout for this buffer
-		virtual void SetLayout(const BufferLayout& aLayout) override { mLayout = aLayout; }
+		virtual void SetLayout(const Renderer::BufferLayout& aLayout) override { mLayout = aLayout; }
 		//Get the layout for this buffer
-		virtual const BufferLayout& GetLayout() const override { return mLayout; }
+		virtual const Renderer::BufferLayout& GetLayout() const override { return mLayout; }
 
 	private:
 		uint32_t m_ID;
-		BufferLayout mLayout;
+		Renderer::BufferLayout mLayout;
 	};
 	
-	class OpenGLIndexBuffer : public IndexBuffer
+	class OpenGLIndexBuffer : public Renderer::IndexBuffer
 	{
 	public:
 		OpenGLIndexBuffer(unsigned int* indices, unsigned int count);

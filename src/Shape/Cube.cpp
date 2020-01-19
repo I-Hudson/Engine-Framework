@@ -35,43 +35,43 @@ namespace Framework
 	void Cube::Create(const float& a_size)
 	{
 		// Setup the vertex buffer
-		Vertex vertices[] =
+		Renderer::Vertex vertices[] =
 		{
 			//FRONT
-			Vertex({-a_size, -a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f , 1.0f}, {0, 0, 1, 0 }, { 0, 0 }), //0
-			Vertex({-a_size, a_size, a_size, 1.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0,0,1,0}, {0, 1}),
-			Vertex({a_size, a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0, 0, 1, 0}, {1, 1}),
-			Vertex({a_size, -a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0, 0, 1, 0}, {1, 0}),
+			Renderer::Vertex({-a_size, -a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f , 1.0f}, {0, 0, 1, 0 }, { 0, 0 }), //0
+			Renderer::Vertex({-a_size, a_size, a_size, 1.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0,0,1,0}, {0, 1}),
+			Renderer::Vertex({a_size, a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0, 0, 1, 0}, {1, 1}),
+			Renderer::Vertex({a_size, -a_size, a_size, 1.0f}, {1.0f, 1.0f, 1.0f, 1.0f}, {0, 0, 1, 0}, {1, 0}),
 
 			//RIGHT																	    
-			Vertex(a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 0), //4
-			Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 1),
-			Vertex(a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 1),
-			Vertex(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 0),
+			Renderer::Vertex(a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 0), //4
+			Renderer::Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 0, 1),
+			Renderer::Vertex(a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 1),
+			Renderer::Vertex(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1,0,0,0, 1, 0),
 			
 			//BACK
-			Vertex(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 0), //8
-			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 1),
-			Vertex(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 1),
-			Vertex(a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 0),
+			Renderer::Vertex(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 0), //8
+			Renderer::Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 1, 1),
+			Renderer::Vertex(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 1),
+			Renderer::Vertex(a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,0,-1,0, 0, 0),
 			
 			//LEFT
-			Vertex(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 0), //12
-			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 1),
-			Vertex(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 1),
-			Vertex(-a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 0),
+			Renderer::Vertex(-a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 0), //12
+			Renderer::Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 0, 1),
+			Renderer::Vertex(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 1),
+			Renderer::Vertex(-a_size, -a_size, a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, -1,0,0,0, 1, 0),
 			
 			//TOP
-			Vertex(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 0), //16
-			Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 1),
-			Vertex(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 1),
-			Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 0),
+			Renderer::Vertex(-a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 0), //16
+			Renderer::Vertex(-a_size, a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 0, 1),
+			Renderer::Vertex(a_size, a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 1),
+			Renderer::Vertex(a_size, a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,1,0,0, 1, 0),
 			
 			//BOTTOM
-			Vertex(-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 0), //20
-			Vertex(-a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 1),
-			Vertex(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 1, 1),
-			Vertex(a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 1, 0)
+			Renderer::Vertex(-a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 0), //20
+			Renderer::Vertex(-a_size, -a_size, -a_size, 1.0f,1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 0, 1),
+			Renderer::Vertex(a_size, -a_size, -a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 1, 1),
+			Renderer::Vertex(a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0,-1,0,0, 1, 0)
 		};
 			// Setup the vertex buffer
 		//	VertexDX vertices[] =
@@ -113,12 +113,12 @@ namespace Framework
 		//	VertexDX(a_size, -a_size, a_size, 1.0f, 1.0f, 1.0f)
 		//};
 		std::shared_ptr<OpenGLVertexBuffer> vertexBuffer = std::make_shared<OpenGLVertexBuffer>(vertices, sizeof(vertices));
-		BufferLayout layout =
+		Renderer::BufferLayout layout =
 		{
-			{ShaderDataType::Float4, "inPosition"},
-			{ShaderDataType::Float4, "inColor", true},
-			{ShaderDataType::Float4, "inNormal", true},
-			{ShaderDataType::Float2, "inUV", true},
+			{Renderer::ShaderDataType::Float4, "inPosition"},
+			{Renderer::ShaderDataType::Float4, "inColor", true},
+			{Renderer::ShaderDataType::Float4, "inNormal", true},
+			{Renderer::ShaderDataType::Float2, "inUV", true},
 		};
 		vertexBuffer->SetLayout(layout);
 

@@ -48,13 +48,13 @@ using namespace Microsoft::WRL;
 #include <Platform/DirectX/Helpers.h>
 
 #include "Platform/DirectX/CommandQueue.h"
-#include "GraphicsContext.h"
+#include "Renderer/GraphicsContext.h"
 
 namespace Framework
 {
 	const uint8_t m_numFrames = 3;
 
-	class DirectXContext : public GraphicsContext
+	class DirectXContext : public Renderer::GraphicsContext
 	{
 	public:
 		DirectXContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen = false, void* window = nullptr);
@@ -66,6 +66,7 @@ namespace Framework
 		virtual void SwapBuffers() override;
 
 		virtual void* GetNativeContext() override { return this; }
+		virtual void* GetWindow() override { return nullptr; }
 
 	public:
 

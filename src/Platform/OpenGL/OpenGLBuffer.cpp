@@ -16,16 +16,16 @@ namespace Framework
 		glBufferData(GL_ARRAY_BUFFER, a_size, a_vertices, GL_STATIC_DRAW);
 	}
 
-	OpenGLVertexBuffer::OpenGLVertexBuffer(Vertex* a_vertices, uint32_t a_size)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(Renderer::Vertex* a_vertices, uint32_t a_size)
 	{
 		m_bufferSize = a_size;
-		m_count = a_size / (float)sizeof(Vertex);
+		m_count = a_size / (float)sizeof(Renderer::Vertex);
 
 		glCreateBuffers(1, &m_ID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_ID);
 		glBufferData(GL_ARRAY_BUFFER, a_size, a_vertices, GL_STATIC_DRAW);
 
-		m_vertics = new Vertex[m_bufferSize];
+		m_vertics = new Renderer::Vertex[m_bufferSize];
 		memcpy(m_vertics, a_vertices, m_bufferSize);
 	}
 
@@ -45,13 +45,13 @@ namespace Framework
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	void OpenGLVertexBuffer::SetSubData(const Vertex* a_vertices, const unsigned int& a_bufferSize)
+	void OpenGLVertexBuffer::SetSubData(const Renderer::Vertex* a_vertices, const unsigned int& a_bufferSize)
 	{
 		Bind();
 		glBufferSubData(GL_ARRAY_BUFFER, 0, a_bufferSize, a_vertices);
 		//Unbind();
 
-		m_count = a_bufferSize / sizeof(Vertex);
+		m_count = a_bufferSize / sizeof(Renderer::Vertex);
 	}
 
 	/////////////////////////////////////////////////////////////////////////

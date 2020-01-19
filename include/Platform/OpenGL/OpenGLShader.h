@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Shader.h"
+#include "Renderer/Shader.h"
 
 namespace Framework
 {
-	class OpenGLShader : public Shader
+	class OpenGLShader : public Renderer::Shader
 	{
 	public:
 		OpenGLShader(const std::string& a_shaderFile);
@@ -35,7 +35,9 @@ namespace Framework
 		void UploadUniformMat3(const std::string& a_name, const glm::mat3& a_value);
 		void UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value);
 
-		void UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint = 0) override;
+		void UploadTexture(const std::string& a_name, const std::shared_ptr<Renderer::Texture> a_texture, const uint8_t& a_textureUint = 0) override;
+
+		virtual const unsigned int& GetProgramId() override { return m_ID; }
 
 		virtual void Release() override;
 

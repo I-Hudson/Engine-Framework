@@ -1,11 +1,7 @@
 #include "Platform/Windows/WindowsWindow.h"
 
-#include "Renderer.h"
+#include "Renderer/Renderer.h"
 #include "Platform/DirectX/DirectXContext.h"
-
-#define GLFW_EXPOSE_NATIVE_WIN32
-#include <GLFW/glfw3.h>
-#include <GLFW/glfw3native.h>
 
 namespace Framework
 {
@@ -49,7 +45,7 @@ namespace Framework
 		mData.Width = aProps.Width;
 		mData.Height = aProps.Height;
 
-		m_context = GraphicsContext::Create(aProps.Width, aProps.Height, aProps.Title, false, nullptr, &mData);
+		m_context = Renderer::GraphicsContext::Create(aProps.Width, aProps.Height, aProps.Title, false, nullptr, &mData);
 	}
 
 	void WindowsWindow::Shutdown()

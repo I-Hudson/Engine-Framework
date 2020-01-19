@@ -4,7 +4,7 @@
 
 namespace Framework
 {
-	OpenGLTexture::OpenGLTexture(const std::string& a_name, const std::string& a_textureFile, const TextureType& type)
+	OpenGLTexture::OpenGLTexture(const std::string& a_name, const std::string& a_textureFile, const Renderer::TextureType& type)
 		: m_name(a_name)
 	{
 		m_ID = 0;
@@ -26,7 +26,7 @@ namespace Framework
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void OpenGLTexture::Load(const std::string& a_filePath, const TextureType& type)
+	void OpenGLTexture::Load(const std::string& a_filePath, const Renderer::TextureType& type)
 	{
 		glCreateTextures(GL_TEXTURE_2D, 1, &m_ID);
 		Bind();

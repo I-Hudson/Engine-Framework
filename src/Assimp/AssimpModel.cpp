@@ -45,7 +45,6 @@ void AssimpModel::Destroy()
 	for (unsigned int i = 0; i < mMeshes.size(); i++)
 	{
 		mMeshes[i].unloadMesh();
-
 	}
 	EN_TRACE("Model Has Been Unloaded");
 }
@@ -244,42 +243,42 @@ std::vector<std::string> AssimpModel::loadMaterialTextures(aiMaterial* aMaterial
 std::string AssimpModel::TextureFromFile(const char* path, const std::string& directory, bool gamma)
 {
 	//texture filename
-	int lastSlash = std::string(path).find_last_of('\\');
-	int pathLength = std::string(path).length();
+	int lastSlash = (int)std::string(path).find_last_of('\\');
+	int pathLength = (int)std::string(path).length();
 
 	std::string filename = std::string(path).substr(lastSlash + 1, pathLength - lastSlash); //std::string(path);
 	filename = directory + '/' + filename;
 	return filename;
 }
 
-Framework::TextureType AssimpModel::GetTextureType(aiTextureType type)
+Framework::Renderer::TextureType AssimpModel::GetTextureType(aiTextureType type)
 {
 	switch (type)
 	{
 	case aiTextureType_DIFFUSE:
-		return Framework::TextureType::DIFFUSE;
+		return Framework::Renderer::TextureType::DIFFUSE;
 	case aiTextureType_SPECULAR:
-		return Framework::TextureType::SPECULAR;
+		return Framework::Renderer::TextureType::SPECULAR;
 	case aiTextureType_AMBIENT:
-		return Framework::TextureType::AMBIENT;
+		return Framework::Renderer::TextureType::AMBIENT;
 	case aiTextureType_EMISSIVE:
-		return Framework::TextureType::EMISSIVE;
+		return Framework::Renderer::TextureType::EMISSIVE;
 	case aiTextureType_HEIGHT:
-		return Framework::TextureType::HEIGHT;
+		return Framework::Renderer::TextureType::HEIGHT;
 	case aiTextureType_NORMALS:
-		return Framework::TextureType::NORMALS;
+		return Framework::Renderer::TextureType::NORMALS;
 	case aiTextureType_SHININESS:
-		return Framework::TextureType::SHININESS;
+		return Framework::Renderer::TextureType::SHININESS;
 	case aiTextureType_OPACITY:
-		return Framework::TextureType::OPACITY;
+		return Framework::Renderer::TextureType::OPACITY;
 	case aiTextureType_DISPLACEMENT:
-		return Framework::TextureType::DISPLACEMENT;
+		return Framework::Renderer::TextureType::DISPLACEMENT;
 	case aiTextureType_LIGHTMAP:
-		return Framework::TextureType::LIGHTMAP;
+		return Framework::Renderer::TextureType::LIGHTMAP;
 	case aiTextureType_REFLECTION:
-		return Framework::TextureType::REFLECTION;
+		return Framework::Renderer::TextureType::REFLECTION;
 	default:
 		break;
 	}
-	return Framework::TextureType::UNKNOWN;
+	return Framework::Renderer::TextureType::UNKNOWN;
 }

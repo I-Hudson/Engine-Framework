@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Buffer.h"
+#include "Renderer/Buffer.h"
 
 #include "Platform/DirectX/DirectXContext.h"
 #include "Application.h"
@@ -8,11 +8,11 @@
 namespace Framework
 {
 
-	class DirectXVertexBuffer : public VertexBuffer
+	class DirectXVertexBuffer : public Renderer::VertexBuffer
 	{
 	public:
 		DirectXVertexBuffer(float* aVertices, uint32_t aSize);
-		DirectXVertexBuffer(VertexDX* aVertices, uint32_t aSize);
+		DirectXVertexBuffer(Renderer::VertexDX* aVertices, uint32_t aSize);
 		virtual ~DirectXVertexBuffer();
 
 		//Bind and unbind
@@ -20,15 +20,15 @@ namespace Framework
 		virtual void Unbind() const override;
 
 		//Set the layout for this buffer
-		virtual void SetLayout(const BufferLayout& aLayout) override { mLayout = aLayout; }
+		virtual void SetLayout(const Renderer::BufferLayout& aLayout) override { mLayout = aLayout; }
 		//Get the layout for this buffer
-		virtual const BufferLayout& GetLayout() const override { return mLayout; }
+		virtual const Renderer::BufferLayout& GetLayout() const override { return mLayout; }
 
 		D3D12_VERTEX_BUFFER_VIEW* GetView() { return &m_vertexBufferView; }
 
 	private:
 		uint32_t m_ID;
-		BufferLayout mLayout;
+		Renderer::BufferLayout mLayout;
 
 		int m_numOfElements;
 
@@ -36,7 +36,7 @@ namespace Framework
 		D3D12_VERTEX_BUFFER_VIEW m_vertexBufferView;
 	};
 
-	class DirectXIndexBuffer : public IndexBuffer
+	class DirectXIndexBuffer : public Renderer::IndexBuffer
 	{
 	public:
 		DirectXIndexBuffer(WORD* indices, WORD count);

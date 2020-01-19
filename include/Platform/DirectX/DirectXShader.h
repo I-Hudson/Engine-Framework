@@ -2,12 +2,12 @@
 
 #include "Platform/DirectX/DirectXContext.h"
 
-#include "Shader.h"
+#include "Renderer/Shader.h"
 #include "Application.h"
 
 namespace Framework
 {
-	class DirectXShader : public Shader
+	class DirectXShader : public Renderer::Shader
 	{
 	public:
 		DirectXShader(const std::string& a_shaderFile);
@@ -38,9 +38,10 @@ namespace Framework
 		void UploadUniformMat3(const std::string& a_name, const glm::mat3& a_value);
 		void UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value);
 
-		void UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint = 0) override;
+		void UploadTexture(const std::string& a_name, const std::shared_ptr<Renderer::Texture> a_texture, const uint8_t& a_textureUint = 0) override;
 
 		virtual void Release() override;
+		virtual const unsigned int& GetProgramId() override { return m_ID; }
 
 		Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> GetDescriptorHeap() { return m_DSVHeap; }
 		Microsoft::WRL::ComPtr<ID3D12RootSignature> GetRootSignature() { return m_rootSignature; }

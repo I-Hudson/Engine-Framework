@@ -10,10 +10,11 @@
 #include <iostream>
 #include <vector>
 
-#include "VertexArray.h"
-#include "Buffer.h"
+#include "Renderer/VertexArray.h"
+#include "Renderer/Buffer.h"
+#include "Renderer/Material.h"
 
-struct AssimpVertex : Framework::Vertex
+struct AssimpVertex : Framework::Renderer::Vertex
 {
 };
 
@@ -38,6 +39,8 @@ public:
 	AssimpMesh(std::vector<AssimpVertex> aVertices, std::vector<unsigned int> aIndices, std::vector<std::string> aTextures);
 	AssimpMesh(std::vector<AssimpVertex> aVertices, std::vector<unsigned int> aIndices);
 
+	Framework::Renderer::Material* GetMaterial() const { return m_material; }
+
 	//Draw the mesh
 	void Draw();
 	//unload the mesh
@@ -49,7 +52,9 @@ private:
 	*/
 	unsigned int mVBO;
 	unsigned int mIBO;
-	std::shared_ptr<Framework::VertexArray> m_vertexArray;
+	std::shared_ptr<Framework::Renderer::VertexArray> m_vertexArray;
+
+	Framework::Renderer::Material* m_material;
 
 
 	/*

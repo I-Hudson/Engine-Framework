@@ -1,10 +1,8 @@
 #include "Application.h"
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 #include "Platform/OpenGL/OpenGLContext.h"
 #include "Platform/DirectX/DirectXContext.h"
+#include "Platform/Vulkan/VulkanContext.h"
 
 #include "Platform/DirectX/DirectXShader.h"
 #include "Platform/DirectX/DirectXBuffer.h"
@@ -15,6 +13,8 @@
 namespace Framework
 {
 #define BIND_EVENT_FUNC(x) (std::bind(&Application::x, this, std::placeholders::_1))
+
+	bool testVulkan = true;
 
 	Application* Application::sInstance = nullptr;
 
@@ -36,27 +36,29 @@ namespace Framework
 		WindowProps props = WindowProps(a_title, a_width, a_height);
 		m_window = Window::Create(props);
 		m_window->SetEventCallback(BIND_EVENT_FUNC(OnEvent));
-		
-		OnImGuiCreate();
+
+		if (!testVulkan)
+		{
+			OnImGuiCreate();
+		}
 
 		//Setup the main camera
 		m_mainCamera = std::make_shared<Camera>();
 		m_mainCamera->SetProjMatrix(45.0f, (float)a_width / (float)a_height, 0.1f, 1000.0f);
 
-		auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
-		//auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
 		
 		//Create a demo cube and rotate
 		if (a_runDemo)
 		{
+			auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
+			//auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
 			m_demoCube = std::make_shared<Cube>(1.0f);
 		}
 
-		RenderCommand::SetDepthTest(true);
-		RenderCommand::SetCullFace(true);
-		glCullFace(GL_BACK);
+		Renderer::RenderCommand::SetDepthTest(true);
+		Renderer::RenderCommand::SetCullFace(true);
 
-		RenderCommand::SetVSync(false);
+		Renderer::RenderCommand::SetVSync(false);
 
 		if (!OnCreate())
 		{
@@ -75,12 +77,12 @@ namespace Framework
 			return;
 		}
 
-		RenderCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+		Renderer::RenderCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 		do
 		{
 			Time::UpdateTime();
 		
-			if (RendererAPI::GetAPI() == RendererAPI::API::DirectX)
+			if (Renderer::RendererAPI::GetAPI() == Renderer::RendererAPI::API::DirectX)
 			{
 				//RenderCommand::SetClearColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 				//const glm::vec4 eyePosition = glm::vec4(0, 0, -10, 1);
@@ -143,36 +145,47 @@ namespace Framework
 			}
 			else
 			{
-				GLFWwindow* window = ((OpenGLContext*)m_window->GetGraphicsContext()->GetNativeContext())->GetWindow();
+				GLFWwindow* window = static_cast<GLFWwindow*>(m_window->GetGraphicsContext()->GetWindow());
 				m_isRunning = !glfwWindowShouldClose(window);
-		
-				ImGui_ImplOpenGL3_NewFrame();
-				ImGui_ImplGlfw_NewFrame();
-				ImGui::NewFrame();
+				
+				if (!testVulkan)
+				{
+					ImGui_ImplOpenGL3_NewFrame();
+					ImGui_ImplGlfw_NewFrame();
+					ImGui::NewFrame();
 
-				m_mainCamera->Update(Time::GetDeltaTime());
+
+					m_mainCamera->Update(Time::GetDeltaTime());
+				}
+
 				Update();
+
+				m_guiManager.OnUpdate();
+
 				for (auto layer : m_layerStack)
 				{
 					layer->OnUpdate();
 				}
 				
-				RenderCommand::Clear();
+				Renderer::RenderCommand::Clear();
 			
-				auto shader = m_shaderLibrary.GetShader("demoShader");
-				Renderer::Begin(*m_mainCamera);
+				Renderer::Renderer::Begin(*m_mainCamera);
 				if (a_runDemo)
 				{
+					auto shader = m_shaderLibrary.GetShader("demoShader");
 					//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
 					//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
-					Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
+					Renderer::Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
 				}
 				Draw();
 				//Renderer::SubmitBatched(shader);
-				Renderer::EndScene();
+				Renderer::Renderer::EndScene();
 
-				ImGui::Render();
-				ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+				if (!testVulkan)
+				{
+					ImGui::Render();
+					ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+				}
 			}
 			//GLFW
 			m_window->OnUpdate();
@@ -186,19 +199,24 @@ namespace Framework
 	{
 		Destroy();
 
-		OnImGuiDestroy();
+		if (!testVulkan)
+		{
+			OnImGuiDestroy();
+		}
 
+		m_guiManager.Destroy();
 		m_layerStack.Destroy();
 		m_textureLibrary.ReleaseAll();
 		m_shaderLibrary.ReleaseAll();
-		
-		Renderer::Destroy();
 
-		RenderCommand::Destroy();
-		Log::Destroy();
+		Renderer::Renderer::Destroy();
+
+		Renderer::RenderCommand::Destroy();
 
 		m_window->Destroy();
 		delete m_window;
+
+		Log::Destroy();
 	}
 
 	void Application::PushLayer(Layer* aLayer)
@@ -218,6 +236,16 @@ namespace Framework
 		EventDispatcher dispatcher(a_event);
 
 		EN_CORE_INFO("{0}", a_event.ToString());
+
+		for (auto layer : m_layerStack)
+		{
+			layer->OnEvent(a_event);
+			if (a_event.Handled)
+			{
+				EN_CORE_INFO("Event, {0} was handled by {1}", a_event.ToString(), layer->GetName());
+				break;
+			}
+		}
 	}
 
 	void Application::OnImGuiCreate()
@@ -226,7 +254,7 @@ namespace Framework
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
 
-		GLFWwindow* w = static_cast<OpenGLContext*>(GetWindow()->GetGraphicsContext())->GetWindow();
+		GLFWwindow* w = static_cast<GLFWwindow*>(GetWindow()->GetGraphicsContext()->GetWindow());
 		ImGui_ImplGlfw_InitForOpenGL(w, true);
 		ImGui_ImplOpenGL3_Init("#version 400");
 

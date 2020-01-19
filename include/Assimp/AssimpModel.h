@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Assimp/AssimpMesh.h"
-#include "Texture.h"
-#include "Material.h"
+#include "Renderer/Texture.h"
+#include "Renderer/Material.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -53,8 +53,6 @@ private:
 	std::vector<std::string> mLoadedTextures;
 	std::string mModelName;
 
-	Framework::Material m_material;
-
 	/*
 		Functions
 	*/
@@ -65,5 +63,5 @@ private:
 		std::string aName);
 	//load texture from file
 	std::string TextureFromFile(const char *path, const std::string &directory, bool gamma = false);
-	Framework::TextureType GetTextureType(aiTextureType type);
+	Framework::Renderer::TextureType GetTextureType(aiTextureType type);
 };

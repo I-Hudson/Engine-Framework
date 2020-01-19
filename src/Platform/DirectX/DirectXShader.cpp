@@ -157,7 +157,7 @@ namespace Framework
 	{
 	}
 
-	void DirectXShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint)
+	void DirectXShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Renderer::Texture> a_texture, const uint8_t& a_textureUint)
 	{
 	}
 
