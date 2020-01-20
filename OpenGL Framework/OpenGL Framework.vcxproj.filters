@@ -267,6 +267,9 @@
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanPipeline.cpp">
       <Filter>Source Files\Platform\Vulkan\Internal</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanShader.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Camera.h">
@@ -460,6 +463,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanPipeline.h">
       <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanShader.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

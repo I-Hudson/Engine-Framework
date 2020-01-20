@@ -46,11 +46,15 @@ namespace Framework
 		m_mainCamera = std::make_shared<Camera>();
 		m_mainCamera->SetProjMatrix(45.0f, (float)a_width / (float)a_height, 0.1f, 1000.0f);
 
-		
+		if (testVulkan)
+		{
+			auto demoShader = m_shaderLibrary.Load("vulkanDemoShader", "./shaders/Vulkan/vert.spv", "./shaders/Vulkan/frag.spv");
+		}
+
 		//Create a demo cube and rotate
 		if (a_runDemo)
 		{
-			auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
+			//auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
 			//auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
 			m_demoCube = std::make_shared<Cube>(1.0f);
 		}

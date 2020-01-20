@@ -3,6 +3,7 @@
 #include "Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 #include <Platform\DirectX\DirectXShader.h>
+#include "Platform/Vulkan/VulkanShader.h"
 
 #include <fstream>
 
@@ -27,6 +28,7 @@ namespace Framework
 			case RendererAPI::API::None: exit(0);
 			case RendererAPI::API::OpenGL: return std::make_shared<OpenGLShader>(a_name, a_vertexSource, a_fragSource);
 			case RendererAPI::API::DirectX: return std::make_shared<DirectXShader>(a_name, a_vertexSource, a_fragSource);
+			case RendererAPI::API::Vulkan: return std::make_shared<Vulkan::VulkanShader>(a_name, a_vertexSource, a_fragSource);
 			}
 			printf("No shader was created!");
 			return nullptr;
