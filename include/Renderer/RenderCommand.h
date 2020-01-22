@@ -21,6 +21,21 @@ namespace Framework
 				}
 			}
 
+			inline static void BeginRender()
+			{
+				//sRenererAPI->
+			}
+
+			inline static void EndRender()
+			{
+				//sRenererAPI->
+			}
+
+			static void SetGraphicsContext(Framework::Renderer::GraphicsContext* context)
+			{
+				sRendererAPI->SetContext(context);
+			}
+
 			//Set the clear colour
 			inline static void SetClearColor(const glm::vec4& aColor)
 			{

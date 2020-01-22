@@ -26,6 +26,8 @@ namespace Framework
 			renderCalls = 0;
 			m_sceneData->ProjectionViewMatrix = a_camera.GetProjViewMatrix();
 
+			RenderCommand::BeginRender();
+
 			//m_batchVertexCount = 0;
 			//m_batchIndicesCount = 0;
 			//
@@ -54,6 +56,7 @@ namespace Framework
 		void Renderer::EndScene()
 		{
 			//std::cout << "Number of render calls: " << renderCalls << "\n";
+			RenderCommand::EndRender();
 		}
 
 		void Renderer::Destroy()

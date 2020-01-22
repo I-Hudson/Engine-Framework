@@ -47,11 +47,17 @@ namespace Framework
 
 			m_vkSwapchain.CreateSwapchain();
 
+			m_vkSwapchain.CreateImageViews();
+
 			m_vkPipeline.Setup(this);
+
+			m_vkCommand.Setup(this);
 		}
 
 		void VulkanContext::Destroy()
 		{
+			m_vkCommand.Destroy();
+
 			m_vkSwapchain.Destroy();
 
 			if (m_vkValidationLayers.GetValidationLayersState())

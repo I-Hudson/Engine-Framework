@@ -24,6 +24,8 @@ namespace Framework
 			std::string sources = ReadFromFile(a_shaderFile);
 			auto shaderSources = PreProcess(sources);
 			Compile(shaderSources);
+		
+			CreateFramebuffers();
 
 			//resources/shaders/demoShader.glsl
 			auto lastSlash = a_shaderFile.find_last_of("/\\");
@@ -49,6 +51,8 @@ namespace Framework
 			sources[VK_SHADER_STAGE_VERTEX_BIT] = ReadFromFile(a_vertexSrc);
 			sources[VK_SHADER_STAGE_FRAGMENT_BIT] = ReadFromFile(a_fragSrc);
 			Compile(sources);
+
+			CreateFramebuffers();
 
 			m_name = a_name;
 		}
@@ -112,6 +116,11 @@ namespace Framework
 
 		void VulkanShader::Release()
 		{
+			for (auto framebuffer : m_swapChainFramebuffers) 
+			{
+				vkDestroyFramebuffer(*m_vulkanContext->GetVulkanDevice()->GetDevice(), framebuffer, nullptr);
+			}
+
 			vkDestroyPipeline(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_graphicsPipeline, nullptr);
 			vkDestroyPipelineLayout(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_pipelineLayout, nullptr);
 			vkDestroyRenderPass(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_renderPass, nullptr);
@@ -337,10 +346,10 @@ namespace Framework
 			}
 		}
 
-		void VulkanShader::CreateGraphicsPipeline(VkPipelineShaderStageCreateInfo shaderStages[], VkPipelineVertexInputStateCreateInfo vertexInputInfo, 
-													VkPipelineInputAssemblyStateCreateInfo inputAssembly, VkPipelineViewportStateCreateInfo viewportState, 
-													VkPipelineRasterizationStateCreateInfo rasterizer, VkPipelineMultisampleStateCreateInfo multisampleState, 
-													VkPipelineColorBlendStateCreateInfo colourBlendState)
+		void VulkanShader::CreateGraphicsPipeline(VkPipelineShaderStageCreateInfo shaderStages[], VkPipelineVertexInputStateCreateInfo vertexInputInfo,
+			VkPipelineInputAssemblyStateCreateInfo inputAssembly, VkPipelineViewportStateCreateInfo viewportState,
+			VkPipelineRasterizationStateCreateInfo rasterizer, VkPipelineMultisampleStateCreateInfo multisampleState,
+			VkPipelineColorBlendStateCreateInfo colourBlendState)
 		{
 			VkGraphicsPipelineCreateInfo pipelineInfo = {};
 			pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -367,5 +376,33 @@ namespace Framework
 			}
 		}
 
+		void VulkanShader::CreateFramebuffers()
+		{
+			auto swapChainImageViews = *m_vulkanContext->GetVulkanSwapchain()->GetImageViews();
+			m_swapChainFramebuffers.resize(swapChainImageViews.size());
+
+			for (size_t i = 0; i < swapChainImageViews.size(); i++)
+			{
+				VkImageView attachments[] =
+				{
+					swapChainImageViews[i]
+				};
+
+				VkFramebufferCreateInfo framebufferInfo = {};
+				framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+				framebufferInfo.renderPass = m_renderPass;
+				framebufferInfo.attachmentCount = 1;
+				framebufferInfo.pAttachments = attachments;
+				framebufferInfo.width = m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent()->width;
+				framebufferInfo.height = m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent()->height;
+				framebufferInfo.layers = 1;
+
+				if (vkCreateFramebuffer(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &framebufferInfo, nullptr, &m_swapChainFramebuffers[i]) != VK_SUCCESS)
+				{
+					EN_CORE_ERROR("Vulkan Shader: Failed to create framebuffer!");
+				}
+			}
+
+		}
 	}
 }

@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include <memory>
 #include "Renderer/VertexArray.h"
+#include "GraphicsContext.h"
 
 namespace Framework
 {
@@ -29,6 +30,8 @@ namespace Framework
 			virtual void SetVSync(bool a_state) = 0;
 			virtual void SetDepthTest(bool a_state) = 0;
 			virtual void SetCullFace(bool a_state) = 0;
+
+			virtual void SetContext(GraphicsContext* context) = 0;
 
 			//Draw the vertex array data
 			virtual void DrawIndexed(const std::shared_ptr<VertexArray>& aVertexArray) = 0;

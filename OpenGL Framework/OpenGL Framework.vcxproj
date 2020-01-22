@@ -175,6 +175,7 @@
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanCommand.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanDebug.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanDevice.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanExtensions.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanCommand.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanDebug.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanDevice.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanExtensions.h" />

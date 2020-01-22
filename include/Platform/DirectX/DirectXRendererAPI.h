@@ -34,6 +34,8 @@ namespace Framework
 		virtual void SetDepthTest(bool a_state) override;
 		virtual void SetCullFace(bool a_state) override;
 
+		virtual void SetContext(Framework::Renderer::GraphicsContext* context) override { }
+
 		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray) override;
 
 		void ClearDepth(Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList2> commandList,

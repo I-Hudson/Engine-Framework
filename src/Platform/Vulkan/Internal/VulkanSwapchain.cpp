@@ -95,7 +95,7 @@ namespace Framework
 			for (size_t i = 0; i < m_swapChainImages.size(); ++i)
 			{
 				VkImageViewCreateInfo createInfo = {};
-				createInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
+				createInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
 				createInfo.image = m_swapChainImages[i];
 				createInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
 				createInfo.format = m_swapChainImageFormat;

@@ -19,6 +19,7 @@
 #include "Platform/Vulkan/Internal/VulkanSurface.h"
 #include "Platform/Vulkan/Internal/VulkanSwapchain.h"
 #include "Platform/Vulkan/Internal/VulkanPipeline.h"
+#include "Platform/Vulkan/Internal/VulkanCommand.h"
 
 #include "Log.h"
 
@@ -56,6 +57,7 @@ namespace Framework
 			VulkanSurface* GetVulkanSurface() { return &m_vkSurface; }
 			VulkanSwapchain* GetVulkanSwapchain() { return &m_vkSwapchain; }
 			VulkanPipeline* GetVulkanPipeline() { return &m_vkPipeline; }
+			VulkanCommand* GetVulkanCommand() { return &m_vkCommand; }
 
 		private:
 			void CreateInstance(const std::string& title);
@@ -71,6 +73,7 @@ namespace Framework
 			VulkanSurface m_vkSurface;
 			VulkanSwapchain m_vkSwapchain;
 			VulkanPipeline m_vkPipeline;
+			VulkanCommand m_vkCommand;
 
 			VkInstance m_instance;
 			std::vector<VkExtensionProperties> m_extensions;

@@ -6,6 +6,8 @@ namespace Framework
 {
 	namespace Vulkan
 	{
+		class VulkanContext;
+
 		class VulkanRendererAPI : public Renderer::RendererAPI
 		{
 		public:
@@ -15,7 +17,12 @@ namespace Framework
 			virtual void SetDepthTest(bool a_state) override;
 			virtual void SetCullFace(bool a_state) override;
 
+			virtual void SetContext(Framework::Renderer::GraphicsContext* context) override;
+
 			virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray) override;
+
+		private:
+			VulkanContext* m_vkContext;
 		};
 	}
 }

@@ -37,6 +37,8 @@ namespace Framework
 		m_window = Window::Create(props);
 		m_window->SetEventCallback(BIND_EVENT_FUNC(OnEvent));
 
+		Renderer::RenderCommand::SetGraphicsContext(m_window->GetGraphicsContext());
+
 		if (!testVulkan)
 		{
 			OnImGuiCreate();
