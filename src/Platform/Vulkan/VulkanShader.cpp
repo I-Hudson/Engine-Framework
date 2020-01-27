@@ -19,13 +19,9 @@ namespace Framework
 				return;
 			}
 
-			CreateRenderPass();
-
 			std::string sources = ReadFromFile(a_shaderFile);
 			auto shaderSources = PreProcess(sources);
 			Compile(shaderSources);
-		
-			CreateFramebuffers();
 
 			//resources/shaders/demoShader.glsl
 			auto lastSlash = a_shaderFile.find_last_of("/\\");
@@ -45,14 +41,10 @@ namespace Framework
 				return;
 			}
 
-			CreateRenderPass();
-
 			std::unordered_map<GLenum, std::string> sources;
 			sources[VK_SHADER_STAGE_VERTEX_BIT] = ReadFromFile(a_vertexSrc);
 			sources[VK_SHADER_STAGE_FRAGMENT_BIT] = ReadFromFile(a_fragSrc);
 			Compile(sources);
-
-			CreateFramebuffers();
 
 			m_name = a_name;
 		}
@@ -63,6 +55,11 @@ namespace Framework
 
 		void VulkanShader::Bind() const
 		{
+			auto commandBuffers = *m_vulkanContext->GetVulkanCommand()->GetCommandBuffers();
+			for (size_t i = 0; i < commandBuffers.size(); ++i)
+			{
+				vkCmdBindPipeline(commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, m_graphicsPipeline);
+			}
 		}
 
 		void VulkanShader::Unbind() const
@@ -116,14 +113,8 @@ namespace Framework
 
 		void VulkanShader::Release()
 		{
-			for (auto framebuffer : m_swapChainFramebuffers) 
-			{
-				vkDestroyFramebuffer(*m_vulkanContext->GetVulkanDevice()->GetDevice(), framebuffer, nullptr);
-			}
-
 			vkDestroyPipeline(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_graphicsPipeline, nullptr);
 			vkDestroyPipelineLayout(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_pipelineLayout, nullptr);
-			vkDestroyRenderPass(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_renderPass, nullptr);
 		}
 
 		uint32_t VulkanShader::ShaderTypeFromString(const std::string& a_type)
@@ -312,40 +303,6 @@ namespace Framework
 			return colorBlending;
 		}
 
-		void VulkanShader::CreateRenderPass()
-		{
-			VkAttachmentDescription colourAttachment = {};
-			colourAttachment.format = *m_vulkanContext->GetVulkanSwapchain()->GetSwapChainFormat();
-			colourAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
-			colourAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
-			colourAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
-			colourAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
-			colourAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
-			colourAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-			colourAttachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
-
-			VkAttachmentReference colorAttachmentRef = {};
-			colorAttachmentRef.attachment = 0;
-			colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
-
-			VkSubpassDescription subpass = {};
-			subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
-			subpass.colorAttachmentCount = 1;
-			subpass.pColorAttachments = &colorAttachmentRef;
-
-			VkRenderPassCreateInfo renderPassInfo = {};
-			renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
-			renderPassInfo.attachmentCount = 1;
-			renderPassInfo.pAttachments = &colourAttachment;
-			renderPassInfo.subpassCount = 1;
-			renderPassInfo.pSubpasses = &subpass;
-
-			if (vkCreateRenderPass(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &renderPassInfo, nullptr, &m_renderPass) != VK_SUCCESS)
-			{
-				EN_CORE_ERROR("Vulkan Shader: Render pass was not created!");
-			}
-		}
-
 		void VulkanShader::CreateGraphicsPipeline(VkPipelineShaderStageCreateInfo shaderStages[], VkPipelineVertexInputStateCreateInfo vertexInputInfo,
 			VkPipelineInputAssemblyStateCreateInfo inputAssembly, VkPipelineViewportStateCreateInfo viewportState,
 			VkPipelineRasterizationStateCreateInfo rasterizer, VkPipelineMultisampleStateCreateInfo multisampleState,
@@ -365,7 +322,7 @@ namespace Framework
 			pipelineInfo.pDynamicState = nullptr; // Optional
 
 			pipelineInfo.layout = m_pipelineLayout;
-			pipelineInfo.renderPass = m_renderPass;
+			pipelineInfo.renderPass = *m_vulkanContext->GetVulkanSwapchain()->GetRenderPass();
 			pipelineInfo.subpass = 0;
 			pipelineInfo.basePipelineHandle = VK_NULL_HANDLE; // Optional
 			pipelineInfo.basePipelineIndex = -1; // Optional
@@ -374,35 +331,6 @@ namespace Framework
 			{
 				EN_CORE_ERROR("Vulkan Shader: Graphics pipeline was not created!");
 			}
-		}
-
-		void VulkanShader::CreateFramebuffers()
-		{
-			auto swapChainImageViews = *m_vulkanContext->GetVulkanSwapchain()->GetImageViews();
-			m_swapChainFramebuffers.resize(swapChainImageViews.size());
-
-			for (size_t i = 0; i < swapChainImageViews.size(); i++)
-			{
-				VkImageView attachments[] =
-				{
-					swapChainImageViews[i]
-				};
-
-				VkFramebufferCreateInfo framebufferInfo = {};
-				framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
-				framebufferInfo.renderPass = m_renderPass;
-				framebufferInfo.attachmentCount = 1;
-				framebufferInfo.pAttachments = attachments;
-				framebufferInfo.width = m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent()->width;
-				framebufferInfo.height = m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent()->height;
-				framebufferInfo.layers = 1;
-
-				if (vkCreateFramebuffer(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &framebufferInfo, nullptr, &m_swapChainFramebuffers[i]) != VK_SUCCESS)
-				{
-					EN_CORE_ERROR("Vulkan Shader: Failed to create framebuffer!");
-				}
-			}
-
 		}
 	}
 }

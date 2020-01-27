@@ -23,12 +23,12 @@ namespace Framework
 
 			inline static void BeginRender()
 			{
-				//sRenererAPI->
+				sRendererAPI->BeginRender();
 			}
 
 			inline static void EndRender()
 			{
-				//sRenererAPI->
+				sRendererAPI->EndRender();
 			}
 
 			static void SetGraphicsContext(Framework::Renderer::GraphicsContext* context)

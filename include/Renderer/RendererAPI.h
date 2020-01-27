@@ -25,6 +25,8 @@ namespace Framework
 			};
 
 			//Define all render API calls needed. These are overridden later by the specific API
+			virtual void BeginRender() = 0;
+			virtual void EndRender() = 0;
 			virtual void SetClearColor(const glm::vec4& aColor) = 0;
 			virtual void Clear() = 0;
 			virtual void SetVSync(bool a_state) = 0;

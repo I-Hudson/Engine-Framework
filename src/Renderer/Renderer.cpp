@@ -95,16 +95,30 @@ namespace Framework
 
 		void Renderer::Submit(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform)
 		{
-			a_shader->Bind();
-			a_shader->UploadUniformMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
-			a_shader->UploadUniformMat4("u_ObjectMatrix", a_transform);
+			if (a_shader != nullptr)
+			{
+				a_shader->Bind();
+				a_shader->UploadUniformMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
+				a_shader->UploadUniformMat4("u_ObjectMatrix", a_transform);
+			}
 
-			a_vertexArray->Bind();
+			if (a_vertexArray != nullptr)
+			{
+				a_vertexArray->Bind();
+			}
+			
 			RenderCommand::DrawIndexed(a_vertexArray);
 			++renderCalls;
 
-			a_shader->Unbind();
-			a_vertexArray->Unbind();
+			if (a_shader != nullptr)
+			{
+				a_shader->Unbind();
+			}
+
+			if (a_vertexArray != nullptr)
+			{
+				a_vertexArray->Unbind();
+			}
 		}
 
 		void Renderer::Submit(Material* a_material, const std::shared_ptr<VertexArray> a_vertexArray, std::vector<std::string> a_textures, const glm::mat4& a_transform)

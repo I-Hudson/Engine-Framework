@@ -28,6 +28,8 @@ namespace Framework
 {
 	class DirectXRendererAPI : public Renderer::RendererAPI
 	{
+		virtual void BeginRender() override;
+		virtual void EndRender() override;
 		virtual void SetClearColor(const glm::vec4& a_color) override;
 		virtual void Clear() override;
 		virtual void SetVSync(bool a_state) override;

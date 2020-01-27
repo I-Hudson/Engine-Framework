@@ -22,7 +22,7 @@ namespace Framework
 			VkCommandPoolCreateInfo poolInfo = {};
 			poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
 			poolInfo.queueFamilyIndex = queueFamilyIndices.GraphicsFamily.value();
-			poolInfo.flags = 0; // Optional
+			poolInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT; // Optional
 
 			if (vkCreateCommandPool(*m_vkContext->GetVulkanDevice()->GetDevice(), &poolInfo, nullptr, &m_commandPool) != VK_SUCCESS)
 			{

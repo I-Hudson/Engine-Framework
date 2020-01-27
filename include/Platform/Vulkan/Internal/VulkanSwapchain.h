@@ -29,6 +29,8 @@ namespace Framework
 
 			void CreateSwapchain();
 			void CreateImageViews();
+			void CreateRenderPass();
+			void CreateFrameBuffers();
 
 			SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
 
@@ -36,6 +38,8 @@ namespace Framework
 			std::vector<VkImage>* GetSwapChainImages() { return &m_swapChainImages; }
 			VkFormat* GetSwapChainFormat() { return &m_swapChainImageFormat; }
 			VkExtent2D* GetSwapChainExtent() { return &m_swapChainExtent; }
+			VkRenderPass* GetRenderPass() { return &m_renderPass; }
+			std::vector<VkFramebuffer>* GetSwapChainFrameBuffers() { return &m_swapChainFramebuffers; }
 
 			std::vector<VkImageView>* GetImageViews() { return &m_swapChainImageViews; }
 
@@ -51,7 +55,13 @@ namespace Framework
 			std::vector<VkImage> m_swapChainImages;
 			VkFormat m_swapChainImageFormat;
 			VkExtent2D m_swapChainExtent;
-			
+
+			//@TODO: Move the render pass object and swapchain framebuffers to VulkanContext not the shader. 
+			// this object would live in a "GBuffer" class. Has not need for shaders, describes framebuffers
+			// properties, how many color bits/depth, samples.
+			VkRenderPass m_renderPass;
+			std::vector<VkFramebuffer> m_swapChainFramebuffers;
+
 			std::vector<VkImageView> m_swapChainImageViews;
 		};
 	}

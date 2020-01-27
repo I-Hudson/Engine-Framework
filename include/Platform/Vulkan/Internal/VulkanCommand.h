@@ -21,6 +21,7 @@ namespace Framework
 			void Destroy();
 
 			VkCommandPool* GetCommandPool() { return &m_commandPool; }
+			std::vector<VkCommandBuffer>* GetCommandBuffers() { return &m_commandBuffers; }
 
 		private:
 			VulkanContext* m_vkContext;

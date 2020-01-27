@@ -184,6 +184,7 @@ namespace Framework
 					Renderer::Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
 				}
 				Draw();
+				Renderer::Renderer::Submit(m_shaderLibrary.GetShader("vulkanDemoShader"), nullptr);
 				//Renderer::SubmitBatched(shader);
 				Renderer::Renderer::EndScene();
 

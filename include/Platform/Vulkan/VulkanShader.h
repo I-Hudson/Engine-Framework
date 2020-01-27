@@ -58,22 +58,14 @@ namespace Framework
 			VkPipelineColorBlendAttachmentState CreateColourBlendAttch();
 			VkPipelineColorBlendStateCreateInfo CreateColourBlendState(VkPipelineColorBlendAttachmentState colourBlendAttch);
 
-			void CreateRenderPass();
 			void CreateGraphicsPipeline(VkPipelineShaderStageCreateInfo shaderStages[], VkPipelineVertexInputStateCreateInfo vertexInputInfo, VkPipelineInputAssemblyStateCreateInfo inputAssembly,
 										VkPipelineViewportStateCreateInfo viewportState, VkPipelineRasterizationStateCreateInfo rasterizer, VkPipelineMultisampleStateCreateInfo multisampleState, 
 										VkPipelineColorBlendStateCreateInfo colourBlendState);
-			void CreateFramebuffers();
 
 			VulkanContext* m_vulkanContext;
 
 			VkPipeline m_graphicsPipeline;
-			//@TODO: Move the render pass object to VulkanContext not the shader. 
-			// this object would live in a "GBuffer" class. Has not need for shaders, describes framebuffers
-			// properties, how many color bits/depth, samples.
-			VkRenderPass m_renderPass;
 			VkPipelineLayout m_pipelineLayout;
-
-			std::vector<VkFramebuffer> m_swapChainFramebuffers;
 
 			uint32_t m_ID;
 			std::string m_name;

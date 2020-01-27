@@ -20,6 +20,7 @@
 #include "Platform/Vulkan/Internal/VulkanSwapchain.h"
 #include "Platform/Vulkan/Internal/VulkanPipeline.h"
 #include "Platform/Vulkan/Internal/VulkanCommand.h"
+#include "Platform/Vulkan/Internal/VulkanSync.h"
 
 #include "Log.h"
 
@@ -58,6 +59,7 @@ namespace Framework
 			VulkanSwapchain* GetVulkanSwapchain() { return &m_vkSwapchain; }
 			VulkanPipeline* GetVulkanPipeline() { return &m_vkPipeline; }
 			VulkanCommand* GetVulkanCommand() { return &m_vkCommand; }
+			VulkanSync* GetVulkanSync() { return &m_vkSync; }
 
 		private:
 			void CreateInstance(const std::string& title);
@@ -74,6 +76,7 @@ namespace Framework
 			VulkanSwapchain m_vkSwapchain;
 			VulkanPipeline m_vkPipeline;
 			VulkanCommand m_vkCommand;
+			VulkanSync m_vkSync;
 
 			VkInstance m_instance;
 			std::vector<VkExtensionProperties> m_extensions;

@@ -5,6 +5,12 @@
 
 namespace Framework
 {
+	void OpenGLRendererAPI::BeginRender()
+	{
+	}
+	void OpenGLRendererAPI::EndRender()
+	{
+	}
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& a_color)
 	{
 		glClearColor(a_color.r, a_color.g, a_color.b, a_color.a);

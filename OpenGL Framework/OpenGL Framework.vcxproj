@@ -183,6 +183,7 @@
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanQueue.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSurface.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp" />
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSync.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanValidationLayers.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanContext.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanRendererAPI.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanQueue.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSurface.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSwapchain.h" />
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSync.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanValidationLayers.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanContext.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanRendererAPI.h" />

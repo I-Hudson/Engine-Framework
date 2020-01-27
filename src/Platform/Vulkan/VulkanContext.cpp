@@ -49,13 +49,21 @@ namespace Framework
 
 			m_vkSwapchain.CreateImageViews();
 
+			m_vkSwapchain.CreateRenderPass();
+
+			m_vkSwapchain.CreateFrameBuffers();
+
 			m_vkPipeline.Setup(this);
 
 			m_vkCommand.Setup(this);
+
+			m_vkSync.Setup(this);
 		}
 
 		void VulkanContext::Destroy()
 		{
+			m_vkSync.Destroy();
+
 			m_vkCommand.Destroy();
 
 			m_vkSwapchain.Destroy();

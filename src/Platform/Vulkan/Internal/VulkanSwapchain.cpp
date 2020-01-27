@@ -21,6 +21,13 @@ namespace Framework
 
 		void VulkanSwapchain::Destroy()
 		{
+			for (auto framebuffer : m_swapChainFramebuffers)
+			{
+				vkDestroyFramebuffer(*m_vulkanContext->GetVulkanDevice()->GetDevice(), framebuffer, nullptr);
+			}
+
+			vkDestroyRenderPass(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_renderPass, nullptr);
+
 			for (auto imageView : m_swapChainImageViews)
 			{
 				vkDestroyImageView(*m_vulkanContext->GetVulkanDevice()->GetDevice(), imageView, nullptr);
@@ -114,6 +121,78 @@ namespace Framework
 				if (vkCreateImageView(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &createInfo, nullptr, &m_swapChainImageViews[i]) != VK_SUCCESS)
 				{
 					EN_CORE_ERROR("Vulkan: Failed to create image view!");
+				}
+			}
+		}
+
+		void VulkanSwapchain::CreateRenderPass()
+		{
+			VkAttachmentDescription colourAttachment = {};
+			colourAttachment.format = *m_vulkanContext->GetVulkanSwapchain()->GetSwapChainFormat();
+			colourAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+			colourAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+			colourAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+			colourAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+			colourAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+			colourAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+			colourAttachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+
+			VkAttachmentReference colorAttachmentRef = {};
+			colorAttachmentRef.attachment = 0;
+			colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+
+			VkSubpassDescription subpass = {};
+			subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
+			subpass.colorAttachmentCount = 1;
+			subpass.pColorAttachments = &colorAttachmentRef;
+
+			VkSubpassDependency dependency = {};
+			dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+			dependency.dstSubpass = 0;
+			dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+			dependency.srcAccessMask = 0;
+			dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+			dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+
+			VkRenderPassCreateInfo renderPassInfo = {};
+			renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+			renderPassInfo.attachmentCount = 1;
+			renderPassInfo.pAttachments = &colourAttachment;
+			renderPassInfo.subpassCount = 1;
+			renderPassInfo.pSubpasses = &subpass;
+			renderPassInfo.dependencyCount = 1;
+			renderPassInfo.pDependencies = &dependency;
+
+			if (vkCreateRenderPass(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &renderPassInfo, nullptr, &m_renderPass) != VK_SUCCESS)
+			{
+				EN_CORE_ERROR("Vulkan Shader: Render pass was not created!");
+			}
+		}
+
+		void VulkanSwapchain::CreateFrameBuffers()
+		{
+			auto swapChainImageViews = *m_vulkanContext->GetVulkanSwapchain()->GetImageViews();
+			m_swapChainFramebuffers.resize(swapChainImageViews.size());
+
+			for (size_t i = 0; i < swapChainImageViews.size(); i++)
+			{
+				VkImageView attachments[] =
+				{
+					swapChainImageViews[i]
+				};
+
+				VkFramebufferCreateInfo framebufferInfo = {};
+				framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+				framebufferInfo.renderPass = m_renderPass;
+				framebufferInfo.attachmentCount = 1;
+				framebufferInfo.pAttachments = attachments;
+				framebufferInfo.width = m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent()->width;
+				framebufferInfo.height = m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent()->height;
+				framebufferInfo.layers = 1;
+
+				if (vkCreateFramebuffer(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &framebufferInfo, nullptr, &m_swapChainFramebuffers[i]) != VK_SUCCESS)
+				{
+					EN_CORE_ERROR("Vulkan Shader: Failed to create framebuffer!");
 				}
 			}
 		}

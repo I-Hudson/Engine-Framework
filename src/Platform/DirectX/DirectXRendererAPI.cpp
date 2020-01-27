@@ -4,6 +4,12 @@
 
 namespace Framework
 {
+	void DirectXRendererAPI::BeginRender()
+	{
+	}
+	void DirectXRendererAPI::EndRender()
+	{
+	}
 	void DirectXRendererAPI::SetClearColor(const glm::vec4& a_color)
 	{
 		m_clearColor[0] = a_color.x;
