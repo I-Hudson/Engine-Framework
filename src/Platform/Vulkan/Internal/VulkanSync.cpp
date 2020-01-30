@@ -13,24 +13,47 @@ namespace Framework
 		{
 		}
 
-		void VulkanSync::Setup(VulkanContext* context)
+		void VulkanSync::Setup(VulkanContext* context, const int& maxFramesInFlight)
 		{
 			m_vkContext = context;
 
-			VkSemaphoreCreateInfo info = {};
-			info.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+			m_maxFramesInFlight = maxFramesInFlight;
+			m_imageAvailableSemaphores.resize(maxFramesInFlight);
+			m_renderFinishedSemaphores.resize(maxFramesInFlight);
+			m_inFlightFences.resize(maxFramesInFlight);
+			m_imagesInFlight.resize(m_vkContext->GetVulkanSwapchain()->GetSwapChainImages()->size(), VK_NULL_HANDLE);
 
-			if (vkCreateSemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), &info, nullptr, &m_imageAvailableSemaphore) != VK_SUCCESS ||
-				vkCreateSemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), &info, nullptr, &m_renderFinishedSemaphore) != VK_SUCCESS)
+			VkSemaphoreCreateInfo semaphoreInfo = {};
+			semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+
+			VkFenceCreateInfo fenceInfo = {};
+			fenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+			fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
+
+			for (size_t i = 0; i < maxFramesInFlight; i++)
 			{
-				EN_CORE_ERROR("VulkanSync: vkCreateSemaphore failed!");
+				if (vkCreateSemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), &semaphoreInfo, nullptr, &m_imageAvailableSemaphores[i]) != VK_SUCCESS ||
+					vkCreateSemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), &semaphoreInfo, nullptr, &m_renderFinishedSemaphores[i]) != VK_SUCCESS ||
+					vkCreateFence(*m_vkContext->GetVulkanDevice()->GetDevice(), &fenceInfo, nullptr, &m_inFlightFences[i]) != VK_SUCCESS)
+				{
+					EN_CORE_ERROR("VulkanSync: vkCreateSemaphore failed!");
+				}
 			}
 		}
 
 		void VulkanSync::Destroy()
 		{
-			vkDestroySemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), m_imageAvailableSemaphore, nullptr);
-			vkDestroySemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), m_renderFinishedSemaphore, nullptr);
+			for (size_t i = 0; i < m_maxFramesInFlight; i++)
+			{
+				vkDestroySemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), m_imageAvailableSemaphores[i], nullptr);
+				vkDestroySemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), m_renderFinishedSemaphores[i], nullptr);
+				vkDestroyFence(*m_vkContext->GetVulkanDevice()->GetDevice(), m_inFlightFences[i], nullptr);
+			}
+		}
+
+		void VulkanSync::IncermentCurrentFrame()
+		{
+			m_currentFrame = (1 + m_currentFrame) % m_maxFramesInFlight;
 		}
 	}
 }

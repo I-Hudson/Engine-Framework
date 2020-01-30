@@ -51,12 +51,19 @@ namespace Framework
 
 			uint32_t imageIndex;
 			vkAcquireNextImageKHR(*m_vkContext->GetVulkanDevice()->GetDevice(), *m_vkContext->GetVulkanSwapchain()->GetSwapChain(),
-				UINT64_MAX, *m_vkContext->GetVulkanSync()->GetImageSemaphore(), VK_NULL_HANDLE, &imageIndex);
+				UINT64_MAX, *m_vkContext->GetVulkanSync()->GetCurrentImageSemaphore(), VK_NULL_HANDLE, &imageIndex);
+
+			if (*m_vkContext->GetVulkanSync()->GetCurrentInFlightImage() != VK_NULL_HANDLE)
+			{
+				vkWaitForFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, m_vkContext->GetVulkanSync()->GetCurrentInFlightImage(), VK_TRUE, UINT64_MAX);
+			}
+
+			(*m_vkContext->GetVulkanSync()->GetInFlightImages())[imageIndex] = *m_vkContext->GetVulkanSync()->GetCurrentInFlightFence();
 
 			VkSubmitInfo submitInfo = {};
 			submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 
-			VkSemaphore waitSemaphores[] = { *m_vkContext->GetVulkanSync()->GetImageSemaphore() };
+			VkSemaphore waitSemaphores[] = { *m_vkContext->GetVulkanSync()->GetCurrentImageSemaphore() };
 			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
 			submitInfo.waitSemaphoreCount = 1;
 			submitInfo.pWaitSemaphores = waitSemaphores;
@@ -65,11 +72,13 @@ namespace Framework
 			submitInfo.commandBufferCount = 1;
 			submitInfo.pCommandBuffers = &commandBuffers[imageIndex];
 
-			VkSemaphore signalSemaphores[] = { *m_vkContext->GetVulkanSync()->GetRenderSemaphore() };
+			VkSemaphore signalSemaphores[] = { *m_vkContext->GetVulkanSync()->GetCurrentRenderemaphore() };
 			submitInfo.signalSemaphoreCount = 1;
 			submitInfo.pSignalSemaphores = signalSemaphores;
 
-			if (vkQueueSubmit(*m_vkContext->GetVulkanQueue()->GetGraphicsQueue(), 1, &submitInfo, VK_NULL_HANDLE) != VK_SUCCESS)
+			vkResetFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, m_vkContext->GetVulkanSync()->GetCurrentInFlightFence());
+
+			if (vkQueueSubmit(*m_vkContext->GetVulkanQueue()->GetGraphicsQueue(), 1, &submitInfo, *m_vkContext->GetVulkanSync()->GetCurrentInFlightFence()) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("VulkanRendererAPI: Failed to submit draw command to bffer!");
 			}
@@ -86,6 +95,10 @@ namespace Framework
 			presentInfo.pImageIndices = &imageIndex;
 			presentInfo.pResults = nullptr; // Optional
 			vkQueuePresentKHR(*m_vkContext->GetVulkanQueue()->GetPresentQueue(), &presentInfo);
+
+			vkQueueWaitIdle(*m_vkContext->GetVulkanQueue()->GetPresentQueue());
+
+			m_vkContext->GetVulkanSync()->IncermentCurrentFrame();
 		}
 
 		void VulkanRendererAPI::SetClearColor(const glm::vec4& a_color)

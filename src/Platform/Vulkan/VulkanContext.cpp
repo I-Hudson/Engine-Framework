@@ -57,11 +57,13 @@ namespace Framework
 
 			m_vkCommand.Setup(this);
 
-			m_vkSync.Setup(this);
+			m_vkSync.Setup(this, 3);
 		}
 
 		void VulkanContext::Destroy()
 		{
+			vkDeviceWaitIdle(*m_vkDevice.GetDevice());
+
 			m_vkSync.Destroy();
 
 			m_vkCommand.Destroy();
