@@ -39,6 +39,8 @@ namespace Framework
 
 		Renderer::RenderCommand::SetGraphicsContext(m_window->GetGraphicsContext());
 
+		testVulkan = Renderer::RendererAPI::GetAPI() == Renderer::RendererAPI::API::Vulkan;
+
 		if (!testVulkan)
 		{
 			OnImGuiCreate();
@@ -56,7 +58,7 @@ namespace Framework
 		//Create a demo cube and rotate
 		if (a_runDemo)
 		{
-			//auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
+			auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
 			//auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
 			m_demoCube = std::make_shared<Cube>(1.0f);
 		}
@@ -184,7 +186,12 @@ namespace Framework
 					Renderer::Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
 				}
 				Draw();
-				Renderer::Renderer::Submit(m_shaderLibrary.GetShader("vulkanDemoShader"), nullptr);
+
+				if (testVulkan)
+				{
+					Renderer::Renderer::Submit(m_shaderLibrary.GetShader("vulkanDemoShader"), nullptr);
+				}
+
 				//Renderer::SubmitBatched(shader);
 				Renderer::Renderer::EndScene();
 

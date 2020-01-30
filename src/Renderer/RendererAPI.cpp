@@ -4,6 +4,6 @@ namespace Framework
 {
 	namespace Renderer
 	{
-		RendererAPI::API RendererAPI::sAPI = RendererAPI::API::Vulkan;
+		RendererAPI::API RendererAPI::sAPI = RendererAPI::API::OpenGL;
 	}
 }

@@ -8,6 +8,6 @@ namespace Framework
 {
 	namespace Renderer
 	{
-		RendererAPI* RenderCommand::sRendererAPI = new Vulkan::VulkanRendererAPI;
+		RendererAPI* RenderCommand::sRendererAPI = new OpenGLRendererAPI;
 	}
 }
