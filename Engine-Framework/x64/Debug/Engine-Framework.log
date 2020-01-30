@@ -1,0 +1,882 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(445,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (OpenGL Framework.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  glad.c
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_widgets.cpp
+  GUIManager.cpp
+  Application.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  AssimpMesh.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  AssimpModel.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  Camera.cpp
+  GUIMaterialPanel.cpp
+  GUIPanel.cpp
+  GUIWindow.cpp
+  Layer.cpp
+  LayerStack.cpp
+  Log.cpp
+  CommandQueue.cpp
+  DirectXBuffer.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\DirectX\DirectXBuffer.cpp(12,50): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  DirectXContext.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\DirectX\DirectXContext.cpp(272,62): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\DirectX\DirectXContext.cpp(273,64): warning C4244: 'argument': conversion from 'float' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  Generating Code...
+  Compiling...
+  DirectXRendererAPI.cpp
+  DirectXShader.cpp
+  DirectXVertexArray.cpp
+  OpenGLBuffer.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\OpenGL\OpenGLBuffer.cpp(22,20): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+  OpenGLContext.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  OpenGLMaterial.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\OpenGL\OpenGLMaterial.cpp(26,88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\OpenGL\OpenGLMaterial.cpp(27,11): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\OpenGL\OpenGLMaterial.cpp(27,11): message : consider using '%zd' in the format string
+  OpenGLRendererAPI.cpp
+  OpenGLShader.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  OpenGLTexture.cpp
+  OpenGLVertexArray.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\OpenGL\OpenGLVertexArray.cpp(74,93): warning C4312: 'type cast': conversion from 'const uint32_t' to 'const void *' of greater size
+  VulkanCommand.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanDebug.cpp
+  VulkanDevice.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanExtensions.cpp
+  VulkanPipeline.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanQueue.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\Vulkan\Internal\VulkanQueue.cpp(34,120): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(122,1): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(264): message : see reference to function template instantiation 'void std::_Optional_construct_base<_Ty>::_Assign<size_t&>(_Ty2)' being compiled
+          with
+          [
+              _Ty=uint32_t,
+              _Ty2=size_t &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(264): message : see reference to function template instantiation 'void std::_Optional_construct_base<_Ty>::_Assign<size_t&>(_Ty2)' being compiled
+          with
+          [
+              _Ty=uint32_t,
+              _Ty2=size_t &
+          ]
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\Vulkan\Internal\VulkanQueue.cpp(30): message : see reference to function template instantiation 'std::optional<uint32_t> &std::optional<uint32_t>::operator =<size_t&,0>(_Ty2)' being compiled
+          with
+          [
+              _Ty2=size_t &
+          ]
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\Vulkan\Internal\VulkanQueue.cpp(30): message : see reference to function template instantiation 'std::optional<uint32_t> &std::optional<uint32_t>::operator =<size_t&,0>(_Ty2)' being compiled
+          with
+          [
+              _Ty2=size_t &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(632): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(178): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\xmemory(202,109): warning C4267: 'initializing': conversion from 'size_t' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=unsigned int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(112): message : see reference to function template instantiation 'void std::_Construct_in_place<unsigned int,size_t&>(_Ty &,size_t &) noexcept' being compiled
+          with
+          [
+              _Ty=unsigned int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(124): message : see reference to function template instantiation '_Ty &std::_Optional_construct_base<_Ty>::_Construct<size_t&>(size_t &)' being compiled
+          with
+          [
+              _Ty=uint32_t
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(124): message : see reference to function template instantiation '_Ty &std::_Optional_construct_base<_Ty>::_Construct<size_t&>(size_t &)' being compiled
+          with
+          [
+              _Ty=uint32_t
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(264): message : see reference to function template instantiation 'void std::_Optional_construct_base<_Ty>::_Assign<size_t&>(_Ty2)' being compiled
+          with
+          [
+              _Ty=uint32_t,
+              _Ty2=size_t &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\optional(264): message : see reference to function template instantiation 'void std::_Optional_construct_base<_Ty>::_Assign<size_t&>(_Ty2)' being compiled
+          with
+          [
+              _Ty=uint32_t,
+              _Ty2=size_t &
+          ]
+  VulkanSurface.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanSwapchain.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp(265,33): warning C4838: conversion from 'int' to 'uint32_t' requires a narrowing conversion
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp(265,40): warning C4838: conversion from 'int' to 'uint32_t' requires a narrowing conversion
+  VulkanSync.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanValidationLayers.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  Generating Code...
+  Compiling...
+  VulkanContext.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanRendererAPI.cpp
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+  VulkanShader.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  WindowsWindow.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  Buffer.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  GraphicsContext.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  Material.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  RenderCommand.cpp
+  Renderer.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  RendererAPI.cpp
+  Shader.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
+  Texture.cpp
+  VertexArray.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
+  Cube.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\xmemory(202,109): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1490): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Framework::Renderer::Vertex(&)[24],unsigned __int64>(_Ty &,Framework::Renderer::Vertex (&)[24],unsigned __int64 &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Framework::OpenGLVertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1590): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Framework::Renderer::Vertex(&)[24],unsigned __int64>(Framework::Renderer::Vertex (&)[24],unsigned __int64 &&)' being compiled
+          with
+          [
+              _Ty=Framework::OpenGLVertexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1591): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Framework::Renderer::Vertex(&)[24],unsigned __int64>(Framework::Renderer::Vertex (&)[24],unsigned __int64 &&)' being compiled
+          with
+          [
+              _Ty=Framework::OpenGLVertexBuffer
+          ]
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Shape\Cube.cpp(115): message : see reference to function template instantiation 'std::shared_ptr<Framework::OpenGLVertexBuffer> std::make_shared<Framework::OpenGLVertexBuffer,Framework::Renderer::Vertex(&)[24],size_t>(Framework::Renderer::Vertex (&)[24],size_t &&)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(632): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(178): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\xmemory(202,109): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1490): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,unsigned int(&)[36],unsigned __int64>(_Ty &,unsigned int (&)[36],unsigned __int64 &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Framework::OpenGLIndexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1590): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
+          with
+          [
+              _Ty=Framework::OpenGLIndexBuffer
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\memory(1591): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
+          with
+          [
+              _Ty=Framework::OpenGLIndexBuffer
+          ]
+F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\src\Shape\Cube.cpp(145): message : see reference to function template instantiation 'std::shared_ptr<Framework::OpenGLIndexBuffer> std::make_shared<Framework::OpenGLIndexBuffer,unsigned int(&)[36],unsigned __int64>(unsigned int (&)[36],unsigned __int64 &&)' being compiled
+  Shape.cpp
+  Time.cpp
+  Window.cpp
+  Generating Code...
+assimp.lib(assimp-vc140-mt.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
+d3d12.lib(d3d12.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
+opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
+AssimpModel.obj : warning LNK4006: "public: unsigned int __cdecl aiMaterial::GetTextureCount(enum aiTextureType)const " (?GetTextureCount@aiMaterial@@QEBAIW4aiTextureType@@@Z) already defined in assimp.lib(assimp-vc140-mt.dll); second definition ignored
+AssimpModel.obj : warning LNK4006: "public: enum aiReturn __cdecl aiMaterial::GetTexture(enum aiTextureType,unsigned int,struct aiString *,enum aiTextureMapping *,unsigned int *,float *,enum aiTextureOp *,enum aiTextureMapMode *)const " (?GetTexture@aiMaterial@@QEBA?AW4aiReturn@@W4aiTextureType@@IPEAUaiString@@PEAW4aiTextureMapping@@PEAIPEAMPEAW4aiTextureOp@@PEAW4aiTextureMapMode@@@Z) already defined in assimp.lib(assimp-vc140-mt.dll); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Separator(void)" (?Separator@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::NewLine(void)" (?NewLine@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Spacing(void)" (?Spacing@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Dummy(struct ImVec2 const &)" (?Dummy@ImGui@@YAXAEBUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::AlignTextToFramePadding(void)" (?AlignTextToFramePadding@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TextUnformatted(char const *,char const *)" (?TextUnformatted@ImGui@@YAXPEBD0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Text(char const *,...)" (?Text@ImGui@@YAXPEBDZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TextV(char const *,char *)" (?TextV@ImGui@@YAXPEBDPEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TextColored(struct ImVec4 const &,char const *,...)" (?TextColored@ImGui@@YAXAEBUImVec4@@PEBDZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TextColoredV(struct ImVec4 const &,char const *,char *)" (?TextColoredV@ImGui@@YAXAEBUImVec4@@PEBDPEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TextDisabled(char const *,...)" (?TextDisabled@ImGui@@YAXPEBDZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TextDisabledV(char const *,char *)" (?TextDisabledV@ImGui@@YAXPEBDPEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TextWrapped(char const *,...)" (?TextWrapped@ImGui@@YAXPEBDZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TextWrappedV(char const *,char *)" (?TextWrappedV@ImGui@@YAXPEBDPEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::LabelText(char const *,char const *,...)" (?LabelText@ImGui@@YAXPEBD0ZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::LabelTextV(char const *,char const *,char *)" (?LabelTextV@ImGui@@YAXPEBD0PEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::BulletText(char const *,...)" (?BulletText@ImGui@@YAXPEBDZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::BulletTextV(char const *,char *)" (?BulletTextV@ImGui@@YAXPEBDPEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::Button(char const *,struct ImVec2 const &)" (?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SmallButton(char const *)" (?SmallButton@ImGui@@YA_NPEBD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InvisibleButton(char const *,struct ImVec2 const &)" (?InvisibleButton@ImGui@@YA_NPEBDAEBUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ArrowButton(char const *,int)" (?ArrowButton@ImGui@@YA_NPEBDH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Image(void *,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec4 const &,struct ImVec4 const &)" (?Image@ImGui@@YAXPEAXAEBUImVec2@@11AEBUImVec4@@2@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ImageButton(void *,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,int,struct ImVec4 const &,struct ImVec4 const &)" (?ImageButton@ImGui@@YA_NPEAXAEBUImVec2@@11HAEBUImVec4@@2@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::Checkbox(char const *,bool *)" (?Checkbox@ImGui@@YA_NPEBDPEA_N@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::CheckboxFlags(char const *,unsigned int *,unsigned int)" (?CheckboxFlags@ImGui@@YA_NPEBDPEAII@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::RadioButton(char const *,bool)" (?RadioButton@ImGui@@YA_NPEBD_N@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::RadioButton(char const *,int *,int)" (?RadioButton@ImGui@@YA_NPEBDPEAHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::ProgressBar(float,struct ImVec2 const &,char const *)" (?ProgressBar@ImGui@@YAXMAEBUImVec2@@PEBD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Bullet(void)" (?Bullet@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::BeginCombo(char const *,char const *,int)" (?BeginCombo@ImGui@@YA_NPEBD0H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::EndCombo(void)" (?EndCombo@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::Combo(char const *,int *,char const * const * const,int,int)" (?Combo@ImGui@@YA_NPEBDPEAHQEBQEBDHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::Combo(char const *,int *,char const *,int)" (?Combo@ImGui@@YA_NPEBDPEAH0H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::Combo(char const *,int *,bool (__cdecl*)(void *,int,char const * *),void *,int,int)" (?Combo@ImGui@@YA_NPEBDPEAHP6A_NPEAXHPEAPEBD@Z2HH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragFloat(char const *,float *,float,float,float,char const *,float)" (?DragFloat@ImGui@@YA_NPEBDPEAMMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragFloat2(char const *,float * const,float,float,float,char const *,float)" (?DragFloat2@ImGui@@YA_NPEBDQEAMMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragFloat3(char const *,float * const,float,float,float,char const *,float)" (?DragFloat3@ImGui@@YA_NPEBDQEAMMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragFloat4(char const *,float * const,float,float,float,char const *,float)" (?DragFloat4@ImGui@@YA_NPEBDQEAMMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragFloatRange2(char const *,float *,float *,float,float,float,char const *,char const *,float)" (?DragFloatRange2@ImGui@@YA_NPEBDPEAM1MMM00M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragInt(char const *,int *,float,int,int,char const *)" (?DragInt@ImGui@@YA_NPEBDPEAHMHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragInt2(char const *,int * const,float,int,int,char const *)" (?DragInt2@ImGui@@YA_NPEBDQEAHMHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragInt3(char const *,int * const,float,int,int,char const *)" (?DragInt3@ImGui@@YA_NPEBDQEAHMHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragInt4(char const *,int * const,float,int,int,char const *)" (?DragInt4@ImGui@@YA_NPEBDQEAHMHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragIntRange2(char const *,int *,int *,float,int,int,char const *,char const *)" (?DragIntRange2@ImGui@@YA_NPEBDPEAH1MHH00@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragScalar(char const *,int,void *,float,void const *,void const *,char const *,float)" (?DragScalar@ImGui@@YA_NPEBDHPEAXMPEBX20M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragScalarN(char const *,int,void *,int,float,void const *,void const *,char const *,float)" (?DragScalarN@ImGui@@YA_NPEBDHPEAXHMPEBX20M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderFloat(char const *,float *,float,float,char const *,float)" (?SliderFloat@ImGui@@YA_NPEBDPEAMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderFloat2(char const *,float * const,float,float,char const *,float)" (?SliderFloat2@ImGui@@YA_NPEBDQEAMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderFloat3(char const *,float * const,float,float,char const *,float)" (?SliderFloat3@ImGui@@YA_NPEBDQEAMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderFloat4(char const *,float * const,float,float,char const *,float)" (?SliderFloat4@ImGui@@YA_NPEBDQEAMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderAngle(char const *,float *,float,float,char const *)" (?SliderAngle@ImGui@@YA_NPEBDPEAMMM0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderInt(char const *,int *,int,int,char const *)" (?SliderInt@ImGui@@YA_NPEBDPEAHHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderInt2(char const *,int * const,int,int,char const *)" (?SliderInt2@ImGui@@YA_NPEBDQEAHHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderInt3(char const *,int * const,int,int,char const *)" (?SliderInt3@ImGui@@YA_NPEBDQEAHHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderInt4(char const *,int * const,int,int,char const *)" (?SliderInt4@ImGui@@YA_NPEBDQEAHHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderScalar(char const *,int,void *,void const *,void const *,char const *,float)" (?SliderScalar@ImGui@@YA_NPEBDHPEAXPEBX20M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderScalarN(char const *,int,void *,int,void const *,void const *,char const *,float)" (?SliderScalarN@ImGui@@YA_NPEBDHPEAXHPEBX20M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::VSliderFloat(char const *,struct ImVec2 const &,float *,float,float,char const *,float)" (?VSliderFloat@ImGui@@YA_NPEBDAEBUImVec2@@PEAMMM0M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::VSliderInt(char const *,struct ImVec2 const &,int *,int,int,char const *)" (?VSliderInt@ImGui@@YA_NPEBDAEBUImVec2@@PEAHHH0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::VSliderScalar(char const *,struct ImVec2 const &,int,void *,void const *,void const *,char const *,float)" (?VSliderScalar@ImGui@@YA_NPEBDAEBUImVec2@@HPEAXPEBX30M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputText(char const *,char *,unsigned __int64,int,int (__cdecl*)(struct ImGuiInputTextCallbackData *),void *)" (?InputText@ImGui@@YA_NPEBDPEAD_KHP6AHPEAUImGuiInputTextCallbackData@@@ZPEAX@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputTextMultiline(char const *,char *,unsigned __int64,struct ImVec2 const &,int,int (__cdecl*)(struct ImGuiInputTextCallbackData *),void *)" (?InputTextMultiline@ImGui@@YA_NPEBDPEAD_KAEBUImVec2@@HP6AHPEAUImGuiInputTextCallbackData@@@ZPEAX@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputFloat(char const *,float *,float,float,char const *,int)" (?InputFloat@ImGui@@YA_NPEBDPEAMMM0H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputFloat2(char const *,float * const,char const *,int)" (?InputFloat2@ImGui@@YA_NPEBDQEAM0H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputFloat3(char const *,float * const,char const *,int)" (?InputFloat3@ImGui@@YA_NPEBDQEAM0H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputFloat4(char const *,float * const,char const *,int)" (?InputFloat4@ImGui@@YA_NPEBDQEAM0H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputInt(char const *,int *,int,int,int)" (?InputInt@ImGui@@YA_NPEBDPEAHHHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputInt2(char const *,int * const,int)" (?InputInt2@ImGui@@YA_NPEBDQEAHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputInt3(char const *,int * const,int)" (?InputInt3@ImGui@@YA_NPEBDQEAHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputInt4(char const *,int * const,int)" (?InputInt4@ImGui@@YA_NPEBDQEAHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputDouble(char const *,double *,double,double,char const *,int)" (?InputDouble@ImGui@@YA_NPEBDPEANNN0H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputScalar(char const *,int,void *,void const *,void const *,char const *,int)" (?InputScalar@ImGui@@YA_NPEBDHPEAXPEBX20H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputScalarN(char const *,int,void *,int,void const *,void const *,char const *,int)" (?InputScalarN@ImGui@@YA_NPEBDHPEAXHPEBX20H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ColorEdit3(char const *,float * const,int)" (?ColorEdit3@ImGui@@YA_NPEBDQEAMH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ColorEdit4(char const *,float * const,int)" (?ColorEdit4@ImGui@@YA_NPEBDQEAMH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ColorPicker3(char const *,float * const,int)" (?ColorPicker3@ImGui@@YA_NPEBDQEAMH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ColorPicker4(char const *,float * const,int,float const *)" (?ColorPicker4@ImGui@@YA_NPEBDQEAMHPEBM@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ColorButton(char const *,struct ImVec4 const &,int,struct ImVec2)" (?ColorButton@ImGui@@YA_NPEBDAEBUImVec4@@HUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::SetColorEditOptions(int)" (?SetColorEditOptions@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNode(char const *)" (?TreeNode@ImGui@@YA_NPEBD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNode(char const *,char const *,...)" (?TreeNode@ImGui@@YA_NPEBD0ZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNode(void const *,char const *,...)" (?TreeNode@ImGui@@YA_NPEBXPEBDZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeV(char const *,char const *,char *)" (?TreeNodeV@ImGui@@YA_NPEBD0PEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeV(void const *,char const *,char *)" (?TreeNodeV@ImGui@@YA_NPEBXPEBDPEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeEx(char const *,int)" (?TreeNodeEx@ImGui@@YA_NPEBDH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeEx(char const *,int,char const *,...)" (?TreeNodeEx@ImGui@@YA_NPEBDH0ZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeEx(void const *,int,char const *,...)" (?TreeNodeEx@ImGui@@YA_NPEBXHPEBDZZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeExV(char const *,int,char const *,char *)" (?TreeNodeExV@ImGui@@YA_NPEBDH0PEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeExV(void const *,int,char const *,char *)" (?TreeNodeExV@ImGui@@YA_NPEBXHPEBDPEAD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TreePush(char const *)" (?TreePush@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TreePush(void const *)" (?TreePush@ImGui@@YAXPEBX@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TreePop(void)" (?TreePop@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TreeAdvanceToLabelPos(void)" (?TreeAdvanceToLabelPos@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "float __cdecl ImGui::GetTreeNodeToLabelSpacing(void)" (?GetTreeNodeToLabelSpacing@ImGui@@YAMXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::SetNextTreeNodeOpen(bool,int)" (?SetNextTreeNodeOpen@ImGui@@YAX_NH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::CollapsingHeader(char const *,int)" (?CollapsingHeader@ImGui@@YA_NPEBDH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::CollapsingHeader(char const *,bool *,int)" (?CollapsingHeader@ImGui@@YA_NPEBDPEA_NH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::Selectable(char const *,bool,int,struct ImVec2 const &)" (?Selectable@ImGui@@YA_NPEBD_NHAEBUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::Selectable(char const *,bool *,int,struct ImVec2 const &)" (?Selectable@ImGui@@YA_NPEBDPEA_NHAEBUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ListBox(char const *,int *,char const * const * const,int,int)" (?ListBox@ImGui@@YA_NPEBDPEAHQEBQEBDHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ListBox(char const *,int *,bool (__cdecl*)(void *,int,char const * *),void *,int,int)" (?ListBox@ImGui@@YA_NPEBDPEAHP6A_NPEAXHPEAPEBD@Z2HH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ListBoxHeader(char const *,struct ImVec2 const &)" (?ListBoxHeader@ImGui@@YA_NPEBDAEBUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ListBoxHeader(char const *,int,int)" (?ListBoxHeader@ImGui@@YA_NPEBDHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::ListBoxFooter(void)" (?ListBoxFooter@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::PlotLines(char const *,float const *,int,int,char const *,float,float,struct ImVec2,int)" (?PlotLines@ImGui@@YAXPEBDPEBMHH0MMUImVec2@@H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::PlotLines(char const *,float (__cdecl*)(void *,int),void *,int,int,char const *,float,float,struct ImVec2)" (?PlotLines@ImGui@@YAXPEBDP6AMPEAXH@Z1HH0MMUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::PlotHistogram(char const *,float const *,int,int,char const *,float,float,struct ImVec2,int)" (?PlotHistogram@ImGui@@YAXPEBDPEBMHH0MMUImVec2@@H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::PlotHistogram(char const *,float (__cdecl*)(void *,int),void *,int,int,char const *,float,float,struct ImVec2)" (?PlotHistogram@ImGui@@YAXPEBDP6AMPEAXH@Z1HH0MMUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Value(char const *,bool)" (?Value@ImGui@@YAXPEBD_N@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Value(char const *,int)" (?Value@ImGui@@YAXPEBDH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Value(char const *,unsigned int)" (?Value@ImGui@@YAXPEBDI@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Value(char const *,float,char const *)" (?Value@ImGui@@YAXPEBDM0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::BeginMainMenuBar(void)" (?BeginMainMenuBar@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::EndMainMenuBar(void)" (?EndMainMenuBar@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::BeginMenuBar(void)" (?BeginMenuBar@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::EndMenuBar(void)" (?EndMenuBar@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::BeginMenu(char const *,bool)" (?BeginMenu@ImGui@@YA_NPEBD_N@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::EndMenu(void)" (?EndMenu@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::MenuItem(char const *,char const *,bool,bool)" (?MenuItem@ImGui@@YA_NPEBD0_N1@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::MenuItem(char const *,char const *,bool *,bool)" (?MenuItem@ImGui@@YA_NPEBD0PEA_N_N@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::BeginTabBar(char const *,int)" (?BeginTabBar@ImGui@@YA_NPEBDH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::EndTabBar(void)" (?EndTabBar@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::BeginTabItem(char const *,bool *,int)" (?BeginTabItem@ImGui@@YA_NPEBDPEA_NH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::EndTabItem(void)" (?EndTabItem@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::SetTabItemClosed(char const *)" (?SetTabItemClosed@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: __cdecl ImGuiInputTextCallbackData::ImGuiInputTextCallbackData(void)" (??0ImGuiInputTextCallbackData@@QEAA@XZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: void __cdecl ImGuiInputTextCallbackData::DeleteChars(int,int)" (?DeleteChars@ImGuiInputTextCallbackData@@QEAAXHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: void __cdecl ImGuiInputTextCallbackData::InsertChars(int,char const *,char const *)" (?InsertChars@ImGuiInputTextCallbackData@@QEAAXHPEBD0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputFloat(char const *,float *,float,float,int,int)" (?InputFloat@ImGui@@YA_NPEBDPEAMMMHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputFloat2(char const *,float * const,int,int)" (?InputFloat2@ImGui@@YA_NPEBDQEAMHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputFloat3(char const *,float * const,int,int)" (?InputFloat3@ImGui@@YA_NPEBDQEAMHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputFloat4(char const *,float * const,int,int)" (?InputFloat4@ImGui@@YA_NPEBDQEAMHH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "char const * __cdecl ImParseFormatFindStart(char const *)" (?ImParseFormatFindStart@@YAPEBDPEBD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "char const * __cdecl ImParseFormatFindEnd(char const *)" (?ImParseFormatFindEnd@@YAPEBDPEBD@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "int __cdecl ImParseFormatPrecision(char const *,int)" (?ImParseFormatPrecision@@YAHPEBDH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: __cdecl ImGuiMenuColumns::ImGuiMenuColumns(void)" (??0ImGuiMenuColumns@@QEAA@XZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: void __cdecl ImGuiMenuColumns::Update(int,float,bool)" (?Update@ImGuiMenuColumns@@QEAAXHM_N@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: float __cdecl ImGuiMenuColumns::DeclColumns(float,float,float)" (?DeclColumns@ImGuiMenuColumns@@QEAAMMMM@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: float __cdecl ImGuiMenuColumns::CalcExtraSpace(float)" (?CalcExtraSpace@ImGuiMenuColumns@@QEAAMM@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: void __cdecl ImGuiInputTextState::OnKeyPressed(int)" (?OnKeyPressed@ImGuiInputTextState@@QEAAXH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "public: __cdecl ImGuiTabBar::ImGuiTabBar(void)" (??0ImGuiTabBar@@QEAA@XZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "struct ImGuiTabItem * __cdecl ImGui::TabBarFindTabByID(struct ImGuiTabBar *,unsigned int)" (?TabBarFindTabByID@ImGui@@YAPEAUImGuiTabItem@@PEAUImGuiTabBar@@I@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TabBarRemoveTab(struct ImGuiTabBar *,unsigned int)" (?TabBarRemoveTab@ImGui@@YAXPEAUImGuiTabBar@@I@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TabBarCloseTab(struct ImGuiTabBar *,struct ImGuiTabItem *)" (?TabBarCloseTab@ImGui@@YAXPEAUImGuiTabBar@@PEAUImGuiTabItem@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TabBarQueueChangeTabOrder(struct ImGuiTabBar *,struct ImGuiTabItem const *,int)" (?TabBarQueueChangeTabOrder@ImGui@@YAXPEAUImGuiTabBar@@PEBUImGuiTabItem@@H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::TabItemCalcSize(char const *,bool)" (?TabItemCalcSize@ImGui@@YA?AUImVec2@@PEBD_N@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TabItemBackground(struct ImDrawList *,struct ImRect const &,int,unsigned int)" (?TabItemBackground@ImGui@@YAXPEAUImDrawList@@AEBUImRect@@HI@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TabItemLabelAndCloseButton(struct ImDrawList *,struct ImRect const &,int,char const *,unsigned int,unsigned int)" (?TabItemLabelAndCloseButton@ImGui@@YA_NPEAUImDrawList@@AEBUImRect@@HPEBDII@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::RenderColorRectWithAlphaCheckerboard(struct ImVec2,struct ImVec2,unsigned int,float,struct ImVec2,float,int)" (?RenderColorRectWithAlphaCheckerboard@ImGui@@YAXUImVec2@@0IM0MH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ButtonEx(char const *,struct ImVec2 const &,int)" (?ButtonEx@ImGui@@YA_NPEBDAEBUImVec2@@H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::CloseButton(unsigned int,struct ImVec2 const &,float)" (?CloseButton@ImGui@@YA_NIAEBUImVec2@@M@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ArrowButtonEx(char const *,int,struct ImVec2,int)" (?ArrowButtonEx@ImGui@@YA_NPEBDHUImVec2@@H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::Scrollbar(int)" (?Scrollbar@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::VerticalSeparator(void)" (?VerticalSeparator@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::ButtonBehavior(struct ImRect const &,unsigned int,bool *,bool *,int)" (?ButtonBehavior@ImGui@@YA_NAEBUImRect@@IPEA_N1H@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::DragBehavior(unsigned int,int,void *,float,void const *,void const *,char const *,float,int)" (?DragBehavior@ImGui@@YA_NIHPEAXMPEBX1PEBDMH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SliderBehavior(struct ImRect const &,unsigned int,int,void *,void const *,void const *,char const *,float,int,struct ImRect *)" (?SliderBehavior@ImGui@@YA_NAEBUImRect@@IHPEAXPEBX2PEBDMHPEAU2@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::SplitterBehavior(struct ImRect const &,unsigned int,enum ImGuiAxis,float *,float *,float,float,float,float)" (?SplitterBehavior@ImGui@@YA_NAEBUImRect@@IW4ImGuiAxis@@PEAM2MMMM@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeBehavior(unsigned int,int,char const *,char const *)" (?TreeNodeBehavior@ImGui@@YA_NIHPEBD0@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::TreeNodeBehaviorIsOpen(unsigned int,int)" (?TreeNodeBehaviorIsOpen@ImGui@@YA_NIH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::TreePushRawID(unsigned int)" (?TreePushRawID@ImGui@@YAXI@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputTextEx(char const *,char *,int,struct ImVec2 const &,int,int (__cdecl*)(struct ImGuiInputTextCallbackData *),void *)" (?InputTextEx@ImGui@@YA_NPEBDPEADHAEBUImVec2@@HP6AHPEAUImGuiInputTextCallbackData@@@ZPEAX@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "bool __cdecl ImGui::InputScalarAsWidgetReplacement(struct ImRect const &,unsigned int,char const *,int,void *,char const *)" (?InputScalarAsWidgetReplacement@ImGui@@YA_NAEBUImRect@@IPEBDHPEAX1@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::ColorTooltip(char const *,float const *,int)" (?ColorTooltip@ImGui@@YAXPEBDPEBMH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::ColorEditOptionsPopup(float const *,int)" (?ColorEditOptionsPopup@ImGui@@YAXPEBMH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::ColorPickerOptionsPopup(float const *,int)" (?ColorPickerOptionsPopup@ImGui@@YAXPEBMH@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_widgets.obj) : warning LNK4006: "void __cdecl ImGui::PlotEx(enum ImGuiPlotType,char const *,float (__cdecl*)(void *,int),void *,int,int,char const *,float,float,struct ImVec2)" (?PlotEx@ImGui@@YAXW4ImGuiPlotType@@PEBDP6AMPEAXH@Z2HH1MMUImVec2@@@Z) already defined in Imgui.lib(imgui_widgets.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImGui::StyleColorsDark(struct ImGuiStyle *)" (?StyleColorsDark@ImGui@@YAXPEAUImGuiStyle@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImGui::StyleColorsClassic(struct ImGuiStyle *)" (?StyleColorsClassic@ImGui@@YAXPEAUImGuiStyle@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImGui::StyleColorsLight(struct ImGuiStyle *)" (?StyleColorsLight@ImGui@@YAXPEAUImGuiStyle@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PushClipRect(struct ImVec2,struct ImVec2,bool)" (?PushClipRect@ImDrawList@@QEAAXUImVec2@@0_N@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PushClipRectFullScreen(void)" (?PushClipRectFullScreen@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PopClipRect(void)" (?PopClipRect@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PushTextureID(void *)" (?PushTextureID@ImDrawList@@QEAAXPEAX@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PopTextureID(void)" (?PopTextureID@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddLine(struct ImVec2 const &,struct ImVec2 const &,unsigned int,float)" (?AddLine@ImDrawList@@QEAAXAEBUImVec2@@0IM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddRect(struct ImVec2 const &,struct ImVec2 const &,unsigned int,float,int,float)" (?AddRect@ImDrawList@@QEAAXAEBUImVec2@@0IMHM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddRectFilled(struct ImVec2 const &,struct ImVec2 const &,unsigned int,float,int)" (?AddRectFilled@ImDrawList@@QEAAXAEBUImVec2@@0IMH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddRectFilledMultiColor(struct ImVec2 const &,struct ImVec2 const &,unsigned int,unsigned int,unsigned int,unsigned int)" (?AddRectFilledMultiColor@ImDrawList@@QEAAXAEBUImVec2@@0IIII@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddQuad(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int,float)" (?AddQuad@ImDrawList@@QEAAXAEBUImVec2@@000IM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddQuadFilled(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int)" (?AddQuadFilled@ImDrawList@@QEAAXAEBUImVec2@@000I@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddTriangle(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int,float)" (?AddTriangle@ImDrawList@@QEAAXAEBUImVec2@@00IM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddTriangleFilled(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int)" (?AddTriangleFilled@ImDrawList@@QEAAXAEBUImVec2@@00I@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddCircle(struct ImVec2 const &,float,unsigned int,int,float)" (?AddCircle@ImDrawList@@QEAAXAEBUImVec2@@MIHM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddCircleFilled(struct ImVec2 const &,float,unsigned int,int)" (?AddCircleFilled@ImDrawList@@QEAAXAEBUImVec2@@MIH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddText(struct ImVec2 const &,unsigned int,char const *,char const *)" (?AddText@ImDrawList@@QEAAXAEBUImVec2@@IPEBD1@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddText(struct ImFont const *,float,struct ImVec2 const &,unsigned int,char const *,char const *,float,struct ImVec4 const *)" (?AddText@ImDrawList@@QEAAXPEBUImFont@@MAEBUImVec2@@IPEBD2MPEBUImVec4@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddImage(void *,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int)" (?AddImage@ImDrawList@@QEAAXPEAXAEBUImVec2@@111I@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddImageQuad(void *,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int)" (?AddImageQuad@ImDrawList@@QEAAXPEAXAEBUImVec2@@1111111I@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddImageRounded(void *,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int,float,int)" (?AddImageRounded@ImDrawList@@QEAAXPEAXAEBUImVec2@@111IMH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddPolyline(struct ImVec2 const *,int,unsigned int,bool,float)" (?AddPolyline@ImDrawList@@QEAAXPEBUImVec2@@HI_NM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddConvexPolyFilled(struct ImVec2 const *,int,unsigned int)" (?AddConvexPolyFilled@ImDrawList@@QEAAXPEBUImVec2@@HI@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddBezierCurve(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int,float,int)" (?AddBezierCurve@ImDrawList@@QEAAXAEBUImVec2@@000IMH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PathArcTo(struct ImVec2 const &,float,float,float,int)" (?PathArcTo@ImDrawList@@QEAAXAEBUImVec2@@MMMH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PathArcToFast(struct ImVec2 const &,float,int,int)" (?PathArcToFast@ImDrawList@@QEAAXAEBUImVec2@@MHH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PathBezierCurveTo(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,int)" (?PathBezierCurveTo@ImDrawList@@QEAAXAEBUImVec2@@00H@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PathRect(struct ImVec2 const &,struct ImVec2 const &,float,int)" (?PathRect@ImDrawList@@QEAAXAEBUImVec2@@0MH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::ChannelsSplit(int)" (?ChannelsSplit@ImDrawList@@QEAAXH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::ChannelsMerge(void)" (?ChannelsMerge@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::ChannelsSetCurrent(int)" (?ChannelsSetCurrent@ImDrawList@@QEAAXH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddCallback(void (__cdecl*)(struct ImDrawList const *,struct ImDrawCmd const *),void *)" (?AddCallback@ImDrawList@@QEAAXP6AXPEBU1@PEBUImDrawCmd@@@ZPEAX@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::AddDrawCmd(void)" (?AddDrawCmd@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImDrawList * __cdecl ImDrawList::CloneOutput(void)const " (?CloneOutput@ImDrawList@@QEBAPEAU1@XZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::Clear(void)" (?Clear@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::ClearFreeMemory(void)" (?ClearFreeMemory@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PrimReserve(int,int)" (?PrimReserve@ImDrawList@@QEAAXHH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PrimRect(struct ImVec2 const &,struct ImVec2 const &,unsigned int)" (?PrimRect@ImDrawList@@QEAAXAEBUImVec2@@0I@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PrimRectUV(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int)" (?PrimRectUV@ImDrawList@@QEAAXAEBUImVec2@@000I@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::PrimQuadUV(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,unsigned int)" (?PrimQuadUV@ImDrawList@@QEAAXAEBUImVec2@@0000000I@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::UpdateClipRect(void)" (?UpdateClipRect@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawList::UpdateTextureID(void)" (?UpdateTextureID@ImDrawList@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawData::DeIndexAllBuffers(void)" (?DeIndexAllBuffers@ImDrawData@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImDrawData::ScaleClipRects(struct ImVec2 const &)" (?ScaleClipRects@ImDrawData@@QEAAXAEBUImVec2@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: __cdecl ImFontConfig::ImFontConfig(void)" (??0ImFontConfig@@QEAA@XZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontGlyphRangesBuilder::AddText(char const *,char const *)" (?AddText@ImFontGlyphRangesBuilder@@QEAAXPEBD0@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontGlyphRangesBuilder::AddRanges(unsigned short const *)" (?AddRanges@ImFontGlyphRangesBuilder@@QEAAXPEBG@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontGlyphRangesBuilder::BuildRanges(struct ImVector<unsigned short> *)" (?BuildRanges@ImFontGlyphRangesBuilder@@QEAAXPEAU?$ImVector@G@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: __cdecl ImFontAtlas::ImFontAtlas(void)" (??0ImFontAtlas@@QEAA@XZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: __cdecl ImFontAtlas::~ImFontAtlas(void)" (??1ImFontAtlas@@QEAA@XZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImFont * __cdecl ImFontAtlas::AddFont(struct ImFontConfig const *)" (?AddFont@ImFontAtlas@@QEAAPEAUImFont@@PEBUImFontConfig@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImFont * __cdecl ImFontAtlas::AddFontDefault(struct ImFontConfig const *)" (?AddFontDefault@ImFontAtlas@@QEAAPEAUImFont@@PEBUImFontConfig@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImFont * __cdecl ImFontAtlas::AddFontFromFileTTF(char const *,float,struct ImFontConfig const *,unsigned short const *)" (?AddFontFromFileTTF@ImFontAtlas@@QEAAPEAUImFont@@PEBDMPEBUImFontConfig@@PEBG@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImFont * __cdecl ImFontAtlas::AddFontFromMemoryTTF(void *,int,float,struct ImFontConfig const *,unsigned short const *)" (?AddFontFromMemoryTTF@ImFontAtlas@@QEAAPEAUImFont@@PEAXHMPEBUImFontConfig@@PEBG@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImFont * __cdecl ImFontAtlas::AddFontFromMemoryCompressedTTF(void const *,int,float,struct ImFontConfig const *,unsigned short const *)" (?AddFontFromMemoryCompressedTTF@ImFontAtlas@@QEAAPEAUImFont@@PEBXHMPEBUImFontConfig@@PEBG@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImFont * __cdecl ImFontAtlas::AddFontFromMemoryCompressedBase85TTF(char const *,float,struct ImFontConfig const *,unsigned short const *)" (?AddFontFromMemoryCompressedBase85TTF@ImFontAtlas@@QEAAPEAUImFont@@PEBDMPEBUImFontConfig@@PEBG@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontAtlas::ClearInputData(void)" (?ClearInputData@ImFontAtlas@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontAtlas::ClearTexData(void)" (?ClearTexData@ImFontAtlas@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontAtlas::ClearFonts(void)" (?ClearFonts@ImFontAtlas@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontAtlas::Clear(void)" (?Clear@ImFontAtlas@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: bool __cdecl ImFontAtlas::Build(void)" (?Build@ImFontAtlas@@QEAA_NXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontAtlas::GetTexDataAsAlpha8(unsigned char * *,int *,int *,int *)" (?GetTexDataAsAlpha8@ImFontAtlas@@QEAAXPEAPEAEPEAH11@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontAtlas::GetTexDataAsRGBA32(unsigned char * *,int *,int *,int *)" (?GetTexDataAsRGBA32@ImFontAtlas@@QEAAXPEAPEAEPEAH11@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: unsigned short const * __cdecl ImFontAtlas::GetGlyphRangesDefault(void)" (?GetGlyphRangesDefault@ImFontAtlas@@QEAAPEBGXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: unsigned short const * __cdecl ImFontAtlas::GetGlyphRangesKorean(void)" (?GetGlyphRangesKorean@ImFontAtlas@@QEAAPEBGXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: unsigned short const * __cdecl ImFontAtlas::GetGlyphRangesJapanese(void)" (?GetGlyphRangesJapanese@ImFontAtlas@@QEAAPEBGXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: unsigned short const * __cdecl ImFontAtlas::GetGlyphRangesChineseFull(void)" (?GetGlyphRangesChineseFull@ImFontAtlas@@QEAAPEBGXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: unsigned short const * __cdecl ImFontAtlas::GetGlyphRangesChineseSimplifiedCommon(void)" (?GetGlyphRangesChineseSimplifiedCommon@ImFontAtlas@@QEAAPEBGXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: unsigned short const * __cdecl ImFontAtlas::GetGlyphRangesCyrillic(void)" (?GetGlyphRangesCyrillic@ImFontAtlas@@QEAAPEBGXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: unsigned short const * __cdecl ImFontAtlas::GetGlyphRangesThai(void)" (?GetGlyphRangesThai@ImFontAtlas@@QEAAPEBGXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: int __cdecl ImFontAtlas::AddCustomRectRegular(unsigned int,int,int)" (?AddCustomRectRegular@ImFontAtlas@@QEAAHIHH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: int __cdecl ImFontAtlas::AddCustomRectFontGlyph(struct ImFont *,unsigned short,int,int,float,struct ImVec2 const &)" (?AddCustomRectFontGlyph@ImFontAtlas@@QEAAHPEAUImFont@@GHHMAEBUImVec2@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFontAtlas::CalcCustomRectUV(struct ImFontAtlas::CustomRect const *,struct ImVec2 *,struct ImVec2 *)" (?CalcCustomRectUV@ImFontAtlas@@QEAAXPEBUCustomRect@1@PEAUImVec2@@1@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: bool __cdecl ImFontAtlas::GetMouseCursorTexData(int,struct ImVec2 *,struct ImVec2 *,struct ImVec2 * const,struct ImVec2 * const)" (?GetMouseCursorTexData@ImFontAtlas@@QEAA_NHPEAUImVec2@@0QEAU2@1@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: __cdecl ImFont::ImFont(void)" (??0ImFont@@QEAA@XZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: __cdecl ImFont::~ImFont(void)" (??1ImFont@@QEAA@XZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFont::ClearOutputData(void)" (?ClearOutputData@ImFont@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFont::BuildLookupTable(void)" (?BuildLookupTable@ImFont@@QEAAXXZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImFontGlyph const * __cdecl ImFont::FindGlyph(unsigned short)const " (?FindGlyph@ImFont@@QEBAPEBUImFontGlyph@@G@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImFontGlyph const * __cdecl ImFont::FindGlyphNoFallback(unsigned short)const " (?FindGlyphNoFallback@ImFont@@QEBAPEBUImFontGlyph@@G@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFont::SetFallbackChar(unsigned short)" (?SetFallbackChar@ImFont@@QEAAXG@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: struct ImVec2 __cdecl ImFont::CalcTextSizeA(float,float,float,char const *,char const *,char const * *)const " (?CalcTextSizeA@ImFont@@QEBA?AUImVec2@@MMMPEBD0PEAPEBD@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: char const * __cdecl ImFont::CalcWordWrapPositionA(float,char const *,char const *,float)const " (?CalcWordWrapPositionA@ImFont@@QEBAPEBDMPEBD0M@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFont::RenderChar(struct ImDrawList *,float,struct ImVec2,unsigned int,unsigned short)const " (?RenderChar@ImFont@@QEBAXPEAUImDrawList@@MUImVec2@@IG@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFont::RenderText(struct ImDrawList *,float,struct ImVec2,unsigned int,struct ImVec4 const &,char const *,char const *,float,bool)const " (?RenderText@ImFont@@QEBAXPEAUImDrawList@@MUImVec2@@IAEBUImVec4@@PEBD3M_N@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFont::GrowIndex(int)" (?GrowIndex@ImFont@@QEAAXH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFont::AddGlyph(unsigned short,float,float,float,float,float,float,float,float,float)" (?AddGlyph@ImFont@@QEAAXGMMMMMMMMM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: void __cdecl ImFont::AddRemapChar(unsigned short,unsigned short,bool)" (?AddRemapChar@ImFont@@QEAAXGG_N@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "public: __cdecl ImDrawListSharedData::ImDrawListSharedData(void)" (??0ImDrawListSharedData@@QEAA@XZ) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImGui::RenderArrowPointingAt(struct ImDrawList *,struct ImVec2,struct ImVec2,int,unsigned int)" (?RenderArrowPointingAt@ImGui@@YAXPEAUImDrawList@@UImVec2@@1HI@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImGui::RenderRectFilledRangeH(struct ImDrawList *,struct ImRect const &,unsigned int,float,float,float)" (?RenderRectFilledRangeH@ImGui@@YAXPEAUImDrawList@@AEBUImRect@@IMMM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImGui::RenderPixelEllipsis(struct ImDrawList *,struct ImVec2,int,unsigned int)" (?RenderPixelEllipsis@ImGui@@YAXPEAUImDrawList@@UImVec2@@HI@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImGui::ShadeVertsLinearColorGradientKeepAlpha(struct ImDrawList *,int,int,struct ImVec2,struct ImVec2,unsigned int,unsigned int)" (?ShadeVertsLinearColorGradientKeepAlpha@ImGui@@YAXPEAUImDrawList@@HHUImVec2@@1II@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImGui::ShadeVertsLinearUV(struct ImDrawList *,int,int,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,bool)" (?ShadeVertsLinearUV@ImGui@@YAXPEAUImDrawList@@HHAEBUImVec2@@111_N@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "bool __cdecl ImFontAtlasBuildWithStbTruetype(struct ImFontAtlas *)" (?ImFontAtlasBuildWithStbTruetype@@YA_NPEAUImFontAtlas@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImFontAtlasBuildRegisterDefaultCustomRects(struct ImFontAtlas *)" (?ImFontAtlasBuildRegisterDefaultCustomRects@@YAXPEAUImFontAtlas@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImFontAtlasBuildSetupFont(struct ImFontAtlas *,struct ImFont *,struct ImFontConfig *,float,float)" (?ImFontAtlasBuildSetupFont@@YAXPEAUImFontAtlas@@PEAUImFont@@PEAUImFontConfig@@MM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImFontAtlasBuildPackCustomRects(struct ImFontAtlas *,void *)" (?ImFontAtlasBuildPackCustomRects@@YAXPEAUImFontAtlas@@PEAX@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImFontAtlasBuildFinish(struct ImFontAtlas *)" (?ImFontAtlasBuildFinish@@YAXPEAUImFontAtlas@@@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImFontAtlasBuildMultiplyCalcLookupTable(unsigned char * const,float)" (?ImFontAtlasBuildMultiplyCalcLookupTable@@YAXQEAEM@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_draw.obj) : warning LNK4006: "void __cdecl ImFontAtlasBuildMultiplyRectAlpha8(unsigned char const * const,unsigned char *,int,int,int,int,int)" (?ImFontAtlasBuildMultiplyRectAlpha8@@YAXQEBEPEAEHHHHH@Z) already defined in Imgui.lib(imgui_draw.obj); second definition ignored
+Imgui.lib(imgui_demo.obj) : warning LNK4006: "void __cdecl ImGui::ShowDemoWindow(bool *)" (?ShowDemoWindow@ImGui@@YAXPEA_N@Z) already defined in Imgui.lib(imgui_demo.obj); second definition ignored
+Imgui.lib(imgui_demo.obj) : warning LNK4006: "void __cdecl ImGui::ShowAboutWindow(bool *)" (?ShowAboutWindow@ImGui@@YAXPEA_N@Z) already defined in Imgui.lib(imgui_demo.obj); second definition ignored
+Imgui.lib(imgui_demo.obj) : warning LNK4006: "void __cdecl ImGui::ShowStyleEditor(struct ImGuiStyle *)" (?ShowStyleEditor@ImGui@@YAXPEAUImGuiStyle@@@Z) already defined in Imgui.lib(imgui_demo.obj); second definition ignored
+Imgui.lib(imgui_demo.obj) : warning LNK4006: "bool __cdecl ImGui::ShowStyleSelector(char const *)" (?ShowStyleSelector@ImGui@@YA_NPEBD@Z) already defined in Imgui.lib(imgui_demo.obj); second definition ignored
+Imgui.lib(imgui_demo.obj) : warning LNK4006: "void __cdecl ImGui::ShowFontSelector(char const *)" (?ShowFontSelector@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui_demo.obj); second definition ignored
+Imgui.lib(imgui_demo.obj) : warning LNK4006: "void __cdecl ImGui::ShowUserGuide(void)" (?ShowUserGuide@ImGui@@YAXXZ) already defined in Imgui.lib(imgui_demo.obj); second definition ignored
+imgui.obj : warning LNK4006: "public: static char * ImGuiTextBuffer::EmptyString" (?EmptyString@ImGuiTextBuffer@@2PADA) already defined in Imgui.lib(imgui.obj); second definition ignored
+imgui.obj : warning LNK4006: "struct ImGuiContext * GImGui" (?GImGui@@3PEAUImGuiContext@@EA) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiContext * __cdecl ImGui::CreateContext(struct ImFontAtlas *)" (?CreateContext@ImGui@@YAPEAUImGuiContext@@PEAUImFontAtlas@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::DestroyContext(struct ImGuiContext *)" (?DestroyContext@ImGui@@YAXPEAUImGuiContext@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiContext * __cdecl ImGui::GetCurrentContext(void)" (?GetCurrentContext@ImGui@@YAPEAUImGuiContext@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetCurrentContext(struct ImGuiContext *)" (?SetCurrentContext@ImGui@@YAXPEAUImGuiContext@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::DebugCheckVersionAndDataLayout(char const *,unsigned __int64,unsigned __int64,unsigned __int64,unsigned __int64,unsigned __int64)" (?DebugCheckVersionAndDataLayout@ImGui@@YA_NPEBD_K1111@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiIO & __cdecl ImGui::GetIO(void)" (?GetIO@ImGui@@YAAEAUImGuiIO@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiStyle & __cdecl ImGui::GetStyle(void)" (?GetStyle@ImGui@@YAAEAUImGuiStyle@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::NewFrame(void)" (?NewFrame@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndFrame(void)" (?EndFrame@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::Render(void)" (?Render@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImDrawData * __cdecl ImGui::GetDrawData(void)" (?GetDrawData@ImGui@@YAPEAUImDrawData@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ShowMetricsWindow(bool *)" (?ShowMetricsWindow@ImGui@@YAXPEA_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char const * __cdecl ImGui::GetVersion(void)" (?GetVersion@ImGui@@YAPEBDXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::Begin(char const *,bool *,int)" (?Begin@ImGui@@YA_NPEBDPEA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::End(void)" (?End@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginChild(char const *,struct ImVec2 const &,bool,int)" (?BeginChild@ImGui@@YA_NPEBDAEBUImVec2@@_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginChild(unsigned int,struct ImVec2 const &,bool,int)" (?BeginChild@ImGui@@YA_NIAEBUImVec2@@_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndChild(void)" (?EndChild@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsWindowAppearing(void)" (?IsWindowAppearing@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsWindowCollapsed(void)" (?IsWindowCollapsed@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsWindowFocused(int)" (?IsWindowFocused@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsWindowHovered(int)" (?IsWindowHovered@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImDrawList * __cdecl ImGui::GetWindowDrawList(void)" (?GetWindowDrawList@ImGui@@YAPEAUImDrawList@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetWindowPos(void)" (?GetWindowPos@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetWindowSize(void)" (?GetWindowSize@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetWindowWidth(void)" (?GetWindowWidth@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetWindowHeight(void)" (?GetWindowHeight@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetContentRegionMax(void)" (?GetContentRegionMax@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetContentRegionAvail(void)" (?GetContentRegionAvail@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetContentRegionAvailWidth(void)" (?GetContentRegionAvailWidth@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetWindowContentRegionMin(void)" (?GetWindowContentRegionMin@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetWindowContentRegionMax(void)" (?GetWindowContentRegionMax@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetWindowContentRegionWidth(void)" (?GetWindowContentRegionWidth@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNextWindowPos(struct ImVec2 const &,int,struct ImVec2 const &)" (?SetNextWindowPos@ImGui@@YAXAEBUImVec2@@H0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNextWindowSize(struct ImVec2 const &,int)" (?SetNextWindowSize@ImGui@@YAXAEBUImVec2@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNextWindowSizeConstraints(struct ImVec2 const &,struct ImVec2 const &,void (__cdecl*)(struct ImGuiSizeCallbackData *),void *)" (?SetNextWindowSizeConstraints@ImGui@@YAXAEBUImVec2@@0P6AXPEAUImGuiSizeCallbackData@@@ZPEAX@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNextWindowContentSize(struct ImVec2 const &)" (?SetNextWindowContentSize@ImGui@@YAXAEBUImVec2@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNextWindowCollapsed(bool,int)" (?SetNextWindowCollapsed@ImGui@@YAX_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNextWindowFocus(void)" (?SetNextWindowFocus@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNextWindowBgAlpha(float)" (?SetNextWindowBgAlpha@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowPos(struct ImVec2 const &,int)" (?SetWindowPos@ImGui@@YAXAEBUImVec2@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowSize(struct ImVec2 const &,int)" (?SetWindowSize@ImGui@@YAXAEBUImVec2@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowCollapsed(bool,int)" (?SetWindowCollapsed@ImGui@@YAX_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowFocus(void)" (?SetWindowFocus@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowFontScale(float)" (?SetWindowFontScale@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowPos(char const *,struct ImVec2 const &,int)" (?SetWindowPos@ImGui@@YAXPEBDAEBUImVec2@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowSize(char const *,struct ImVec2 const &,int)" (?SetWindowSize@ImGui@@YAXPEBDAEBUImVec2@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowCollapsed(char const *,bool,int)" (?SetWindowCollapsed@ImGui@@YAXPEBD_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowFocus(char const *)" (?SetWindowFocus@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetScrollX(void)" (?GetScrollX@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetScrollY(void)" (?GetScrollY@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetScrollMaxX(void)" (?GetScrollMaxX@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetScrollMaxY(void)" (?GetScrollMaxY@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetScrollX(float)" (?SetScrollX@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetScrollY(float)" (?SetScrollY@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetScrollHereY(float)" (?SetScrollHereY@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetScrollFromPosY(float,float)" (?SetScrollFromPosY@ImGui@@YAXMM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushFont(struct ImFont *)" (?PushFont@ImGui@@YAXPEAUImFont@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopFont(void)" (?PopFont@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushStyleColor(int,unsigned int)" (?PushStyleColor@ImGui@@YAXHI@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushStyleColor(int,struct ImVec4 const &)" (?PushStyleColor@ImGui@@YAXHAEBUImVec4@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopStyleColor(int)" (?PopStyleColor@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushStyleVar(int,float)" (?PushStyleVar@ImGui@@YAXHM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushStyleVar(int,struct ImVec2 const &)" (?PushStyleVar@ImGui@@YAXHAEBUImVec2@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopStyleVar(int)" (?PopStyleVar@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec4 const & __cdecl ImGui::GetStyleColorVec4(int)" (?GetStyleColorVec4@ImGui@@YAAEBUImVec4@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImFont * __cdecl ImGui::GetFont(void)" (?GetFont@ImGui@@YAPEAUImFont@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetFontSize(void)" (?GetFontSize@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetFontTexUvWhitePixel(void)" (?GetFontTexUvWhitePixel@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned int __cdecl ImGui::GetColorU32(int,float)" (?GetColorU32@ImGui@@YAIHM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned int __cdecl ImGui::GetColorU32(struct ImVec4 const &)" (?GetColorU32@ImGui@@YAIAEBUImVec4@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned int __cdecl ImGui::GetColorU32(unsigned int)" (?GetColorU32@ImGui@@YAII@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushItemWidth(float)" (?PushItemWidth@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopItemWidth(void)" (?PopItemWidth@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::CalcItemWidth(void)" (?CalcItemWidth@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushTextWrapPos(float)" (?PushTextWrapPos@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopTextWrapPos(void)" (?PopTextWrapPos@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushAllowKeyboardFocus(bool)" (?PushAllowKeyboardFocus@ImGui@@YAX_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopAllowKeyboardFocus(void)" (?PopAllowKeyboardFocus@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushButtonRepeat(bool)" (?PushButtonRepeat@ImGui@@YAX_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopButtonRepeat(void)" (?PopButtonRepeat@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SameLine(float,float)" (?SameLine@ImGui@@YAXMM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::Indent(float)" (?Indent@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::Unindent(float)" (?Unindent@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::BeginGroup(void)" (?BeginGroup@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndGroup(void)" (?EndGroup@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetCursorPos(void)" (?GetCursorPos@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetCursorPosX(void)" (?GetCursorPosX@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetCursorPosY(void)" (?GetCursorPosY@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetCursorPos(struct ImVec2 const &)" (?SetCursorPos@ImGui@@YAXAEBUImVec2@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetCursorPosX(float)" (?SetCursorPosX@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetCursorPosY(float)" (?SetCursorPosY@ImGui@@YAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetCursorStartPos(void)" (?GetCursorStartPos@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetCursorScreenPos(void)" (?GetCursorScreenPos@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetCursorScreenPos(struct ImVec2 const &)" (?SetCursorScreenPos@ImGui@@YAXAEBUImVec2@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetTextLineHeight(void)" (?GetTextLineHeight@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetTextLineHeightWithSpacing(void)" (?GetTextLineHeightWithSpacing@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetFrameHeight(void)" (?GetFrameHeight@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetFrameHeightWithSpacing(void)" (?GetFrameHeightWithSpacing@ImGui@@YAMXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushID(char const *)" (?PushID@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushID(char const *,char const *)" (?PushID@ImGui@@YAXPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushID(void const *)" (?PushID@ImGui@@YAXPEBX@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushID(int)" (?PushID@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopID(void)" (?PopID@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned int __cdecl ImGui::GetID(char const *)" (?GetID@ImGui@@YAIPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned int __cdecl ImGui::GetID(char const *,char const *)" (?GetID@ImGui@@YAIPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned int __cdecl ImGui::GetID(void const *)" (?GetID@ImGui@@YAIPEBX@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::BeginTooltip(void)" (?BeginTooltip@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndTooltip(void)" (?EndTooltip@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetTooltip(char const *,...)" (?SetTooltip@ImGui@@YAXPEBDZZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetTooltipV(char const *,char *)" (?SetTooltipV@ImGui@@YAXPEBDPEAD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::OpenPopup(char const *)" (?OpenPopup@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginPopup(char const *,int)" (?BeginPopup@ImGui@@YA_NPEBDH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginPopupContextItem(char const *,int)" (?BeginPopupContextItem@ImGui@@YA_NPEBDH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginPopupContextWindow(char const *,int,bool)" (?BeginPopupContextWindow@ImGui@@YA_NPEBDH_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginPopupContextVoid(char const *,int)" (?BeginPopupContextVoid@ImGui@@YA_NPEBDH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginPopupModal(char const *,bool *,int)" (?BeginPopupModal@ImGui@@YA_NPEBDPEA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndPopup(void)" (?EndPopup@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::OpenPopupOnItemClick(char const *,int)" (?OpenPopupOnItemClick@ImGui@@YA_NPEBDH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsPopupOpen(char const *)" (?IsPopupOpen@ImGui@@YA_NPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::CloseCurrentPopup(void)" (?CloseCurrentPopup@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::Columns(int,char const *,bool)" (?Columns@ImGui@@YAXHPEBD_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::NextColumn(void)" (?NextColumn@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImGui::GetColumnIndex(void)" (?GetColumnIndex@ImGui@@YAHXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetColumnWidth(int)" (?GetColumnWidth@ImGui@@YAMH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetColumnWidth(int,float)" (?SetColumnWidth@ImGui@@YAXHM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetColumnOffset(int)" (?GetColumnOffset@ImGui@@YAMH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetColumnOffset(int,float)" (?SetColumnOffset@ImGui@@YAXHM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImGui::GetColumnsCount(void)" (?GetColumnsCount@ImGui@@YAHXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LogToTTY(int)" (?LogToTTY@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LogToFile(int,char const *)" (?LogToFile@ImGui@@YAXHPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LogToClipboard(int)" (?LogToClipboard@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LogFinish(void)" (?LogFinish@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LogButtons(void)" (?LogButtons@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LogText(char const *,...)" (?LogText@ImGui@@YAXPEBDZZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginDragDropSource(int)" (?BeginDragDropSource@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::SetDragDropPayload(char const *,void const *,unsigned __int64,int)" (?SetDragDropPayload@ImGui@@YA_NPEBDPEBX_KH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndDragDropSource(void)" (?EndDragDropSource@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginDragDropTarget(void)" (?BeginDragDropTarget@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiPayload const * __cdecl ImGui::AcceptDragDropPayload(char const *,int)" (?AcceptDragDropPayload@ImGui@@YAPEBUImGuiPayload@@PEBDH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndDragDropTarget(void)" (?EndDragDropTarget@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiPayload const * __cdecl ImGui::GetDragDropPayload(void)" (?GetDragDropPayload@ImGui@@YAPEBUImGuiPayload@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushClipRect(struct ImVec2 const &,struct ImVec2 const &,bool)" (?PushClipRect@ImGui@@YAXAEBUImVec2@@0_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopClipRect(void)" (?PopClipRect@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetItemDefaultFocus(void)" (?SetItemDefaultFocus@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetKeyboardFocusHere(int)" (?SetKeyboardFocusHere@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsItemHovered(int)" (?IsItemHovered@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsItemActive(void)" (?IsItemActive@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsItemFocused(void)" (?IsItemFocused@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsItemClicked(int)" (?IsItemClicked@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsItemVisible(void)" (?IsItemVisible@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsItemEdited(void)" (?IsItemEdited@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsItemDeactivated(void)" (?IsItemDeactivated@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsItemDeactivatedAfterEdit(void)" (?IsItemDeactivatedAfterEdit@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsAnyItemHovered(void)" (?IsAnyItemHovered@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsAnyItemActive(void)" (?IsAnyItemActive@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsAnyItemFocused(void)" (?IsAnyItemFocused@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetItemRectMin(void)" (?GetItemRectMin@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetItemRectMax(void)" (?GetItemRectMax@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetItemRectSize(void)" (?GetItemRectSize@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetItemAllowOverlap(void)" (?SetItemAllowOverlap@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsRectVisible(struct ImVec2 const &)" (?IsRectVisible@ImGui@@YA_NAEBUImVec2@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsRectVisible(struct ImVec2 const &,struct ImVec2 const &)" (?IsRectVisible@ImGui@@YA_NAEBUImVec2@@0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "double __cdecl ImGui::GetTime(void)" (?GetTime@ImGui@@YANXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImGui::GetFrameCount(void)" (?GetFrameCount@ImGui@@YAHXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImDrawList * __cdecl ImGui::GetOverlayDrawList(void)" (?GetOverlayDrawList@ImGui@@YAPEAUImDrawList@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImDrawListSharedData * __cdecl ImGui::GetDrawListSharedData(void)" (?GetDrawListSharedData@ImGui@@YAPEAUImDrawListSharedData@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char const * __cdecl ImGui::GetStyleColorName(int)" (?GetStyleColorName@ImGui@@YAPEBDH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetStateStorage(struct ImGuiStorage *)" (?SetStateStorage@ImGui@@YAXPEAUImGuiStorage@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiStorage * __cdecl ImGui::GetStateStorage(void)" (?GetStateStorage@ImGui@@YAPEAUImGuiStorage@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::CalcTextSize(char const *,char const *,bool,float)" (?CalcTextSize@ImGui@@YA?AUImVec2@@PEBD0_NM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::CalcListClipping(int,float,int *,int *)" (?CalcListClipping@ImGui@@YAXHMPEAH0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginChildFrame(unsigned int,struct ImVec2 const &,int)" (?BeginChildFrame@ImGui@@YA_NIAEBUImVec2@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndChildFrame(void)" (?EndChildFrame@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec4 __cdecl ImGui::ColorConvertU32ToFloat4(unsigned int)" (?ColorConvertU32ToFloat4@ImGui@@YA?AUImVec4@@I@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned int __cdecl ImGui::ColorConvertFloat4ToU32(struct ImVec4 const &)" (?ColorConvertFloat4ToU32@ImGui@@YAIAEBUImVec4@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ColorConvertRGBtoHSV(float,float,float,float &,float &,float &)" (?ColorConvertRGBtoHSV@ImGui@@YAXMMMAEAM00@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ColorConvertHSVtoRGB(float,float,float,float &,float &,float &)" (?ColorConvertHSVtoRGB@ImGui@@YAXMMMAEAM00@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImGui::GetKeyIndex(int)" (?GetKeyIndex@ImGui@@YAHH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsKeyDown(int)" (?IsKeyDown@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsKeyPressed(int,bool)" (?IsKeyPressed@ImGui@@YA_NH_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsKeyReleased(int)" (?IsKeyReleased@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImGui::GetKeyPressedAmount(int,float,float)" (?GetKeyPressedAmount@ImGui@@YAHHMM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsMouseDown(int)" (?IsMouseDown@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsAnyMouseDown(void)" (?IsAnyMouseDown@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsMouseClicked(int,bool)" (?IsMouseClicked@ImGui@@YA_NH_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsMouseDoubleClicked(int)" (?IsMouseDoubleClicked@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsMouseReleased(int)" (?IsMouseReleased@ImGui@@YA_NH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsMouseDragging(int,float)" (?IsMouseDragging@ImGui@@YA_NHM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsMouseHoveringRect(struct ImVec2 const &,struct ImVec2 const &,bool)" (?IsMouseHoveringRect@ImGui@@YA_NAEBUImVec2@@0_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsMousePosValid(struct ImVec2 const *)" (?IsMousePosValid@ImGui@@YA_NPEBUImVec2@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetMousePos(void)" (?GetMousePos@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetMousePosOnOpeningCurrentPopup(void)" (?GetMousePosOnOpeningCurrentPopup@ImGui@@YA?AUImVec2@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetMouseDragDelta(int,float)" (?GetMouseDragDelta@ImGui@@YA?AUImVec2@@HM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ResetMouseDragDelta(int)" (?ResetMouseDragDelta@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImGui::GetMouseCursor(void)" (?GetMouseCursor@ImGui@@YAHXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetMouseCursor(int)" (?SetMouseCursor@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::CaptureKeyboardFromApp(bool)" (?CaptureKeyboardFromApp@ImGui@@YAX_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::CaptureMouseFromApp(bool)" (?CaptureMouseFromApp@ImGui@@YAX_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char const * __cdecl ImGui::GetClipboardText(void)" (?GetClipboardText@ImGui@@YAPEBDXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetClipboardText(char const *)" (?SetClipboardText@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LoadIniSettingsFromDisk(char const *)" (?LoadIniSettingsFromDisk@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LoadIniSettingsFromMemory(char const *,unsigned __int64)" (?LoadIniSettingsFromMemory@ImGui@@YAXPEBD_K@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SaveIniSettingsToDisk(char const *)" (?SaveIniSettingsToDisk@ImGui@@YAXPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char const * __cdecl ImGui::SaveIniSettingsToMemory(unsigned __int64 *)" (?SaveIniSettingsToMemory@ImGui@@YAPEBDPEA_K@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetAllocatorFunctions(void * (__cdecl*)(unsigned __int64,void *),void (__cdecl*)(void *,void *),void *)" (?SetAllocatorFunctions@ImGui@@YAXP6APEAX_KPEAX@ZP6AX11@Z1@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void * __cdecl ImGui::MemAlloc(unsigned __int64)" (?MemAlloc@ImGui@@YAPEAX_K@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::MemFree(void *)" (?MemFree@ImGui@@YAXPEAX@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: __cdecl ImGuiStyle::ImGuiStyle(void)" (??0ImGuiStyle@@QEAA@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiStyle::ScaleAllSizes(float)" (?ScaleAllSizes@ImGuiStyle@@QEAAXM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiIO::AddInputCharacter(unsigned short)" (?AddInputCharacter@ImGuiIO@@QEAAXG@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiIO::AddInputCharactersUTF8(char const *)" (?AddInputCharactersUTF8@ImGuiIO@@QEAAXPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiIO::ClearInputCharacters(void)" (?ClearInputCharacters@ImGuiIO@@QEAAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: __cdecl ImGuiIO::ImGuiIO(void)" (??0ImGuiIO@@QEAA@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::Begin(char const *,bool *,struct ImVec2 const &,float,int)" (?Begin@ImGui@@YA_NPEBDPEA_NAEBUImVec2@@MH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: __cdecl ImGuiTextFilter::ImGuiTextFilter(char const *)" (??0ImGuiTextFilter@@QEAA@PEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: bool __cdecl ImGuiTextFilter::Draw(char const *,float)" (?Draw@ImGuiTextFilter@@QEAA_NPEBDM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: bool __cdecl ImGuiTextFilter::PassFilter(char const *,char const *)const " (?PassFilter@ImGuiTextFilter@@QEBA_NPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiTextFilter::Build(void)" (?Build@ImGuiTextFilter@@QEAAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiTextFilter::TextRange::split(char,struct ImVector<struct ImGuiTextFilter::TextRange> *)const " (?split@TextRange@ImGuiTextFilter@@QEBAXDPEAU?$ImVector@UTextRange@ImGuiTextFilter@@@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiTextBuffer::appendf(char const *,...)" (?appendf@ImGuiTextBuffer@@QEAAXPEBDZZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiTextBuffer::appendfv(char const *,char *)" (?appendfv@ImGuiTextBuffer@@QEAAXPEBDPEAD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: int __cdecl ImGuiStorage::GetInt(unsigned int,int)const " (?GetInt@ImGuiStorage@@QEBAHIH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiStorage::SetInt(unsigned int,int)" (?SetInt@ImGuiStorage@@QEAAXIH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: bool __cdecl ImGuiStorage::GetBool(unsigned int,bool)const " (?GetBool@ImGuiStorage@@QEBA_NI_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiStorage::SetBool(unsigned int,bool)" (?SetBool@ImGuiStorage@@QEAAXI_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: float __cdecl ImGuiStorage::GetFloat(unsigned int,float)const " (?GetFloat@ImGuiStorage@@QEBAMIM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiStorage::SetFloat(unsigned int,float)" (?SetFloat@ImGuiStorage@@QEAAXIM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void * __cdecl ImGuiStorage::GetVoidPtr(unsigned int)const " (?GetVoidPtr@ImGuiStorage@@QEBAPEAXI@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiStorage::SetVoidPtr(unsigned int,void *)" (?SetVoidPtr@ImGuiStorage@@QEAAXIPEAX@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: int * __cdecl ImGuiStorage::GetIntRef(unsigned int,int)" (?GetIntRef@ImGuiStorage@@QEAAPEAHIH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: bool * __cdecl ImGuiStorage::GetBoolRef(unsigned int,bool)" (?GetBoolRef@ImGuiStorage@@QEAAPEA_NI_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: float * __cdecl ImGuiStorage::GetFloatRef(unsigned int,float)" (?GetFloatRef@ImGuiStorage@@QEAAPEAMIM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void * * __cdecl ImGuiStorage::GetVoidPtrRef(unsigned int,void *)" (?GetVoidPtrRef@ImGuiStorage@@QEAAPEAPEAXIPEAX@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiStorage::SetAllInt(int)" (?SetAllInt@ImGuiStorage@@QEAAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiStorage::BuildSortByKey(void)" (?BuildSortByKey@ImGuiStorage@@QEAAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: bool __cdecl ImGuiListClipper::Step(void)" (?Step@ImGuiListClipper@@QEAA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiListClipper::Begin(int,float)" (?Begin@ImGuiListClipper@@QEAAXHM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImGuiListClipper::End(void)" (?End@ImGuiListClipper@@QEAAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImTextStrToUtf8(char *,int,unsigned short const *,unsigned short const *)" (?ImTextStrToUtf8@@YAHPEADHPEBG1@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImTextCharFromUtf8(unsigned int *,char const *,char const *)" (?ImTextCharFromUtf8@@YAHPEAIPEBD1@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImTextStrFromUtf8(unsigned short *,int,char const *,char const *,char const * *)" (?ImTextStrFromUtf8@@YAHPEAGHPEBD1PEAPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImTextCountCharsFromUtf8(char const *,char const *)" (?ImTextCountCharsFromUtf8@@YAHPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImTextCountUtf8BytesFromChar(char const *,char const *)" (?ImTextCountUtf8BytesFromChar@@YAHPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImTextCountUtf8BytesFromStr(unsigned short const *,unsigned short const *)" (?ImTextCountUtf8BytesFromStr@@YAHPEBG0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void * __cdecl ImFileLoadToMemory(char const *,char const *,unsigned __int64 *,int)" (?ImFileLoadToMemory@@YAPEAXPEBD0PEA_KH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct _iobuf * __cdecl ImFileOpen(char const *,char const *)" (?ImFileOpen@@YAPEAU_iobuf@@PEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImLineClosestPoint(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &)" (?ImLineClosestPoint@@YA?AUImVec2@@AEBU1@00@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImTriangleContainsPoint(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &)" (?ImTriangleContainsPoint@@YA_NAEBUImVec2@@000@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImTriangleClosestPoint(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &)" (?ImTriangleClosestPoint@@YA?AUImVec2@@AEBU1@000@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImTriangleBarycentricCoords(struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,struct ImVec2 const &,float &,float &,float &)" (?ImTriangleBarycentricCoords@@YAXAEBUImVec2@@000AEAM11@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImGetDirQuadrantFromDelta(float,float)" (?ImGetDirQuadrantFromDelta@@YAHMM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImStricmp(char const *,char const *)" (?ImStricmp@@YAHPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImStrnicmp(char const *,char const *,unsigned __int64)" (?ImStrnicmp@@YAHPEBD0_K@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImStrncpy(char *,char const *,unsigned __int64)" (?ImStrncpy@@YAXPEADPEBD_K@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char * __cdecl ImStrdup(char const *)" (?ImStrdup@@YAPEADPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char * __cdecl ImStrdupcpy(char *,unsigned __int64 *,char const *)" (?ImStrdupcpy@@YAPEADPEADPEA_KPEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char const * __cdecl ImStrchrRange(char const *,char const *,char)" (?ImStrchrRange@@YAPEBDPEBD0D@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImStrlenW(unsigned short const *)" (?ImStrlenW@@YAHPEBG@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char const * __cdecl ImStreolRange(char const *,char const *)" (?ImStreolRange@@YAPEBDPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned short const * __cdecl ImStrbolW(unsigned short const *,unsigned short const *)" (?ImStrbolW@@YAPEBGPEBG0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char const * __cdecl ImStristr(char const *,char const *,char const *,char const *)" (?ImStristr@@YAPEBDPEBD000@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImStrTrimBlanks(char *)" (?ImStrTrimBlanks@@YAXPEAD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImFormatString(char *,unsigned __int64,char const *,...)" (?ImFormatString@@YAHPEAD_KPEBDZZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImFormatStringV(char *,unsigned __int64,char const *,char *)" (?ImFormatStringV@@YAHPEAD_KPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: void __cdecl ImDrawDataBuilder::FlattenIntoSingleLayer(void)" (?FlattenIntoSingleLayer@ImDrawDataBuilder@@QEAAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: __cdecl ImGuiWindow::ImGuiWindow(struct ImGuiContext *,char const *)" (??0ImGuiWindow@@QEAA@PEAUImGuiContext@@PEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: __cdecl ImGuiWindow::~ImGuiWindow(void)" (??1ImGuiWindow@@QEAA@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: unsigned int __cdecl ImGuiWindow::GetID(char const *,char const *)" (?GetID@ImGuiWindow@@QEAAIPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: unsigned int __cdecl ImGuiWindow::GetID(void const *)" (?GetID@ImGuiWindow@@QEAAIPEBX@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: unsigned int __cdecl ImGuiWindow::GetIDNoKeepAlive(char const *,char const *)" (?GetIDNoKeepAlive@ImGuiWindow@@QEAAIPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: unsigned int __cdecl ImGuiWindow::GetIDNoKeepAlive(void const *)" (?GetIDNoKeepAlive@ImGuiWindow@@QEAAIPEBX@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "public: unsigned int __cdecl ImGuiWindow::GetIDFromRectangle(struct ImRect const &)" (?GetIDFromRectangle@ImGuiWindow@@QEAAIAEBUImRect@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiWindow * __cdecl ImGui::FindWindowByID(unsigned int)" (?FindWindowByID@ImGui@@YAPEAUImGuiWindow@@I@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiWindow * __cdecl ImGui::FindWindowByName(char const *)" (?FindWindowByName@ImGui@@YAPEAUImGuiWindow@@PEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::FocusWindow(struct ImGuiWindow *)" (?FocusWindow@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::FocusPreviousWindowIgnoringOne(struct ImGuiWindow *)" (?FocusPreviousWindowIgnoringOne@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::BringWindowToFocusFront(struct ImGuiWindow *)" (?BringWindowToFocusFront@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::BringWindowToDisplayFront(struct ImGuiWindow *)" (?BringWindowToDisplayFront@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::BringWindowToDisplayBack(struct ImGuiWindow *)" (?BringWindowToDisplayBack@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::UpdateWindowParentAndRootLinks(struct ImGuiWindow *,int,struct ImGuiWindow *)" (?UpdateWindowParentAndRootLinks@ImGui@@YAXPEAUImGuiWindow@@H0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::CalcWindowExpectedSize(struct ImGuiWindow *)" (?CalcWindowExpectedSize@ImGui@@YA?AUImVec2@@PEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsWindowChildOf(struct ImGuiWindow *,struct ImGuiWindow *)" (?IsWindowChildOf@ImGui@@YA_NPEAUImGuiWindow@@0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsWindowNavFocusable(struct ImGuiWindow *)" (?IsWindowNavFocusable@ImGui@@YA_NPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowScrollX(struct ImGuiWindow *,float)" (?SetWindowScrollX@ImGui@@YAXPEAUImGuiWindow@@M@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetWindowScrollY(struct ImGuiWindow *,float)" (?SetWindowScrollY@ImGui@@YAXPEAUImGuiWindow@@M@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetWindowScrollMaxX(struct ImGuiWindow *)" (?GetWindowScrollMaxX@ImGui@@YAMPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetWindowScrollMaxY(struct ImGuiWindow *)" (?GetWindowScrollMaxY@ImGui@@YAMPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImRect __cdecl ImGui::GetWindowAllowedExtentRect(struct ImGuiWindow *)" (?GetWindowAllowedExtentRect@ImGui@@YA?AUImRect@@PEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetCurrentFont(struct ImFont *)" (?SetCurrentFont@ImGui@@YAXPEAUImFont@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::Initialize(struct ImGuiContext *)" (?Initialize@ImGui@@YAXPEAUImGuiContext@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::Shutdown(struct ImGuiContext *)" (?Shutdown@ImGui@@YAXPEAUImGuiContext@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::UpdateHoveredWindowAndCaptureFlags(void)" (?UpdateHoveredWindowAndCaptureFlags@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::StartMouseMovingWindow(struct ImGuiWindow *)" (?StartMouseMovingWindow@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::UpdateMouseMovingWindowNewFrame(void)" (?UpdateMouseMovingWindowNewFrame@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::UpdateMouseMovingWindowEndFrame(void)" (?UpdateMouseMovingWindowEndFrame@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::MarkIniSettingsDirty(void)" (?MarkIniSettingsDirty@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::MarkIniSettingsDirty(struct ImGuiWindow *)" (?MarkIniSettingsDirty@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiWindowSettings * __cdecl ImGui::CreateNewWindowSettings(char const *)" (?CreateNewWindowSettings@ImGui@@YAPEAUImGuiWindowSettings@@PEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiWindowSettings * __cdecl ImGui::FindWindowSettings(unsigned int)" (?FindWindowSettings@ImGui@@YAPEAUImGuiWindowSettings@@I@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiSettingsHandler * __cdecl ImGui::FindSettingsHandler(char const *)" (?FindSettingsHandler@ImGui@@YAPEAUImGuiSettingsHandler@@PEBD@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetActiveID(unsigned int,struct ImGuiWindow *)" (?SetActiveID@ImGui@@YAXIPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetFocusID(unsigned int,struct ImGuiWindow *)" (?SetFocusID@ImGui@@YAXIPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ClearActiveID(void)" (?ClearActiveID@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "unsigned int __cdecl ImGui::GetHoveredID(void)" (?GetHoveredID@ImGui@@YAIXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetHoveredID(unsigned int)" (?SetHoveredID@ImGui@@YAXI@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::KeepAliveID(unsigned int)" (?KeepAliveID@ImGui@@YAXI@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::MarkItemEdited(unsigned int)" (?MarkItemEdited@ImGui@@YAXI@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ItemSize(struct ImVec2 const &,float)" (?ItemSize@ImGui@@YAXAEBUImVec2@@M@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ItemSize(struct ImRect const &,float)" (?ItemSize@ImGui@@YAXAEBUImRect@@M@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::ItemAdd(struct ImRect const &,unsigned int,struct ImRect const *)" (?ItemAdd@ImGui@@YA_NAEBUImRect@@IPEBU2@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::ItemHoverable(struct ImRect const &,unsigned int)" (?ItemHoverable@ImGui@@YA_NAEBUImRect@@I@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsClippedEx(struct ImRect const &,unsigned int,bool)" (?IsClippedEx@ImGui@@YA_NAEBUImRect@@I_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::FocusableItemRegister(struct ImGuiWindow *,unsigned int,bool)" (?FocusableItemRegister@ImGui@@YA_NPEAUImGuiWindow@@I_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::FocusableItemUnregister(struct ImGuiWindow *)" (?FocusableItemUnregister@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::CalcItemSize(struct ImVec2,float,float)" (?CalcItemSize@ImGui@@YA?AUImVec2@@U2@MM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::CalcWrapWidthForPos(struct ImVec2 const &,float)" (?CalcWrapWidthForPos@ImGui@@YAMAEBUImVec2@@M@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushMultiItemsWidths(int,float)" (?PushMultiItemsWidths@ImGui@@YAXHM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushItemFlag(int,bool)" (?PushItemFlag@ImGui@@YAXH_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PopItemFlag(void)" (?PopItemFlag@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::OpenPopupEx(unsigned int)" (?OpenPopupEx@ImGui@@YAXI@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ClosePopupToLevel(int,bool)" (?ClosePopupToLevel@ImGui@@YAXH_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ClosePopupsOverWindow(struct ImGuiWindow *)" (?ClosePopupsOverWindow@ImGui@@YAXPEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsPopupOpen(unsigned int)" (?IsPopupOpen@ImGui@@YA_NI@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginPopupEx(unsigned int,int)" (?BeginPopupEx@ImGui@@YA_NIH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::BeginTooltipEx(int,bool)" (?BeginTooltipEx@ImGui@@YAXH_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImGuiWindow * __cdecl ImGui::GetFrontMostPopupModal(void)" (?GetFrontMostPopupModal@ImGui@@YAPEAUImGuiWindow@@XZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::FindBestWindowPosForPopup(struct ImGuiWindow *)" (?FindBestWindowPosForPopup@ImGui@@YA?AUImVec2@@PEAUImGuiWindow@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::FindBestWindowPosForPopupEx(struct ImVec2 const &,struct ImVec2 const &,int *,struct ImRect const &,struct ImRect const &,enum ImGuiPopupPositionPolicy)" (?FindBestWindowPosForPopupEx@ImGui@@YA?AUImVec2@@AEBU2@0PEAHAEBUImRect@@2W4ImGuiPopupPositionPolicy@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::NavInitWindow(struct ImGuiWindow *,bool)" (?NavInitWindow@ImGui@@YAXPEAUImGuiWindow@@_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::NavMoveRequestButNoResultYet(void)" (?NavMoveRequestButNoResultYet@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::NavMoveRequestCancel(void)" (?NavMoveRequestCancel@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::NavMoveRequestForward(int,int,struct ImRect const &,int)" (?NavMoveRequestForward@ImGui@@YAXHHAEBUImRect@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::NavMoveRequestTryWrapping(struct ImGuiWindow *,int)" (?NavMoveRequestTryWrapping@ImGui@@YAXPEAUImGuiWindow@@H@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "float __cdecl ImGui::GetNavInputAmount(int,enum ImGuiInputReadMode)" (?GetNavInputAmount@ImGui@@YAMHW4ImGuiInputReadMode@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "struct ImVec2 __cdecl ImGui::GetNavInputAmount2d(int,enum ImGuiInputReadMode,float,float)" (?GetNavInputAmount2d@ImGui@@YA?AUImVec2@@HW4ImGuiInputReadMode@@MM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "int __cdecl ImGui::CalcTypematicPressedRepeatAmount(float,float,float,float)" (?CalcTypematicPressedRepeatAmount@ImGui@@YAHMMMM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ActivateItem(unsigned int)" (?ActivateItem@ImGui@@YAXI@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNavID(unsigned int,int)" (?SetNavID@ImGui@@YAXIH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::SetNavIDWithRectRel(unsigned int,int,struct ImRect const &)" (?SetNavIDWithRectRel@ImGui@@YAXIHAEBUImRect@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::BeginDragDropTargetCustom(struct ImRect const &,unsigned int)" (?BeginDragDropTargetCustom@ImGui@@YA_NAEBUImRect@@I@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::ClearDragDrop(void)" (?ClearDragDrop@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "bool __cdecl ImGui::IsDragDropPayloadBeingAccepted(void)" (?IsDragDropPayloadBeingAccepted@ImGui@@YA_NXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::BeginColumns(char const *,int,int)" (?BeginColumns@ImGui@@YAXPEBDHH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::EndColumns(void)" (?EndColumns@ImGui@@YAXXZ) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::PushColumnClipRect(int)" (?PushColumnClipRect@ImGui@@YAXH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderText(struct ImVec2,char const *,char const *,bool)" (?RenderText@ImGui@@YAXUImVec2@@PEBD1_N@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderTextWrapped(struct ImVec2,char const *,char const *,float)" (?RenderTextWrapped@ImGui@@YAXUImVec2@@PEBD1M@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderTextClipped(struct ImVec2 const &,struct ImVec2 const &,char const *,char const *,struct ImVec2 const *,struct ImVec2 const &,struct ImRect const *)" (?RenderTextClipped@ImGui@@YAXAEBUImVec2@@0PEBD1PEBU2@0PEBUImRect@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderTextClippedEx(struct ImDrawList *,struct ImVec2 const &,struct ImVec2 const &,char const *,char const *,struct ImVec2 const *,struct ImVec2 const &,struct ImRect const *)" (?RenderTextClippedEx@ImGui@@YAXPEAUImDrawList@@AEBUImVec2@@1PEBD2PEBU3@1PEBUImRect@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderFrame(struct ImVec2,struct ImVec2,unsigned int,bool,float)" (?RenderFrame@ImGui@@YAXUImVec2@@0I_NM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderFrameBorder(struct ImVec2,struct ImVec2,float)" (?RenderFrameBorder@ImGui@@YAXUImVec2@@0M@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderArrow(struct ImVec2,int,float)" (?RenderArrow@ImGui@@YAXUImVec2@@HM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderBullet(struct ImVec2)" (?RenderBullet@ImGui@@YAXUImVec2@@@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderCheckMark(struct ImVec2,unsigned int,float)" (?RenderCheckMark@ImGui@@YAXUImVec2@@IM@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::RenderNavHighlight(struct ImRect const &,unsigned int,int)" (?RenderNavHighlight@ImGui@@YAXAEBUImRect@@IH@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "char const * __cdecl ImGui::FindRenderedTextEnd(char const *,char const *)" (?FindRenderedTextEnd@ImGui@@YAPEBDPEBD0@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+Imgui.lib(imgui.obj) : warning LNK4006: "void __cdecl ImGui::LogRenderedText(struct ImVec2 const *,char const *,char const *)" (?LogRenderedText@ImGui@@YAXPEBUImVec2@@PEBD1@Z) already defined in Imgui.lib(imgui.obj); second definition ignored
+  Engine-Framework.vcxproj -> F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\lib\Engine-Framework.lib

@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Platform">
+      <UniqueIdentifier>{25e10319-400d-43f1-b90c-2afbb084d5cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework">
+      <UniqueIdentifier>{c4e9ccda-1927-481f-a698-4acd91fb1c33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Renderer">
+      <UniqueIdentifier>{5a78287b-a8fa-45bf-9d23-2f20129b3479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Camera">
+      <UniqueIdentifier>{cb3097f1-0a4d-484f-9d5c-5c90e5c26f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform">
+      <UniqueIdentifier>{4d7d4158-3810-4fee-9226-95520266fe84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework">
+      <UniqueIdentifier>{40522e91-1bd0-49c6-82d4-2376991983d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Renderer">
+      <UniqueIdentifier>{abed297f-df68-4784-9815-cbcd769dfb0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Camera">
+      <UniqueIdentifier>{6ec4d2d7-8b5b-49c2-b1b5-06f52ff54b7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\OpenGL">
+      <UniqueIdentifier>{b98e4f4d-9939-4d37-85ee-0169f9ba323b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform\OpenGL">
+      <UniqueIdentifier>{0f2fffb5-1099-43bf-8b08-af23310d4060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Shape">
+      <UniqueIdentifier>{b916a8dd-fd56-4004-a75d-17602594d06b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Shape">
+      <UniqueIdentifier>{ad1b7a71-09b1-465c-bb66-623c276c6dce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform\DirectX">
+      <UniqueIdentifier>{9d3c8658-dab3-4588-bef0-5c0dbbc912bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\DirectX">
+      <UniqueIdentifier>{c919c922-2aa3-410d-8fc6-91b6f00ed4ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Events">
+      <UniqueIdentifier>{3d0e647c-afdd-4255-ac9b-3651fc9f6716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform\Windows">
+      <UniqueIdentifier>{1f635848-7863-4b60-b149-e56307c2c3b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Windows">
+      <UniqueIdentifier>{84c13df0-c818-4fe6-ad61-7eafb52a07a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Profile">
+      <UniqueIdentifier>{ef8e68a5-467c-4b29-a042-9e9624268324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Assimp">
+      <UniqueIdentifier>{ea7807d0-546a-4b10-bfa5-69bd75667b41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Layer">
+      <UniqueIdentifier>{91c4bb62-cfce-4c3e-86a3-82c77a5482d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Layer">
+      <UniqueIdentifier>{fd3eb8f6-e5bc-48e0-9f32-77786407a034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Assimp">
+      <UniqueIdentifier>{b1210bbe-7eda-4ba9-9d73-32276cfc7296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{220722fe-7c52-4a01-a7b5-ef5dea6cc893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\GUI">
+      <UniqueIdentifier>{bb6904a6-9c28-4065-b577-c685ee4173ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\GUI">
+      <UniqueIdentifier>{751fd2c2-d20d-4c5a-ab93-1cb2808eb65d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform\Vulkan">
+      <UniqueIdentifier>{00d4a7b7-631c-43b2-bb7d-1ff155c28292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Vulkan">
+      <UniqueIdentifier>{e45a37dc-0d00-4a8d-bac8-861c571d5b1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform\Vulkan\Internal">
+      <UniqueIdentifier>{f1f7f9f6-3ef5-4c39-8906-e5df6e149942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Vulkan\Internal">
+      <UniqueIdentifier>{7cb6119a-1d61-455a-982b-42c20aff35fd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Camera.cpp">
+      <Filter>Source Files\Framework\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Application.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Shape\Shape.cpp">
+      <Filter>Source Files\Framework\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Shape\Cube.cpp">
+      <Filter>Source Files\Framework\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Log.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXContext.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXRendererAPI.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Source Files\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Window.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\CommandQueue.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXVertexArray.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXBuffer.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\DirectX\DirectXShader.cpp">
+      <Filter>Source Files\Platform\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\glad\src\glad.c">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Layer\Layer.cpp">
+      <Filter>Source Files\Framework\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Layer\LayerStack.cpp">
+      <Filter>Source Files\Framework\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assimp\AssimpModel.cpp">
+      <Filter>Source Files\Framework\Assimp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Assimp\AssimpMesh.cpp">
+      <Filter>Source Files\Framework\Assimp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\source\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\source\imgui_widgets.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\source\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\source\imgui_demo.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\impl\imgui_impl_opengl3.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\deps\imgui\impl\imgui_impl_glfw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\GUI\GUIManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\GUIPanel.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\GUIWindow.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLMaterial.cpp">
+      <Filter>Source Files\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\Renderer.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\RendererAPI.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\Shader.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\Texture.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\VertexArray.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\Buffer.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\GraphicsContext.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\Material.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\RenderCommand.cpp">
+      <Filter>Source Files\Framework\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GUI\GUIMaterialPanel.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanContext.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanRendererAPI.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanDebug.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanExtensions.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanValidationLayers.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanDevice.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanQueue.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSurface.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanPipeline.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanShader.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanCommand.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSync.cpp">
+      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Camera.h">
+      <Filter>Header Files\Framework\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Application.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Shape\Shape.h">
+      <Filter>Header Files\Framework\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Shape\Cube.h">
+      <Filter>Header Files\Framework\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLShader.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Log.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\FWTime.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLContext.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXContext.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\d3dx12.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\Helpers.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXRendererAPI.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Events\Event.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Events\ApplicationEvent.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Window.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Windows\WindowsWindow.h">
+      <Filter>Header Files\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\CommandQueue.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXShader.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXVertexArray.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\DirectX\DirectXBuffer.h">
+      <Filter>Header Files\Platform\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\C++Profiler\inc\Profile\Instrumentor.h">
+      <Filter>Header Files\Framework\Profile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assimp\AssimpMesh.h">
+      <Filter>Header Files\Framework\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Assimp\AssimpModel.h">
+      <Filter>Header Files\Framework\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Layer\Layer.h">
+      <Filter>Header Files\Framework\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Layer\LayerStack.h">
+      <Filter>Header Files\Framework\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Events\KeyEvent.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Events\MouseEvent.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imgui_internal.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imstb_rectpack.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imstb_textedit.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imstb_truetype.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imconfig.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\include\imgui.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\impl\imgui_impl_opengl3.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\deps\imgui\impl\imgui_impl_glfw.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIManager.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIPanel.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIWindow.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUITypes.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLMaterial.h">
+      <Filter>Header Files\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\RenderCommand.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\Renderer.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\RendererAPI.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\Shader.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\Texture.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\VertexArray.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\Buffer.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\GraphicsContext.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Renderer\Material.h">
+      <Filter>Header Files\Framework\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GUI\GUIMaterialPanel.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanContext.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanRendererAPI.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanDebug.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanExtensions.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanValidationLayers.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanDevice.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanQueue.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSurface.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSwapchain.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanPipeline.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanShader.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanCommand.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSync.h">
+      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Minecraft\bin\Debug\x64\shaders\demoShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
