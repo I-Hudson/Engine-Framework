@@ -41,6 +41,8 @@ namespace Framework
 
 			void UploadTexture(const std::string& a_name, const std::shared_ptr<Renderer::Texture> a_texture, const uint8_t& a_textureUint = 0) override;
 
+			virtual void OnEvent(Event& event) override;
+
 			virtual const unsigned int& GetProgramId() override { return m_ID; }
 
 			virtual void Release() override;
@@ -49,8 +51,9 @@ namespace Framework
 			virtual uint32_t ShaderTypeFromString(const std::string& a_type) override;
 
 		private:
-			void Compile(const std::unordered_map<GLenum, std::string>& a_shaderSources);
+			void Compile(const std::unordered_map<unsigned int, std::string>& a_shaderSources);
 			VkShaderModule CreateShaderModule(const std::string& byteData);
+			void CreateShaderFromCachedSources();
 
 			VkPipelineViewportStateCreateInfo CreateViewport(VkViewport viewport, VkRect2D scissor);
 			VkPipelineRasterizationStateCreateInfo CreateRasterizer();
@@ -66,6 +69,8 @@ namespace Framework
 
 			VkPipeline m_graphicsPipeline;
 			VkPipelineLayout m_pipelineLayout;
+
+			std::unordered_map<unsigned int, std::string> m_shaderSources;
 
 			uint32_t m_ID;
 			std::string m_name;

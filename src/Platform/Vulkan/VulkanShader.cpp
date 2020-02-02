@@ -41,10 +41,9 @@ namespace Framework
 				return;
 			}
 
-			std::unordered_map<GLenum, std::string> sources;
-			sources[VK_SHADER_STAGE_VERTEX_BIT] = ReadFromFile(a_vertexSrc);
-			sources[VK_SHADER_STAGE_FRAGMENT_BIT] = ReadFromFile(a_fragSrc);
-			Compile(sources);
+			m_shaderSources[VK_SHADER_STAGE_VERTEX_BIT] = ReadFromFile(a_vertexSrc);
+			m_shaderSources[VK_SHADER_STAGE_FRAGMENT_BIT] = ReadFromFile(a_fragSrc);
+			Compile(m_shaderSources);
 
 			m_name = a_name;
 		}
@@ -111,6 +110,15 @@ namespace Framework
 		{
 		}
 
+		void VulkanShader::OnEvent(Event& event)
+		{
+			if (event.GetEventType() == Framework::EventType::VulkanShaderRecreate)
+			{
+				Release();
+				CreateShaderFromCachedSources();
+			}
+		}
+
 		void VulkanShader::Release()
 		{
 			vkDestroyPipeline(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_graphicsPipeline, nullptr);
@@ -125,7 +133,7 @@ namespace Framework
 			return 0;
 		}
 
-		void VulkanShader::Compile(const std::unordered_map<GLenum, std::string>& a_shaderSources)
+		void VulkanShader::Compile(const std::unordered_map<unsigned int, std::string>& a_shaderSources)
 		{
 			std::map<uint32_t, VkShaderModule> shaders;
 
@@ -164,8 +172,8 @@ namespace Framework
 			VkViewport viewport = {};
 			viewport.x = 0.0f;
 			viewport.y = 0.0f;
-			viewport.width = (float)m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent()->width;
-			viewport.height = (float)m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent()->height;
+			viewport.width = (float)Application::Get().GetWindow()->GetWidth();
+			viewport.height = (float)Application::Get().GetWindow()->GetHeight();
 			viewport.minDepth = 0.0f;
 			viewport.maxDepth = 1.0f;
 
@@ -221,6 +229,11 @@ namespace Framework
 			}
 
 			return shaderModule;
+		}
+
+		void VulkanShader::CreateShaderFromCachedSources()
+		{
+			Compile(m_shaderSources);
 		}
 
 		VkPipelineViewportStateCreateInfo VulkanShader::CreateViewport(VkViewport viewport, VkRect2D scissor)

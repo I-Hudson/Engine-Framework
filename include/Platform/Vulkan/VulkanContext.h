@@ -44,6 +44,8 @@ namespace Framework
 			virtual void* GetNativeContext() override;
 			virtual void* GetWindow() override { return m_window; }
 
+			void RecreateSwapChain();
+
 			static VKAPI_ATTR VkBool32 VKAPI_CALL DebugCallback(
 				VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
 				VkDebugUtilsMessageTypeFlagsEXT messageType,
@@ -62,6 +64,8 @@ namespace Framework
 			VulkanSync* GetVulkanSync() { return &m_vkSync; }
 
 		private:
+			void SetWindowCallbacks();
+			void CleanupSwapChain();
 			void CreateInstance(const std::string& title);
 
 		private:

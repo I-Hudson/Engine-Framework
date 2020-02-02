@@ -29,6 +29,11 @@ namespace Framework
 				EN_CORE_ERROR("VulkanCommand: Command Pool was not created!");
 			}
 
+			CreateCommandBuffers();
+		}
+
+		void VulkanCommand::CreateCommandBuffers()
+		{
 			m_commandBuffers.resize(m_vkContext->GetVulkanSwapchain()->GetImageViews()->size());
 
 			VkCommandBufferAllocateInfo allocInfo = {};
@@ -37,13 +42,18 @@ namespace Framework
 			allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
 			allocInfo.commandBufferCount = (uint32_t)m_commandBuffers.size();
 
-			if (vkAllocateCommandBuffers(*m_vkContext->GetVulkanDevice()->GetDevice(), &allocInfo, m_commandBuffers.data()) != VK_SUCCESS) 
+			if (vkAllocateCommandBuffers(*m_vkContext->GetVulkanDevice()->GetDevice(), &allocInfo, m_commandBuffers.data()) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("VulkanCommand: Failed to allocate command buffers!");
 			}
 		}
 
-		void VulkanCommand::Destroy()
+		void VulkanCommand::FreeCommandBuffers()
+		{
+			vkFreeCommandBuffers(*m_vkContext->GetVulkanDevice()->GetDevice(), m_commandPool, static_cast<uint32_t>(m_commandBuffers.size()), m_commandBuffers.data());
+		}
+
+		void VulkanCommand::DestroyCommandPool()
 		{
 			vkDestroyCommandPool(*m_vkContext->GetVulkanDevice()->GetDevice(), m_commandPool, nullptr);
 		}

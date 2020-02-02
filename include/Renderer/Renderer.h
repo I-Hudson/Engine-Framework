@@ -28,6 +28,8 @@ namespace Framework
 
 			static void Destroy();
 
+			static void SetAmbiantLightColour(const glm::vec3& lightColour);
+			static void SetAmbiantLightIntensity(const float& lightInten);
 			static void AddDirLight(glm::vec3* dirLight);
 
 			static void SubmitBatch(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform = glm::mat4(1.0f));
@@ -43,6 +45,8 @@ namespace Framework
 			//Scene data needed
 			struct SceneData
 			{
+				glm::vec3 m_ambiantLight;
+				float m_ambiantLightIntenstiy;
 				std::vector<glm::vec3*> m_dirLights;
 				glm::mat4 ProjectionViewMatrix;
 			};

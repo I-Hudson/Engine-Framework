@@ -11,6 +11,8 @@
 
 namespace Framework
 {
+	class Event;
+
 	namespace Renderer
 	{
 		class Shader
@@ -40,6 +42,8 @@ namespace Framework
 
 			virtual void UploadTexture(const std::string& a_name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint = 0) = 0;
 
+			virtual void OnEvent(Event& event) {}
+
 			virtual const std::string& GetName() = 0;
 			virtual const unsigned int& GetProgramId() = 0;
 
@@ -65,6 +69,8 @@ namespace Framework
 			std::shared_ptr<Shader> Load(const std::string& a_name, const std::string& a_filePathVertex, const std::string& a_filePathFrag);
 
 			std::shared_ptr<Shader> GetShader(const std::string& a_name);
+
+			void OnEvent(Event& event);
 
 			void ReleaseAll();
 
