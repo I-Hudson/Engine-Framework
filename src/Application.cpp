@@ -9,6 +9,7 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stbi/stb_image.h>
+#include <Events\ApplicationEvent.h>
 
 namespace Framework
 {
@@ -68,6 +69,9 @@ namespace Framework
 
 		Renderer::RenderCommand::SetVSync(false);
 
+		Renderer::Renderer::SetAmbiantLightColour({0.15f, 0.15f, 0.15f});
+		Renderer::Renderer::SetAmbiantLightIntensity(0.05f);
+
 		if (!OnCreate())
 		{
 			DestroyApp();
@@ -85,7 +89,6 @@ namespace Framework
 			return;
 		}
 
-		Renderer::RenderCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 		do
 		{
 			Time::UpdateTime();
@@ -250,6 +253,8 @@ namespace Framework
 		EventDispatcher dispatcher(a_event);
 
 		EN_CORE_INFO("{0}", a_event.ToString());
+
+		m_shaderLibrary.OnEvent(a_event);
 
 		for (auto layer : m_layerStack)
 		{

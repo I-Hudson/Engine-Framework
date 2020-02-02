@@ -66,6 +66,16 @@ namespace Framework
 			delete m_sceneData;
 		}
 
+		void Renderer::SetAmbiantLightColour(const glm::vec3& lightColour)
+		{
+			m_sceneData->m_ambiantLight = lightColour;
+		}
+
+		void Renderer::SetAmbiantLightIntensity(const float& lightInten)
+		{
+			m_sceneData->m_ambiantLightIntenstiy = lightInten;
+		}
+
 		void Renderer::AddDirLight(glm::vec3* dirLight)
 		{
 			m_sceneData->m_dirLights.push_back(dirLight);
@@ -128,6 +138,8 @@ namespace Framework
 			a_material->GetShader()->UploadUniformMat4("u_ObjectMatrix", a_transform);
 			a_material->GetShader()->UploadUniformVec3("u_ViewPos", m_sceneData->ProjectionViewMatrix[3].xyz);
 			a_material->GetShader()->UploadUniformVec3("u_DirLight0", *m_sceneData->m_dirLights[0]);
+			a_material->GetShader()->UploadUniformVec3("u_AmbiantLight", m_sceneData->m_ambiantLight);
+			a_material->GetShader()->UploadUniformFloat("u_AmbiantLightInten", m_sceneData->m_ambiantLightIntenstiy);
 
 			a_material->SetUniforms();
 

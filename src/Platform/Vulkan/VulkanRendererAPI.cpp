@@ -50,8 +50,18 @@ namespace Framework
 			}
 
 			uint32_t imageIndex;
-			vkAcquireNextImageKHR(*m_vkContext->GetVulkanDevice()->GetDevice(), *m_vkContext->GetVulkanSwapchain()->GetSwapChain(),
+			VkResult result = vkAcquireNextImageKHR(*m_vkContext->GetVulkanDevice()->GetDevice(), *m_vkContext->GetVulkanSwapchain()->GetSwapChain(),
 				UINT64_MAX, *m_vkContext->GetVulkanSync()->GetCurrentImageSemaphore(), VK_NULL_HANDLE, &imageIndex);
+
+			if (result == VK_ERROR_OUT_OF_DATE_KHR)
+			{
+				m_vkContext->RecreateSwapChain();
+				return;
+			}
+			else if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR)
+			{
+				EN_CORE_ERROR("VulkanRendererAPI: Failed to get swap chain image!");
+			}
 
 			if (*m_vkContext->GetVulkanSync()->GetCurrentInFlightImage() != VK_NULL_HANDLE)
 			{

@@ -18,7 +18,10 @@ namespace Framework
 			~VulkanCommand();
 
 			void Setup(VulkanContext* context);
-			void Destroy();
+			void DestroyCommandPool();
+			
+			void CreateCommandBuffers();
+			void FreeCommandBuffers();
 
 			VkCommandPool* GetCommandPool() { return &m_commandPool; }
 			std::vector<VkCommandBuffer>* GetCommandBuffers() { return &m_commandBuffers; }

@@ -114,6 +114,14 @@ namespace Framework
 			return m_shaders[a_name];
 		}
 
+		void ShaderLibrary::OnEvent(Event& event)
+		{
+			for (auto shader : m_shaders)
+			{
+				shader.second->OnEvent(event);
+			}
+		}
+
 		void ShaderLibrary::ReleaseAll()
 		{
 			for (auto& kv : m_shaders)

@@ -62,4 +62,21 @@ namespace Framework
 	private:
 		Framework::Renderer::Material* material;
 	};
+
+	class VulkanRecreateShaders : public Event
+	{
+	public:
+		VulkanRecreateShaders()
+		{ }
+
+		EVENT_CLASS_TYPE(VulkanShaderRecreate)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+
+			std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "";
+			return ss.str();
+		}
+	};
 }

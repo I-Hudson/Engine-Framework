@@ -1,4 +1,5 @@
 #include "Platform/Vulkan/VulkanContext.h"
+#include <Events\ApplicationEvent.h>
 
 namespace Framework
 {
@@ -27,8 +28,11 @@ namespace Framework
 			});
 
 			glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-			glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 			m_window = glfwCreateWindow(a_width, a_height, a_title.c_str(), nullptr, nullptr);
+			//glfwMakeContextCurrent(m_window);
+			glfwSetWindowUserPointer(m_window, a_windowData);
+
+			SetWindowCallbacks();
 
 			CreateInstance(a_title);
 
@@ -64,11 +68,11 @@ namespace Framework
 		{
 			vkDeviceWaitIdle(*m_vkDevice.GetDevice());
 
+			CleanupSwapChain();
+
 			m_vkSync.Destroy();
 
-			m_vkCommand.Destroy();
-
-			m_vkSwapchain.Destroy();
+			m_vkCommand.DestroyCommandPool();
 
 			if (m_vkValidationLayers.GetValidationLayersState())
 			{
@@ -92,6 +96,50 @@ namespace Framework
 		void* VulkanContext::GetNativeContext()
 		{
 			return this;
+		}
+
+		void VulkanContext::SetWindowCallbacks()
+		{
+			glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
+				{
+					Window::WindowData& data = *(Window::WindowData*)glfwGetWindowUserPointer(window);
+
+					data.Width = width;
+					data.Height = height;
+
+					WindowResizeEvent event(width, height);
+					data.EventCallback(event);
+				});
+		}
+
+		void VulkanContext::CleanupSwapChain()
+		{
+			m_vkCommand.FreeCommandBuffers();
+
+			m_vkSwapchain.Destroy();
+		}
+
+		void VulkanContext::RecreateSwapChain()
+		{
+			vkDeviceWaitIdle(*m_vkDevice.GetDevice());
+
+			CleanupSwapChain();
+
+			m_vkSwapchain.CreateSwapchain();
+
+			m_vkSwapchain.CreateImageViews();
+
+			m_vkSwapchain.CreateRenderPass();
+
+			Window::WindowData& data = *(Window::WindowData*)glfwGetWindowUserPointer(m_window);
+			VulkanRecreateShaders recreateShadersEvent;
+			data.EventCallback(recreateShadersEvent);
+
+			m_vkSwapchain.CreateFrameBuffers();
+
+			m_vkPipeline.Setup(this);
+
+			m_vkCommand.CreateCommandBuffers();
 		}
 
 		void VulkanContext::CreateInstance(const std::string& title)
