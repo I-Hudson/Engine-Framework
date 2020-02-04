@@ -150,7 +150,9 @@ namespace Framework
 			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); i++)
 			{
-				vkCmdDraw(commandBuffers[i], 3, 1, 0, 0);
+				a_vertexArray->Bind(commandBuffers[i]);
+
+				vkCmdDrawIndexed(commandBuffers[i], 3, 1, 0, 0, 0);
 			}
 		}
 	}

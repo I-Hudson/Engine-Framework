@@ -35,12 +35,12 @@ namespace Framework
 		delete[] m_vertics;
 	}
 
-	void OpenGLVertexBuffer::Bind() const
+	void OpenGLVertexBuffer::Bind(void* object) const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_ID);
 	}
 
-	void OpenGLVertexBuffer::Unbind() const
+	void OpenGLVertexBuffer::Unbind(void* object) const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}

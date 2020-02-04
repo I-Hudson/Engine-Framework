@@ -11,8 +11,8 @@ namespace Framework
 		virtual ~OpenGLVertexArray();
 
 		//Bind and unbind
-		virtual void Bind() const override;
-		virtual void Unbind() const override;
+		virtual void Bind(void* object = nullptr) const override;
+		virtual void Unbind(void* object = nullptr) const override;
 
 		virtual void SetSubVertexData(const Renderer::Vertex* a_vertices, const unsigned int& a_bufferSize) override;
 		virtual void SetSubIndexData(const unsigned int* a_indices, const unsigned int& a_count) override;

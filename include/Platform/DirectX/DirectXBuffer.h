@@ -16,8 +16,8 @@ namespace Framework
 		virtual ~DirectXVertexBuffer();
 
 		//Bind and unbind
-		virtual void Bind()  const override;
-		virtual void Unbind() const override;
+		virtual void Bind(void* object = nullptr)  const override;
+		virtual void Unbind(void* object = nullptr) const override;
 
 		//Set the layout for this buffer
 		virtual void SetLayout(const Renderer::BufferLayout& aLayout) override { mLayout = aLayout; }

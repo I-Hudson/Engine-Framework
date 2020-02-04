@@ -157,12 +157,20 @@ namespace Framework
 			VkPipelineShaderStageCreateInfo shaderStages[] = { vertShaderStageInfo, fragShaderStageInfo };
 
 			// Goes into vertex array for vulkan
-			VkPipelineVertexInputStateCreateInfo vertexInputInfo = {};
+			
+			VkVertexInputBindingDescription bindingDescription = {};
+			bindingDescription.binding = 0;
+			bindingDescription.stride = sizeof(Framework::Renderer::Vertex);
+			bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+
+			auto vertexAttriBindings = SetAttributeDescriptions(nullptr);
+
+ 			VkPipelineVertexInputStateCreateInfo vertexInputInfo = {};
 			vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-			vertexInputInfo.vertexBindingDescriptionCount = 0;
-			vertexInputInfo.pVertexBindingDescriptions = nullptr; // Optional
-			vertexInputInfo.vertexAttributeDescriptionCount = 0;
-			vertexInputInfo.pVertexAttributeDescriptions = nullptr; // Optional
+			vertexInputInfo.vertexBindingDescriptionCount = 1;
+			vertexInputInfo.pVertexBindingDescriptions = &bindingDescription; // Optional
+			vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(vertexAttriBindings.size());
+			vertexInputInfo.pVertexAttributeDescriptions = vertexAttriBindings.data();
 
 			VkPipelineInputAssemblyStateCreateInfo inputAssembly = {};
 			inputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
@@ -234,6 +242,33 @@ namespace Framework
 		void VulkanShader::CreateShaderFromCachedSources()
 		{
 			Compile(m_shaderSources);
+		}
+
+		std::array<VkVertexInputAttributeDescription, 4> VulkanShader::SetAttributeDescriptions(VkPipelineVertexInputStateCreateInfo* info)
+		{
+			std::array<VkVertexInputAttributeDescription, 4> attributeDescriptions = {};
+			
+			attributeDescriptions[0].binding = 0;
+			attributeDescriptions[0].location = 0;
+			attributeDescriptions[0].format = VK_FORMAT_R32G32B32A32_SFLOAT;
+			attributeDescriptions[0].offset = offsetof(Framework::Renderer::Vertex, Framework::Renderer::Vertex::Position);
+
+			attributeDescriptions[1].binding = 0;
+			attributeDescriptions[1].location = 1;
+			attributeDescriptions[1].format = VK_FORMAT_R32G32B32A32_SFLOAT;
+			attributeDescriptions[1].offset = offsetof(Framework::Renderer::Vertex, Framework::Renderer::Vertex::Color);
+
+			attributeDescriptions[2].binding = 0;
+			attributeDescriptions[2].location = 2;
+			attributeDescriptions[2].format = VK_FORMAT_R32G32B32A32_SFLOAT;
+			attributeDescriptions[2].offset = offsetof(Framework::Renderer::Vertex, Framework::Renderer::Vertex::Normal);
+
+			attributeDescriptions[3].binding = 0;
+			attributeDescriptions[3].location = 3;
+			attributeDescriptions[3].format = VK_FORMAT_R32G32_SFLOAT;
+			attributeDescriptions[3].offset = offsetof(Framework::Renderer::Vertex, Framework::Renderer::Vertex::UV);
+
+			return attributeDescriptions;
 		}
 
 		VkPipelineViewportStateCreateInfo VulkanShader::CreateViewport(VkViewport viewport, VkRect2D scissor)

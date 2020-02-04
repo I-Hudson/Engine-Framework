@@ -11,8 +11,8 @@ namespace Framework
 		virtual ~DirectXVertexArray();
 
 		//Bind and unbind
-		virtual void Bind() const override;
-		virtual void Unbind() const override;
+		virtual void Bind(void* object = nullptr) const override;
+		virtual void Unbind(void* object = nullptr) const override;
 
 		//Add a vertex buffer and index buffer
 		virtual void AddVertexBuffer(const std::shared_ptr<Renderer::VertexBuffer>& a_vertexBuffer) override;

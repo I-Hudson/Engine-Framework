@@ -38,6 +38,7 @@ namespace Framework
 		m_window = Window::Create(props);
 		m_window->SetEventCallback(BIND_EVENT_FUNC(OnEvent));
 
+		Renderer::RenderCommand::Create();
 		Renderer::RenderCommand::SetGraphicsContext(m_window->GetGraphicsContext());
 
 		testVulkan = Renderer::RendererAPI::GetAPI() == Renderer::RendererAPI::API::Vulkan;
@@ -69,7 +70,7 @@ namespace Framework
 
 		Renderer::RenderCommand::SetVSync(false);
 
-		Renderer::Renderer::SetAmbiantLightColour({0.15f, 0.15f, 0.15f});
+		Renderer::Renderer::SetAmbiantLightColour({ 0.15f, 0.15f, 0.15f });
 		Renderer::Renderer::SetAmbiantLightIntensity(0.05f);
 
 		if (!OnCreate())
@@ -92,7 +93,7 @@ namespace Framework
 		do
 		{
 			Time::UpdateTime();
-		
+
 			if (Renderer::RendererAPI::GetAPI() == Renderer::RendererAPI::API::DirectX)
 			{
 				//RenderCommand::SetClearColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
@@ -158,7 +159,7 @@ namespace Framework
 			{
 				GLFWwindow* window = static_cast<GLFWwindow*>(m_window->GetGraphicsContext()->GetWindow());
 				m_isRunning = !glfwWindowShouldClose(window);
-				
+
 				if (!testVulkan)
 				{
 					ImGui_ImplOpenGL3_NewFrame();
@@ -177,9 +178,32 @@ namespace Framework
 				{
 					layer->OnUpdate();
 				}
-				
+
 				Renderer::RenderCommand::Clear();
-			
+
+				Renderer::Vertex vertices[3] =
+				{
+					Renderer::Vertex({0.0f, -0.5f, 0.0f, 0.0f}, {0.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}),
+					Renderer::Vertex({0.5f, 0.5f, 0.0f, 0.0f}, {1.0f, 0.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}),
+					Renderer::Vertex({-0.5f, 0.5f, 0.0f, 0.0f}, {1.0f, 1.0f, 0.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 0.0f}, {0.0f, 0.0f})
+				};
+
+				std::shared_ptr<Renderer::VertexBuffer> vb;
+				vb.reset(Renderer::VertexBuffer::Create(vertices, 3));
+
+				unsigned int indices[] =
+				{
+					0,1,2
+				};
+
+				std::shared_ptr<Renderer::IndexBuffer> ib;
+				ib.reset(Renderer::IndexBuffer::Create(indices, 3));
+
+				std::shared_ptr<Renderer::VertexArray> va;
+				va.reset(Renderer::VertexArray::Create());
+				va->AddVertexBuffer(vb);
+				va->AddIndexBuffer(ib);
+
 				Renderer::Renderer::Begin(*m_mainCamera);
 				if (a_runDemo)
 				{
@@ -192,7 +216,7 @@ namespace Framework
 
 				if (testVulkan)
 				{
-					Renderer::Renderer::Submit(m_shaderLibrary.GetShader("vulkanDemoShader"), nullptr);
+					Renderer::Renderer::Submit(m_shaderLibrary.GetShader("vulkanDemoShader"), va);
 				}
 
 				//Renderer::SubmitBatched(shader);
@@ -206,7 +230,7 @@ namespace Framework
 			}
 			//GLFW
 			m_window->OnUpdate();
-		
+
 		} while (m_isRunning);
 
 		DestroyApp();

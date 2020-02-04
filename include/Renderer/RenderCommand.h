@@ -21,6 +21,8 @@ namespace Framework
 				}
 			}
 
+			static void Create();
+
 			inline static void BeginRender()
 			{
 				sRendererAPI->BeginRender();

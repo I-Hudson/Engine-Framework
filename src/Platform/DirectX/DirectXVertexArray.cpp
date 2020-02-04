@@ -10,11 +10,11 @@ namespace Framework
 	{
 	}
 
-	void DirectXVertexArray::Bind() const
+	void DirectXVertexArray::Bind(void* object) const
 	{
 	}
 
-	void DirectXVertexArray::Unbind() const
+	void DirectXVertexArray::Unbind(void* object) const
 	{
 	}
 

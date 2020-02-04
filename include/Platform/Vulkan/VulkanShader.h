@@ -54,6 +54,7 @@ namespace Framework
 			void Compile(const std::unordered_map<unsigned int, std::string>& a_shaderSources);
 			VkShaderModule CreateShaderModule(const std::string& byteData);
 			void CreateShaderFromCachedSources();
+			std::array<VkVertexInputAttributeDescription, 4> SetAttributeDescriptions(VkPipelineVertexInputStateCreateInfo* info);
 
 			VkPipelineViewportStateCreateInfo CreateViewport(VkViewport viewport, VkRect2D scissor);
 			VkPipelineRasterizationStateCreateInfo CreateRasterizer();
@@ -64,7 +65,8 @@ namespace Framework
 			void CreateGraphicsPipeline(VkPipelineShaderStageCreateInfo shaderStages[], VkPipelineVertexInputStateCreateInfo vertexInputInfo, VkPipelineInputAssemblyStateCreateInfo inputAssembly,
 										VkPipelineViewportStateCreateInfo viewportState, VkPipelineRasterizationStateCreateInfo rasterizer, VkPipelineMultisampleStateCreateInfo multisampleState, 
 										VkPipelineColorBlendStateCreateInfo colourBlendState);
-
+		
+		private:
 			VulkanContext* m_vulkanContext;
 
 			VkPipeline m_graphicsPipeline;

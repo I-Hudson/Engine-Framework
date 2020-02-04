@@ -16,8 +16,8 @@ namespace Framework
 			virtual ~VertexArray() {}
 
 			//Bind and unbind
-			virtual void Bind() const = 0;
-			virtual void Unbind() const = 0;
+			virtual void Bind(void* object = nullptr) const = 0;
+			virtual void Unbind(void* object = nullptr) const = 0;
 
 			virtual void SetSubVertexData(const Vertex* a_vertices, const unsigned int& a_bufferSize) {}
 			virtual void SetSubIndexData(const unsigned int* a_indices, const unsigned int& a_count) {}
