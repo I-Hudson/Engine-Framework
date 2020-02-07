@@ -187,6 +187,7 @@
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanValidationLayers.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanBuffer.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanContext.cpp" />
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanMaterial.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanRendererAPI.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanShader.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanVertexArray.cpp" />
@@ -258,8 +259,10 @@
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanValidationLayers.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanBuffer.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanContext.h" />
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanMaterial.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanRendererAPI.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanShader.h" />
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanUtils.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanVertexArray.h" />
     <ClInclude Include="..\include\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="..\include\Renderer\Buffer.h" />

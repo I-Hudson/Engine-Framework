@@ -23,6 +23,8 @@ namespace Framework
 			void CreateCommandBuffers();
 			void FreeCommandBuffers();
 
+			void EndCommandRecord();
+
 			VkCommandPool* GetCommandPool() { return &m_commandPool; }
 			std::vector<VkCommandBuffer>* GetCommandBuffers() { return &m_commandBuffers; }
 

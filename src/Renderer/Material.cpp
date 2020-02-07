@@ -2,6 +2,7 @@
 #include "Application.h"
 
 #include "Platform/OpenGL/OpenGLMaterial.h"
+#include "Platform/Vulkan/VulkanMaterial.h"
 
 namespace Framework
 {
@@ -19,12 +20,15 @@ namespace Framework
 		{
 			m_uniforms.clear();
 			m_uniformsTexture.clear();
+
+			OnRelease();
 		}
 
 		void Material::SetShader(std::shared_ptr<Shader> shader)
 		{
 			m_shader = shader;
 
+			OnSetShader();
 			//ProcessShaderUniforms();
 		}
 
@@ -145,6 +149,8 @@ namespace Framework
 			{
 			case RendererAPI::API::OpenGL:
 				return new OpenGLMaterial();
+			case RendererAPI::API::Vulkan:
+				return new Vulkan::VulkanMaterial();
 			}
 			EN_CORE_ERROR("No material exists for {0}", Renderer::GetAPI());
 			return nullptr;

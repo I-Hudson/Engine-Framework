@@ -181,29 +181,6 @@ namespace Framework
 
 				Renderer::RenderCommand::Clear();
 
-				Renderer::Vertex vertices[3] =
-				{
-					Renderer::Vertex({0.0f, -0.5f, 0.0f, 0.0f}, {0.0f, 1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}),
-					Renderer::Vertex({0.5f, 0.5f, 0.0f, 0.0f}, {1.0f, 0.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}),
-					Renderer::Vertex({-0.5f, 0.5f, 0.0f, 0.0f}, {1.0f, 1.0f, 0.0f, 1.0f}, {0.0f, 0.0f, 0.0f, 0.0f}, {0.0f, 0.0f})
-				};
-
-				std::shared_ptr<Renderer::VertexBuffer> vb;
-				vb.reset(Renderer::VertexBuffer::Create(vertices, 3));
-
-				unsigned int indices[] =
-				{
-					0,1,2
-				};
-
-				std::shared_ptr<Renderer::IndexBuffer> ib;
-				ib.reset(Renderer::IndexBuffer::Create(indices, 3));
-
-				std::shared_ptr<Renderer::VertexArray> va;
-				va.reset(Renderer::VertexArray::Create());
-				va->AddVertexBuffer(vb);
-				va->AddIndexBuffer(ib);
-
 				Renderer::Renderer::Begin(*m_mainCamera);
 				if (a_runDemo)
 				{
@@ -214,12 +191,6 @@ namespace Framework
 				}
 				Draw();
 
-				if (testVulkan)
-				{
-					Renderer::Renderer::Submit(m_shaderLibrary.GetShader("vulkanDemoShader"), va);
-				}
-
-				//Renderer::SubmitBatched(shader);
 				Renderer::Renderer::EndScene();
 
 				if (!testVulkan)

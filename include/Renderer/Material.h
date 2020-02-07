@@ -49,8 +49,10 @@ namespace Framework
 			~Material();
 
 			void Release();
+			virtual void OnRelease() { }
 
 			void SetShader(std::shared_ptr<Shader> shader);
+			virtual void OnSetShader() { }
 
 			void SetBool(const std::string& name, const bool& value);
 			void SetInt(const std::string& name, const int& value);
@@ -66,7 +68,7 @@ namespace Framework
 
 			void SetTexture(const std::string& name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint = 0);
 
-			void SetUniforms();
+			virtual void SetUniforms();
 
 			std::shared_ptr<Shader> GetShader() const { return m_shader; }
 			std::map<std::string, UniformValue> GetUniforms() const { return m_uniforms; };

@@ -198,5 +198,10 @@ namespace Framework
 
 			return VK_FALSE;
 		}
+
+		void VulkanContext::SetCurrentImageIndex(uint32_t imageIndex)
+		{
+			m_currentImageIndex = imageIndex;
+		}
 	}
 }

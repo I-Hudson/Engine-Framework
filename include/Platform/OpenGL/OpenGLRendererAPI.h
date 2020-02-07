@@ -17,6 +17,6 @@ namespace Framework
 
 		virtual void SetContext(Framework::Renderer::GraphicsContext* context) override { }
 
-		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray) override;
+		virtual void DrawIndexed(const Renderer::VertexArray* a_vertexArray) override;
 	};
 }

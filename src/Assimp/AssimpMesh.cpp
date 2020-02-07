@@ -67,11 +67,14 @@ AssimpMesh::AssimpMesh(std::vector<AssimpVertex> aVertices, std::vector<unsigned
 	setupMesh();
 
 	m_material = Framework::Renderer::Material::Create();
-	m_material->SetShader(Framework::Application::Get().GetShaderLibrary().GetShader("demoShader"));
-	int i = 0;
-	for (auto it : aTextures)
+	if (m_material)
 	{
-		m_material->SetTexture(it, Framework::Application::Get().GetTextureLibrary().GetTexture(it), i++);
+		m_material->SetShader(Framework::Application::Get().GetShaderLibrary().GetShader("vulkanDemoShader"));
+		int i = 0;
+		for (auto it : aTextures)
+		{
+			//m_material->SetTexture(it, Framework::Application::Get().GetTextureLibrary().GetTexture(it), i++);
+		}
 	}
 }
 
@@ -175,8 +178,11 @@ void AssimpMesh::unloadMesh()
 	//delete buffers
 	m_vertexArray.reset();
 	
-	m_material->Release();
-	delete m_material;
+	if (m_material)
+	{
+		m_material->Release();
+		delete m_material;
+	}
 
 	//delete all textures
 	mTextures.clear();

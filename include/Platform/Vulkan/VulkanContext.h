@@ -52,6 +52,9 @@ namespace Framework
 				const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
 				void* pUserData);
 
+			void SetCurrentImageIndex(uint32_t imageIndex);
+			uint32_t GetCurrentImageIndex() { return m_currentImageIndex; }
+
 			VulkanValidationLayers* GetVulkanValidation() { return &m_vkValidationLayers; }
 			VulkanExtensions* GetVulkanExtensions() { return &m_vkExtensions; }
 			VulkanDebug* GetVulkanDebug() { return &m_vkDebug; }
@@ -81,6 +84,8 @@ namespace Framework
 			VulkanPipeline m_vkPipeline;
 			VulkanCommand m_vkCommand;
 			VulkanSync m_vkSync;
+
+			uint32_t m_currentImageIndex;
 
 			VkInstance m_instance;
 			std::vector<VkExtensionProperties> m_extensions;

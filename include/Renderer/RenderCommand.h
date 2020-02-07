@@ -66,9 +66,14 @@ namespace Framework
 			}
 
 			//Draw the vertex array data
-			inline static void DrawIndexed(const std::shared_ptr<VertexArray>& aVertexArray)
+			inline static void DrawIndexed(const VertexArray* aVertexArray)
 			{
 				sRendererAPI->DrawIndexed(aVertexArray);
+			}
+
+			inline static RendererAPI* GetAPI()
+			{
+				return sRendererAPI;
 			}
 
 		private:

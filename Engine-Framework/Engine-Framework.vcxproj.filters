@@ -282,6 +282,9 @@
     <ClCompile Include="..\src\Platform\Vulkan\VulkanVertexArray.cpp">
       <Filter>Source Files\Platform\Vulkan</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanMaterial.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Camera.h">
@@ -489,6 +492,12 @@
       <Filter>Header Files\Platform\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Platform\Vulkan\VulkanVertexArray.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanUtils.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanMaterial.h">
       <Filter>Header Files\Platform\Vulkan</Filter>
     </ClInclude>
   </ItemGroup>

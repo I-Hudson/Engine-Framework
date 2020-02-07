@@ -38,7 +38,7 @@ namespace Framework
 
 		virtual void SetContext(Framework::Renderer::GraphicsContext* context) override { }
 
-		virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray) override;
+		virtual void DrawIndexed(const Renderer::VertexArray* a_vertexArray) override;
 
 		void ClearDepth(Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList2> commandList,
 			D3D12_CPU_DESCRIPTOR_HANDLE dsv, FLOAT depth = 1.0f);

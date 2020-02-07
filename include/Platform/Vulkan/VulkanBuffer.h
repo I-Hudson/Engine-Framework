@@ -5,6 +5,7 @@
 
 #include "Renderer/Buffer.h"
 #include "Platform/Vulkan/Internal/VulkanCommand.h"
+#include "Platform/Vulkan/Internal/VulkanQueue.h"
 
 namespace Framework
 {
@@ -25,16 +26,12 @@ namespace Framework
 			virtual void SetLayout(const Renderer::BufferLayout& aLayout) override;
 			//Get the layout of this buffer 
 			virtual const Renderer::BufferLayout& GetLayout() const override;
-		
-
-		private:
-			void CreateBuffer(VkDevice device, VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
-			void CopyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
-			uint32_t FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
 
 		private:
 			VkDevice m_device;
+			VkPhysicalDevice m_physicalDevice;
 			VulkanCommand m_command;
+			VulkanQueue m_queue;
 
 			VkBuffer m_id;
 			VkDeviceMemory m_vertexBufferMemory;
@@ -55,15 +52,12 @@ namespace Framework
 			virtual void Unbind() const override;
 
 		private:
-			void CreateBuffer(VkDevice device, VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
-			void CopyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
-			uint32_t FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
-
-		private:
 			uint32_t m_ID;
 
 			VkDevice m_device;
+			VkPhysicalDevice m_physicalDevice;
 			VulkanCommand m_command;
+			VulkanQueue m_queue;
 
 			VkBuffer m_id;
 			VkDeviceMemory m_indexBufferMemory;
