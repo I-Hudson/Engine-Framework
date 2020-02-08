@@ -46,6 +46,7 @@ namespace Framework
 		mData.Height = aProps.Height;
 
 		m_context = Renderer::GraphicsContext::Create(aProps.Width, aProps.Height, aProps.Title, false, nullptr, &mData);
+		m_window = m_context->GetWindow();
 	}
 
 	void WindowsWindow::Shutdown()

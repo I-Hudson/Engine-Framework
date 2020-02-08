@@ -13,8 +13,10 @@ namespace Framework
 	{
 		struct UniformVertexObject
 		{
-			glm::mat4 u_ProjectionView;
+			glm::mat4 u_Projection;
+			glm::mat4 u_View;
 			glm::mat4 u_ObjectMatrix;
+			glm::vec3 u_testColour;
 		};
 
 		class VulkanShader : public Renderer::Shader

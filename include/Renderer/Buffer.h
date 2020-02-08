@@ -194,6 +194,7 @@ namespace Framework
 		{
 		public:
 			virtual ~VertexBuffer() {}
+			virtual void Destroy() {}
 
 			//Bind and unbind the buffer
 			virtual void Bind(void* object = nullptr) const = 0;
@@ -229,6 +230,7 @@ namespace Framework
 		{
 		public:
 			virtual ~IndexBuffer() {}
+			virtual void Destroy() {}
 
 			//Bind and unbind the buffer
 			virtual void Bind() const = 0;

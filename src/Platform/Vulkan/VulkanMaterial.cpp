@@ -28,7 +28,7 @@ namespace Framework
 				vkDestroyBuffer(*device.GetDevice(), m_uniformBuffers[i], nullptr);
 				vkFreeMemory(*device.GetDevice(), m_uniformBuffersMemory[i], nullptr);
 			}
-			//vkDestroyDescriptorPool(*device.GetDevice(), m_descriptorPool, nullptr);
+			vkDestroyDescriptorPool(*device.GetDevice(), m_descriptorPool, nullptr);
 		}
 
 		void VulkanMaterial::OnSetShader()
@@ -38,8 +38,8 @@ namespace Framework
 			{
 				RecreateUniformBuffers();
 			});
-			//CreateDescriptorPool();
-			//CreateDescriptorSets();
+			CreateDescriptorPool();
+			CreateDescriptorSets();
 		}
 
 		void VulkanMaterial::CreateDescriptorPool()
@@ -127,7 +127,11 @@ namespace Framework
 		void VulkanMaterial::SetUniforms()
 		{
 			m_uvo.u_ObjectMatrix = m_uniforms["u_ObjectMatrix"].Mat4;
-			m_uvo.u_ProjectionView = m_uniforms["u_ProjectionView"].Mat4;
+			m_uvo.u_Projection = m_uniforms["u_Projection"].Mat4;
+			m_uvo.u_View = m_uniforms["u_View"].Mat4;
+			m_uvo.u_testColour = glm::vec3(0.0f, 1.0f, 1.0f);
+
+			m_uvo.u_Projection[1][1] *= -1;
 
 			auto device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice();
 			auto context = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext());

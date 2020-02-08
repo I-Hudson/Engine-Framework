@@ -54,6 +54,10 @@ namespace Framework
 				float m_ambiantLightIntenstiy;
 				std::vector<glm::vec3*> m_dirLights;
 				glm::mat4 ProjectionViewMatrix;
+
+				glm::mat4 ProjectionMatrix;
+				glm::mat4 ViewMatrix;
+				
 				std::vector<RenderRequest> m_renderQueue;
 			};
 

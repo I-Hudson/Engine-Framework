@@ -176,7 +176,7 @@ void AssimpMesh::setupMesh()
 void AssimpMesh::unloadMesh()
 {
 	//delete buffers
-	m_vertexArray.reset();
+	m_vertexArray->Destroy();
 	
 	if (m_material)
 	{

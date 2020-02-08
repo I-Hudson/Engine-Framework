@@ -19,6 +19,16 @@ namespace Framework
 		{
 		}
 
+		void VulkanVertexArray::Destroy()
+		{
+			for (size_t i = 0; i < m_vertexBuffers.size(); ++i)
+			{
+				m_vertexBuffers[i]->Destroy();
+			}
+
+			m_indexBuffer->Destroy();
+		}
+
 		void VulkanVertexArray::Bind(void* object) const
 		{
 			if (object == nullptr)

@@ -50,7 +50,8 @@ namespace Framework
 
 		//Setup the main camera
 		m_mainCamera = std::make_shared<Camera>();
-		m_mainCamera->SetProjMatrix(45.0f, (float)a_width / (float)a_height, 0.1f, 1000.0f);
+		m_mainCamera->SetProjMatrix(glm::radians(45.0f), (float)a_width / (float)a_height, 0.1f, 1000.0f);
+		m_mainCamera->SetViewMatrix(glm::lookAt(glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)));
 
 		if (testVulkan)
 		{
@@ -165,11 +166,9 @@ namespace Framework
 					ImGui_ImplOpenGL3_NewFrame();
 					ImGui_ImplGlfw_NewFrame();
 					ImGui::NewFrame();
-
-
-					m_mainCamera->Update(Time::GetDeltaTime());
 				}
 
+				m_mainCamera->Update(Time::GetDeltaTime());
 				Update();
 
 				m_guiManager.OnUpdate();

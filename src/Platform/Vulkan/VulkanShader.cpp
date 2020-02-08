@@ -178,27 +178,27 @@ namespace Framework
 
  			VkPipelineVertexInputStateCreateInfo vertexInputInfo = {};
 			vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
+			vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(vertexAttriBindings.size());
 			vertexInputInfo.vertexBindingDescriptionCount = 1;
 			vertexInputInfo.pVertexBindingDescriptions = &bindingDescription; // Optional
-			vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(vertexAttriBindings.size());
 			vertexInputInfo.pVertexAttributeDescriptions = vertexAttriBindings.data();
 
-			//VkDescriptorSetLayoutBinding uvoLayoutBinding = {};
-			//uvoLayoutBinding.binding = 0;
-			//uvoLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-			//uvoLayoutBinding.descriptorCount = 1;
-			//uvoLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
-			//uvoLayoutBinding.pImmutableSamplers = nullptr;
+			VkDescriptorSetLayoutBinding uvoLayoutBinding = {};
+			uvoLayoutBinding.binding = 0;
+			uvoLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+			uvoLayoutBinding.descriptorCount = 1;
+			uvoLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+			uvoLayoutBinding.pImmutableSamplers = nullptr;
 
-			//VkDescriptorSetLayoutCreateInfo  descriptorCreateInfo = {};
-			//descriptorCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
-			//descriptorCreateInfo.bindingCount = 1;
-			//descriptorCreateInfo.pBindings = &uvoLayoutBinding;
-			//
-			//if (vkCreateDescriptorSetLayout(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &descriptorCreateInfo, nullptr, &m_descriptorLayout) != VK_SUCCESS)
-			//{
-			//	EN_CORE_ERROR("Vulkan Shader: DescriptorSetLayout was not created!");
-			//}
+			VkDescriptorSetLayoutCreateInfo  descriptorCreateInfo = {};
+			descriptorCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+			descriptorCreateInfo.bindingCount = 1;
+			descriptorCreateInfo.pBindings = &uvoLayoutBinding;
+			
+			if (vkCreateDescriptorSetLayout(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &descriptorCreateInfo, nullptr, &m_descriptorLayout) != VK_SUCCESS)
+			{
+				EN_CORE_ERROR("Vulkan Shader: DescriptorSetLayout was not created!");
+			}
 
 			VkPipelineInputAssemblyStateCreateInfo inputAssembly = {};
 			inputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
@@ -227,8 +227,8 @@ namespace Framework
 
 			VkPipelineLayoutCreateInfo pipelineLayoutInfo = {};
 			pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-			pipelineLayoutInfo.setLayoutCount = 0;
-			pipelineLayoutInfo.pSetLayouts = nullptr;// &m_descriptorLayout;
+			pipelineLayoutInfo.setLayoutCount = 1;
+			pipelineLayoutInfo.pSetLayouts = &m_descriptorLayout;
 			pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
 			pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
@@ -325,7 +325,7 @@ namespace Framework
 			rasterizer.lineWidth = 1.0f;
 
 			rasterizer.cullMode = VK_CULL_MODE_BACK_BIT;
-			rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE;
+			rasterizer.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
 
 			rasterizer.depthBiasEnable = VK_FALSE;
 			rasterizer.depthBiasConstantFactor = 0.0f; // Optional

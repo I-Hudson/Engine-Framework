@@ -13,7 +13,8 @@ namespace Framework
 		class VertexArray
 		{
 		public:
-			virtual ~VertexArray() {}
+			virtual ~VertexArray() { }
+			virtual void Destroy() {}
 
 			//Bind and unbind
 			virtual void Bind(void* object = nullptr) const = 0;

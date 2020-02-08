@@ -5,7 +5,10 @@
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 #include "Platform/OpenGL/OpenGLBuffer.h"
 #include "Application.h"
-#include <iostream>
+
+#define GLM_FORCE_RADIANS
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace Framework
 {
@@ -19,6 +22,8 @@ namespace Framework
 		{
 			renderCalls = 0;
 			m_sceneData->ProjectionViewMatrix = a_camera.GetProjViewMatrix();
+			m_sceneData->ProjectionMatrix = a_camera.GetProjMatrix();
+			m_sceneData->ViewMatrix = a_camera.GetViewMatrix();
 			m_sceneData->m_renderQueue.clear();
 
 			RenderCommand::BeginRender();
@@ -90,7 +95,8 @@ namespace Framework
 			for (size_t i = 0; i < m_sceneData->m_renderQueue.size(); ++i)
 			{
 				m_sceneData->m_renderQueue[i].Material->GetShader()->Bind();
-				m_sceneData->m_renderQueue[i].Material->SetMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
+				m_sceneData->m_renderQueue[i].Material->SetMat4("u_Projection", m_sceneData->ProjectionMatrix);
+				m_sceneData->m_renderQueue[i].Material->SetMat4("u_View", m_sceneData->ViewMatrix);
 				m_sceneData->m_renderQueue[i].Material->SetMat4("u_ObjectMatrix", m_sceneData->m_renderQueue[i].Transform);
 				m_sceneData->m_renderQueue[i].Material->SetVec3("u_ViewPos", m_sceneData->ProjectionViewMatrix[3].xyz);
 				for (size_t i = 0; i < m_sceneData->m_dirLights.size(); i++)
@@ -100,7 +106,7 @@ namespace Framework
 				m_sceneData->m_renderQueue[i].Material->SetVec3("u_AmbiantLight", m_sceneData->m_ambiantLight);
 				m_sceneData->m_renderQueue[i].Material->SetFloat("u_AmbiantLightInten", m_sceneData->m_ambiantLightIntenstiy);
 
-				//m_sceneData->m_renderQueue[i].Material->SetUniforms();
+				m_sceneData->m_renderQueue[i].Material->SetUniforms();
 
 				m_sceneData->m_renderQueue[i].VertexArray->Bind();
 				RenderCommand::DrawIndexed(m_sceneData->m_renderQueue[i].VertexArray);

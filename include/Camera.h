@@ -25,7 +25,9 @@ namespace Framework
 		void Update(float a_deltaTime);
 
 		//Get the projection view matrix
-		const glm::mat4& GetProjViewMatrix();
+		const glm::mat4& GetProjViewMatrix() const;
+		const glm::mat4& GetProjMatrix() const;
+		const glm::mat4& GetViewMatrix() const;
 
 	private:
 

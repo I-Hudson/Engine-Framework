@@ -78,6 +78,11 @@ namespace Framework
 
 		VulkanVertexBuffer::~VulkanVertexBuffer()
 		{
+
+		}
+
+		void VulkanVertexBuffer::Destroy()
+		{
 			vkDestroyBuffer(m_device, m_id, nullptr);
 			vkFreeMemory(m_device, m_vertexBufferMemory, nullptr);
 		}
@@ -138,6 +143,11 @@ namespace Framework
 		}
 
 		VulkanIndexBuffer::~VulkanIndexBuffer()
+		{
+
+		}
+
+		void VulkanIndexBuffer::Destroy()
 		{
 			vkDestroyBuffer(m_device, m_id, nullptr);
 			vkFreeMemory(m_device, m_indexBufferMemory, nullptr);

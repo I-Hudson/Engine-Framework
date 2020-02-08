@@ -12,6 +12,8 @@ namespace Framework
 			VulkanVertexArray();
 			virtual ~VulkanVertexArray();
 
+			virtual void Destroy() override;
+
 			//Bind and unbind
 			virtual void Bind(void* object) const override;
 			virtual void Unbind(void* object) const override;

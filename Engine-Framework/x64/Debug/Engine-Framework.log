@@ -3,10 +3,6 @@
 F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\include\Platform\Vulkan\Internal\VulkanValidationLayers.h(23,45): warning C4267: 'return': conversion from 'size_t' to 'uint32_t', possible loss of data
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
-  Renderer.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-F:\Users\Documents\SourceControl\Github\C++ Porjects\Engine-Framework\deps\glad\include\glad\glad.h(32): message : see previous definition of 'APIENTRY'
-  Generating Code...
 assimp.lib(assimp-vc140-mt.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
 d3d12.lib(d3d12.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
 opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored

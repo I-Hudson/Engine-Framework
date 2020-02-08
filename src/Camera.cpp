@@ -5,6 +5,7 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Application.h"
 #include <iostream>
 
 namespace Framework
@@ -43,7 +44,7 @@ namespace Framework
 
 	void Camera::Update(float a_deltaTime)
 	{
-		GLFWwindow* window = glfwGetCurrentContext();
+		GLFWwindow* window = static_cast<GLFWwindow*>(Application::Get().GetWindow()->GetNativeWindow());
 
 		// Get the camera's forward, right, up, and location vectors
 		glm::vec4 vForward = m_viewMatrix[2];
@@ -134,9 +135,19 @@ namespace Framework
 		SetProjectionViewMatrix();
 	}
 
-	const glm::mat4& Camera::GetProjViewMatrix()
+	const glm::mat4& Camera::GetProjViewMatrix() const
 	{
 		return m_projectionViewMatrix; 
+	}
+
+	const glm::mat4& Camera::GetProjMatrix() const
+	{
+		return m_projectionMatrix;
+	}
+
+	const glm::mat4& Camera::GetViewMatrix() const
+	{
+		return m_viewMatrix;
 	}
 
 	void Camera::SetProjectionViewMatrix()

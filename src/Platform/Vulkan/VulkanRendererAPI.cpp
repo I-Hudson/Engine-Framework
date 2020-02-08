@@ -160,7 +160,7 @@ namespace Framework
 			{
 				a_vertexArray->Bind(commandBuffers[i]);
 
-				vkCmdDrawIndexed(commandBuffers[i], 3, 1, 0, 0, 0);
+				vkCmdDrawIndexed(commandBuffers[i], a_vertexArray->GetIndexBuffer()->GetCount(), 1, 0, 0, 0);
 			}
 		}
 	}

@@ -16,7 +16,9 @@ namespace Framework
 		public:
 			VulkanVertexBuffer(float* aVertices, uint32_t aSize);
 			VulkanVertexBuffer(Renderer::Vertex* aVertices, uint32_t aSize);
-			virtual ~VulkanVertexBuffer();
+			virtual ~VulkanVertexBuffer() override;
+
+			virtual void Destroy() override;
 
 			//Bind and unbind the buffer
 			virtual void Bind(void* object = nullptr) const override;
@@ -42,6 +44,8 @@ namespace Framework
 		public:
 			VulkanIndexBuffer(unsigned int* indices, unsigned int count);
 			virtual ~VulkanIndexBuffer();
+
+			virtual void Destroy() override;
 
 			virtual void SetSubData(const unsigned int* a_indices, const unsigned int& a_count) override;
 
