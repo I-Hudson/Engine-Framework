@@ -8,6 +8,22 @@ namespace Framework
 {
 	namespace Renderer
 	{
-		RendererAPI* RenderCommand::sRendererAPI = new OpenGLRendererAPI;
+		RendererAPI* RenderCommand::sRendererAPI = nullptr;
+
+		void RenderCommand::Create()
+		{
+			switch (RendererAPI::GetAPI())
+			{
+			case RendererAPI::API::OpenGL:
+				sRendererAPI = new OpenGLRendererAPI();
+				break;
+			case RendererAPI::API::Vulkan:
+				sRendererAPI = new Vulkan::VulkanRendererAPI();
+				break;
+			case RendererAPI::API::DirectX:
+				sRendererAPI = new DirectXRendererAPI();
+				break;
+			}
+		}
 	}
 }

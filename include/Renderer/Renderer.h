@@ -12,7 +12,10 @@ namespace Framework
 	{
 		struct RenderRequest
 		{
-
+			Material* Material;
+			VertexArray* VertexArray;
+			std::vector<std::string> Textures;
+			glm::mat4 Transform;
 		};
 
 		///
@@ -38,6 +41,8 @@ namespace Framework
 			static void Submit(Material* a_material, const std::shared_ptr<VertexArray> a_vertexArray, std::vector<std::string> a_textures, const glm::mat4& a_transform = glm::mat4(1.0f));
 			static void SubmitBatched(const std::shared_ptr<Shader>, const glm::mat4& a_transform = glm::mat4(1.0f));
 
+			static void Render();
+
 			//Get the API in use
 			inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 
@@ -49,21 +54,15 @@ namespace Framework
 				float m_ambiantLightIntenstiy;
 				std::vector<glm::vec3*> m_dirLights;
 				glm::mat4 ProjectionViewMatrix;
+
+				glm::mat4 ProjectionMatrix;
+				glm::mat4 ViewMatrix;
+				
+				std::vector<RenderRequest> m_renderQueue;
 			};
 
 			//Pointer to static scene data
 			static SceneData* m_sceneData;
-
-			//static Vertex* m_batchVertex;
-			//static unsigned int m_batchVertexCount;
-			//
-			//static unsigned int* m_batchIndices;
-			//static unsigned int m_batchIndicesCount;
-			//
-			//
-			//static bool m_init;
-			//static std::shared_ptr<VertexArray> m_batchArray;
-
 		};
 	}
 }

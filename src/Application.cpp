@@ -15,14 +15,14 @@ namespace Framework
 {
 #define BIND_EVENT_FUNC(x) (std::bind(&Application::x, this, std::placeholders::_1))
 
-	bool testVulkan = true;
+	Application* Application::s_instance = nullptr;
 
-	Application* Application::sInstance = nullptr;
+	bool testVulkan = true;
 
 	Application::Application()
 		: m_isRunning(true), m_window(nullptr)
 	{
-		sInstance = this;
+		s_instance = this;
 	}
 
 	Application::~Application()
@@ -38,6 +38,7 @@ namespace Framework
 		m_window = Window::Create(props);
 		m_window->SetEventCallback(BIND_EVENT_FUNC(OnEvent));
 
+		Renderer::RenderCommand::Create();
 		Renderer::RenderCommand::SetGraphicsContext(m_window->GetGraphicsContext());
 
 		testVulkan = Renderer::RendererAPI::GetAPI() == Renderer::RendererAPI::API::Vulkan;
@@ -48,20 +49,17 @@ namespace Framework
 		}
 
 		//Setup the main camera
-		m_mainCamera = std::make_shared<Camera>();
-		m_mainCamera->SetProjMatrix(45.0f, (float)a_width / (float)a_height, 0.1f, 1000.0f);
+		m_mainCamera = Camera();
+		m_mainCamera.SetProjMatrix(glm::radians(45.0f), (float)a_width / (float)a_height, 0.1f, 1000.0f);
+		m_mainCamera.SetViewMatrix(glm::lookAt(glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)));
 
 		if (testVulkan)
 		{
-			auto demoShader = m_shaderLibrary.Load("vulkanDemoShader", "./shaders/Vulkan/vert.spv", "./shaders/Vulkan/frag.spv");
+			auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/Vulkan/vert.spv", "./shaders/Vulkan/frag.spv");
 		}
-
-		//Create a demo cube and rotate
-		if (a_runDemo)
+		else
 		{
 			auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
-			//auto demoShader = m_shaderLibrary.Load("DirectX DemoShader", "./shaders/VertexShader.hlsl", "./shaders/PixelShader.hlsl");
-			m_demoCube = std::make_shared<Cube>(1.0f);
 		}
 
 		Renderer::RenderCommand::SetDepthTest(true);
@@ -69,7 +67,7 @@ namespace Framework
 
 		Renderer::RenderCommand::SetVSync(false);
 
-		Renderer::Renderer::SetAmbiantLightColour({0.15f, 0.15f, 0.15f});
+		Renderer::Renderer::SetAmbiantLightColour({ 0.15f, 0.15f, 0.15f });
 		Renderer::Renderer::SetAmbiantLightIntensity(0.05f);
 
 		if (!OnCreate())
@@ -92,7 +90,7 @@ namespace Framework
 		do
 		{
 			Time::UpdateTime();
-		
+
 			if (Renderer::RendererAPI::GetAPI() == Renderer::RendererAPI::API::DirectX)
 			{
 				//RenderCommand::SetClearColor(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
@@ -158,17 +156,15 @@ namespace Framework
 			{
 				GLFWwindow* window = static_cast<GLFWwindow*>(m_window->GetGraphicsContext()->GetWindow());
 				m_isRunning = !glfwWindowShouldClose(window);
-				
+
 				if (!testVulkan)
 				{
 					ImGui_ImplOpenGL3_NewFrame();
 					ImGui_ImplGlfw_NewFrame();
 					ImGui::NewFrame();
-
-
-					m_mainCamera->Update(Time::GetDeltaTime());
 				}
 
+				m_mainCamera.Update(Time::GetDeltaTime());
 				Update();
 
 				m_guiManager.OnUpdate();
@@ -177,25 +173,11 @@ namespace Framework
 				{
 					layer->OnUpdate();
 				}
-				
+
 				Renderer::RenderCommand::Clear();
-			
-				Renderer::Renderer::Begin(*m_mainCamera);
-				if (a_runDemo)
-				{
-					auto shader = m_shaderLibrary.GetShader("demoShader");
-					//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(0, 1, 0));
-					//m_demoCube->Rotate(3.5f * Time::GetDeltaTime(), glm::vec3(1, 1, 0));
-					Renderer::Renderer::Submit(shader, m_demoCube->GetVertexArray(), m_demoCube->GetTransform());
-				}
+
+				Renderer::Renderer::Begin(m_mainCamera);
 				Draw();
-
-				if (testVulkan)
-				{
-					Renderer::Renderer::Submit(m_shaderLibrary.GetShader("vulkanDemoShader"), nullptr);
-				}
-
-				//Renderer::SubmitBatched(shader);
 				Renderer::Renderer::EndScene();
 
 				if (!testVulkan)
@@ -206,7 +188,7 @@ namespace Framework
 			}
 			//GLFW
 			m_window->OnUpdate();
-		
+
 		} while (m_isRunning);
 
 		DestroyApp();

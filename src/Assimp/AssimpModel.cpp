@@ -233,7 +233,7 @@ std::vector<std::string> AssimpModel::loadMaterialTextures(aiMaterial* aMaterial
 			//load texture from file
 			std::string texture;
 			texture = TextureFromFile(str.C_Str(), mDirectory);
-			Framework::Application::Get().GetTextureLibrary().Load(texture, texture, GetTextureType(aType));
+			//Framework::Application::Get().GetTextureLibrary().Load(texture, texture, GetTextureType(aType));
 			textures.push_back(texture);
 		}
 	}

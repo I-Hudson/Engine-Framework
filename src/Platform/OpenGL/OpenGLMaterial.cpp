@@ -23,7 +23,7 @@ namespace Framework
 		GLsizei length; // name length
 		for (size_t i = 0; i < uniformCount; i++)
 		{
-			glGetActiveUniform(m_shader->GetProgramId(), i, bufSize, &length, &size, &type, name);
+			glGetActiveUniform(m_shader->GetProgramId(), (uint32_t)i, bufSize, &length, &size, &type, name);
 			printf("Uniform #%d Type: %u Name: %s\n", i, type, name);
 
 			switch (type)

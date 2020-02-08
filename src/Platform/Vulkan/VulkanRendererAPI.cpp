@@ -36,22 +36,22 @@ namespace Framework
 			}
 		}
 
-		void VulkanRendererAPI::EndRender()
+		void VulkanRendererAPI::GetNextFrameRender()
 		{
-			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
-			for (size_t i = 0; i < commandBuffers.size(); i++)
-			{
-				vkCmdEndRenderPass(commandBuffers[i]);
+			m_vkContext->GetVulkanCommand()->EndCommandRecord();
 
-				if (vkEndCommandBuffer(commandBuffers[i]) != VK_SUCCESS)
-				{
-					EN_CORE_ERROR("Vulkan Render API: Failed to record command buffer");
-				}
-			}
+			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
+			auto swapChain = *m_vkContext->GetVulkanSwapchain();
+			auto device = *m_vkContext->GetVulkanDevice()->GetDevice();
+			auto sync = *m_vkContext->GetVulkanSync();
+
+
+			vkWaitForFences(device, 1, sync.GetCurrentInFlightFence(), VK_TRUE, UINT64_MAX);
 
 			uint32_t imageIndex;
-			VkResult result = vkAcquireNextImageKHR(*m_vkContext->GetVulkanDevice()->GetDevice(), *m_vkContext->GetVulkanSwapchain()->GetSwapChain(),
-				UINT64_MAX, *m_vkContext->GetVulkanSync()->GetCurrentImageSemaphore(), VK_NULL_HANDLE, &imageIndex);
+			VkResult result = vkAcquireNextImageKHR(device, *swapChain.GetSwapChain(),
+				UINT64_MAX, *sync.GetCurrentImageSemaphore(), VK_NULL_HANDLE, &imageIndex);
+			m_vkContext->SetCurrentImageIndex(imageIndex);
 
 			if (result == VK_ERROR_OUT_OF_DATE_KHR)
 			{
@@ -62,6 +62,14 @@ namespace Framework
 			{
 				EN_CORE_ERROR("VulkanRendererAPI: Failed to get swap chain image!");
 			}
+		}
+
+		void VulkanRendererAPI::EndRender()
+		{
+			GetNextFrameRender();
+
+			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
+			uint32_t imageIndex = m_vkContext->GetCurrentImageIndex();
 
 			if (*m_vkContext->GetVulkanSync()->GetCurrentInFlightImage() != VK_NULL_HANDLE)
 			{
@@ -145,12 +153,14 @@ namespace Framework
 			}
 		}
 
-		void VulkanRendererAPI::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray)
+		void VulkanRendererAPI::DrawIndexed(const Renderer::VertexArray* a_vertexArray)
 		{
 			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); i++)
 			{
-				vkCmdDraw(commandBuffers[i], 3, 1, 0, 0);
+				a_vertexArray->Bind(commandBuffers[i]);
+
+				vkCmdDrawIndexed(commandBuffers[i], a_vertexArray->GetIndexBuffer()->GetCount(), 1, 0, 0, 0);
 			}
 		}
 	}

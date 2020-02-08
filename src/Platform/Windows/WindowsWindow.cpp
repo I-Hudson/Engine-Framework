@@ -24,6 +24,7 @@ namespace Framework
 	{
 		if (m_context != nullptr)
 		{
+			// @TODO: Wrap this in a renderModule.
 			m_context->Destroy();
 			delete m_context;
 		}
@@ -46,6 +47,7 @@ namespace Framework
 		mData.Height = aProps.Height;
 
 		m_context = Renderer::GraphicsContext::Create(aProps.Width, aProps.Height, aProps.Title, false, nullptr, &mData);
+		m_window = m_context->GetWindow();
 	}
 
 	void WindowsWindow::Shutdown()

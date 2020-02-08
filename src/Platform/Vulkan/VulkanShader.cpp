@@ -10,10 +10,9 @@ namespace Framework
 	namespace Vulkan
 	{
 		VulkanShader::VulkanShader(const std::string& a_shaderFile)
-			: m_ID(0)
+			: m_ID(0), m_vulkanContext(VulkanContext::Get())
 		{
-			m_vulkanContext = static_cast<VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext());
-			if (m_vulkanContext == nullptr)
+			if (&m_vulkanContext == nullptr)
 			{
 				EN_CORE_ERROR("Vulkan Shader: Context could not be otained!");
 				return;
@@ -32,10 +31,9 @@ namespace Framework
 		}
 
 		VulkanShader::VulkanShader(const std::string& a_name, const std::string& a_vertexSrc, const std::string& a_fragSrc)
-			: m_ID(0)
+			: m_ID(0), m_vulkanContext(VulkanContext::Get())
 		{
-			m_vulkanContext = static_cast<VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext());
-			if (m_vulkanContext == nullptr)
+			if (&m_vulkanContext == nullptr)
 			{
 				EN_CORE_ERROR("Vulkan Shader: Context could not be otained!");
 				return;
@@ -54,7 +52,7 @@ namespace Framework
 
 		void VulkanShader::Bind() const
 		{
-			auto commandBuffers = *m_vulkanContext->GetVulkanCommand()->GetCommandBuffers();
+			auto commandBuffers = *m_vulkanContext.GetVulkanCommand()->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); ++i)
 			{
 				vkCmdBindPipeline(commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, m_graphicsPipeline);
@@ -104,6 +102,9 @@ namespace Framework
 
 		void VulkanShader::UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value)
 		{
+			uint32_t imageIndex = m_vulkanContext.GetCurrentImageIndex();
+
+			printf("");
 		}
 
 		void VulkanShader::UploadTexture(const std::string& a_name, const std::shared_ptr<Renderer::Texture> a_texture, const uint8_t& a_textureUint)
@@ -116,13 +117,21 @@ namespace Framework
 			{
 				Release();
 				CreateShaderFromCachedSources();
+				OnSwapChainRecreate();
 			}
 		}
 
 		void VulkanShader::Release()
 		{
-			vkDestroyPipeline(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_graphicsPipeline, nullptr);
-			vkDestroyPipelineLayout(*m_vulkanContext->GetVulkanDevice()->GetDevice(), m_pipelineLayout, nullptr);
+			auto device = *m_vulkanContext.GetVulkanDevice()->GetDevice();
+			vkDestroyPipeline(device, m_graphicsPipeline, nullptr);
+			vkDestroyPipelineLayout(device, m_pipelineLayout, nullptr);
+			vkDestroyDescriptorSetLayout(device, m_descriptorLayout, nullptr);
+		}
+
+		void VulkanShader::SetSwapChainCallback(std::function<void()> function)
+		{
+			OnSwapChainRecreate = function;
 		}
 
 		uint32_t VulkanShader::ShaderTypeFromString(const std::string& a_type)
@@ -157,12 +166,37 @@ namespace Framework
 			VkPipelineShaderStageCreateInfo shaderStages[] = { vertShaderStageInfo, fragShaderStageInfo };
 
 			// Goes into vertex array for vulkan
-			VkPipelineVertexInputStateCreateInfo vertexInputInfo = {};
+			
+			VkVertexInputBindingDescription bindingDescription = {};
+			bindingDescription.binding = 0;
+			bindingDescription.stride = sizeof(Framework::Renderer::Vertex);
+			bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+
+			auto vertexAttriBindings = SetAttributeDescriptions(nullptr);
+
+ 			VkPipelineVertexInputStateCreateInfo vertexInputInfo = {};
 			vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-			vertexInputInfo.vertexBindingDescriptionCount = 0;
-			vertexInputInfo.pVertexBindingDescriptions = nullptr; // Optional
-			vertexInputInfo.vertexAttributeDescriptionCount = 0;
-			vertexInputInfo.pVertexAttributeDescriptions = nullptr; // Optional
+			vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(vertexAttriBindings.size());
+			vertexInputInfo.vertexBindingDescriptionCount = 1;
+			vertexInputInfo.pVertexBindingDescriptions = &bindingDescription; // Optional
+			vertexInputInfo.pVertexAttributeDescriptions = vertexAttriBindings.data();
+
+			VkDescriptorSetLayoutBinding uvoLayoutBinding = {};
+			uvoLayoutBinding.binding = 0;
+			uvoLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+			uvoLayoutBinding.descriptorCount = 1;
+			uvoLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+			uvoLayoutBinding.pImmutableSamplers = nullptr;
+
+			VkDescriptorSetLayoutCreateInfo  descriptorCreateInfo = {};
+			descriptorCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+			descriptorCreateInfo.bindingCount = 1;
+			descriptorCreateInfo.pBindings = &uvoLayoutBinding;
+			
+			if (vkCreateDescriptorSetLayout(*m_vulkanContext.GetVulkanDevice()->GetDevice(), &descriptorCreateInfo, nullptr, &m_descriptorLayout) != VK_SUCCESS)
+			{
+				EN_CORE_ERROR("Vulkan Shader: DescriptorSetLayout was not created!");
+			}
 
 			VkPipelineInputAssemblyStateCreateInfo inputAssembly = {};
 			inputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
@@ -179,7 +213,7 @@ namespace Framework
 
 			VkRect2D scissor = {};
 			scissor.offset = { 0, 0 };
-			scissor.extent = *m_vulkanContext->GetVulkanSwapchain()->GetSwapChainExtent();
+			scissor.extent = *m_vulkanContext.GetVulkanSwapchain()->GetSwapChainExtent();
 
 			VkPipelineViewportStateCreateInfo viewportState = CreateViewport(viewport, scissor);
 			VkPipelineRasterizationStateCreateInfo rasterizer = CreateRasterizer();
@@ -191,20 +225,21 @@ namespace Framework
 
 			VkPipelineLayoutCreateInfo pipelineLayoutInfo = {};
 			pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-			pipelineLayoutInfo.setLayoutCount = 0; // Optional
-			pipelineLayoutInfo.pSetLayouts = nullptr; // Optional
+			pipelineLayoutInfo.setLayoutCount = 1;
+			pipelineLayoutInfo.pSetLayouts = &m_descriptorLayout;
 			pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
 			pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
-			if (vkCreatePipelineLayout(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &pipelineLayoutInfo, nullptr, &m_pipelineLayout) != VK_SUCCESS) {
-				throw std::runtime_error("failed to create pipeline layout!");
+			if (vkCreatePipelineLayout(*m_vulkanContext.GetVulkanDevice()->GetDevice(), &pipelineLayoutInfo, nullptr, &m_pipelineLayout) != VK_SUCCESS) 
+			{
+				EN_CORE_ERROR("Vulkan Shader: Failed to create pipeline layout!");
 			}
 
 			CreateGraphicsPipeline(shaderStages, vertexInputInfo, inputAssembly, viewportState, rasterizer, multisampling, colorBlending);
 
 			for (auto it : shaders)
 			{
-				vkDestroyShaderModule(*m_vulkanContext->GetVulkanDevice()->GetDevice(), it.second, nullptr);
+				vkDestroyShaderModule(*m_vulkanContext.GetVulkanDevice()->GetDevice(), it.second, nullptr);
 			}
 		}
 
@@ -223,7 +258,7 @@ namespace Framework
 			moduleCreateInfo.pCode = reinterpret_cast<const uint32_t*>(byteCodes.data());
 
 			VkShaderModule shaderModule;
-			if (vkCreateShaderModule(*m_vulkanContext->GetVulkanDevice()->GetDevice(), &moduleCreateInfo, nullptr, &shaderModule) != VK_SUCCESS)
+			if (vkCreateShaderModule(*m_vulkanContext.GetVulkanDevice()->GetDevice(), &moduleCreateInfo, nullptr, &shaderModule) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("Vulkan Shader: Shader Module was not created!");
 			}
@@ -234,6 +269,33 @@ namespace Framework
 		void VulkanShader::CreateShaderFromCachedSources()
 		{
 			Compile(m_shaderSources);
+		}
+
+		std::array<VkVertexInputAttributeDescription, 4> VulkanShader::SetAttributeDescriptions(VkPipelineVertexInputStateCreateInfo* info)
+		{
+			std::array<VkVertexInputAttributeDescription, 4> attributeDescriptions = {};
+			
+			attributeDescriptions[0].binding = 0;
+			attributeDescriptions[0].location = 0;
+			attributeDescriptions[0].format = VK_FORMAT_R32G32B32A32_SFLOAT;
+			attributeDescriptions[0].offset = offsetof(Framework::Renderer::Vertex, Framework::Renderer::Vertex::Position);
+
+			attributeDescriptions[1].binding = 0;
+			attributeDescriptions[1].location = 1;
+			attributeDescriptions[1].format = VK_FORMAT_R32G32B32A32_SFLOAT;
+			attributeDescriptions[1].offset = offsetof(Framework::Renderer::Vertex, Framework::Renderer::Vertex::Color);
+
+			attributeDescriptions[2].binding = 0;
+			attributeDescriptions[2].location = 2;
+			attributeDescriptions[2].format = VK_FORMAT_R32G32B32A32_SFLOAT;
+			attributeDescriptions[2].offset = offsetof(Framework::Renderer::Vertex, Framework::Renderer::Vertex::Normal);
+
+			attributeDescriptions[3].binding = 0;
+			attributeDescriptions[3].location = 3;
+			attributeDescriptions[3].format = VK_FORMAT_R32G32_SFLOAT;
+			attributeDescriptions[3].offset = offsetof(Framework::Renderer::Vertex, Framework::Renderer::Vertex::UV);
+
+			return attributeDescriptions;
 		}
 
 		VkPipelineViewportStateCreateInfo VulkanShader::CreateViewport(VkViewport viewport, VkRect2D scissor)
@@ -261,7 +323,7 @@ namespace Framework
 			rasterizer.lineWidth = 1.0f;
 
 			rasterizer.cullMode = VK_CULL_MODE_BACK_BIT;
-			rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE;
+			rasterizer.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
 
 			rasterizer.depthBiasEnable = VK_FALSE;
 			rasterizer.depthBiasConstantFactor = 0.0f; // Optional
@@ -335,12 +397,12 @@ namespace Framework
 			pipelineInfo.pDynamicState = nullptr; // Optional
 
 			pipelineInfo.layout = m_pipelineLayout;
-			pipelineInfo.renderPass = *m_vulkanContext->GetVulkanSwapchain()->GetRenderPass();
+			pipelineInfo.renderPass = *m_vulkanContext.GetVulkanSwapchain()->GetRenderPass();
 			pipelineInfo.subpass = 0;
 			pipelineInfo.basePipelineHandle = VK_NULL_HANDLE; // Optional
 			pipelineInfo.basePipelineIndex = -1; // Optional
 
-			if (vkCreateGraphicsPipelines(*m_vulkanContext->GetVulkanDevice()->GetDevice(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &m_graphicsPipeline) != VK_SUCCESS)
+			if (vkCreateGraphicsPipelines(*m_vulkanContext.GetVulkanDevice()->GetDevice(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &m_graphicsPipeline) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("Vulkan Shader: Graphics pipeline was not created!");
 			}

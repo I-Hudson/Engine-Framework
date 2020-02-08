@@ -50,7 +50,7 @@ namespace Framework
 		}
 	}
 
-	void OpenGLRendererAPI::DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray)
+	void OpenGLRendererAPI::DrawIndexed(const Renderer::VertexArray* a_vertexArray)
 	{
 		glDrawElements(GL_TRIANGLES, a_vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 	}

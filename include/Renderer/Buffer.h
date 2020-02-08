@@ -194,10 +194,11 @@ namespace Framework
 		{
 		public:
 			virtual ~VertexBuffer() {}
+			virtual void Destroy() {}
 
 			//Bind and unbind the buffer
-			virtual void Bind() const = 0;
-			virtual void Unbind() const = 0;
+			virtual void Bind(void* object = nullptr) const = 0;
+			virtual void Unbind(void* object = nullptr) const = 0;
 
 			//Set the internal layout of this buffer
 			virtual void SetLayout(const BufferLayout& aLayout) = 0;
@@ -229,6 +230,7 @@ namespace Framework
 		{
 		public:
 			virtual ~IndexBuffer() {}
+			virtual void Destroy() {}
 
 			//Bind and unbind the buffer
 			virtual void Bind() const = 0;

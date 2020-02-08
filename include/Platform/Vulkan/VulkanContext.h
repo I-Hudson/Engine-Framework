@@ -18,7 +18,6 @@
 #include "Platform/Vulkan/Internal/VulkanQueue.h"
 #include "Platform/Vulkan/Internal/VulkanSurface.h"
 #include "Platform/Vulkan/Internal/VulkanSwapchain.h"
-#include "Platform/Vulkan/Internal/VulkanPipeline.h"
 #include "Platform/Vulkan/Internal/VulkanCommand.h"
 #include "Platform/Vulkan/Internal/VulkanSync.h"
 
@@ -44,6 +43,8 @@ namespace Framework
 			virtual void* GetNativeContext() override;
 			virtual void* GetWindow() override { return m_window; }
 
+			static VulkanContext& Get() { return *static_cast<VulkanContext*>(s_instance); }
+
 			void RecreateSwapChain();
 
 			static VKAPI_ATTR VkBool32 VKAPI_CALL DebugCallback(
@@ -52,6 +53,9 @@ namespace Framework
 				const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
 				void* pUserData);
 
+			void SetCurrentImageIndex(uint32_t imageIndex);
+			uint32_t GetCurrentImageIndex() { return m_currentImageIndex; }
+
 			VulkanValidationLayers* GetVulkanValidation() { return &m_vkValidationLayers; }
 			VulkanExtensions* GetVulkanExtensions() { return &m_vkExtensions; }
 			VulkanDebug* GetVulkanDebug() { return &m_vkDebug; }
@@ -59,7 +63,6 @@ namespace Framework
 			VulkanQueue* GetVulkanQueue() { return &m_vkQueue; }
 			VulkanSurface* GetVulkanSurface() { return &m_vkSurface; }
 			VulkanSwapchain* GetVulkanSwapchain() { return &m_vkSwapchain; }
-			VulkanPipeline* GetVulkanPipeline() { return &m_vkPipeline; }
 			VulkanCommand* GetVulkanCommand() { return &m_vkCommand; }
 			VulkanSync* GetVulkanSync() { return &m_vkSync; }
 
@@ -78,9 +81,10 @@ namespace Framework
 			VulkanQueue m_vkQueue;
 			VulkanSurface m_vkSurface;
 			VulkanSwapchain m_vkSwapchain;
-			VulkanPipeline m_vkPipeline;
 			VulkanCommand m_vkCommand;
 			VulkanSync m_vkSync;
+
+			uint32_t m_currentImageIndex;
 
 			VkInstance m_instance;
 			std::vector<VkExtensionProperties> m_extensions;

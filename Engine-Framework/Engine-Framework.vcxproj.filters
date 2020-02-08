@@ -264,9 +264,6 @@
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp">
       <Filter>Source Files\Platform\Vulkan\Internal</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanPipeline.cpp">
-      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Platform\Vulkan\VulkanShader.cpp">
       <Filter>Source Files\Platform\Vulkan</Filter>
     </ClCompile>
@@ -275,6 +272,15 @@
     </ClCompile>
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSync.cpp">
       <Filter>Source Files\Platform\Vulkan\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanBuffer.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanVertexArray.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanMaterial.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -467,9 +473,6 @@
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSwapchain.h">
       <Filter>Header Files\Platform\Vulkan\Internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanPipeline.h">
-      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Platform\Vulkan\VulkanShader.h">
       <Filter>Header Files\Platform\Vulkan</Filter>
     </ClInclude>
@@ -478,6 +481,18 @@
     </ClInclude>
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSync.h">
       <Filter>Header Files\Platform\Vulkan\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanBuffer.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanVertexArray.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanUtils.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanMaterial.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

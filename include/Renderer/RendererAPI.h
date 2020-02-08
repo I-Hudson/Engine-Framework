@@ -36,7 +36,7 @@ namespace Framework
 			virtual void SetContext(GraphicsContext* context) = 0;
 
 			//Draw the vertex array data
-			virtual void DrawIndexed(const std::shared_ptr<VertexArray>& aVertexArray) = 0;
+			virtual void DrawIndexed(const VertexArray* aVertexArray) = 0;
 
 			//Return the API
 			inline static API GetAPI() { return sAPI; }

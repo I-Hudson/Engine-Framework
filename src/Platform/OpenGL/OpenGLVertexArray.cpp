@@ -34,12 +34,12 @@ namespace Framework
 		glDeleteVertexArrays(1, &m_ID);
 	}
 
-	void OpenGLVertexArray::Bind() const
+	void OpenGLVertexArray::Bind(void* object) const
 	{
 		glBindVertexArray(m_ID);
 	}
 
-	void OpenGLVertexArray::Unbind() const
+	void OpenGLVertexArray::Unbind(void* object) const
 	{
 		glBindVertexArray(0);
 	}

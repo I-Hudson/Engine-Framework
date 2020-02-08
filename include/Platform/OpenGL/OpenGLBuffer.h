@@ -12,8 +12,8 @@ namespace Framework
 		virtual ~OpenGLVertexBuffer();
 	
 		//Bind and unbind
-		virtual void Bind()  const override;
-		virtual void Unbind() const override;
+		virtual void Bind(void* object = nullptr)  const override;
+		virtual void Unbind(void* object = nullptr) const override;
 	
 		virtual void SetSubData(const Renderer::Vertex* a_vertices, const unsigned int& a_bufferSize) override;
 

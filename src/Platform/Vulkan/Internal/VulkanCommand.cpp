@@ -53,6 +53,19 @@ namespace Framework
 			vkFreeCommandBuffers(*m_vkContext->GetVulkanDevice()->GetDevice(), m_commandPool, static_cast<uint32_t>(m_commandBuffers.size()), m_commandBuffers.data());
 		}
 
+		void VulkanCommand::EndCommandRecord()
+		{
+			for (size_t i = 0; i < m_commandBuffers.size(); i++)
+			{
+				vkCmdEndRenderPass(m_commandBuffers[i]);
+
+				if (vkEndCommandBuffer(m_commandBuffers[i]) != VK_SUCCESS)
+				{
+					EN_CORE_ERROR("Vulkan Render API: Failed to record command buffer");
+				}
+			}
+		}
+
 		void VulkanCommand::DestroyCommandPool()
 		{
 			vkDestroyCommandPool(*m_vkContext->GetVulkanDevice()->GetDevice(), m_commandPool, nullptr);

@@ -60,11 +60,11 @@ namespace Framework
 	{
 	}
 
-	void DirectXVertexBuffer::Bind() const
+	void DirectXVertexBuffer::Bind(void* object) const
 	{
 	}
 
-	void DirectXVertexBuffer::Unbind() const
+	void DirectXVertexBuffer::Unbind(void* object) const
 	{
 	}
 

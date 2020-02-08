@@ -103,6 +103,7 @@
       <AdditionalIncludeDirectories>C:\VulkanSDK\1.1.130.0\Include;$(SolutionDir)deps/imgui/impl;$(SolutionDir)deps/imgui/include;$(SolutionDir)deps/assimp/include;$(ProjectDir)/../deps\stbi;$(ProjectDir)/../deps/glm;$(ProjectDir)/../deps/spdlog/include;$(ProjectDir)/../deps/glfw/include;$(ProjectDir)/../deps/glad/include;$(ProjectDir)/../include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;GLM_FORCE_SWIZZLE;GLM_FORCE_RADIANS;GLM_FORCE_PURE;GLM_ENABLE_EXPERIMENTAL;GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -179,15 +180,17 @@
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanDebug.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanDevice.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanExtensions.cpp" />
-    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanPipeline.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanQueue.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSurface.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSync.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanValidationLayers.cpp" />
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanBuffer.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanContext.cpp" />
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanMaterial.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanRendererAPI.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\VulkanShader.cpp" />
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanVertexArray.cpp" />
     <ClCompile Include="..\src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="..\src\Renderer\Buffer.cpp" />
     <ClCompile Include="..\src\Renderer\GraphicsContext.cpp" />
@@ -248,15 +251,18 @@
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanDebug.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanDevice.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanExtensions.h" />
-    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanPipeline.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanQueue.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSurface.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSwapchain.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSync.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanValidationLayers.h" />
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanBuffer.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanContext.h" />
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanMaterial.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanRendererAPI.h" />
     <ClInclude Include="..\include\Platform\Vulkan\VulkanShader.h" />
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanUtils.h" />
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanVertexArray.h" />
     <ClInclude Include="..\include\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="..\include\Renderer\Buffer.h" />
     <ClInclude Include="..\include\Renderer\GraphicsContext.h" />

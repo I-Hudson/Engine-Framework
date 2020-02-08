@@ -12,6 +12,7 @@ namespace Framework
 		{
 		public:
 			virtual void BeginRender() override;
+			void GetNextFrameRender();
 			virtual void EndRender() override;
 			virtual void SetClearColor(const glm::vec4& a_color) override;
 			virtual void Clear() override;
@@ -21,7 +22,7 @@ namespace Framework
 
 			virtual void SetContext(Framework::Renderer::GraphicsContext* context) override;
 
-			virtual void DrawIndexed(const std::shared_ptr<Renderer::VertexArray>& a_vertexArray) override;
+			virtual void DrawIndexed(const Renderer::VertexArray* a_vertexArray) override;
 
 		private:
 			VulkanContext* m_vkContext;

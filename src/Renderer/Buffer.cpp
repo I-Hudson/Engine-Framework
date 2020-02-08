@@ -2,6 +2,7 @@
 #include "Renderer/Renderer.h"
 
 #include "Platform/OpenGL/OpenGLBuffer.h"
+#include "Platform/Vulkan/VulkanBuffer.h"
 
 namespace Framework
 {
@@ -43,6 +44,8 @@ namespace Framework
 
 			case RendererAPI::API::OpenGL:
 				return new OpenGLVertexBuffer(aVertices, aSize);
+			case RendererAPI::API::Vulkan:
+				return new Vulkan::VulkanVertexBuffer(aVertices, aSize);
 			}
 			//EN_CORE_ASSERT(false, "Unknow RendererAPI!");
 			return nullptr;
@@ -68,6 +71,8 @@ namespace Framework
 
 			case RendererAPI::API::OpenGL:
 				return new OpenGLIndexBuffer(aIndices, aSize);
+			case RendererAPI::API::Vulkan:
+				return new Vulkan::VulkanIndexBuffer(aIndices, aSize);
 			}
 			//EN_CORE_ASSERT(false, "Unknow RendererAPI!");
 			return nullptr;

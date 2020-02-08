@@ -3,11 +3,22 @@
 #include "Renderer/Shader.h"
 #include "Platform/Vulkan/VulkanContext.h"
 
+#include <memory>
+#include <functional>
+#include <algorithm>
 
 namespace Framework
 {
 	namespace Vulkan
 	{
+		struct UniformVertexObject
+		{
+			glm::mat4 u_Projection;
+			glm::mat4 u_View;
+			glm::mat4 u_ObjectMatrix;
+			glm::vec3 u_testColour;
+		};
+
 		class VulkanShader : public Renderer::Shader
 		{
 		public:
@@ -24,20 +35,19 @@ namespace Framework
 			//Upload uniforms to the GPU
 
 			//BASE TYPES
-			void UploadUniformBool(const std::string& a_name, const bool& a_value);
-			void UploadUniformInt(const std::string& a_name, const int& a_value);
-			void UploadUniformFloat(const std::string& a_name, const float& a_value);
-			//void UploadUniformString(const std::string& a_name, const std::string& a_value);
+			virtual void UploadUniformBool(const std::string& a_name, const bool& a_value) override;
+			virtual void UploadUniformInt(const std::string& a_name, const int& a_value) override;
+			virtual void UploadUniformFloat(const std::string& a_name, const float& a_value) override;
 
 			//VECTOR
-			void UploadUniformVec2(const std::string& a_name, const glm::vec2& a_value);
-			void UploadUniformVec3(const std::string& a_name, const glm::vec3& a_value);
-			void UploadUniformVec4(const std::string& a_name, const glm::vec4& a_value);
+			virtual void UploadUniformVec2(const std::string& a_name, const glm::vec2& a_value) override;
+			virtual void UploadUniformVec3(const std::string& a_name, const glm::vec3& a_value) override;
+			virtual void UploadUniformVec4(const std::string& a_name, const glm::vec4& a_value) override;
 
 			//MATRIX														   
-			void UploadUniformMat2(const std::string& a_name, const glm::mat2& a_value);
-			void UploadUniformMat3(const std::string& a_name, const glm::mat3& a_value);
-			void UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value);
+			virtual void UploadUniformMat2(const std::string& a_name, const glm::mat2& a_value) override;
+			virtual void UploadUniformMat3(const std::string& a_name, const glm::mat3& a_value) override;
+			virtual void UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value) override;
 
 			void UploadTexture(const std::string& a_name, const std::shared_ptr<Renderer::Texture> a_texture, const uint8_t& a_textureUint = 0) override;
 
@@ -47,6 +57,11 @@ namespace Framework
 
 			virtual void Release() override;
 
+			void SetSwapChainCallback(std::function<void()> function);
+
+			VkDescriptorSetLayout GetDescriptorSetLayout() { return m_descriptorLayout; }
+			VkPipelineLayout GetPipelineLayout() { return m_pipelineLayout; }
+
 		protected:
 			virtual uint32_t ShaderTypeFromString(const std::string& a_type) override;
 
@@ -54,6 +69,7 @@ namespace Framework
 			void Compile(const std::unordered_map<unsigned int, std::string>& a_shaderSources);
 			VkShaderModule CreateShaderModule(const std::string& byteData);
 			void CreateShaderFromCachedSources();
+			std::array<VkVertexInputAttributeDescription, 4> SetAttributeDescriptions(VkPipelineVertexInputStateCreateInfo* info);
 
 			VkPipelineViewportStateCreateInfo CreateViewport(VkViewport viewport, VkRect2D scissor);
 			VkPipelineRasterizationStateCreateInfo CreateRasterizer();
@@ -64,16 +80,20 @@ namespace Framework
 			void CreateGraphicsPipeline(VkPipelineShaderStageCreateInfo shaderStages[], VkPipelineVertexInputStateCreateInfo vertexInputInfo, VkPipelineInputAssemblyStateCreateInfo inputAssembly,
 										VkPipelineViewportStateCreateInfo viewportState, VkPipelineRasterizationStateCreateInfo rasterizer, VkPipelineMultisampleStateCreateInfo multisampleState, 
 										VkPipelineColorBlendStateCreateInfo colourBlendState);
-
-			VulkanContext* m_vulkanContext;
+		
+		private:
+			VulkanContext& m_vulkanContext;
 
 			VkPipeline m_graphicsPipeline;
+			VkDescriptorSetLayout m_descriptorLayout;
 			VkPipelineLayout m_pipelineLayout;
 
 			std::unordered_map<unsigned int, std::string> m_shaderSources;
 
 			uint32_t m_ID;
 			std::string m_name;
+		
+			std::function<void()> OnSwapChainRecreate;
 		};
 	}
 }

@@ -20,6 +20,9 @@ namespace Framework
 
 			static GraphicsContext* Create(const int& a_width, const int& a_height, const std::string& a_title,
 				const bool& a_fullscreen = false, void* a_window = nullptr, Window::WindowData* a_windowData = &Window::WindowData());
+
+		protected:
+			static GraphicsContext* s_instance;
 		};
 	}
 }

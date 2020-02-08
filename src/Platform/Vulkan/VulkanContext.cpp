@@ -57,8 +57,6 @@ namespace Framework
 
 			m_vkSwapchain.CreateFrameBuffers();
 
-			m_vkPipeline.Setup(this);
-
 			m_vkCommand.Setup(this);
 
 			m_vkSync.Setup(this, 3);
@@ -137,8 +135,6 @@ namespace Framework
 
 			m_vkSwapchain.CreateFrameBuffers();
 
-			m_vkPipeline.Setup(this);
-
 			m_vkCommand.CreateCommandBuffers();
 		}
 
@@ -197,6 +193,11 @@ namespace Framework
 			}
 
 			return VK_FALSE;
+		}
+
+		void VulkanContext::SetCurrentImageIndex(uint32_t imageIndex)
+		{
+			m_currentImageIndex = imageIndex;
 		}
 	}
 }

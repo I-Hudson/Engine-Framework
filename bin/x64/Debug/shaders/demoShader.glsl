@@ -6,6 +6,8 @@ layout(location = 1) in vec4 inColor;
 layout(location = 2) in vec4 inNormal;
 layout(location = 3) in vec2 inUV;
 
+uniform mat4 u_Projection;
+uniform mat4 u_View;
 uniform mat4 u_ProjectionView;
 uniform mat4 u_ObjectMatrix;
 
@@ -24,7 +26,7 @@ void main()
 	o.Normal = inNormal;
 	o.UV = inUV;
 
-	gl_Position = u_ProjectionView * u_ObjectMatrix * inPosition;
+	gl_Position = u_Projection * inverse(u_View) * u_ObjectMatrix * inPosition;
 }
 
 #type fragment
