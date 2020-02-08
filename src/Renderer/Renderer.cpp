@@ -32,8 +32,6 @@ namespace Framework
 		void Renderer::EndScene()
 		{
 			Render();
-			static_cast<Vulkan::VulkanRendererAPI*>(RenderCommand::GetAPI())->GetNextFrameRender();
-
 			//std::cout << "Number of render calls: " << renderCalls << "\n";
 			RenderCommand::EndRender();
 		}
@@ -97,6 +95,7 @@ namespace Framework
 				m_sceneData->m_renderQueue[i].Material->GetShader()->Bind();
 				m_sceneData->m_renderQueue[i].Material->SetMat4("u_Projection", m_sceneData->ProjectionMatrix);
 				m_sceneData->m_renderQueue[i].Material->SetMat4("u_View", m_sceneData->ViewMatrix);
+				m_sceneData->m_renderQueue[i].Material->SetMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
 				m_sceneData->m_renderQueue[i].Material->SetMat4("u_ObjectMatrix", m_sceneData->m_renderQueue[i].Transform);
 				m_sceneData->m_renderQueue[i].Material->SetVec3("u_ViewPos", m_sceneData->ProjectionViewMatrix[3].xyz);
 				for (size_t i = 0; i < m_sceneData->m_dirLights.size(); i++)

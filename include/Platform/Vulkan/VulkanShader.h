@@ -82,7 +82,7 @@ namespace Framework
 										VkPipelineColorBlendStateCreateInfo colourBlendState);
 		
 		private:
-			VulkanContext* m_vulkanContext;
+			VulkanContext& m_vulkanContext;
 
 			VkPipeline m_graphicsPipeline;
 			VkDescriptorSetLayout m_descriptorLayout;

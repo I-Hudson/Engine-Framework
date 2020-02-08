@@ -57,8 +57,6 @@ namespace Framework
 
 			m_vkSwapchain.CreateFrameBuffers();
 
-			m_vkPipeline.Setup(this);
-
 			m_vkCommand.Setup(this);
 
 			m_vkSync.Setup(this, 3);
@@ -136,8 +134,6 @@ namespace Framework
 			data.EventCallback(recreateShadersEvent);
 
 			m_vkSwapchain.CreateFrameBuffers();
-
-			m_vkPipeline.Setup(this);
 
 			m_vkCommand.CreateCommandBuffers();
 		}

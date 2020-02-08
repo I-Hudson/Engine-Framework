@@ -264,9 +264,6 @@
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp">
       <Filter>Source Files\Platform\Vulkan\Internal</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanPipeline.cpp">
-      <Filter>Source Files\Platform\Vulkan\Internal</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Platform\Vulkan\VulkanShader.cpp">
       <Filter>Source Files\Platform\Vulkan</Filter>
     </ClCompile>
@@ -474,9 +471,6 @@
       <Filter>Header Files\Platform\Vulkan\Internal</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSwapchain.h">
-      <Filter>Header Files\Platform\Vulkan\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanPipeline.h">
       <Filter>Header Files\Platform\Vulkan\Internal</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Platform\Vulkan\VulkanShader.h">

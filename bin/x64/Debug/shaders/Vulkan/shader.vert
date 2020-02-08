@@ -17,6 +17,6 @@ layout(binding = 0) uniform UniformVertexObject
 }uvo;
 
 void main() {
-    gl_Position = uvo.u_Projection * uvo.u_View * uvo.u_ObjectMatrix * vec4(inPosition.xyz, 1.0);
+    gl_Position = uvo.u_Projection * inverse(uvo.u_View) * uvo.u_ObjectMatrix * vec4(inPosition.xyz, 1.0);
     fragColor = vec3(1.0, 1.0, 1.0);
 }

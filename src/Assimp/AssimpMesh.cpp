@@ -69,11 +69,11 @@ AssimpMesh::AssimpMesh(std::vector<AssimpVertex> aVertices, std::vector<unsigned
 	m_material = Framework::Renderer::Material::Create();
 	if (m_material)
 	{
-		m_material->SetShader(Framework::Application::Get().GetShaderLibrary().GetShader("vulkanDemoShader"));
+		m_material->SetShader(Framework::Application::Get().GetShaderLibrary().GetShader("demoShader"));
 		int i = 0;
 		for (auto it : aTextures)
 		{
-			//m_material->SetTexture(it, Framework::Application::Get().GetTextureLibrary().GetTexture(it), i++);
+			m_material->SetTexture(it, Framework::Application::Get().GetTextureLibrary().GetTexture(it), i++);
 		}
 	}
 }

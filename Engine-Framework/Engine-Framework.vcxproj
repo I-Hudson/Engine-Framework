@@ -103,6 +103,7 @@
       <AdditionalIncludeDirectories>C:\VulkanSDK\1.1.130.0\Include;$(SolutionDir)deps/imgui/impl;$(SolutionDir)deps/imgui/include;$(SolutionDir)deps/assimp/include;$(ProjectDir)/../deps\stbi;$(ProjectDir)/../deps/glm;$(ProjectDir)/../deps/spdlog/include;$(ProjectDir)/../deps/glfw/include;$(ProjectDir)/../deps/glad/include;$(ProjectDir)/../include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;GLM_FORCE_SWIZZLE;GLM_FORCE_RADIANS;GLM_FORCE_PURE;GLM_ENABLE_EXPERIMENTAL;GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -179,7 +180,6 @@
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanDebug.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanDevice.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanExtensions.cpp" />
-    <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanPipeline.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanQueue.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSurface.cpp" />
     <ClCompile Include="..\src\Platform\Vulkan\Internal\VulkanSwapchain.cpp" />
@@ -251,7 +251,6 @@
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanDebug.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanDevice.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanExtensions.h" />
-    <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanPipeline.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanQueue.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSurface.h" />
     <ClInclude Include="..\include\Platform\Vulkan\Internal\VulkanSwapchain.h" />

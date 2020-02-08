@@ -31,7 +31,7 @@ namespace Framework
 				}
 
 				VkBool32 presentSupport = false;
-				vkGetPhysicalDeviceSurfaceSupportKHR(device, i, *m_vulkanContext->GetVulkanSurface()->GetSurface(), &presentSupport);
+				vkGetPhysicalDeviceSurfaceSupportKHR(device, (uint32_t)i, *m_vulkanContext->GetVulkanSurface()->GetSurface(), &presentSupport);
 
 				if (presentSupport)
 				{

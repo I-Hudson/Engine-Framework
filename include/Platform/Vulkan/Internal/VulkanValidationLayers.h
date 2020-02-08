@@ -20,7 +20,7 @@ namespace Framework
 			bool GetValidationLayersState() const {return m_enableValidationLayers;}
 			void SetValidationLayersState(const bool& state) { m_enableValidationLayers = state; }
 
-			uint32_t GetValidationLayerCount() const { return m_validationLayers.size(); }
+			uint32_t GetValidationLayerCount() const { return (uint32_t)m_validationLayers.size(); }
 			const std::vector<const char*>* GetValidationLayers() { return &m_validationLayers; }
 
 		private:

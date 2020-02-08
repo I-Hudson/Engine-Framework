@@ -24,6 +24,7 @@ namespace Framework
 	{
 		if (m_context != nullptr)
 		{
+			// @TODO: Wrap this in a renderModule.
 			m_context->Destroy();
 			delete m_context;
 		}

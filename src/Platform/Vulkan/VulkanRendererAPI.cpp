@@ -66,7 +66,7 @@ namespace Framework
 
 		void VulkanRendererAPI::EndRender()
 		{
-
+			GetNextFrameRender();
 
 			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
 			uint32_t imageIndex = m_vkContext->GetCurrentImageIndex();

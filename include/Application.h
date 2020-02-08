@@ -31,6 +31,7 @@ namespace Framework
 	class Application
 	{
 	public:
+
 		Application();
 		~Application();
 
@@ -45,8 +46,11 @@ namespace Framework
 
 		void OnEvent(Event& a_event);
 
-		inline static Application& Get() { return *sInstance; }
-		inline static void Reset() { delete sInstance; }
+		inline static Application& Get()
+		{
+			return *s_instance;
+		}
+
 		inline Window* GetWindow() { return m_window; }
 
 		Renderer::TextureLibrary& GetTextureLibrary() { return m_textureLibrary; }
@@ -55,17 +59,16 @@ namespace Framework
 
 	protected:
 
-		virtual bool OnCreate() = 0;
-		virtual void Update() = 0;
-		virtual void Draw() = 0;
-		virtual void Destroy() = 0;
+		virtual bool OnCreate() { return false; }
+		virtual void Update() { }
+		virtual void Draw() { }
+		virtual void Destroy() { }
 
 		bool m_isRunning;
 
 		Renderer::ShaderLibrary m_shaderLibrary;
 		Renderer::TextureLibrary m_textureLibrary;
-		std::shared_ptr<Camera> m_mainCamera;
-		std::shared_ptr<Cube>m_demoCube;
+		Camera m_mainCamera;
 
 		GUI::GUIManager m_guiManager;
 
@@ -77,7 +80,6 @@ namespace Framework
 		void OnImGuiCreate(); 
 		void OnImGuiDestroy();
 
-	private:
-		static Application* sInstance;
+		static Application* s_instance;
 	};
 }
