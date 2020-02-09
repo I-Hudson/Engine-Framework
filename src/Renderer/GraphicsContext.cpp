@@ -16,11 +16,24 @@ namespace Framework
 		{
 			switch (Renderer::GetAPI())
 			{
-			case RendererAPI::API::None: return nullptr;
-			case RendererAPI::API::OpenGL: s_instance = new OpenGLContext(a_width, a_height, a_title, a_fullscreen, a_windowData);
-			case RendererAPI::API::DirectX: s_instance = new DirectXContext(a_width, a_height, a_title, a_fullscreen, a_window);
-			case RendererAPI::API::Vulkan: s_instance = new Vulkan::VulkanContext(a_width, a_height, a_title, a_fullscreen, a_windowData);
+				case RendererAPI::API::None: return nullptr;
+				case RendererAPI::API::OpenGL:
+				{
+					s_instance = new OpenGLContext(a_width, a_height, a_title, a_fullscreen, a_windowData);
+					break;
+				}
+				case RendererAPI::API::DirectX:
+				{
+					s_instance = new DirectXContext(a_width, a_height, a_title, a_fullscreen, a_window);
+					break;
+				}
+				case RendererAPI::API::Vulkan:
+				{
+					s_instance = new Vulkan::VulkanContext(a_width, a_height, a_title, a_fullscreen, a_windowData);
+					break;
+				}
 			}
+
 			return s_instance;
 		}
 	}

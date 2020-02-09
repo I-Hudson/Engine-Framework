@@ -56,23 +56,6 @@ namespace Framework
 			m_sceneData->m_dirLights.push_back(dirLight);
 		}
 
-		void Renderer::SubmitBatch(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform)
-		{
-			std::shared_ptr<VertexBuffer> vBuffer = a_vertexArray->GetVertexBuffers()[0];
-			std::shared_ptr<IndexBuffer> iBuffer = a_vertexArray->GetIndexBuffer();
-		}
-
-		void Renderer::Submit(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform)
-		{
-			//RenderRequest newRequest;
-			//newRequest.Material = nullptr;
-			//newRequest.VertexArray = &*a_vertexArray;
-			//newRequest.Textures = nullptr;
-			//newRequest.Transform = a_transform;
-			//
-			//m_sceneData->m_renderQueue.push_back(newRequest);
-		}
-
 		void Renderer::Submit(Material* a_material, const std::shared_ptr<VertexArray> a_vertexArray, std::vector<std::string> a_textures, const glm::mat4& a_transform)
 		{
 			RenderRequest newRequest;
@@ -84,10 +67,6 @@ namespace Framework
 			m_sceneData->m_renderQueue.push_back(newRequest);
 		}
 
-		void Renderer::SubmitBatched(const std::shared_ptr<Shader> a_shader, const glm::mat4& a_transform)
-		{
-		}
-
 		void Renderer::Render()
 		{
 			for (size_t i = 0; i < m_sceneData->m_renderQueue.size(); ++i)
@@ -95,14 +74,13 @@ namespace Framework
 				m_sceneData->m_renderQueue[i].Material->GetShader()->Bind();
 				m_sceneData->m_renderQueue[i].Material->SetMat4("u_Projection", m_sceneData->ProjectionMatrix);
 				m_sceneData->m_renderQueue[i].Material->SetMat4("u_View", m_sceneData->ViewMatrix);
-				m_sceneData->m_renderQueue[i].Material->SetMat4("u_ProjectionView", m_sceneData->ProjectionViewMatrix);
 				m_sceneData->m_renderQueue[i].Material->SetMat4("u_ObjectMatrix", m_sceneData->m_renderQueue[i].Transform);
-				m_sceneData->m_renderQueue[i].Material->SetVec3("u_ViewPos", m_sceneData->ProjectionViewMatrix[3].xyz);
+				m_sceneData->m_renderQueue[i].Material->SetVec4("u_ViewPos", m_sceneData->ProjectionViewMatrix[3]);
 				for (size_t i = 0; i < m_sceneData->m_dirLights.size(); i++)
 				{
-					m_sceneData->m_renderQueue[i].Material->SetVec3("u_DirLight0", *m_sceneData->m_dirLights[i]);
+					m_sceneData->m_renderQueue[i].Material->SetVec4("u_DirLight", glm::vec4(*m_sceneData->m_dirLights[i], 1.0));
 				}
-				m_sceneData->m_renderQueue[i].Material->SetVec3("u_AmbiantLight", m_sceneData->m_ambiantLight);
+				m_sceneData->m_renderQueue[i].Material->SetVec4("u_AmbiantLight", glm::vec4(m_sceneData->m_ambiantLight, 1.0f));
 				m_sceneData->m_renderQueue[i].Material->SetFloat("u_AmbiantLightInten", m_sceneData->m_ambiantLightIntenstiy);
 
 				m_sceneData->m_renderQueue[i].Material->SetUniforms();
