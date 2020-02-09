@@ -55,6 +55,8 @@ namespace Framework
 
 			m_vkSwapchain.CreateRenderPass();
 
+			m_vkSwapchain.CreateDepthResources();
+
 			m_vkSwapchain.CreateFrameBuffers();
 
 			m_vkCommand.Setup(this);
@@ -132,7 +134,8 @@ namespace Framework
 			Window::WindowData& data = *(Window::WindowData*)glfwGetWindowUserPointer(m_window);
 			VulkanRecreateShaders recreateShadersEvent;
 			data.EventCallback(recreateShadersEvent);
-
+			
+			m_vkSwapchain.CreateDepthResources();
 			m_vkSwapchain.CreateFrameBuffers();
 
 			m_vkCommand.CreateCommandBuffers();

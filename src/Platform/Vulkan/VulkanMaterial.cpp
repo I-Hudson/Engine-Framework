@@ -129,10 +129,13 @@ namespace Framework
 			m_uvo.u_ObjectMatrix = m_uniforms["u_ObjectMatrix"].Mat4;
 			m_uvo.u_Projection = m_uniforms["u_Projection"].Mat4;
 			m_uvo.u_View = m_uniforms["u_View"].Mat4;
-			m_uvo.u_testColour = glm::vec3(0.0f, 1.0f, 1.0f);
+			m_uvo.u_AmbiantLight = m_uniforms["u_AmbiantLight"].Vec4;
+			m_uvo.u_AmbiantInten = m_uniforms["u_AmbiantInten"].Float;
+			m_uvo.u_DirLight = m_uniforms["u_DirLight"].Vec4;
+			m_uvo.u_ViewPos = m_uniforms["u_ViewPos"].Vec4;
 
 			m_uvo.u_Projection[1][1] *= -1;
-
+			
 			auto device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice();
 			auto context = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext());
 			auto command = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanCommand();

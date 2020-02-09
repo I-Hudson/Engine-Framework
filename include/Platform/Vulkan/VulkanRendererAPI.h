@@ -2,6 +2,8 @@
 
 #include "Renderer/RendererAPI.h"
 
+union VkClearValue;
+
 namespace Framework
 {
 	namespace Vulkan
@@ -11,6 +13,8 @@ namespace Framework
 		class VulkanRendererAPI : public Renderer::RendererAPI
 		{
 		public:
+			VulkanRendererAPI();
+
 			virtual void BeginRender() override;
 			void GetNextFrameRender();
 			virtual void EndRender() override;
@@ -26,6 +30,8 @@ namespace Framework
 
 		private:
 			VulkanContext* m_vkContext;
+
+			std::vector<VkClearValue> m_clearColours;
 		};
 	}
 }

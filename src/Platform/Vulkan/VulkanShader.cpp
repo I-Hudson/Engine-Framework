@@ -185,7 +185,7 @@ namespace Framework
 			uvoLayoutBinding.binding = 0;
 			uvoLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
 			uvoLayoutBinding.descriptorCount = 1;
-			uvoLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+			uvoLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
 			uvoLayoutBinding.pImmutableSamplers = nullptr;
 
 			VkDescriptorSetLayoutCreateInfo  descriptorCreateInfo = {};
@@ -202,6 +202,15 @@ namespace Framework
 			inputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 			inputAssembly.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
 			inputAssembly.primitiveRestartEnable = VK_FALSE;
+
+			VkPipelineDepthStencilStateCreateInfo depthStencil = {};
+			depthStencil.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
+			depthStencil.depthTestEnable = VK_TRUE;
+			depthStencil.depthWriteEnable = VK_TRUE;
+			depthStencil.depthCompareOp = VK_COMPARE_OP_LESS;
+			depthStencil.stencilTestEnable = VK_FALSE;
+			depthStencil.front = {}; // Optional
+			depthStencil.back = {}; // Optional
 
 			VkViewport viewport = {};
 			viewport.x = 0.0f;
@@ -235,7 +244,7 @@ namespace Framework
 				EN_CORE_ERROR("Vulkan Shader: Failed to create pipeline layout!");
 			}
 
-			CreateGraphicsPipeline(shaderStages, vertexInputInfo, inputAssembly, viewportState, rasterizer, multisampling, colorBlending);
+			CreateGraphicsPipeline(shaderStages, vertexInputInfo, inputAssembly, viewportState, rasterizer, multisampling, colorBlending, depthStencil);
 
 			for (auto it : shaders)
 			{
@@ -381,7 +390,7 @@ namespace Framework
 		void VulkanShader::CreateGraphicsPipeline(VkPipelineShaderStageCreateInfo shaderStages[], VkPipelineVertexInputStateCreateInfo vertexInputInfo,
 			VkPipelineInputAssemblyStateCreateInfo inputAssembly, VkPipelineViewportStateCreateInfo viewportState,
 			VkPipelineRasterizationStateCreateInfo rasterizer, VkPipelineMultisampleStateCreateInfo multisampleState,
-			VkPipelineColorBlendStateCreateInfo colourBlendState)
+			VkPipelineColorBlendStateCreateInfo colourBlendState, VkPipelineDepthStencilStateCreateInfo depthStencil)
 		{
 			VkGraphicsPipelineCreateInfo pipelineInfo = {};
 			pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -392,7 +401,7 @@ namespace Framework
 			pipelineInfo.pViewportState = &viewportState;
 			pipelineInfo.pRasterizationState = &rasterizer;
 			pipelineInfo.pMultisampleState = &multisampleState;
-			pipelineInfo.pDepthStencilState = nullptr; // Optional
+			pipelineInfo.pDepthStencilState = &depthStencil; // Optional
 			pipelineInfo.pColorBlendState = &colourBlendState;
 			pipelineInfo.pDynamicState = nullptr; // Optional
 

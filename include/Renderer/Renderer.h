@@ -35,11 +35,7 @@ namespace Framework
 			static void SetAmbiantLightIntensity(const float& lightInten);
 			static void AddDirLight(glm::vec3* dirLight);
 
-			static void SubmitBatch(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform = glm::mat4(1.0f));
-			//Submit a shader and vertex array to render
-			static void Submit(const std::shared_ptr<Shader> a_shader, const std::shared_ptr<VertexArray> a_vertexArray, const glm::mat4& a_transform = glm::mat4(1.0f));
 			static void Submit(Material* a_material, const std::shared_ptr<VertexArray> a_vertexArray, std::vector<std::string> a_textures, const glm::mat4& a_transform = glm::mat4(1.0f));
-			static void SubmitBatched(const std::shared_ptr<Shader>, const glm::mat4& a_transform = glm::mat4(1.0f));
 
 			static void Render();
 

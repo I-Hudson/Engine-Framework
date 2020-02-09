@@ -13,10 +13,13 @@ namespace Framework
 	{
 		struct UniformVertexObject
 		{
-			glm::mat4 u_Projection;
-			glm::mat4 u_View;
-			glm::mat4 u_ObjectMatrix;
-			glm::vec3 u_testColour;
+			alignas(16) glm::mat4 u_Projection;
+			alignas(16) glm::mat4 u_View;
+			alignas(16) glm::mat4 u_ObjectMatrix;
+			alignas(16) glm::vec4 u_AmbiantLight;
+			alignas(16) glm::vec4 u_DirLight;
+			alignas(16) glm::vec4 u_ViewPos;
+			alignas(16) float u_AmbiantInten;
 		};
 
 		class VulkanShader : public Renderer::Shader
@@ -79,7 +82,7 @@ namespace Framework
 
 			void CreateGraphicsPipeline(VkPipelineShaderStageCreateInfo shaderStages[], VkPipelineVertexInputStateCreateInfo vertexInputInfo, VkPipelineInputAssemblyStateCreateInfo inputAssembly,
 										VkPipelineViewportStateCreateInfo viewportState, VkPipelineRasterizationStateCreateInfo rasterizer, VkPipelineMultisampleStateCreateInfo multisampleState, 
-										VkPipelineColorBlendStateCreateInfo colourBlendState);
+										VkPipelineColorBlendStateCreateInfo colourBlendState, VkPipelineDepthStencilStateCreateInfo depthStencil);
 		
 		private:
 			VulkanContext& m_vulkanContext;

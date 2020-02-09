@@ -31,6 +31,7 @@ namespace Framework
 			void CreateImageViews();
 			void CreateRenderPass();
 			void CreateFrameBuffers();
+			void CreateDepthResources();
 
 			SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
 
@@ -48,6 +49,11 @@ namespace Framework
 			VkPresentModeKHR ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
 			VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
 
+			VkFormat FindSupportedFormat(const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features);
+			VkFormat FindDepthFormat();
+			bool HasStencilComponent(VkFormat format);
+
+
 		private:
 			VulkanContext* m_vulkanContext;
 
@@ -55,6 +61,10 @@ namespace Framework
 			std::vector<VkImage> m_swapChainImages;
 			VkFormat m_swapChainImageFormat;
 			VkExtent2D m_swapChainExtent;
+
+			VkImage m_depthImage;
+			VkDeviceMemory m_depthImageMemory;
+			VkImageView m_depthImageView;
 
 			//@TODO: Move the render pass object and swapchain framebuffers to VulkanContext not the shader. 
 			// this object would live in a "GBuffer" class. Has not need for shaders, describes framebuffers

@@ -62,7 +62,8 @@ void AssimpModel::loadModel(const char* aPath, const bool aLoadAtRuntime)
 	const aiScene* scene = importer.ReadFile(aPath, aiProcess_Triangulate |
 													aiProcess_FlipUVs | 
 													aiProcess_CalcTangentSpace |
-													aiProcess_GenUVCoords);
+													aiProcess_GenUVCoords |
+													aiProcess_GenNormals);
 
 	if (!scene || scene->mFlags && AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
@@ -233,7 +234,13 @@ std::vector<std::string> AssimpModel::loadMaterialTextures(aiMaterial* aMaterial
 			//load texture from file
 			std::string texture;
 			texture = TextureFromFile(str.C_Str(), mDirectory);
-			//Framework::Application::Get().GetTextureLibrary().Load(texture, texture, GetTextureType(aType));
+
+			//@TODO: Add Vulkan textures and remove this if.
+			if (Framework::Renderer::RendererAPI::GetAPI() == Framework::Renderer::RendererAPI::API::OpenGL)
+			{
+				Framework::Application::Get().GetTextureLibrary().Load(texture, texture, GetTextureType(aType));
+			}
+
 			textures.push_back(texture);
 		}
 	}

@@ -5,6 +5,15 @@ namespace Framework
 {
 	namespace Vulkan
 	{
+		VulkanRendererAPI::VulkanRendererAPI()
+		{
+			VkClearValue clearColour = { 0.0f, 0.0f, 0.0f, 1.0f };
+			VkClearValue depthClearColour = { 1.0f, 0.0f };
+
+			m_clearColours.push_back(clearColour);
+			m_clearColours.push_back(depthClearColour);
+		}
+
 		void VulkanRendererAPI::BeginRender()
 		{
 			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
@@ -28,9 +37,8 @@ namespace Framework
 				renderPassInfo.renderArea.offset = { 0, 0 };
 				renderPassInfo.renderArea.extent = *m_vkContext->GetVulkanSwapchain()->GetSwapChainExtent();
 
-				VkClearValue clearColor = { 0.0f, 0.0f, 0.0f, 1.0f };
-				renderPassInfo.clearValueCount = 1;
-				renderPassInfo.pClearValues = &clearColor;
+				renderPassInfo.clearValueCount = static_cast<uint32_t>(m_clearColours.size());
+				renderPassInfo.pClearValues = m_clearColours.data();
 
 				vkCmdBeginRenderPass(commandBuffers[i], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 			}
@@ -121,6 +129,7 @@ namespace Framework
 
 		void VulkanRendererAPI::SetClearColor(const glm::vec4& a_color)
 		{
+			m_clearColours[0] = { a_color.x, a_color.y, a_color.z, a_color.w };
 		}
 
 		void VulkanRendererAPI::Clear()

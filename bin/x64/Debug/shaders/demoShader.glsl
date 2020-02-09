@@ -8,7 +8,6 @@ layout(location = 3) in vec2 inUV;
 
 uniform mat4 u_Projection;
 uniform mat4 u_View;
-uniform mat4 u_ProjectionView;
 uniform mat4 u_ObjectMatrix;
 
 out v2f
@@ -34,11 +33,11 @@ void main()
 
 layout(location = 0) out vec4 outColor;
 
-uniform vec3 u_AmbiantLight;
+uniform vec4 u_AmbiantLight;
 uniform float u_AmbiantLightInten;
 
-uniform vec3 u_DirLight0;
-uniform vec3 u_ViewPos;
+uniform vec4 u_DirLight;
+uniform vec4 u_ViewPos;
 
 uniform sampler2D diffuseTexture;
 uniform sampler2D heightTexture;
@@ -57,9 +56,9 @@ void main()
 	vec4 diffTex = texture(diffuseTexture, o.UV);
 	vec4 normTex = o.Normal;//texture(heightTexture, o.UV);
 
-	vec3 ambiant = u_AmbiantLightInten * u_AmbiantLight;
+	vec3 ambiant = u_AmbiantLightInten * u_AmbiantLight.xyz;
 
-	vec3 lightDir = normalize(u_DirLight0 - o.Position.xyz);
+	vec3 lightDir = normalize(u_DirLight.xyz - o.Position.xyz);
 	float diff = max(dot(lightDir, normTex.xyz), 0.0);
 
 	if (diff < 0.3)
@@ -77,7 +76,7 @@ void main()
 
 	vec3 diffuse = diff * diffTex.xyz;
 
-	vec3 viewDir = normalize(u_ViewPos - o.Position.xyz);
+	vec3 viewDir = normalize(u_ViewPos.xyz - o.Position.xyz);
 	vec3 reflectDir = reflect(-lightDir, normTex.xyz);
 
 	vec3 halfwayDir = normalize(lightDir + viewDir);
