@@ -11,6 +11,14 @@ namespace Framework
 	{
 		class VulkanContext;
 
+		// Create a struct
+
+		struct VulkanSyncSemaphore
+		{
+			VkSemaphore Semaphore;
+			void* VKObject;
+		};
+
 		class VulkanSync
 		{
 		public:
@@ -19,6 +27,8 @@ namespace Framework
 
 			void Setup(VulkanContext* context, const int& maxFramesInFlight);
 			void Destroy();
+
+			VulkanSyncSemaphore* GetSyncSemaphore(void* vkObject);
 
 			std::vector<VkSemaphore>* GetImageSemaphores() { return &m_imageAvailableSemaphores; }
 			std::vector<VkSemaphore>* GetRenderSemaphores() { return &m_renderFinishedSemaphores; }

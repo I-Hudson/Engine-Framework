@@ -130,7 +130,7 @@ namespace Framework
 			m_uvo.u_Projection = m_uniforms["u_Projection"].Mat4;
 			m_uvo.u_View = m_uniforms["u_View"].Mat4;
 			m_uvo.u_AmbiantLight = m_uniforms["u_AmbiantLight"].Vec4;
-			m_uvo.u_AmbiantInten = m_uniforms["u_AmbiantInten"].Float;
+			m_uvo.u_AmbiantInten = m_uniforms["u_AmbiantLightInten"].Float;
 			m_uvo.u_DirLight = m_uniforms["u_DirLight"].Vec4;
 			m_uvo.u_ViewPos = m_uniforms["u_ViewPos"].Vec4;
 

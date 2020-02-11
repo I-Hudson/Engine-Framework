@@ -10,10 +10,9 @@
 
 namespace Framework
 {
-	OpenGLContext::OpenGLContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, Window::WindowData* a_windowData)
+	OpenGLContext::OpenGLContext()
 		: m_window(nullptr)
 	{
-		Init(a_width,a_height, a_title, a_fullscreen, nullptr, a_windowData);
 	}
 
 	OpenGLContext::~OpenGLContext()

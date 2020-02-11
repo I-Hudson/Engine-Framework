@@ -5,10 +5,9 @@ namespace Framework
 {
 	namespace Vulkan
 	{
-		VulkanContext::VulkanContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, Window::WindowData* a_windowData)
+		VulkanContext::VulkanContext()
 			: m_window(nullptr)
 		{
-			Init(a_width, a_height, a_title, a_fullscreen, nullptr, a_windowData);
 		}
 
 		VulkanContext::~VulkanContext()
@@ -44,8 +43,6 @@ namespace Framework
 			m_vkQueue.SetContext(this);
 
 			m_vkSurface.CreateSurface(m_instance, this);
-
-			m_vkSwapchain.SetupSwapChain(this);
 
 			m_vkDevice.Setup(m_instance, this, { VK_KHR_SWAPCHAIN_EXTENSION_NAME });
 

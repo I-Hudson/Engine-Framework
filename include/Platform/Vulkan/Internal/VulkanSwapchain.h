@@ -24,7 +24,6 @@ namespace Framework
 			VulkanSwapchain();
 			~VulkanSwapchain();
 
-			void SetupSwapChain(VulkanContext* vulkanContext);
 			void Destroy();
 
 			void CreateSwapchain();
@@ -55,10 +54,9 @@ namespace Framework
 
 
 		private:
-			VulkanContext* m_vulkanContext;
+			//VulkanContext* m_vulkanContext;
 
 			VkSwapchainKHR m_swapChain;
-			std::vector<VkImage> m_swapChainImages;
 			VkFormat m_swapChainImageFormat;
 			VkExtent2D m_swapChainExtent;
 
@@ -72,6 +70,7 @@ namespace Framework
 			VkRenderPass m_renderPass;
 			std::vector<VkFramebuffer> m_swapChainFramebuffers;
 
+			std::vector<VkImage> m_swapChainImages;
 			std::vector<VkImageView> m_swapChainImageViews;
 		};
 	}

@@ -19,7 +19,7 @@ namespace Framework
 				case RendererAPI::API::None: return nullptr;
 				case RendererAPI::API::OpenGL:
 				{
-					s_instance = new OpenGLContext(a_width, a_height, a_title, a_fullscreen, a_windowData);
+					s_instance = new OpenGLContext();
 					break;
 				}
 				case RendererAPI::API::DirectX:
@@ -29,9 +29,18 @@ namespace Framework
 				}
 				case RendererAPI::API::Vulkan:
 				{
-					s_instance = new Vulkan::VulkanContext(a_width, a_height, a_title, a_fullscreen, a_windowData);
+					s_instance = new Vulkan::VulkanContext();
 					break;
 				}
+			}
+
+			if (s_instance != nullptr)
+			{
+				s_instance->Init(a_width, a_height, a_title, a_fullscreen, a_window, a_windowData);
+			}
+			else
+			{
+				EN_CORE_ERROR("Graphics Context: Context is NULL!");
 			}
 
 			return s_instance;

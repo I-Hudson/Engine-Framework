@@ -35,6 +35,8 @@ namespace Framework
 			void SetContext(VulkanContext* vulkanContext) { m_vulkanContext = vulkanContext; }
 
 			QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice device);
+			QueueFamilyIndices FindQueueFamilies();
+
 			VkQueue* GetGraphicsQueue() { return &m_graphicsQueue; }
 			VkQueue* GetPresentQueue() { return &m_presentQueue; }
 

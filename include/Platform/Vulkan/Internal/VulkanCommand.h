@@ -20,8 +20,8 @@ namespace Framework
 			void Setup(VulkanContext* context);
 			void DestroyCommandPool();
 			
-			void CreateCommandBuffers();
-			void FreeCommandBuffers();
+			void CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers);
+			void FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers);
 
 			void EndCommandRecord();
 
@@ -29,8 +29,6 @@ namespace Framework
 			std::vector<VkCommandBuffer>* GetCommandBuffers() { return &m_commandBuffers; }
 
 		private:
-			VulkanContext* m_vkContext;
-
 			VkCommandPool m_commandPool;
 
 			std::vector<VkCommandBuffer> m_commandBuffers;

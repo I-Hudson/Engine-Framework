@@ -51,6 +51,15 @@ namespace Framework
 			}
 		}
 
+		VulkanSyncSemaphore* VulkanSync::GetSyncSemaphore(void* vkObject)
+		{
+			//for (size_t i = 0; i < length; i++)
+			{
+				VulkanSyncSemaphore v;
+				return &v;
+			}
+		}
+
 		void VulkanSync::IncermentCurrentFrame()
 		{
 			m_currentFrame = (1 + m_currentFrame) % m_maxFramesInFlight;
