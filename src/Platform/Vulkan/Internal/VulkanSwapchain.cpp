@@ -107,7 +107,7 @@ namespace Framework
 		void VulkanSwapchain::CreateRenderPass()
 		{
 			VkAttachmentDescription colourAttachment = {};
-			colourAttachment.format = *VulkanContext::Get().GetVulkanSwapchain()->GetSwapChainFormat();
+			colourAttachment.format = *GetSwapChainFormat();
 			colourAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
 			colourAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
 			colourAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
@@ -167,7 +167,7 @@ namespace Framework
 
 		void VulkanSwapchain::CreateFrameBuffers()
 		{
-			auto swapChainImageViews = *VulkanContext::Get().GetVulkanSwapchain()->GetImageViews();
+			auto swapChainImageViews = *GetImageViews();
 			m_swapChainFramebuffers.resize(swapChainImageViews.size());
 
 			for (size_t i = 0; i < swapChainImageViews.size(); i++)
@@ -183,8 +183,8 @@ namespace Framework
 				framebufferInfo.renderPass = m_renderPass;
 				framebufferInfo.attachmentCount = static_cast<uint32_t>(attachments->size());
 				framebufferInfo.pAttachments = attachments->data();
-				framebufferInfo.width = VulkanContext::Get().GetVulkanSwapchain()->GetSwapChainExtent()->width;
-				framebufferInfo.height = VulkanContext::Get().GetVulkanSwapchain()->GetSwapChainExtent()->height;
+				framebufferInfo.width = GetSwapChainExtent()->width;
+				framebufferInfo.height = GetSwapChainExtent()->height;
 				framebufferInfo.layers = 1;
 
 				if (vkCreateFramebuffer(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &framebufferInfo, nullptr, &m_swapChainFramebuffers[i]) != VK_SUCCESS)

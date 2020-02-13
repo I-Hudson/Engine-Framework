@@ -32,7 +32,7 @@ namespace Framework
 			void CreateFrameBuffers();
 			void CreateDepthResources();
 
-			SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
+			static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
 
 			VkSwapchainKHR* GetSwapChain() { return &m_swapChain; }
 			std::vector<VkImage>* GetSwapChainImages() { return &m_swapChainImages; }

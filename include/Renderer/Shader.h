@@ -15,14 +15,16 @@ namespace Framework
 
 	namespace Renderer
 	{
+		class GBuffer;
+
 		class Shader
 		{
 		public:
 			virtual ~Shader() = default;
 
 			//Bind and unbind the shader
-			virtual void Bind() const = 0;
-			virtual void Unbind() const = 0;
+			virtual void Bind(GBuffer* gBuffer) const = 0;
+			virtual void Unbind(GBuffer* gBuffer) const = 0;
 
 			//BASE TYPES
 			virtual void UploadUniformBool(const std::string& a_name, const bool& a_value) = 0;

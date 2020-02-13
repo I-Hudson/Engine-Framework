@@ -17,21 +17,13 @@ namespace Framework
 			VulkanCommand();
 			~VulkanCommand();
 
-			void Setup(VulkanContext* context);
-			void DestroyCommandPool();
+			static void CreateCommandPool(VkCommandPool commandPool);
+			static void FreeCommandPool(VkCommandPool commandPool);
 			
-			void CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers);
-			void FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers);
+			static void CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers, VkCommandPool commandPool);
+			static void FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers, VkCommandPool commandPool);
 
-			void EndCommandRecord();
-
-			VkCommandPool* GetCommandPool() { return &m_commandPool; }
-			std::vector<VkCommandBuffer>* GetCommandBuffers() { return &m_commandBuffers; }
-
-		private:
-			VkCommandPool m_commandPool;
-
-			std::vector<VkCommandBuffer> m_commandBuffers;
+			static void EndCommandRecord(std::vector<VkCommandBuffer>* buffers);
 		};
 	}
 }

@@ -35,12 +35,12 @@ namespace Framework
 		glDeleteProgram(m_ID);
 	}
 
-	void OpenGLShader::Bind() const
+	void OpenGLShader::Bind(Renderer::GBuffer* gBuffer) const
 	{
 		glUseProgram(m_ID);
 	}
 
-	void OpenGLShader::Unbind() const
+	void OpenGLShader::Unbind(Renderer::GBuffer* gBuffer) const
 	{
 		glUseProgram(0);
 	}

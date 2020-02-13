@@ -12,8 +12,8 @@ namespace Framework
 		~OpenGLShader() override;
 
 		//Bind and unbind the shader
-		void Bind() const override;
-		void Unbind() const override;
+		void Bind(Renderer::GBuffer* gBuffer) const override;
+		void Unbind(Renderer::GBuffer* gBuffer) const override;
 
 		virtual const std::string& GetName() override;
 
@@ -50,4 +50,4 @@ namespace Framework
 		uint32_t m_ID;
 		std::string m_name;
 	};
-}
+};

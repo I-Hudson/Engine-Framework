@@ -73,7 +73,7 @@ namespace Framework
 			bool swapChainAdequate = false;
 			if (extensionSupport)
 			{
-				SwapChainSupportDetails swapChainSupport = m_vkContext->GetVulkanSwapchain()->QuerySwapChainSupport(device);
+				SwapChainSupportDetails swapChainSupport = VulkanSwapchain::QuerySwapChainSupport(device);
 				swapChainAdequate = !swapChainSupport.formats.empty() && !swapChainSupport.presentModes.empty();
 			}
 

@@ -13,15 +13,13 @@ namespace Framework
 		{
 		}
 
-		void VulkanSync::Setup(VulkanContext* context, const int& maxFramesInFlight)
+		void VulkanSync::Init(const int& maxFramesInFlight)
 		{
-			m_vkContext = context;
-
 			m_maxFramesInFlight = maxFramesInFlight;
 			m_imageAvailableSemaphores.resize(maxFramesInFlight);
 			m_renderFinishedSemaphores.resize(maxFramesInFlight);
 			m_inFlightFences.resize(maxFramesInFlight);
-			m_imagesInFlight.resize(m_vkContext->GetVulkanSwapchain()->GetSwapChainImages()->size(), VK_NULL_HANDLE);
+			m_imagesInFlight.resize(maxFramesInFlight, VK_NULL_HANDLE);
 
 			VkSemaphoreCreateInfo semaphoreInfo = {};
 			semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
@@ -32,22 +30,22 @@ namespace Framework
 
 			for (size_t i = 0; i < maxFramesInFlight; i++)
 			{
-				if (vkCreateSemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), &semaphoreInfo, nullptr, &m_imageAvailableSemaphores[i]) != VK_SUCCESS ||
-					vkCreateSemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), &semaphoreInfo, nullptr, &m_renderFinishedSemaphores[i]) != VK_SUCCESS ||
-					vkCreateFence(*m_vkContext->GetVulkanDevice()->GetDevice(), &fenceInfo, nullptr, &m_inFlightFences[i]) != VK_SUCCESS)
+				if (vkCreateSemaphore(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &semaphoreInfo, nullptr, &m_imageAvailableSemaphores[i]) != VK_SUCCESS ||
+					vkCreateSemaphore(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &semaphoreInfo, nullptr, &m_renderFinishedSemaphores[i]) != VK_SUCCESS ||
+					vkCreateFence(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &fenceInfo, nullptr, &m_inFlightFences[i]) != VK_SUCCESS)
 				{
 					EN_CORE_ERROR("VulkanSync: vkCreateSemaphore failed!");
 				}
 			}
 		}
 
-		void VulkanSync::Destroy()
+		void VulkanSync::Free()
 		{
 			for (size_t i = 0; i < m_maxFramesInFlight; i++)
 			{
-				vkDestroySemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), m_imageAvailableSemaphores[i], nullptr);
-				vkDestroySemaphore(*m_vkContext->GetVulkanDevice()->GetDevice(), m_renderFinishedSemaphores[i], nullptr);
-				vkDestroyFence(*m_vkContext->GetVulkanDevice()->GetDevice(), m_inFlightFences[i], nullptr);
+				vkDestroySemaphore(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_imageAvailableSemaphores[i], nullptr);
+				vkDestroySemaphore(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_renderFinishedSemaphores[i], nullptr);
+				vkDestroyFence(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_inFlightFences[i], nullptr);
 			}
 		}
 

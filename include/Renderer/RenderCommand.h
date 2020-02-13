@@ -6,6 +6,8 @@ namespace Framework
 {
 	namespace Renderer
 	{
+		class GBuffer;
+
 		///
 		// DEFINE ALL RENDER COMMANDS THAT CAN BE CALLED
 		///
@@ -23,14 +25,14 @@ namespace Framework
 
 			static void Create();
 
-			inline static void BeginRender()
+			inline static void BeginRender(GBuffer* gBuffer)
 			{
-				sRendererAPI->BeginRender();
+				sRendererAPI->BeginRender(gBuffer);
 			}
 
-			inline static void EndRender()
+			inline static void EndRender(GBuffer* gBuffer)
 			{
-				sRendererAPI->EndRender();
+				sRendererAPI->EndRender(gBuffer);
 			}
 
 			static void SetGraphicsContext(Framework::Renderer::GraphicsContext* context)
@@ -66,9 +68,9 @@ namespace Framework
 			}
 
 			//Draw the vertex array data
-			inline static void DrawIndexed(const VertexArray* aVertexArray)
+			inline static void DrawIndexed(const VertexArray* aVertexArray, GBuffer* gBuffer)
 			{
-				sRendererAPI->DrawIndexed(aVertexArray);
+				sRendererAPI->DrawIndexed(aVertexArray, gBuffer);
 			}
 
 			inline static RendererAPI* GetAPI()

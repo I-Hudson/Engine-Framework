@@ -25,8 +25,8 @@ namespace Framework
 			VulkanSync();
 			~VulkanSync();
 
-			void Setup(VulkanContext* context, const int& maxFramesInFlight);
-			void Destroy();
+			void Init(const int& maxFramesInFlight);
+			void Free();
 
 			VulkanSyncSemaphore* GetSyncSemaphore(void* vkObject);
 
@@ -52,8 +52,6 @@ namespace Framework
 
 			int m_maxFramesInFlight;
 			int m_currentFrame;
-
-			VulkanContext* m_vkContext;
 		};
 	}
 }

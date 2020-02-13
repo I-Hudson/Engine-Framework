@@ -1,4 +1,5 @@
 #include "Platform/Vulkan/VulkanShader.h"
+#include "Platform/Vulkan/VulkanGBuffer.h"
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
@@ -50,16 +51,17 @@ namespace Framework
 		{
 		}
 
-		void VulkanShader::Bind() const
+		void VulkanShader::Bind(Renderer::GBuffer* gBuffer) const
 		{
-			auto commandBuffers = *m_vulkanContext.GetVulkanCommand()->GetCommandBuffers();
+			auto vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+			auto commandBuffers = *vGBuffer->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); ++i)
 			{
 				vkCmdBindPipeline(commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, m_graphicsPipeline);
 			}
 		}
 
-		void VulkanShader::Unbind() const
+		void VulkanShader::Unbind(Renderer::GBuffer* gBuffer) const
 		{
 		}
 

@@ -107,11 +107,11 @@ namespace Framework
 	{
 	}
 
-	void DirectXShader::Bind() const
+	void DirectXShader::Bind(Renderer::GBuffer* gBuffer) const
 	{
 	}
 
-	void DirectXShader::Unbind() const
+	void DirectXShader::Unbind(Renderer::GBuffer* gBuffer) const
 	{
 	}
 

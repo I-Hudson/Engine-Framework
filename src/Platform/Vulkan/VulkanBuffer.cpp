@@ -10,6 +10,7 @@ namespace Framework
 	{
 		VulkanVertexBuffer::VulkanVertexBuffer(float* aVertices, uint32_t aSize)
 		{
+			// Delay all this for when we bind to gbuffer or place in vertex array.
 			m_device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice()->GetDevice();
 			m_physicalDevice = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice()->GetPhyiscalDevice();
 			m_command = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanCommand();

@@ -13,7 +13,7 @@ namespace Framework
 		{
 		}
 
-		void VulkanCommand::Setup(VulkanContext* context)
+		void VulkanCommand::CreateCommandPool(VkCommandPool commandPool)
 		{
 			QueueFamilyIndices queueFamilyIndices = VulkanContext::Get().GetVulkanQueue()->FindQueueFamilies();
 
@@ -22,49 +22,47 @@ namespace Framework
 			poolInfo.queueFamilyIndex = queueFamilyIndices.GraphicsFamily.value();
 			poolInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT; // Optional
 
-			if (vkCreateCommandPool(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &poolInfo, nullptr, &m_commandPool) != VK_SUCCESS)
+			if (vkCreateCommandPool(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &poolInfo, nullptr, &commandPool) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("VulkanCommand: Command Pool was not created!");
 			}
 		}
 
-		void VulkanCommand::CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers)
+		void VulkanCommand::FreeCommandPool(VkCommandPool commandPool)
 		{
-			m_commandBuffers.resize(VulkanContext::Get().GetVulkanSwapchain()->GetImageViews()->size());
+			vkDestroyCommandPool(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), commandPool, nullptr);
+		}
 
+		void VulkanCommand::CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers, VkCommandPool commandPool)
+		{
 			VkCommandBufferAllocateInfo allocInfo = {};
 			allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-			allocInfo.commandPool = m_commandPool;
+			allocInfo.commandPool = commandPool;
 			allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-			allocInfo.commandBufferCount = (uint32_t)m_commandBuffers.size();
+			allocInfo.commandBufferCount = (uint32_t)buffers->size();
 
-			if (vkAllocateCommandBuffers(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &allocInfo, m_commandBuffers.data()) != VK_SUCCESS)
+			if (vkAllocateCommandBuffers(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &allocInfo, buffers->data()) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("VulkanCommand: Failed to allocate command buffers!");
 			}
 		}
 
-		void VulkanCommand::FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers)
+		void VulkanCommand::FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers, VkCommandPool commandPool)
 		{
-			vkFreeCommandBuffers(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_commandPool, static_cast<uint32_t>(buffers->size()), buffers->data());
+			vkFreeCommandBuffers(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), commandPool, static_cast<uint32_t>(buffers->size()), buffers->data());
 		}
 
-		void VulkanCommand::EndCommandRecord()
+		void VulkanCommand::EndCommandRecord(std::vector<VkCommandBuffer>* buffers)
 		{
-			for (size_t i = 0; i < m_commandBuffers.size(); i++)
+			for (size_t i = 0; i < buffers->size(); i++)
 			{
-				vkCmdEndRenderPass(m_commandBuffers[i]);
+				vkCmdEndRenderPass((*buffers)[i]);
 
-				if (vkEndCommandBuffer(m_commandBuffers[i]) != VK_SUCCESS)
+				if (vkEndCommandBuffer((*buffers)[i]) != VK_SUCCESS)
 				{
 					EN_CORE_ERROR("Vulkan Render API: Failed to record command buffer");
 				}
 			}
-		}
-
-		void VulkanCommand::DestroyCommandPool()
-		{
-			vkDestroyCommandPool(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_commandPool, nullptr);
 		}
 	}
 }
