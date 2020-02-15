@@ -10,9 +10,9 @@ namespace Framework
 	{
 		VulkanVertexBuffer::VulkanVertexBuffer(float* aVertices, uint32_t aSize)
 		{
+			// Delay all this for when we bind to gbuffer or place in vertex array.
 			m_device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice()->GetDevice();
 			m_physicalDevice = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice()->GetPhyiscalDevice();
-			m_command = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanCommand();
 			m_queue = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanQueue();
 
 			int bufferSize = aSize;
@@ -35,8 +35,13 @@ namespace Framework
 			VulkanUtils::CreateBuffer(m_device, m_physicalDevice, bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
 				VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_id, m_vertexBufferMemory);
 
+			VkCommandPool tempCommandPool = nullptr;
+			VulkanCommand::CreateCommandPool(&tempCommandPool);
+
 			// Copy ram buffer to GPU.
-			VulkanUtils::CopyBuffer(m_device, *m_command.GetCommandPool(), *m_queue.GetGraphicsQueue(), stagingBuffer, m_id, bufferSize);
+			VulkanUtils::CopyBuffer(m_device, tempCommandPool, *m_queue.GetGraphicsQueue(), stagingBuffer, m_id, bufferSize);
+
+			VulkanCommand::FreeCommandPool(&tempCommandPool);
 
 			vkDestroyBuffer(m_device, stagingBuffer, nullptr);
 			vkFreeMemory(m_device, stagingBufferMemory, nullptr);
@@ -46,7 +51,6 @@ namespace Framework
 		{
 			m_device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice()->GetDevice();
 			m_physicalDevice = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice()->GetPhyiscalDevice();
-			m_command = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanCommand();
 			m_queue = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanQueue();
 
 			int bufferSize = aSize;
@@ -69,8 +73,13 @@ namespace Framework
 			VulkanUtils::CreateBuffer(m_device, m_physicalDevice, bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
 				VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_id, m_vertexBufferMemory);
 
+			VkCommandPool tempCommandPool = nullptr;;
+			VulkanCommand::CreateCommandPool(&tempCommandPool);
+
 			// Copy ram buffer to GPU.
-			VulkanUtils::CopyBuffer(m_device, *m_command.GetCommandPool(), *m_queue.GetGraphicsQueue(), stagingBuffer, m_id, bufferSize);
+			VulkanUtils::CopyBuffer(m_device, tempCommandPool, *m_queue.GetGraphicsQueue(), stagingBuffer, m_id, bufferSize);
+
+			VulkanCommand::FreeCommandPool(&tempCommandPool);
 
 			vkDestroyBuffer(m_device, stagingBuffer, nullptr);
 			vkFreeMemory(m_device, stagingBufferMemory, nullptr);
@@ -118,7 +127,6 @@ namespace Framework
 		{
 			m_device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice()->GetDevice();
 			m_physicalDevice = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice()->GetPhyiscalDevice();
-			m_command = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanCommand();
 			m_queue = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanQueue();
 
 			m_count = count;
@@ -136,7 +144,12 @@ namespace Framework
 
 			VulkanUtils::CreateBuffer(m_device, m_physicalDevice, bufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_id, m_indexBufferMemory);
 
-			VulkanUtils::CopyBuffer(m_device, *m_command.GetCommandPool(), *m_queue.GetGraphicsQueue(), stagingBuffer, m_id, bufferSize);
+			VkCommandPool tempCommandPool = nullptr;;
+			VulkanCommand::CreateCommandPool(&tempCommandPool);
+
+			VulkanUtils::CopyBuffer(m_device, tempCommandPool, *m_queue.GetGraphicsQueue(), stagingBuffer, m_id, bufferSize);
+
+			VulkanCommand::FreeCommandPool(&tempCommandPool);
 
 			vkDestroyBuffer(m_device, stagingBuffer, nullptr);
 			vkFreeMemory(m_device, stagingBufferMemory, nullptr);

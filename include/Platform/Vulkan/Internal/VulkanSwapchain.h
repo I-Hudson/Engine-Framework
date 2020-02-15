@@ -24,7 +24,6 @@ namespace Framework
 			VulkanSwapchain();
 			~VulkanSwapchain();
 
-			void SetupSwapChain(VulkanContext* vulkanContext);
 			void Destroy();
 
 			void CreateSwapchain();
@@ -32,8 +31,6 @@ namespace Framework
 			void CreateRenderPass();
 			void CreateFrameBuffers();
 			void CreateDepthResources();
-
-			SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
 
 			VkSwapchainKHR* GetSwapChain() { return &m_swapChain; }
 			std::vector<VkImage>* GetSwapChainImages() { return &m_swapChainImages; }
@@ -45,20 +42,15 @@ namespace Framework
 			std::vector<VkImageView>* GetImageViews() { return &m_swapChainImageViews; }
 
 		private:
-			VkSurfaceFormatKHR ChooseSwapSurfaceFormat(const std::vector< VkSurfaceFormatKHR>& availableFormats);
 			VkPresentModeKHR ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
 			VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
-
-			VkFormat FindSupportedFormat(const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features);
-			VkFormat FindDepthFormat();
 			bool HasStencilComponent(VkFormat format);
 
 
 		private:
-			VulkanContext* m_vulkanContext;
+			//VulkanContext* m_vulkanContext;
 
 			VkSwapchainKHR m_swapChain;
-			std::vector<VkImage> m_swapChainImages;
 			VkFormat m_swapChainImageFormat;
 			VkExtent2D m_swapChainExtent;
 
@@ -72,6 +64,7 @@ namespace Framework
 			VkRenderPass m_renderPass;
 			std::vector<VkFramebuffer> m_swapChainFramebuffers;
 
+			std::vector<VkImage> m_swapChainImages;
 			std::vector<VkImageView> m_swapChainImageViews;
 		};
 	}

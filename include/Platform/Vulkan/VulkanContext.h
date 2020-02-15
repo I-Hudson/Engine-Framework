@@ -32,7 +32,7 @@ namespace Framework
 		class VulkanContext : public Renderer::GraphicsContext
 		{
 		public:
-			VulkanContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen = false, Window::WindowData* a_windowData = &Window::WindowData());
+			VulkanContext();
 			~VulkanContext();
 
 			virtual void Init(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, void* a_window, Window::WindowData* a_windowData) override;
@@ -62,9 +62,9 @@ namespace Framework
 			VulkanDevice* GetVulkanDevice() { return &m_vkDevice; }
 			VulkanQueue* GetVulkanQueue() { return &m_vkQueue; }
 			VulkanSurface* GetVulkanSurface() { return &m_vkSurface; }
-			VulkanSwapchain* GetVulkanSwapchain() { return &m_vkSwapchain; }
-			VulkanCommand* GetVulkanCommand() { return &m_vkCommand; }
-			VulkanSync* GetVulkanSync() { return &m_vkSync; }
+			//VulkanSwapchain* GetVulkanSwapchain() { return &m_vkSwapchain; }
+			//VulkanCommand* GetVulkanCommand() { return &m_vkCommand; }
+			//VulkanSync* GetVulkanSync() { return &m_vkSync; }
 
 		private:
 			void SetWindowCallbacks();
@@ -80,9 +80,9 @@ namespace Framework
 			VulkanDevice m_vkDevice;
 			VulkanQueue m_vkQueue;
 			VulkanSurface m_vkSurface;
-			VulkanSwapchain m_vkSwapchain;
-			VulkanCommand m_vkCommand;
-			VulkanSync m_vkSync;
+			//VulkanSwapchain m_vkSwapchain;
+			//VulkanCommand m_vkCommand;
+			//VulkanSync m_vkSync;
 
 			uint32_t m_currentImageIndex;
 

@@ -1,4 +1,6 @@
 #include "Platform/Vulkan/VulkanShader.h"
+#include "Platform/Vulkan/VulkanGBuffer.h"
+#include "Platform/Vulkan/VulkanUtils.h"
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
@@ -10,14 +12,8 @@ namespace Framework
 	namespace Vulkan
 	{
 		VulkanShader::VulkanShader(const std::string& a_shaderFile)
-			: m_ID(0), m_vulkanContext(VulkanContext::Get())
+			: m_ID(0)
 		{
-			if (&m_vulkanContext == nullptr)
-			{
-				EN_CORE_ERROR("Vulkan Shader: Context could not be otained!");
-				return;
-			}
-
 			std::string sources = ReadFromFile(a_shaderFile);
 			auto shaderSources = PreProcess(sources);
 			Compile(shaderSources);
@@ -31,14 +27,8 @@ namespace Framework
 		}
 
 		VulkanShader::VulkanShader(const std::string& a_name, const std::string& a_vertexSrc, const std::string& a_fragSrc)
-			: m_ID(0), m_vulkanContext(VulkanContext::Get())
+			: m_ID(0)
 		{
-			if (&m_vulkanContext == nullptr)
-			{
-				EN_CORE_ERROR("Vulkan Shader: Context could not be otained!");
-				return;
-			}
-
 			m_shaderSources[VK_SHADER_STAGE_VERTEX_BIT] = ReadFromFile(a_vertexSrc);
 			m_shaderSources[VK_SHADER_STAGE_FRAGMENT_BIT] = ReadFromFile(a_fragSrc);
 			Compile(m_shaderSources);
@@ -50,16 +40,17 @@ namespace Framework
 		{
 		}
 
-		void VulkanShader::Bind() const
+		void VulkanShader::Bind(Renderer::GBuffer* gBuffer) const
 		{
-			auto commandBuffers = *m_vulkanContext.GetVulkanCommand()->GetCommandBuffers();
+			auto vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+			auto commandBuffers = *vGBuffer->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); ++i)
 			{
 				vkCmdBindPipeline(commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, m_graphicsPipeline);
 			}
 		}
 
-		void VulkanShader::Unbind() const
+		void VulkanShader::Unbind(Renderer::GBuffer* gBuffer) const
 		{
 		}
 
@@ -102,7 +93,7 @@ namespace Framework
 
 		void VulkanShader::UploadUniformMat4(const std::string& a_name, const glm::mat4& a_value)
 		{
-			uint32_t imageIndex = m_vulkanContext.GetCurrentImageIndex();
+			uint32_t imageIndex = VulkanContext::Get().GetCurrentImageIndex();
 
 			printf("");
 		}
@@ -123,10 +114,11 @@ namespace Framework
 
 		void VulkanShader::Release()
 		{
-			auto device = *m_vulkanContext.GetVulkanDevice()->GetDevice();
+			auto device = *VulkanContext::Get().GetVulkanDevice()->GetDevice();
 			vkDestroyPipeline(device, m_graphicsPipeline, nullptr);
 			vkDestroyPipelineLayout(device, m_pipelineLayout, nullptr);
 			vkDestroyDescriptorSetLayout(device, m_descriptorLayout, nullptr);
+			vkDestroyRenderPass(device, m_renderPass, nullptr);
 		}
 
 		void VulkanShader::SetSwapChainCallback(std::function<void()> function)
@@ -193,7 +185,7 @@ namespace Framework
 			descriptorCreateInfo.bindingCount = 1;
 			descriptorCreateInfo.pBindings = &uvoLayoutBinding;
 			
-			if (vkCreateDescriptorSetLayout(*m_vulkanContext.GetVulkanDevice()->GetDevice(), &descriptorCreateInfo, nullptr, &m_descriptorLayout) != VK_SUCCESS)
+			if (vkCreateDescriptorSetLayout(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &descriptorCreateInfo, nullptr, &m_descriptorLayout) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("Vulkan Shader: DescriptorSetLayout was not created!");
 			}
@@ -222,7 +214,7 @@ namespace Framework
 
 			VkRect2D scissor = {};
 			scissor.offset = { 0, 0 };
-			scissor.extent = *m_vulkanContext.GetVulkanSwapchain()->GetSwapChainExtent();
+			scissor.extent = VkExtent2D{ Application::Get().GetWindow()->GetWidth(), Application::Get().GetWindow()->GetHeight() };
 
 			VkPipelineViewportStateCreateInfo viewportState = CreateViewport(viewport, scissor);
 			VkPipelineRasterizationStateCreateInfo rasterizer = CreateRasterizer();
@@ -239,7 +231,7 @@ namespace Framework
 			pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
 			pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
-			if (vkCreatePipelineLayout(*m_vulkanContext.GetVulkanDevice()->GetDevice(), &pipelineLayoutInfo, nullptr, &m_pipelineLayout) != VK_SUCCESS) 
+			if (vkCreatePipelineLayout(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &pipelineLayoutInfo, nullptr, &m_pipelineLayout) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("Vulkan Shader: Failed to create pipeline layout!");
 			}
@@ -248,7 +240,7 @@ namespace Framework
 
 			for (auto it : shaders)
 			{
-				vkDestroyShaderModule(*m_vulkanContext.GetVulkanDevice()->GetDevice(), it.second, nullptr);
+				vkDestroyShaderModule(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), it.second, nullptr);
 			}
 		}
 
@@ -267,7 +259,7 @@ namespace Framework
 			moduleCreateInfo.pCode = reinterpret_cast<const uint32_t*>(byteCodes.data());
 
 			VkShaderModule shaderModule;
-			if (vkCreateShaderModule(*m_vulkanContext.GetVulkanDevice()->GetDevice(), &moduleCreateInfo, nullptr, &shaderModule) != VK_SUCCESS)
+			if (vkCreateShaderModule(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &moduleCreateInfo, nullptr, &shaderModule) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("Vulkan Shader: Shader Module was not created!");
 			}
@@ -405,13 +397,15 @@ namespace Framework
 			pipelineInfo.pColorBlendState = &colourBlendState;
 			pipelineInfo.pDynamicState = nullptr; // Optional
 
+			m_renderPass = VulkanUtils::CreateRenderPass();
+
 			pipelineInfo.layout = m_pipelineLayout;
-			pipelineInfo.renderPass = *m_vulkanContext.GetVulkanSwapchain()->GetRenderPass();
+			pipelineInfo.renderPass = m_renderPass;
 			pipelineInfo.subpass = 0;
 			pipelineInfo.basePipelineHandle = VK_NULL_HANDLE; // Optional
 			pipelineInfo.basePipelineIndex = -1; // Optional
 
-			if (vkCreateGraphicsPipelines(*m_vulkanContext.GetVulkanDevice()->GetDevice(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &m_graphicsPipeline) != VK_SUCCESS)
+			if (vkCreateGraphicsPipelines(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &m_graphicsPipeline) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("Vulkan Shader: Graphics pipeline was not created!");
 			}

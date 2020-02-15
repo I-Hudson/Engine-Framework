@@ -30,8 +30,8 @@ namespace Framework
 			~VulkanShader() override;
 
 			//Bind and unbind the shader
-			void Bind() const override;
-			void Unbind() const override;
+			void Bind(Renderer::GBuffer* gBuffer) const override;
+			void Unbind(Renderer::GBuffer* gBuffer) const override;
 
 			virtual const std::string& GetName() override;
 
@@ -85,11 +85,11 @@ namespace Framework
 										VkPipelineColorBlendStateCreateInfo colourBlendState, VkPipelineDepthStencilStateCreateInfo depthStencil);
 		
 		private:
-			VulkanContext& m_vulkanContext;
-
 			VkPipeline m_graphicsPipeline;
 			VkDescriptorSetLayout m_descriptorLayout;
 			VkPipelineLayout m_pipelineLayout;
+
+			VkRenderPass m_renderPass;
 
 			std::unordered_map<unsigned int, std::string> m_shaderSources;
 

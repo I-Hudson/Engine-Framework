@@ -8,6 +8,7 @@
 #include <memory>
 #include "Renderer/VertexArray.h"
 #include "GraphicsContext.h"
+#include "GBuffer.h"
 
 namespace Framework
 {
@@ -25,8 +26,8 @@ namespace Framework
 			};
 
 			//Define all render API calls needed. These are overridden later by the specific API
-			virtual void BeginRender() = 0;
-			virtual void EndRender() = 0;
+			virtual void BeginRender(GBuffer* gBuffer) = 0;
+			virtual void EndRender(GBuffer* gBuffer) = 0;
 			virtual void SetClearColor(const glm::vec4& aColor) = 0;
 			virtual void Clear() = 0;
 			virtual void SetVSync(bool a_state) = 0;
@@ -36,7 +37,7 @@ namespace Framework
 			virtual void SetContext(GraphicsContext* context) = 0;
 
 			//Draw the vertex array data
-			virtual void DrawIndexed(const VertexArray* aVertexArray) = 0;
+			virtual void DrawIndexed(const VertexArray* aVertexArray, GBuffer* gBuffer) = 0;
 
 			//Return the API
 			inline static API GetAPI() { return sAPI; }

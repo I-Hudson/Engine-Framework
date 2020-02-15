@@ -1,5 +1,6 @@
 #include "Platform/Vulkan/VulkanRendererAPI.h"
 #include "Platform/Vulkan/VulkanContext.h"
+#include "Platform/Vulkan/VulkanGBuffer.h"
 
 namespace Framework
 {
@@ -14,9 +15,11 @@ namespace Framework
 			m_clearColours.push_back(depthClearColour);
 		}
 
-		void VulkanRendererAPI::BeginRender()
+		void VulkanRendererAPI::BeginRender(Renderer::GBuffer* gBuffer)
 		{
-			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
+			VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+
+			auto commandBuffers = *vGBuffer->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); i++) 
 			{
 				VkCommandBufferBeginInfo beginInfo = {};
@@ -31,11 +34,11 @@ namespace Framework
 
 				VkRenderPassBeginInfo renderPassInfo = {};
 				renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-				renderPassInfo.renderPass = *m_vkContext->GetVulkanSwapchain()->GetRenderPass();
-				renderPassInfo.framebuffer = static_cast<std::vector<VkFramebuffer>>(*m_vkContext->GetVulkanSwapchain()->GetSwapChainFrameBuffers())[i];
+				renderPassInfo.renderPass = *vGBuffer->GetSwapChain()->GetRenderPass();
+				renderPassInfo.framebuffer = static_cast<std::vector<VkFramebuffer>>(*vGBuffer->GetSwapChain()->GetSwapChainFrameBuffers())[i];
 				
 				renderPassInfo.renderArea.offset = { 0, 0 };
-				renderPassInfo.renderArea.extent = *m_vkContext->GetVulkanSwapchain()->GetSwapChainExtent();
+				renderPassInfo.renderArea.extent = *vGBuffer->GetSwapChain()->GetSwapChainExtent();
 
 				renderPassInfo.clearValueCount = static_cast<uint32_t>(m_clearColours.size());
 				renderPassInfo.pClearValues = m_clearColours.data();
@@ -44,14 +47,15 @@ namespace Framework
 			}
 		}
 
-		void VulkanRendererAPI::GetNextFrameRender()
+		void VulkanRendererAPI::GetNextFrameRender(Renderer::GBuffer* gBuffer)
 		{
-			m_vkContext->GetVulkanCommand()->EndCommandRecord();
+			VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+			VulkanCommand::EndCommandRecord(vGBuffer->GetCommandBuffers());
 
-			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
-			auto swapChain = *m_vkContext->GetVulkanSwapchain();
-			auto device = *m_vkContext->GetVulkanDevice()->GetDevice();
-			auto sync = *m_vkContext->GetVulkanSync();
+			auto commandBuffers = *vGBuffer->GetCommandBuffers();
+			auto swapChain = *vGBuffer->GetSwapChain();
+			auto device = *VulkanContext::Get().GetVulkanDevice()->GetDevice();
+			auto sync = *vGBuffer->GetSync();
 
 
 			vkWaitForFences(device, 1, sync.GetCurrentInFlightFence(), VK_TRUE, UINT64_MAX);
@@ -72,24 +76,26 @@ namespace Framework
 			}
 		}
 
-		void VulkanRendererAPI::EndRender()
+		void VulkanRendererAPI::EndRender(Renderer::GBuffer* gBuffer)
 		{
-			GetNextFrameRender();
+			VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
 
-			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
+			GetNextFrameRender(gBuffer);
+
+			auto commandBuffers = *vGBuffer->GetCommandBuffers();
 			uint32_t imageIndex = m_vkContext->GetCurrentImageIndex();
 
-			if (*m_vkContext->GetVulkanSync()->GetCurrentInFlightImage() != VK_NULL_HANDLE)
+			if (*vGBuffer->GetSync()->GetCurrentInFlightImage() != VK_NULL_HANDLE)
 			{
-				vkWaitForFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, m_vkContext->GetVulkanSync()->GetCurrentInFlightImage(), VK_TRUE, UINT64_MAX);
+				vkWaitForFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, vGBuffer->GetSync()->GetCurrentInFlightImage(), VK_TRUE, UINT64_MAX);
 			}
 
-			(*m_vkContext->GetVulkanSync()->GetInFlightImages())[imageIndex] = *m_vkContext->GetVulkanSync()->GetCurrentInFlightFence();
+			(*vGBuffer->GetSync()->GetInFlightImages())[imageIndex] = *vGBuffer->GetSync()->GetCurrentInFlightFence();
 
 			VkSubmitInfo submitInfo = {};
 			submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 
-			VkSemaphore waitSemaphores[] = { *m_vkContext->GetVulkanSync()->GetCurrentImageSemaphore() };
+			VkSemaphore waitSemaphores[] = { *vGBuffer->GetSync()->GetCurrentImageSemaphore() };
 			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
 			submitInfo.waitSemaphoreCount = 1;
 			submitInfo.pWaitSemaphores = waitSemaphores;
@@ -98,13 +104,13 @@ namespace Framework
 			submitInfo.commandBufferCount = 1;
 			submitInfo.pCommandBuffers = &commandBuffers[imageIndex];
 
-			VkSemaphore signalSemaphores[] = { *m_vkContext->GetVulkanSync()->GetCurrentRenderemaphore() };
+			VkSemaphore signalSemaphores[] = { *vGBuffer->GetSync()->GetCurrentRenderemaphore() };
 			submitInfo.signalSemaphoreCount = 1;
 			submitInfo.pSignalSemaphores = signalSemaphores;
 
-			vkResetFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, m_vkContext->GetVulkanSync()->GetCurrentInFlightFence());
+			vkResetFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, vGBuffer->GetSync()->GetCurrentInFlightFence());
 
-			if (vkQueueSubmit(*m_vkContext->GetVulkanQueue()->GetGraphicsQueue(), 1, &submitInfo, *m_vkContext->GetVulkanSync()->GetCurrentInFlightFence()) != VK_SUCCESS)
+			if (vkQueueSubmit(*m_vkContext->GetVulkanQueue()->GetGraphicsQueue(), 1, &submitInfo, *vGBuffer->GetSync()->GetCurrentInFlightFence()) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("VulkanRendererAPI: Failed to submit draw command to bffer!");
 			}
@@ -115,7 +121,7 @@ namespace Framework
 			presentInfo.waitSemaphoreCount = 1;
 			presentInfo.pWaitSemaphores = signalSemaphores;
 
-			VkSwapchainKHR swapChains[] = { *m_vkContext->GetVulkanSwapchain()->GetSwapChain() };
+			VkSwapchainKHR swapChains[] = { *vGBuffer->GetSwapChain()->GetSwapChain() };
 			presentInfo.swapchainCount = 1;
 			presentInfo.pSwapchains = swapChains;
 			presentInfo.pImageIndices = &imageIndex;
@@ -124,7 +130,7 @@ namespace Framework
 
 			vkQueueWaitIdle(*m_vkContext->GetVulkanQueue()->GetPresentQueue());
 
-			m_vkContext->GetVulkanSync()->IncermentCurrentFrame();
+			vGBuffer->GetSync()->IncermentCurrentFrame();
 		}
 
 		void VulkanRendererAPI::SetClearColor(const glm::vec4& a_color)
@@ -162,9 +168,11 @@ namespace Framework
 			}
 		}
 
-		void VulkanRendererAPI::DrawIndexed(const Renderer::VertexArray* a_vertexArray)
+		void VulkanRendererAPI::DrawIndexed(const Renderer::VertexArray* a_vertexArray, Renderer::GBuffer* gBuffer)
 		{
-			auto commandBuffers = *m_vkContext->GetVulkanCommand()->GetCommandBuffers();
+			VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+
+			auto commandBuffers = *vGBuffer->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); i++)
 			{
 				a_vertexArray->Bind(commandBuffers[i]);

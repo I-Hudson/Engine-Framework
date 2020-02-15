@@ -21,7 +21,7 @@ namespace Framework
 
 			void RecreateUniformBuffers();
 
-			virtual void SetUniforms() override;
+			virtual void SetUniforms(Renderer::GBuffer* gBuffer) override;
 
 		protected:
 			virtual void ProcessShaderUniforms() override;

@@ -5,10 +5,10 @@
 
 namespace Framework
 {
-	void OpenGLRendererAPI::BeginRender()
+	void OpenGLRendererAPI::BeginRender(Renderer::GBuffer* gBuffer)
 	{
 	}
-	void OpenGLRendererAPI::EndRender()
+	void OpenGLRendererAPI::EndRender(Renderer::GBuffer* gBuffer)
 	{
 	}
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& a_color)
@@ -50,7 +50,7 @@ namespace Framework
 		}
 	}
 
-	void OpenGLRendererAPI::DrawIndexed(const Renderer::VertexArray* a_vertexArray)
+	void OpenGLRendererAPI::DrawIndexed(const Renderer::VertexArray* a_vertexArray, Renderer::GBuffer* gBuffer)
 	{
 		glDrawElements(GL_TRIANGLES, a_vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 	}

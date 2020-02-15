@@ -1,5 +1,7 @@
 #pragma once
 
+#include "VulkanContext.h"
+
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
@@ -153,6 +155,144 @@ namespace Framework
 				}
 
 				vkBindImageMemory(device, image, imageMemory, 0);
+			}
+		
+			static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device)
+			{
+				SwapChainSupportDetails details;
+
+				vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, *VulkanContext::Get().GetVulkanSurface()->GetSurface(),
+					&details.capabilities);
+
+				uint32_t formatCount;
+				vkGetPhysicalDeviceSurfaceFormatsKHR(device, *VulkanContext::Get().GetVulkanSurface()->GetSurface(),
+					&formatCount, nullptr);
+				if (formatCount != 0)
+				{
+					details.formats.resize(formatCount);
+					vkGetPhysicalDeviceSurfaceFormatsKHR(device, *VulkanContext::Get().GetVulkanSurface()->GetSurface(),
+						&formatCount, details.formats.data());
+				}
+
+				uint32_t presentCount;
+				vkGetPhysicalDeviceSurfacePresentModesKHR(device, *VulkanContext::Get().GetVulkanSurface()->GetSurface(),
+					&presentCount, nullptr);
+				if (presentCount != 0)
+				{
+					details.presentModes.resize(presentCount);
+					vkGetPhysicalDeviceSurfacePresentModesKHR(device, *VulkanContext::Get().GetVulkanSurface()->GetSurface(),
+						&presentCount, details.presentModes.data());
+				}
+
+				return details;
+			}
+
+			static VkSurfaceFormatKHR ChooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats)
+			{
+				for (const auto& availableFormat : availableFormats)
+				{
+					if (availableFormat.format == VK_FORMAT_B8G8R8A8_UNORM && availableFormat.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR)
+					{
+						return availableFormat;
+					}
+				}
+
+				return availableFormats[0];
+			}
+
+			static VkFormat FindSupportedFormat(const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features)
+			{
+				for (VkFormat format : candidates)
+				{
+					VkFormatProperties properties;
+					vkGetPhysicalDeviceFormatProperties(*VulkanContext::Get().GetVulkanDevice()->GetPhyiscalDevice(), format, &properties);
+
+					if (tiling == VK_IMAGE_TILING_LINEAR && (properties.linearTilingFeatures & features) == features)
+					{
+						return format;
+					}
+					else if (tiling == VK_IMAGE_TILING_OPTIMAL && (properties.optimalTilingFeatures & features) == features)
+					{
+						return format;
+					}
+				}
+				EN_CORE_ERROR("Vulkan SwapChain: Failed to find supported format!");
+			}
+
+			static VkFormat FindDepthFormat()
+			{
+				return FindSupportedFormat(
+					{ VK_FORMAT_D32_SFLOAT, VK_FORMAT_D32_SFLOAT_S8_UINT, VK_FORMAT_D24_UNORM_S8_UINT },
+					VK_IMAGE_TILING_OPTIMAL,
+					VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT
+				);
+			}
+
+			static VkRenderPass CreateRenderPass()
+			{
+				SwapChainSupportDetails swapChainSupport = QuerySwapChainSupport(*VulkanContext::Get().GetVulkanDevice()->GetPhyiscalDevice());
+				VkSurfaceFormatKHR surfaceFormat = ChooseSwapSurfaceFormat(swapChainSupport.formats);
+				VkRenderPass renderPass;
+
+				auto sur = VulkanContext::Get().GetVulkanSurface()->GetSurface();
+				VkAttachmentDescription colourAttachment = {};
+				colourAttachment.format = surfaceFormat.format;
+				colourAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+				colourAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+				colourAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+				colourAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+				colourAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+				colourAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+				colourAttachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+
+				VkAttachmentReference colorAttachmentRef = {};
+				colorAttachmentRef.attachment = 0;
+				colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+
+				VkAttachmentDescription depthAttachment = {};
+				depthAttachment.format = FindDepthFormat();
+				depthAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+				depthAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+				depthAttachment.storeOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+				depthAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+				depthAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+				depthAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+				depthAttachment.finalLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+
+				VkAttachmentReference depthAttachmentRef = {};
+				depthAttachmentRef.attachment = 1;
+				depthAttachmentRef.layout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+
+				VkSubpassDescription subpass = {};
+				subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
+				subpass.colorAttachmentCount = 1;
+				subpass.pColorAttachments = &colorAttachmentRef;
+				subpass.pDepthStencilAttachment = &depthAttachmentRef;
+
+				VkSubpassDependency dependency = {};
+				dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+				dependency.dstSubpass = 0;
+				dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+				dependency.srcAccessMask = 0;
+				dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+				dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+
+				std::array<VkAttachmentDescription, 2> attachments = { colourAttachment, depthAttachment };
+
+				VkRenderPassCreateInfo renderPassInfo = {};
+				renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+				renderPassInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
+				renderPassInfo.pAttachments = attachments.data();
+				renderPassInfo.subpassCount = 1;
+				renderPassInfo.pSubpasses = &subpass;
+				renderPassInfo.dependencyCount = 1;
+				renderPassInfo.pDependencies = &dependency;
+
+				if (vkCreateRenderPass(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &renderPassInfo, nullptr, &renderPass) != VK_SUCCESS)
+				{
+					EN_CORE_ERROR("Vulkan Shader: Render pass was not created!");
+				}
+				return renderPass;
 			}
 		};
 	}

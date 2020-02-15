@@ -4,10 +4,10 @@
 
 namespace Framework
 {
-	void DirectXRendererAPI::BeginRender()
+	void DirectXRendererAPI::BeginRender(Renderer::GBuffer* gBuffer)
 	{
 	}
-	void DirectXRendererAPI::EndRender()
+	void DirectXRendererAPI::EndRender(Renderer::GBuffer* gBuffer)
 	{
 	}
 	void DirectXRendererAPI::SetClearColor(const glm::vec4& a_color)
@@ -67,7 +67,7 @@ namespace Framework
 	{
 	}
 
-	void DirectXRendererAPI::DrawIndexed(const Renderer::VertexArray* a_vertexArray)
+	void DirectXRendererAPI::DrawIndexed(const Renderer::VertexArray* a_vertexArray, Renderer::GBuffer* gBuffer)
 	{
 	}
 

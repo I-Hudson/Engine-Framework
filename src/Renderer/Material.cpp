@@ -93,7 +93,7 @@ namespace Framework
 			m_uniformsTexture[name].Texture = a_texture;
 		}
 
-		void Material::SetUniforms()
+		void Material::SetUniforms(GBuffer* gBuffer)
 		{
 			for (auto it : m_uniforms)
 			{

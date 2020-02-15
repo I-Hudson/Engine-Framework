@@ -5,10 +5,9 @@ namespace Framework
 {
 	namespace Vulkan
 	{
-		VulkanContext::VulkanContext(const int& a_width, const int& a_height, const std::string& a_title, const bool& a_fullscreen, Window::WindowData* a_windowData)
+		VulkanContext::VulkanContext()
 			: m_window(nullptr)
 		{
-			Init(a_width, a_height, a_title, a_fullscreen, nullptr, a_windowData);
 		}
 
 		VulkanContext::~VulkanContext()
@@ -45,23 +44,21 @@ namespace Framework
 
 			m_vkSurface.CreateSurface(m_instance, this);
 
-			m_vkSwapchain.SetupSwapChain(this);
-
 			m_vkDevice.Setup(m_instance, this, { VK_KHR_SWAPCHAIN_EXTENSION_NAME });
 
-			m_vkSwapchain.CreateSwapchain();
+			//m_vkSwapchain.CreateSwapchain();
 
-			m_vkSwapchain.CreateImageViews();
+			//m_vkSwapchain.CreateImageViews();
 
-			m_vkSwapchain.CreateRenderPass();
+			//m_vkSwapchain.CreateRenderPass();
 
-			m_vkSwapchain.CreateDepthResources();
+			//m_vkSwapchain.CreateDepthResources();
 
-			m_vkSwapchain.CreateFrameBuffers();
+			//m_vkSwapchain.CreateFrameBuffers();
 
-			m_vkCommand.Setup(this);
+			//m_vkCommand.Setup(this);
 
-			m_vkSync.Setup(this, 3);
+			//m_vkSync.Setup(this, 3);
 		}
 
 		void VulkanContext::Destroy()
@@ -70,9 +67,9 @@ namespace Framework
 
 			CleanupSwapChain();
 
-			m_vkSync.Destroy();
+			//m_vkSync.Destroy();
 
-			m_vkCommand.DestroyCommandPool();
+			//m_vkCommand.DestroyCommandPool();
 
 			if (m_vkValidationLayers.GetValidationLayersState())
 			{
@@ -114,9 +111,9 @@ namespace Framework
 
 		void VulkanContext::CleanupSwapChain()
 		{
-			m_vkCommand.FreeCommandBuffers();
+			//m_vkCommand.FreeCommandBuffers();
 
-			m_vkSwapchain.Destroy();
+			//m_vkSwapchain.Destroy();
 		}
 
 		void VulkanContext::RecreateSwapChain()
@@ -125,20 +122,20 @@ namespace Framework
 
 			CleanupSwapChain();
 
-			m_vkSwapchain.CreateSwapchain();
+			//m_vkSwapchain.CreateSwapchain();
 
-			m_vkSwapchain.CreateImageViews();
+			//m_vkSwapchain.CreateImageViews();
 
-			m_vkSwapchain.CreateRenderPass();
+			//m_vkSwapchain.CreateRenderPass();
 
 			Window::WindowData& data = *(Window::WindowData*)glfwGetWindowUserPointer(m_window);
 			VulkanRecreateShaders recreateShadersEvent;
 			data.EventCallback(recreateShadersEvent);
 			
-			m_vkSwapchain.CreateDepthResources();
-			m_vkSwapchain.CreateFrameBuffers();
+			//m_vkSwapchain.CreateDepthResources();
+			//m_vkSwapchain.CreateFrameBuffers();
 
-			m_vkCommand.CreateCommandBuffers();
+			//m_vkCommand.CreateCommandBuffers();
 		}
 
 		void VulkanContext::CreateInstance(const std::string& title)

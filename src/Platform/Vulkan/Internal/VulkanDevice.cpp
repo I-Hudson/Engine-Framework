@@ -1,4 +1,5 @@
 #include "Platform/Vulkan/VulkanContext.h"
+#include "Platform/Vulkan/VulkanUtils.h"
 
 #include <map>
 #include <set>
@@ -73,7 +74,7 @@ namespace Framework
 			bool swapChainAdequate = false;
 			if (extensionSupport)
 			{
-				SwapChainSupportDetails swapChainSupport = m_vkContext->GetVulkanSwapchain()->QuerySwapChainSupport(device);
+				SwapChainSupportDetails swapChainSupport = VulkanUtils::QuerySwapChainSupport(device);
 				swapChainAdequate = !swapChainSupport.formats.empty() && !swapChainSupport.presentModes.empty();
 			}
 
