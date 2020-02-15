@@ -17,11 +17,11 @@ namespace Framework
 			VulkanCommand();
 			~VulkanCommand();
 
-			static void CreateCommandPool(VkCommandPool commandPool);
-			static void FreeCommandPool(VkCommandPool commandPool);
+			static void CreateCommandPool(VkCommandPool* commandPool);
+			static void FreeCommandPool(VkCommandPool* commandPool);
 			
-			static void CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers, VkCommandPool commandPool);
-			static void FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers, VkCommandPool commandPool);
+			static void CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers, VkCommandPool* commandPool);
+			static void FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers, VkCommandPool* commandPool);
 
 			static void EndCommandRecord(std::vector<VkCommandBuffer>* buffers);
 		};

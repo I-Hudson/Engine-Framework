@@ -6,6 +6,7 @@ namespace Framework
 	{
 		VulkanGBuffer::VulkanGBuffer()
 		{
+			Init();
 		}
 
 		VulkanGBuffer::~VulkanGBuffer()
@@ -20,15 +21,18 @@ namespace Framework
 			m_swapChain.CreateDepthResources();
 			m_swapChain.CreateFrameBuffers();
 
-			VulkanCommand::CreateCommandPool(m_commandPool);
+			VulkanCommand::CreateCommandPool(&m_commandPool);
 			m_commandBuffers.resize(3);
-			VulkanCommand::CreateCommandBuffers(3, &m_commandBuffers, m_commandPool);
+			VulkanCommand::CreateCommandBuffers(3, &m_commandBuffers, &m_commandPool);
 
 			m_sync.Init(3);
 		}
 
 		void VulkanGBuffer::Free()
 		{
+			m_swapChain.Destroy();
+			VulkanCommand::FreeCommandPool(&m_commandPool);
+			m_sync.Free();
 		}
 
 		void VulkanGBuffer::Bind()

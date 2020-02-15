@@ -32,8 +32,6 @@ namespace Framework
 			void CreateFrameBuffers();
 			void CreateDepthResources();
 
-			static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
-
 			VkSwapchainKHR* GetSwapChain() { return &m_swapChain; }
 			std::vector<VkImage>* GetSwapChainImages() { return &m_swapChainImages; }
 			VkFormat* GetSwapChainFormat() { return &m_swapChainImageFormat; }
@@ -44,12 +42,8 @@ namespace Framework
 			std::vector<VkImageView>* GetImageViews() { return &m_swapChainImageViews; }
 
 		private:
-			VkSurfaceFormatKHR ChooseSwapSurfaceFormat(const std::vector< VkSurfaceFormatKHR>& availableFormats);
 			VkPresentModeKHR ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
 			VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
-
-			VkFormat FindSupportedFormat(const std::vector<VkFormat>& candidates, VkImageTiling tiling, VkFormatFeatureFlags features);
-			VkFormat FindDepthFormat();
 			bool HasStencilComponent(VkFormat format);
 
 

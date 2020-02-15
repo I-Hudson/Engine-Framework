@@ -1,5 +1,6 @@
 #include "Platform/Vulkan/VulkanMaterial.h"
 #include "Platform/Vulkan/VulkanUtils.h"
+#include "Platform/Vulkan/VulkanGBuffer.h"
 
 #include <memory>
 #include <functional>
@@ -44,17 +45,17 @@ namespace Framework
 
 		void VulkanMaterial::CreateDescriptorPool()
 		{
-			auto swapChain = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanSwapchain();
+			//auto swapChain = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanSwapchain();
 
 			VkDescriptorPoolSize poolSize = {};
 			poolSize.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-			poolSize.descriptorCount = static_cast<uint32_t>(swapChain.GetSwapChainImages()->size());
+			poolSize.descriptorCount = 3;//static_cast<uint32_t>(swapChain.GetSwapChainImages()->size());
 
 			VkDescriptorPoolCreateInfo poolInfo = {};
 			poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
 			poolInfo.poolSizeCount = 1;
 			poolInfo.pPoolSizes = &poolSize;
-			poolInfo.maxSets = static_cast<uint32_t>(swapChain.GetSwapChainImages()->size());
+			poolInfo.maxSets = 3; //static_cast<uint32_t>(swapChain.GetSwapChainImages()->size());
 		
 			auto device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice();
 			
@@ -67,17 +68,17 @@ namespace Framework
 		void VulkanMaterial::CreateDescriptorSets()
 		{
 			auto device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice();
-			auto swapChain = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanSwapchain();
+			//auto swapChain = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanSwapchain();
 			auto shader = static_cast<VulkanShader*>(&*GetShader());
 			
-			std::vector<VkDescriptorSetLayout> layouts(swapChain.GetSwapChainImages()->size(), shader->GetDescriptorSetLayout());
+			std::vector<VkDescriptorSetLayout> layouts(3/*swapChain.GetSwapChainImages()->size()*/, shader->GetDescriptorSetLayout());
 			VkDescriptorSetAllocateInfo allocInfo = {};
 			allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
 			allocInfo.descriptorPool = m_descriptorPool;
-			allocInfo.descriptorSetCount = static_cast<uint32_t>(swapChain.GetSwapChainImages()->size());
+			allocInfo.descriptorSetCount = 3;// static_cast<uint32_t>(swapChain.GetSwapChainImages()->size());
 			allocInfo.pSetLayouts = layouts.data();
 
-			m_descriptorSets.resize(swapChain.GetSwapChainImages()->size());
+			m_descriptorSets.resize(3/*swapChain.GetSwapChainImages()->size()*/);
 			if (vkAllocateDescriptorSets(*device.GetDevice(), &allocInfo, m_descriptorSets.data()) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("Vulkan Material: Failed to allocate descriptor sets!");
@@ -124,7 +125,7 @@ namespace Framework
 			
 		}
 
-		void VulkanMaterial::SetUniforms()
+		void VulkanMaterial::SetUniforms(Renderer::GBuffer* gBuffer)
 		{
 			m_uvo.u_ObjectMatrix = m_uniforms["u_ObjectMatrix"].Mat4;
 			m_uvo.u_Projection = m_uniforms["u_Projection"].Mat4;
@@ -138,7 +139,6 @@ namespace Framework
 			
 			auto device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice();
 			auto context = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext());
-			auto command = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanCommand();
 
 			uint32_t currentImage = context.GetCurrentImageIndex();
 
@@ -147,11 +147,11 @@ namespace Framework
 			memcpy(data, &m_uvo, sizeof(UniformVertexObject));
 			vkUnmapMemory(*device.GetDevice(), m_uniformBuffersMemory[currentImage]);
 
-			auto commandBuffers = *command.GetCommandBuffers();
+			auto vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
 			auto shader = static_cast<VulkanShader*>(&*GetShader());
-			for (size_t i = 0; i < commandBuffers.size(); ++i)
+			for (size_t i = 0; i < vGBuffer->GetCommandBuffers()->size(); ++i)
 			{
-				vkCmdBindDescriptorSets(commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, shader->GetPipelineLayout(), 0, 1, &m_descriptorSets[i], 0, nullptr);
+				vkCmdBindDescriptorSets((*vGBuffer->GetCommandBuffers())[i], VK_PIPELINE_BIND_POINT_GRAPHICS, shader->GetPipelineLayout(), 0, 1, &m_descriptorSets[i], 0, nullptr);
 			}
 		}
 
@@ -159,11 +159,9 @@ namespace Framework
 		{
 			VkDeviceSize bufferSize = sizeof(Vulkan::UniformVertexObject);
 
-			auto swapChain = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanSwapchain();
 			auto device = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanDevice();
-			auto command = *static_cast<Vulkan::VulkanContext*>(Application::Get().GetWindow()->GetGraphicsContext())->GetVulkanCommand();
 
-			m_uniformBuffers.resize(swapChain.GetSwapChainImages()->size());
+			m_uniformBuffers.resize(3/*swapChain.GetSwapChainImages()->size()*/);
 			m_uniformBuffersMemory.resize(m_uniformBuffers.size());
 
 			for (size_t i = 0; i < m_uniformBuffers.size(); ++i)

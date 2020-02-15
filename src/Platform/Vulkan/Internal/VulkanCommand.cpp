@@ -13,7 +13,7 @@ namespace Framework
 		{
 		}
 
-		void VulkanCommand::CreateCommandPool(VkCommandPool commandPool)
+		void VulkanCommand::CreateCommandPool(VkCommandPool* commandPool)
 		{
 			QueueFamilyIndices queueFamilyIndices = VulkanContext::Get().GetVulkanQueue()->FindQueueFamilies();
 
@@ -22,22 +22,22 @@ namespace Framework
 			poolInfo.queueFamilyIndex = queueFamilyIndices.GraphicsFamily.value();
 			poolInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT; // Optional
 
-			if (vkCreateCommandPool(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &poolInfo, nullptr, &commandPool) != VK_SUCCESS)
+			if (vkCreateCommandPool(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &poolInfo, nullptr, commandPool) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("VulkanCommand: Command Pool was not created!");
 			}
 		}
 
-		void VulkanCommand::FreeCommandPool(VkCommandPool commandPool)
+		void VulkanCommand::FreeCommandPool(VkCommandPool* commandPool)
 		{
-			vkDestroyCommandPool(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), commandPool, nullptr);
+			vkDestroyCommandPool(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), *commandPool, nullptr);
 		}
 
-		void VulkanCommand::CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers, VkCommandPool commandPool)
+		void VulkanCommand::CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers, VkCommandPool* commandPool)
 		{
 			VkCommandBufferAllocateInfo allocInfo = {};
 			allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-			allocInfo.commandPool = commandPool;
+			allocInfo.commandPool = *commandPool;
 			allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
 			allocInfo.commandBufferCount = (uint32_t)buffers->size();
 
@@ -47,9 +47,9 @@ namespace Framework
 			}
 		}
 
-		void VulkanCommand::FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers, VkCommandPool commandPool)
+		void VulkanCommand::FreeCommandBuffers(std::vector<VkCommandBuffer>* buffers, VkCommandPool* commandPool)
 		{
-			vkFreeCommandBuffers(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), commandPool, static_cast<uint32_t>(buffers->size()), buffers->data());
+			vkFreeCommandBuffers(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), *commandPool, static_cast<uint32_t>(buffers->size()), buffers->data());
 		}
 
 		void VulkanCommand::EndCommandRecord(std::vector<VkCommandBuffer>* buffers)

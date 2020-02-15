@@ -68,7 +68,7 @@ namespace Framework
 
 			void SetTexture(const std::string& name, const std::shared_ptr<Texture> a_texture, const uint8_t& a_textureUint = 0);
 
-			virtual void SetUniforms();
+			virtual void SetUniforms(GBuffer* gBuffer);
 
 			std::shared_ptr<Shader> GetShader() const { return m_shader; }
 			std::map<std::string, UniformValue> GetUniforms() const { return m_uniforms; };

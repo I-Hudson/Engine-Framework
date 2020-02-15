@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "Renderer/Texture.h"
 #include "Renderer/Material.h"
+#include "Renderer/GBuffer.h"
 
 namespace Framework
 {
@@ -56,6 +57,8 @@ namespace Framework
 				
 				std::vector<RenderRequest> m_renderQueue;
 			};
+
+			static GBuffer* m_gBuffer;
 
 			//Pointer to static scene data
 			static SceneData* m_sceneData;
