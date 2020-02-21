@@ -17,9 +17,9 @@ namespace Framework
 
 		void VulkanRendererAPI::BeginRender(Renderer::GBuffer* gBuffer)
 		{
-			VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+			//VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
 
-			auto commandBuffers = *vGBuffer->GetCommandBuffers();
+			auto commandBuffers = *VulkanContext::Get().GetCommandBuffers();//*vGBuffer->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); i++) 
 			{
 				VkCommandBufferBeginInfo beginInfo = {};
@@ -34,11 +34,11 @@ namespace Framework
 
 				VkRenderPassBeginInfo renderPassInfo = {};
 				renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-				renderPassInfo.renderPass = *vGBuffer->GetSwapChain()->GetRenderPass();
-				renderPassInfo.framebuffer = static_cast<std::vector<VkFramebuffer>>(*vGBuffer->GetSwapChain()->GetSwapChainFrameBuffers())[i];
+				renderPassInfo.renderPass = *VulkanContext::Get().GetVulkanSwapchain()->GetRenderPass();//*vGBuffer->GetSwapChain()->GetRenderPass();
+				renderPassInfo.framebuffer = static_cast<std::vector<VkFramebuffer>>(*VulkanContext::Get().GetVulkanSwapchain()->GetSwapChainFrameBuffers())[i];
 				
 				renderPassInfo.renderArea.offset = { 0, 0 };
-				renderPassInfo.renderArea.extent = *vGBuffer->GetSwapChain()->GetSwapChainExtent();
+				renderPassInfo.renderArea.extent = *VulkanContext::Get().GetVulkanSwapchain()->GetSwapChainExtent();
 
 				renderPassInfo.clearValueCount = static_cast<uint32_t>(m_clearColours.size());
 				renderPassInfo.pClearValues = m_clearColours.data();
@@ -49,13 +49,13 @@ namespace Framework
 
 		void VulkanRendererAPI::GetNextFrameRender(Renderer::GBuffer* gBuffer)
 		{
-			VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
-			VulkanCommand::EndCommandRecord(vGBuffer->GetCommandBuffers());
+			//VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+			VulkanCommand::EndCommandRecord(VulkanContext::Get().GetCommandBuffers());
 
-			auto commandBuffers = *vGBuffer->GetCommandBuffers();
-			auto swapChain = *vGBuffer->GetSwapChain();
+			//auto commandBuffers = *vGBuffer->GetCommandBuffers();
+			auto swapChain = *VulkanContext::Get().GetVulkanSwapchain();
 			auto device = *VulkanContext::Get().GetVulkanDevice()->GetDevice();
-			auto sync = *vGBuffer->GetSync();
+			auto sync = *VulkanContext::Get().GetVulkanSync();
 
 
 			vkWaitForFences(device, 1, sync.GetCurrentInFlightFence(), VK_TRUE, UINT64_MAX);
@@ -78,24 +78,26 @@ namespace Framework
 
 		void VulkanRendererAPI::EndRender(Renderer::GBuffer* gBuffer)
 		{
-			VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+			//VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
 
 			GetNextFrameRender(gBuffer);
 
-			auto commandBuffers = *vGBuffer->GetCommandBuffers();
+			auto commandBuffers = *VulkanContext::Get().GetCommandBuffers();//*vGBuffer->GetCommandBuffers();
 			uint32_t imageIndex = m_vkContext->GetCurrentImageIndex();
 
-			if (*vGBuffer->GetSync()->GetCurrentInFlightImage() != VK_NULL_HANDLE)
+			auto sync = *VulkanContext::Get().GetVulkanSync();
+
+			if (*sync.GetCurrentInFlightImage() != VK_NULL_HANDLE)
 			{
-				vkWaitForFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, vGBuffer->GetSync()->GetCurrentInFlightImage(), VK_TRUE, UINT64_MAX);
+				vkWaitForFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, sync.GetCurrentInFlightImage(), VK_TRUE, UINT64_MAX);
 			}
 
-			(*vGBuffer->GetSync()->GetInFlightImages())[imageIndex] = *vGBuffer->GetSync()->GetCurrentInFlightFence();
+			(*sync.GetInFlightImages())[imageIndex] = *sync.GetCurrentInFlightFence();
 
 			VkSubmitInfo submitInfo = {};
 			submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 
-			VkSemaphore waitSemaphores[] = { *vGBuffer->GetSync()->GetCurrentImageSemaphore() };
+			VkSemaphore waitSemaphores[] = { *sync.GetCurrentImageSemaphore() };
 			VkPipelineStageFlags waitStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
 			submitInfo.waitSemaphoreCount = 1;
 			submitInfo.pWaitSemaphores = waitSemaphores;
@@ -104,13 +106,13 @@ namespace Framework
 			submitInfo.commandBufferCount = 1;
 			submitInfo.pCommandBuffers = &commandBuffers[imageIndex];
 
-			VkSemaphore signalSemaphores[] = { *vGBuffer->GetSync()->GetCurrentRenderemaphore() };
+			VkSemaphore signalSemaphores[] = { *sync.GetCurrentRenderemaphore() };
 			submitInfo.signalSemaphoreCount = 1;
 			submitInfo.pSignalSemaphores = signalSemaphores;
 
-			vkResetFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, vGBuffer->GetSync()->GetCurrentInFlightFence());
+			vkResetFences(*m_vkContext->GetVulkanDevice()->GetDevice(), 1, sync.GetCurrentInFlightFence());
 
-			if (vkQueueSubmit(*m_vkContext->GetVulkanQueue()->GetGraphicsQueue(), 1, &submitInfo, *vGBuffer->GetSync()->GetCurrentInFlightFence()) != VK_SUCCESS)
+			if (vkQueueSubmit(*m_vkContext->GetVulkanQueue()->GetGraphicsQueue(), 1, &submitInfo, *sync.GetCurrentInFlightFence()) != VK_SUCCESS)
 			{
 				EN_CORE_ERROR("VulkanRendererAPI: Failed to submit draw command to bffer!");
 			}
@@ -121,7 +123,7 @@ namespace Framework
 			presentInfo.waitSemaphoreCount = 1;
 			presentInfo.pWaitSemaphores = signalSemaphores;
 
-			VkSwapchainKHR swapChains[] = { *vGBuffer->GetSwapChain()->GetSwapChain() };
+			VkSwapchainKHR swapChains[] = { *VulkanContext::Get().GetVulkanSwapchain()->GetSwapChain() };
 			presentInfo.swapchainCount = 1;
 			presentInfo.pSwapchains = swapChains;
 			presentInfo.pImageIndices = &imageIndex;
@@ -130,7 +132,7 @@ namespace Framework
 
 			vkQueueWaitIdle(*m_vkContext->GetVulkanQueue()->GetPresentQueue());
 
-			vGBuffer->GetSync()->IncermentCurrentFrame();
+			sync.IncermentCurrentFrame();
 		}
 
 		void VulkanRendererAPI::SetClearColor(const glm::vec4& a_color)
@@ -172,7 +174,7 @@ namespace Framework
 		{
 			VulkanGBuffer* vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
 
-			auto commandBuffers = *vGBuffer->GetCommandBuffers();
+			auto commandBuffers = *VulkanContext::Get().GetCommandBuffers();// *vGBuffer->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); i++)
 			{
 				a_vertexArray->Bind(commandBuffers[i]);

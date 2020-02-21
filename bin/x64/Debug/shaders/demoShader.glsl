@@ -53,7 +53,7 @@ in v2f
 
 void main()
 {
-	vec4 diffTex = texture(diffuseTexture, o.UV);
+	vec4 diffTex = vec4(1, 1, 1, 1);//texture(diffuseTexture, o.UV);
 	vec4 normTex = o.Normal;//texture(heightTexture, o.UV);
 
 	vec3 ambiant = u_AmbiantLightInten * u_AmbiantLight.xyz;

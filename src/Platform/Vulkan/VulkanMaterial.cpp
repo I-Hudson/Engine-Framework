@@ -147,11 +147,11 @@ namespace Framework
 			memcpy(data, &m_uvo, sizeof(UniformVertexObject));
 			vkUnmapMemory(*device.GetDevice(), m_uniformBuffersMemory[currentImage]);
 
-			auto vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
+			auto commandBuffers = *VulkanContext::Get().GetCommandBuffers();//static_cast<VulkanGBuffer*>(gBuffer)->GetCommandBuffers();
 			auto shader = static_cast<VulkanShader*>(&*GetShader());
-			for (size_t i = 0; i < vGBuffer->GetCommandBuffers()->size(); ++i)
+			for (size_t i = 0; i < commandBuffers.size(); ++i)
 			{
-				vkCmdBindDescriptorSets((*vGBuffer->GetCommandBuffers())[i], VK_PIPELINE_BIND_POINT_GRAPHICS, shader->GetPipelineLayout(), 0, 1, &m_descriptorSets[i], 0, nullptr);
+				vkCmdBindDescriptorSets(commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, shader->GetPipelineLayout(), 0, 1, &m_descriptorSets[i], 0, nullptr);
 			}
 		}
 

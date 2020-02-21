@@ -54,7 +54,7 @@ void main()
 	float spec = pow(max(dot(normTex.xyz, reflectDir), 0.0), 8.0);
 	vec3 specular = vec3(0.3) * spec;
 	
-	outColor = vec4(ambiant + diffTex.xyz, 1.0);
+	outColor = vec4(ambiant + diffuse, 1.0);
 
 
     outColor = vec4(outColor.xyz, 1.0);

@@ -35,6 +35,11 @@ namespace Framework
 
 		void VulkanCommand::CreateCommandBuffers(unsigned int count, std::vector<VkCommandBuffer>* buffers, VkCommandPool* commandPool)
 		{
+			if (buffers->size() != count)
+			{
+				buffers->resize(count);
+			}
+
 			VkCommandBufferAllocateInfo allocInfo = {};
 			allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
 			allocInfo.commandPool = *commandPool;

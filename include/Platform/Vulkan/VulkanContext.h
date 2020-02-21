@@ -56,15 +56,17 @@ namespace Framework
 			void SetCurrentImageIndex(uint32_t imageIndex);
 			uint32_t GetCurrentImageIndex() { return m_currentImageIndex; }
 
+			std::vector<VkCommandBuffer>* GetCommandBuffers() { return &m_commandBuffers; }
+
 			VulkanValidationLayers* GetVulkanValidation() { return &m_vkValidationLayers; }
 			VulkanExtensions* GetVulkanExtensions() { return &m_vkExtensions; }
 			VulkanDebug* GetVulkanDebug() { return &m_vkDebug; }
 			VulkanDevice* GetVulkanDevice() { return &m_vkDevice; }
 			VulkanQueue* GetVulkanQueue() { return &m_vkQueue; }
 			VulkanSurface* GetVulkanSurface() { return &m_vkSurface; }
-			//VulkanSwapchain* GetVulkanSwapchain() { return &m_vkSwapchain; }
+			VulkanSwapchain* GetVulkanSwapchain() { return &m_vkSwapchain; }
 			//VulkanCommand* GetVulkanCommand() { return &m_vkCommand; }
-			//VulkanSync* GetVulkanSync() { return &m_vkSync; }
+			VulkanSync* GetVulkanSync() { return &m_vkSync; }
 
 		private:
 			void SetWindowCallbacks();
@@ -74,15 +76,18 @@ namespace Framework
 		private:
 			GLFWwindow* m_window;
 
+			VkCommandPool m_commandPool;
+			std::vector<VkCommandBuffer> m_commandBuffers;
+
 			VulkanValidationLayers m_vkValidationLayers;
 			VulkanExtensions m_vkExtensions;
 			VulkanDebug m_vkDebug;
 			VulkanDevice m_vkDevice;
 			VulkanQueue m_vkQueue;
 			VulkanSurface m_vkSurface;
-			//VulkanSwapchain m_vkSwapchain;
+			VulkanSwapchain m_vkSwapchain;
 			//VulkanCommand m_vkCommand;
-			//VulkanSync m_vkSync;
+			VulkanSync m_vkSync;
 
 			uint32_t m_currentImageIndex;
 

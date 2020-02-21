@@ -46,19 +46,20 @@ namespace Framework
 
 			m_vkDevice.Setup(m_instance, this, { VK_KHR_SWAPCHAIN_EXTENSION_NAME });
 
-			//m_vkSwapchain.CreateSwapchain();
+			m_vkSwapchain.CreateSwapchain();
 
-			//m_vkSwapchain.CreateImageViews();
+			m_vkSwapchain.CreateImageViews();
 
-			//m_vkSwapchain.CreateRenderPass();
+			m_vkSwapchain.CreateRenderPass();
 
-			//m_vkSwapchain.CreateDepthResources();
+			m_vkSwapchain.CreateDepthResources();
 
-			//m_vkSwapchain.CreateFrameBuffers();
+			m_vkSwapchain.CreateFrameBuffers();
 
-			//m_vkCommand.Setup(this);
+			VulkanCommand::CreateCommandPool(&m_commandPool);
+			VulkanCommand::CreateCommandBuffers(3, &m_commandBuffers, &m_commandPool);
 
-			//m_vkSync.Setup(this, 3);
+			m_vkSync.Init(3);
 		}
 
 		void VulkanContext::Destroy()
@@ -67,9 +68,9 @@ namespace Framework
 
 			CleanupSwapChain();
 
-			//m_vkSync.Destroy();
+			m_vkSync.Free();
 
-			//m_vkCommand.DestroyCommandPool();
+			VulkanCommand::FreeCommandPool(&m_commandPool);
 
 			if (m_vkValidationLayers.GetValidationLayersState())
 			{
@@ -111,9 +112,9 @@ namespace Framework
 
 		void VulkanContext::CleanupSwapChain()
 		{
-			//m_vkCommand.FreeCommandBuffers();
+			VulkanCommand::FreeCommandBuffers(&m_commandBuffers, &m_commandPool);
 
-			//m_vkSwapchain.Destroy();
+			m_vkSwapchain.Destroy();
 		}
 
 		void VulkanContext::RecreateSwapChain()
@@ -122,20 +123,20 @@ namespace Framework
 
 			CleanupSwapChain();
 
-			//m_vkSwapchain.CreateSwapchain();
+			m_vkSwapchain.CreateSwapchain();
 
-			//m_vkSwapchain.CreateImageViews();
+			m_vkSwapchain.CreateImageViews();
 
-			//m_vkSwapchain.CreateRenderPass();
+			m_vkSwapchain.CreateRenderPass();
 
 			Window::WindowData& data = *(Window::WindowData*)glfwGetWindowUserPointer(m_window);
 			VulkanRecreateShaders recreateShadersEvent;
 			data.EventCallback(recreateShadersEvent);
 			
-			//m_vkSwapchain.CreateDepthResources();
-			//m_vkSwapchain.CreateFrameBuffers();
+			m_vkSwapchain.CreateDepthResources();
+			m_vkSwapchain.CreateFrameBuffers();
 
-			//m_vkCommand.CreateCommandBuffers();
+			VulkanCommand::CreateCommandBuffers(3, &m_commandBuffers, &m_commandPool);
 		}
 
 		void VulkanContext::CreateInstance(const std::string& title)

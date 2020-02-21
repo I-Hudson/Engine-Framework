@@ -43,7 +43,7 @@ namespace Framework
 		void VulkanShader::Bind(Renderer::GBuffer* gBuffer) const
 		{
 			auto vGBuffer = static_cast<VulkanGBuffer*>(gBuffer);
-			auto commandBuffers = *vGBuffer->GetCommandBuffers();
+			auto commandBuffers = *VulkanContext::Get().GetCommandBuffers();//*vGBuffer->GetCommandBuffers();
 			for (size_t i = 0; i < commandBuffers.size(); ++i)
 			{
 				vkCmdBindPipeline(commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, m_graphicsPipeline);

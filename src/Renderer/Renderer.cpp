@@ -23,7 +23,7 @@ namespace Framework
 		{
 			if (m_gBuffer == nullptr)
 			{
-				m_gBuffer = GBuffer::Create();
+				//m_gBuffer = GBuffer::Create();
 			}
 
 			renderCalls = 0;
@@ -45,8 +45,11 @@ namespace Framework
 		void Renderer::Destroy()
 		{
 			delete m_sceneData;
-			m_gBuffer->Free();
-			delete m_gBuffer;
+			if (m_gBuffer != nullptr)
+			{
+				m_gBuffer->Free();
+				delete m_gBuffer;
+			}
 		}
 
 		void Renderer::SetAmbiantLightColour(const glm::vec3& lightColour)
