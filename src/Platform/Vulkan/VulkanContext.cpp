@@ -96,6 +96,11 @@ namespace Framework
 			return this;
 		}
 
+		VkCommandPool VulkanContext::GetContextCommandPool()
+		{
+			return m_commandPool;
+		}
+
 		void VulkanContext::SetWindowCallbacks()
 		{
 			glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* window, int width, int height)
@@ -180,20 +185,6 @@ namespace Framework
 			{
 				EN_CORE_ERROR("Vulkan: Failed to create instance!");
 			}
-		}
-
-		VKAPI_ATTR VkBool32 VKAPI_CALL VulkanContext::DebugCallback(
-			VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
-			VkDebugUtilsMessageTypeFlagsEXT messageType,
-			const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
-			void* pUserData) {
-
-			if (messageSeverity >= VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT)
-			{
-				std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
-			}
-
-			return VK_FALSE;
 		}
 
 		void VulkanContext::SetCurrentImageIndex(uint32_t imageIndex)

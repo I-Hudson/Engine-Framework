@@ -7,8 +7,6 @@
 #include "Platform/DirectX/DirectXShader.h"
 #include "Platform/DirectX/DirectXBuffer.h"
 
-#define STB_IMAGE_IMPLEMENTATION
-#include <stbi/stb_image.h>
 #include <Events\ApplicationEvent.h>
 
 namespace Framework

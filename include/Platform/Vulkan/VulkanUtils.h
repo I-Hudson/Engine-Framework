@@ -18,32 +18,44 @@ namespace Framework
 			static void CreateBuffer(VkDevice device, VkPhysicalDevice physicalDevice, VkDeviceSize size, VkBufferUsageFlags usage,
 										VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory)
 			{
+				VkDevice localDevice = device;
+				if (localDevice == nullptr)
+				{
+					localDevice = *VulkanContext::Get().GetVulkanDevice()->GetDevice();
+				}
+
+				VkPhysicalDevice localPhysicalDevice = physicalDevice;
+				if (localPhysicalDevice == nullptr)
+				{
+					localPhysicalDevice = *VulkanContext::Get().GetVulkanDevice()->GetPhyiscalDevice();
+				}
+
 				VkBufferCreateInfo bufferInfo = {};
 				bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 				bufferInfo.size = size;
 				bufferInfo.usage = usage;
 				bufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
-				if (vkCreateBuffer(device,
+				if (vkCreateBuffer(localDevice,
 					&bufferInfo, nullptr, &buffer) != VK_SUCCESS)
 				{
 					EN_CORE_ERROR("Vulkan Vertex Buffer: Failed to create vertex buffer!");
 				}
 
 				VkMemoryRequirements memRequirements;
-				vkGetBufferMemoryRequirements(device, buffer, &memRequirements);
+				vkGetBufferMemoryRequirements(localDevice, buffer, &memRequirements);
 
 				VkMemoryAllocateInfo allocInfo = {};
 				allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
 				allocInfo.allocationSize = memRequirements.size;
-				allocInfo.memoryTypeIndex = FindMemoryType(physicalDevice, memRequirements.memoryTypeBits, properties);
-				if (vkAllocateMemory(device,
+				allocInfo.memoryTypeIndex = FindMemoryType(localPhysicalDevice, memRequirements.memoryTypeBits, properties);
+				if (vkAllocateMemory(localDevice,
 					&allocInfo, nullptr, &bufferMemory) != VK_SUCCESS)
 				{
 					EN_CORE_ERROR("failed to allocate vertex buffer memory!");
 				}
 
-				vkBindBufferMemory(device, buffer, bufferMemory, 0);
+				vkBindBufferMemory(localDevice, buffer, bufferMemory, 0);
 			}
 
 			static uint32_t FindMemoryType(VkPhysicalDevice physicalDevice, uint32_t typeFilter, VkMemoryPropertyFlags properties)
@@ -66,20 +78,7 @@ namespace Framework
 
 			static void CopyBuffer(VkDevice device, VkCommandPool commandPool, VkQueue queue, VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size)
 			{
-				VkCommandBufferAllocateInfo allocInfo = {};
-				allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-				allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-				allocInfo.commandPool = commandPool;
-				allocInfo.commandBufferCount = 1;
-
-				VkCommandBuffer commandBuffer;
-				vkAllocateCommandBuffers(device, &allocInfo, &commandBuffer);
-
-				VkCommandBufferBeginInfo beginInfo = {};
-				beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
-				beginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
-
-				vkBeginCommandBuffer(commandBuffer, &beginInfo);
+				VkCommandBuffer commandBuffer = CreateSingleTimeCommand();
 
 				VkBufferCopy copyRegion = {};
 				copyRegion.srcOffset = 0;
@@ -87,17 +86,7 @@ namespace Framework
 				copyRegion.size = size;
 				vkCmdCopyBuffer(commandBuffer, srcBuffer, dstBuffer, 1, &copyRegion);
 
-				vkEndCommandBuffer(commandBuffer);
-
-				VkSubmitInfo submitInfo = {};
-				submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
-				submitInfo.commandBufferCount = 1;
-				submitInfo.pCommandBuffers = &commandBuffer;
-
-				vkQueueSubmit(queue, 1, &submitInfo, VK_NULL_HANDLE);
-				vkQueueWaitIdle(queue);
-
-				vkFreeCommandBuffers(device, commandPool, 1, &commandBuffer);
+				EndSingleTimeCommand(commandBuffer);
 			}
 
 			static VkImageView CreateImageView(VkDevice device, VkImage image, VkFormat format, VkImageAspectFlags aspectFlags)
@@ -123,6 +112,18 @@ namespace Framework
 
 			static void CreateImage(VkDevice device, VkPhysicalDevice physicalDevice, uint32_t width, uint32_t height, VkFormat format, VkImageTiling tiling, VkImageUsageFlags usage, VkMemoryPropertyFlags properties, VkImage& image, VkDeviceMemory& imageMemory)
 			{
+				VkDevice localDevice = device;
+				if (localDevice == nullptr)
+				{
+					localDevice = *VulkanContext::Get().GetVulkanDevice()->GetDevice();
+				}
+
+				VkPhysicalDevice localPhysicalDevice = physicalDevice;
+				if (localPhysicalDevice == nullptr)
+				{
+					localPhysicalDevice = *VulkanContext::Get().GetVulkanDevice()->GetPhyiscalDevice();
+				}
+
 				VkImageCreateInfo imageInfo = {};
 				imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
 				imageInfo.imageType = VK_IMAGE_TYPE_2D;
@@ -138,23 +139,23 @@ namespace Framework
 				imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;
 				imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
-				if (vkCreateImage(device, &imageInfo, nullptr, &image) != VK_SUCCESS) {
+				if (vkCreateImage(localDevice, &imageInfo, nullptr, &image) != VK_SUCCESS) {
 					throw std::runtime_error("failed to create image!");
 				}
 
 				VkMemoryRequirements memRequirements;
-				vkGetImageMemoryRequirements(device, image, &memRequirements);
+				vkGetImageMemoryRequirements(localDevice, image, &memRequirements);
 
 				VkMemoryAllocateInfo allocInfo = {};
 				allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
 				allocInfo.allocationSize = memRequirements.size;
-				allocInfo.memoryTypeIndex = FindMemoryType(physicalDevice, memRequirements.memoryTypeBits, properties);
+				allocInfo.memoryTypeIndex = FindMemoryType(localPhysicalDevice, memRequirements.memoryTypeBits, properties);
 
-				if (vkAllocateMemory(device, &allocInfo, nullptr, &imageMemory) != VK_SUCCESS) {
+				if (vkAllocateMemory(localDevice, &allocInfo, nullptr, &imageMemory) != VK_SUCCESS) {
 					throw std::runtime_error("failed to allocate image memory!");
 				}
 
-				vkBindImageMemory(device, image, imageMemory, 0);
+				vkBindImageMemory(localDevice, image, imageMemory, 0);
 			}
 		
 			static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device)
@@ -236,63 +237,107 @@ namespace Framework
 
 				auto sur = VulkanContext::Get().GetVulkanSurface()->GetSurface();
 				VkAttachmentDescription colourAttachment = {};
-				colourAttachment.format = surfaceFormat.format;
-				colourAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
-				colourAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
-				colourAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
-				colourAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
-				colourAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
-				colourAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-				colourAttachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+colourAttachment.format = surfaceFormat.format;
+colourAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+colourAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+colourAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+colourAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+colourAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+colourAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+colourAttachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
 
-				VkAttachmentReference colorAttachmentRef = {};
-				colorAttachmentRef.attachment = 0;
-				colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+VkAttachmentReference colorAttachmentRef = {};
+colorAttachmentRef.attachment = 0;
+colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
 
-				VkAttachmentDescription depthAttachment = {};
-				depthAttachment.format = FindDepthFormat();
-				depthAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
-				depthAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
-				depthAttachment.storeOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
-				depthAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
-				depthAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
-				depthAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-				depthAttachment.finalLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+VkAttachmentDescription depthAttachment = {};
+depthAttachment.format = FindDepthFormat();
+depthAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+depthAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+depthAttachment.storeOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+depthAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+depthAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+depthAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+depthAttachment.finalLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
 
-				VkAttachmentReference depthAttachmentRef = {};
-				depthAttachmentRef.attachment = 1;
-				depthAttachmentRef.layout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+VkAttachmentReference depthAttachmentRef = {};
+depthAttachmentRef.attachment = 1;
+depthAttachmentRef.layout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
 
-				VkSubpassDescription subpass = {};
-				subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
-				subpass.colorAttachmentCount = 1;
-				subpass.pColorAttachments = &colorAttachmentRef;
-				subpass.pDepthStencilAttachment = &depthAttachmentRef;
+VkSubpassDescription subpass = {};
+subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
+subpass.colorAttachmentCount = 1;
+subpass.pColorAttachments = &colorAttachmentRef;
+subpass.pDepthStencilAttachment = &depthAttachmentRef;
 
-				VkSubpassDependency dependency = {};
-				dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
-				dependency.dstSubpass = 0;
-				dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-				dependency.srcAccessMask = 0;
-				dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-				dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+VkSubpassDependency dependency = {};
+dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+dependency.dstSubpass = 0;
+dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+dependency.srcAccessMask = 0;
+dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
 
-				std::array<VkAttachmentDescription, 2> attachments = { colourAttachment, depthAttachment };
+std::array<VkAttachmentDescription, 2> attachments = { colourAttachment, depthAttachment };
 
-				VkRenderPassCreateInfo renderPassInfo = {};
-				renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
-				renderPassInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
-				renderPassInfo.pAttachments = attachments.data();
-				renderPassInfo.subpassCount = 1;
-				renderPassInfo.pSubpasses = &subpass;
-				renderPassInfo.dependencyCount = 1;
-				renderPassInfo.pDependencies = &dependency;
+VkRenderPassCreateInfo renderPassInfo = {};
+renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+renderPassInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
+renderPassInfo.pAttachments = attachments.data();
+renderPassInfo.subpassCount = 1;
+renderPassInfo.pSubpasses = &subpass;
+renderPassInfo.dependencyCount = 1;
+renderPassInfo.pDependencies = &dependency;
 
-				if (vkCreateRenderPass(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &renderPassInfo, nullptr, &renderPass) != VK_SUCCESS)
+if (vkCreateRenderPass(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &renderPassInfo, nullptr, &renderPass) != VK_SUCCESS)
+{
+	EN_CORE_ERROR("Vulkan Shader: Render pass was not created!");
+}
+return renderPass;
+			}
+
+			static VkCommandBuffer CreateSingleTimeCommand()
+			{
+				VkCommandBufferAllocateInfo allocInfo = {};
+				allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+				allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+				allocInfo.commandPool = VulkanContext::Get().GetContextCommandPool();
+				allocInfo.commandBufferCount = 1;
+
+				VkCommandBuffer commandBuffer;
+				if (vkAllocateCommandBuffers(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), &allocInfo, &commandBuffer) != VK_SUCCESS)
 				{
-					EN_CORE_ERROR("Vulkan Shader: Render pass was not created!");
+					EN_CORE_ERROR("VulkanUtils: SingleTimeCommand buffer not created!");
 				}
-				return renderPass;
+
+				VkCommandBufferBeginInfo beginInfo = {};
+				beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+				beginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+
+				vkBeginCommandBuffer(commandBuffer, &beginInfo);
+
+				return commandBuffer;
+			}
+
+			static void EndSingleTimeCommand(VkCommandBuffer commandBuffer)
+			{
+				vkEndCommandBuffer(commandBuffer);
+
+				VkSubmitInfo submitInfo = {};
+				submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+				submitInfo.commandBufferCount = 1;
+				submitInfo.pCommandBuffers = &commandBuffer;
+
+				if (vkQueueSubmit(*VulkanContext::Get().GetVulkanQueue()->GetGraphicsQueue(), 1, &submitInfo, VK_NULL_HANDLE) != VK_SUCCESS)
+				{
+					EN_CORE_ERROR("VulkanUtils: EndSingleTimeCommand queue was not submitted!");
+				}
+				if (vkQueueWaitIdle(*VulkanContext::Get().GetVulkanQueue()->GetGraphicsQueue()) != VK_SUCCESS)
+				{
+					EN_CORE_ERROR("VulkanUtils: EndSingleTimeCommand queue did not wait for idle!");
+				}
+
+				vkFreeCommandBuffers(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), VulkanContext::Get().GetContextCommandPool(), 1, &commandBuffer);
 			}
 		};
 	}

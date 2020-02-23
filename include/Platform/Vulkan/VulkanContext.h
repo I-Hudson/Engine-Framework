@@ -47,12 +47,6 @@ namespace Framework
 
 			void RecreateSwapChain();
 
-			static VKAPI_ATTR VkBool32 VKAPI_CALL DebugCallback(
-				VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
-				VkDebugUtilsMessageTypeFlagsEXT messageType,
-				const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
-				void* pUserData);
-
 			void SetCurrentImageIndex(uint32_t imageIndex);
 			uint32_t GetCurrentImageIndex() { return m_currentImageIndex; }
 
@@ -67,6 +61,8 @@ namespace Framework
 			VulkanSwapchain* GetVulkanSwapchain() { return &m_vkSwapchain; }
 			//VulkanCommand* GetVulkanCommand() { return &m_vkCommand; }
 			VulkanSync* GetVulkanSync() { return &m_vkSync; }
+
+			VkCommandPool GetContextCommandPool();// { return m_commandPool; }
 
 		private:
 			void SetWindowCallbacks();

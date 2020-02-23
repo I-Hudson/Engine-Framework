@@ -288,6 +288,9 @@
     <ClCompile Include="..\src\Platform\Vulkan\VulkanGBuffer.cpp">
       <Filter>Source Files\Platform\Vulkan</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Platform\Vulkan\VulkanTexture.cpp">
+      <Filter>Source Files\Platform\Vulkan</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Camera.h">
@@ -504,6 +507,9 @@
       <Filter>Header Files\Framework\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Platform\Vulkan\VulkanGBuffer.h">
+      <Filter>Header Files\Platform\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Platform\Vulkan\VulkanTexture.h">
       <Filter>Header Files\Platform\Vulkan</Filter>
     </ClInclude>
   </ItemGroup>

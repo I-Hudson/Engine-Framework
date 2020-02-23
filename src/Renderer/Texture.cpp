@@ -2,6 +2,7 @@
 
 #include "Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
+#include "Platform/Vulkan/VulkanTexture.h"
 
 namespace Framework
 {
@@ -13,6 +14,7 @@ namespace Framework
 			{
 			case RendererAPI::API::None: exit(0);
 			case RendererAPI::API::OpenGL: return std::make_shared<OpenGLTexture>(a_name, a_filePath, type);
+			case RendererAPI::API::Vulkan: return std::make_shared<Vulkan::VulkanTexture>(a_name, a_filePath, type);
 			}
 
 			return nullptr;

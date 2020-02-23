@@ -236,7 +236,7 @@ std::vector<std::string> AssimpModel::loadMaterialTextures(aiMaterial* aMaterial
 			texture = TextureFromFile(str.C_Str(), mDirectory);
 
 			//@TODO: Add Vulkan textures and remove this if.
-			if (Framework::Renderer::RendererAPI::GetAPI() == Framework::Renderer::RendererAPI::API::OpenGL)
+			//if (Framework::Renderer::RendererAPI::GetAPI() == Framework::Renderer::RendererAPI::API::OpenGL)
 			{
 				Framework::Application::Get().GetTextureLibrary().Load(texture, texture, GetTextureType(aType));
 			}
