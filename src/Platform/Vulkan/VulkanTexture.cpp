@@ -2,7 +2,6 @@
 
 #include "Platform/Vulkan/VulkanUtils.h"
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <stbi/stb_image.h>
 
 namespace Framework
@@ -10,7 +9,7 @@ namespace Framework
 	namespace Vulkan
 	{
 		VulkanTexture::VulkanTexture(const std::string& a_name, const std::string& a_textureFile, const Renderer::TextureType& type)
-			: m_name(a_name)
+			: m_name(a_name), m_texture(VK_NULL_HANDLE), m_textureMemory(VK_NULL_HANDLE)
 		{
 			Load(a_textureFile, type);
 		}
@@ -36,8 +35,33 @@ namespace Framework
 			{
 				VkBuffer stagingBuffer;
 				VkDeviceMemory stagingMemory;
-				int bufferSize = width * height * nrChannels;
+				int bufferSize = width * height;
 			
+				VkFormat imageFormat = VK_FORMAT_MAX_ENUM;
+				switch (nrChannels)
+				{
+				case 1:
+					imageFormat = VK_FORMAT_R8_SRGB;
+					break;
+				case 2:
+					imageFormat = VK_FORMAT_R8G8_SRGB;
+					bufferSize *= 2;
+					break;
+				case 3:
+					imageFormat = VK_FORMAT_R8G8B8A8_SRGB;
+					bufferSize *= 4;
+					break;
+				case 4:
+					imageFormat = VK_FORMAT_R8G8B8A8_SRGB;
+					bufferSize *= 4;
+					break;
+
+				default:
+					imageFormat = VK_FORMAT_R8G8B8A8_SRGB;
+					bufferSize *= 4;
+					break;
+				}
+
 				VulkanUtils::CreateBuffer(nullptr, nullptr, bufferSize, 
 					VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, stagingBuffer, stagingMemory);
 
@@ -46,26 +70,31 @@ namespace Framework
 				memcpy(data, pixels, bufferSize);
 				vkUnmapMemory(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), stagingMemory);
 
+
+
 				VulkanUtils::CreateImage(nullptr, nullptr, width, height, 
-					VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT, 
+					imageFormat, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,
 					VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_texture, m_textureMemory);
 
-				TransitionImageLayout(m_texture, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED,
+				TransitionImageLayout(m_texture, imageFormat, VK_IMAGE_LAYOUT_UNDEFINED,
 					VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 				CopyBufferToImage(stagingBuffer, m_texture, width, height);
-				TransitionImageLayout(m_texture, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
+				TransitionImageLayout(m_texture, imageFormat, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
 					VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
 
 				vkDestroyBuffer(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), stagingBuffer, nullptr);
 				vkFreeMemory(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), stagingMemory, nullptr);
-				stbi_image_free(data);
+				stbi_image_free(pixels);
 			}
 		}
 
 		void VulkanTexture::Release()
 		{
-			vkDestroyImage(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_texture, nullptr);
-			vkFreeMemory(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_textureMemory, nullptr);
+			if (m_texture != VK_NULL_HANDLE)
+			{
+				vkDestroyImage(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_texture, nullptr);
+				vkFreeMemory(*VulkanContext::Get().GetVulkanDevice()->GetDevice(), m_textureMemory, nullptr);
+			}
 		}
 
 		const std::string& VulkanTexture::GetName()

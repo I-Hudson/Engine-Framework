@@ -56,19 +56,17 @@ namespace Framework
 			const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, 
 			void* pUserData)
 		{
-			if (messageSeverity >= VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT)
+			if (messageSeverity == VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT)
 			{
 				// Message is important enough to show
 				EN_CORE_INFO("Vulkan Debug: validation layer: {0}.", pCallbackData->pMessage);
 			}			
-			
-			if (messageSeverity >= VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT)
+			else if (messageSeverity == VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT)
 			{
 				// Message is important enough to show
 				EN_CORE_WARN("Vulkan Debug: validation layer: {0}.", pCallbackData->pMessage);
 			}
-
-			if (messageSeverity >= VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT)
+			else if (messageSeverity == VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT)
 			{
 				// Message is important enough to show
 				EN_CORE_ERROR("Vulkan Debug: validation layer: {0}.", pCallbackData->pMessage);

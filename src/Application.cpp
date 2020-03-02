@@ -9,6 +9,9 @@
 
 #include <Events\ApplicationEvent.h>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include <stbi/stb_image.h>
+
 namespace Framework
 {
 #define BIND_EVENT_FUNC(x) (std::bind(&Application::x, this, std::placeholders::_1))
