@@ -9,7 +9,8 @@ namespace Framework
 		{
 			GUI_PANEL,
 			GUI_WINDOW,
-			GUI_MATERIAL_PANEL
+			GUI_MATERIAL_PANEL,
+			GUI_DEBUG,
 		};
 	}
 }

@@ -7,10 +7,19 @@ namespace Framework
 {
 	void OpenGLRendererAPI::BeginRender(Renderer::GBuffer* gBuffer)
 	{
+		gBuffer->Bind();
+		Clear();
+		gBuffer->Unbind();
 	}
+
 	void OpenGLRendererAPI::EndRender(Renderer::GBuffer* gBuffer)
 	{
+		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+		glBindFramebuffer(GL_READ_FRAMEBUFFER, gBuffer->GetID());
+		glReadBuffer(GL_COLOR_ATTACHMENT1);
+		glBlitFramebuffer(0, 0, 1280, 720, 0, 0, 1280, 720, GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT, GL_NEAREST);
 	}
+
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& a_color)
 	{
 		glClearColor(a_color.r, a_color.g, a_color.b, a_color.a);

@@ -42,7 +42,11 @@ namespace Framework
 			TextureType GetType() const { return m_type; }
 			uint32_t GetId() const { return m_ID; }
 
-			std::string TextureTypeToString(const TextureType& type = TextureType::UNKNOWN)
+			std::string TextureTypeToString()
+			{
+				return TextureTypeToString(GetType());
+			}
+			std::string TextureTypeToString(const TextureType& type)
 			{
 				TextureType localType = type;
 

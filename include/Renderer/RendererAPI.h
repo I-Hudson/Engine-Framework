@@ -41,6 +41,7 @@ namespace Framework
 
 			//Return the API
 			inline static API GetAPI() { return sAPI; }
+			static void SetAPI(const API& aAPI) { sAPI = aAPI; }
 
 		private:
 			static API sAPI;

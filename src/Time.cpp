@@ -11,6 +11,7 @@ namespace Framework
 	 double Time::m_currentTime = 0.0;
 	 double Time::m_deltaTime = 0.0;
 	 double Time::m_totalTime = 0.0;
+	 float Time::m_timeScale = 0.0;
 
 	void Time::UpdateTime()
 	{
@@ -24,11 +25,26 @@ namespace Framework
 
 	float Time::GetDeltaTime()
 	{
-		return (float)m_deltaTime;
+		return (float)m_deltaTime * GetTimeScale();
+	}
+
+	float Time::GetDeltaTimeRaw()
+	{
+		return m_deltaTime;
 	}
 
 	float Time::GetTotalTime()
 	{
 		return (float)m_totalTime;
+	}
+
+	float Time::GetTimeScale()
+	{
+		return m_timeScale;
+	}
+
+	float Time::SetTimeScale(const float& aTimeScale)
+	{
+		return m_timeScale = aTimeScale;
 	}
 }

@@ -13,6 +13,7 @@ uniform mat4 u_ObjectMatrix;
 out v2f
 {
 	vec4 Position;
+	vec4 WorldPosition;
 	vec4 Color;
 	vec4 Normal;
 	vec2 UV;
@@ -21,6 +22,7 @@ out v2f
 void main()
 {
 	o.Position = inPosition;
+	o.WorldPosition = u_ObjectMatrix * inPosition;
 	o.Color = inColor;
 	o.Normal = inNormal;
 	o.UV = inUV;
@@ -31,7 +33,9 @@ void main()
 #type fragment
 #version 330
 
-layout(location = 0) out vec4 outColor;
+layout(location = 0) out vec4 Diffuse;
+layout(location = 1) out vec4 Normal;
+layout(location = 2) out vec4 WorldPosition;
 
 uniform vec4 u_AmbiantLight;
 uniform float u_AmbiantLightInten;
@@ -39,12 +43,13 @@ uniform float u_AmbiantLightInten;
 uniform vec4 u_DirLight;
 uniform vec4 u_ViewPos;
 
-uniform sampler2D diffuseTexture;
-uniform sampler2D heightTexture;
+uniform sampler2D specular;
+uniform sampler2D diffuse;
 
 in v2f
 {
 	vec4 Position;
+	vec4 WorldPosition;
 	vec4 Color;
 	vec4 Normal;
 	vec2 UV;
@@ -53,7 +58,7 @@ in v2f
 
 void main()
 {
-	vec4 diffTex = vec4(1, 1, 1, 1);//texture(diffuseTexture, o.UV);
+	vec4 diffTex = texture(diffuse, o.UV);
 	vec4 normTex = o.Normal;//texture(heightTexture, o.UV);
 
 	vec3 ambiant = u_AmbiantLightInten * u_AmbiantLight.xyz;
@@ -83,6 +88,8 @@ void main()
 	float spec = pow(max(dot(normTex.xyz, reflectDir), 0.0), 8.0);
 	vec3 specular = vec3(0.3) * spec;
 	
-	outColor = vec4(ambiant + diffuse + specular, 1.0);
+	Diffuse = vec4(ambiant + diffuse + specular, 1.0);
+	Normal = normTex;
+	WorldPosition = o.WorldPosition;
 }
 

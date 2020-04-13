@@ -35,6 +35,8 @@ namespace Framework
 		Log::Init();
 		EN_CORE_INFO("Core logger has been initialized");
 
+		Renderer::RendererAPI::SetAPI(Renderer::RendererAPI::API::OpenGL);
+
 		WindowProps props = WindowProps(a_title, a_width, a_height);
 		m_window = Window::Create(props);
 		m_window->SetEventCallback(BIND_EVENT_FUNC(OnEvent));
@@ -62,6 +64,8 @@ namespace Framework
 		{
 			auto demoShader = m_shaderLibrary.Load("demoShader", "./shaders/demoShader.glsl");
 		}
+
+		Time::SetTimeScale(1.0f);
 
 		Renderer::RenderCommand::SetDepthTest(true);
 		Renderer::RenderCommand::SetCullFace(true);
@@ -248,6 +252,11 @@ namespace Framework
 				break;
 			}
 		}
+	}
+
+	bool Application::KeyDown(const int& aKeyCode)
+	{
+		return glfwGetKey(static_cast<GLFWwindow*>(m_window->GetNativeWindow()), aKeyCode);
 	}
 
 	void Application::OnImGuiCreate()

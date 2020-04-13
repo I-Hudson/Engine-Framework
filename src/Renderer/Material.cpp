@@ -138,7 +138,7 @@ namespace Framework
 			{
 				if (it.second.Texture != nullptr)
 				{
-					m_shader->UploadTexture(it.first, it.second.Texture, it.second.TextureUnit);
+					m_shader->UploadTexture(it.second.Texture->TextureTypeToString(), it.second.Texture, it.second.TextureUnit);
 				}
 			}
 		}

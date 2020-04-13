@@ -20,7 +20,12 @@ namespace Framework
 			virtual void Free() override;
 
 			virtual void Bind() override;
-			virtual void AddAttachment() override;
+			virtual void Unbind() override;
+			virtual void AddAttachment(int aLevel, int aInternalFormat,
+										int aWidth, int aHeight,
+										int aBorder, int aFormat,
+										int aType, int aAttachment,
+										std::string aName) override;
 
 			VkCommandPool GetCommandPool() { return m_commandPool; }
 			std::vector<VkCommandBuffer>* GetCommandBuffers() { return &m_commandBuffers; }

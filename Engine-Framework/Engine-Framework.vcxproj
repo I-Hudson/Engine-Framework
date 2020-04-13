@@ -157,6 +157,7 @@
     <ClCompile Include="..\src\Assimp\AssimpMesh.cpp" />
     <ClCompile Include="..\src\Assimp\AssimpModel.cpp" />
     <ClCompile Include="..\src\Camera.cpp" />
+    <ClCompile Include="..\src\GUI\GUIDebug.cpp" />
     <ClCompile Include="..\src\GUI\GUIMaterialPanel.cpp" />
     <ClCompile Include="..\src\GUI\GUIPanel.cpp" />
     <ClCompile Include="..\src\GUI\GUIWindow.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="..\src\Platform\DirectX\DirectXVertexArray.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="..\src\Platform\OpenGL\OpenGLGBuffer.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLMaterial.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="..\src\Platform\OpenGL\OpenGLShader.cpp" />
@@ -227,6 +229,7 @@
     <ClInclude Include="..\include\Events\Event.h" />
     <ClInclude Include="..\include\Events\KeyEvent.h" />
     <ClInclude Include="..\include\Events\MouseEvent.h" />
+    <ClInclude Include="..\include\GUI\GUIDebug.h" />
     <ClInclude Include="..\include\GUI\GUIManager.h" />
     <ClInclude Include="..\include\GUI\GUIMaterialPanel.h" />
     <ClInclude Include="..\include\GUI\GUIPanel.h" />
@@ -245,6 +248,7 @@
     <ClInclude Include="..\include\Platform\DirectX\Helpers.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="..\include\Platform\OpenGL\OpenGLGBuffer.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLMaterial.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="..\include\Platform\OpenGL\OpenGLShader.h" />

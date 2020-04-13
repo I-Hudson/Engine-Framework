@@ -2,6 +2,7 @@
 
 #include "Renderer/RendererAPI.h"
 
+#include "Platform/OpenGL/OpenGLGBuffer.h"
 #include "Platform/Vulkan/VulkanGBuffer.h"
 
 namespace Framework
@@ -10,14 +11,18 @@ namespace Framework
 	{
 		GBuffer* GBuffer::Create()
 		{
+			GBuffer* returnBuffer = nullptr;
+
 			switch (RendererAPI::GetAPI())
 			{
-			case RendererAPI::API::None: return nullptr;
-			case RendererAPI::API::OpenGL: return nullptr;
-			case RendererAPI::API::Vulkan: return new Vulkan::VulkanGBuffer();
-			case RendererAPI::API::DirectX: return nullptr;
+			case RendererAPI::API::None: break;
+			case RendererAPI::API::OpenGL: returnBuffer = new OpenGLGBuffer(); break;
+			case RendererAPI::API::Vulkan: returnBuffer = new Vulkan::VulkanGBuffer(); break;
+			case RendererAPI::API::DirectX: returnBuffer = nullptr; break;
 			}
-			return nullptr;
+
+			returnBuffer->Init();
+			return returnBuffer;
 		}
 	}
 }

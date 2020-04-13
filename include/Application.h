@@ -64,6 +64,8 @@ namespace Framework
 		virtual void Draw() { }
 		virtual void Destroy() { }
 
+		bool KeyDown(const int& aKeyCode);
+
 		bool m_isRunning;
 
 		Renderer::ShaderLibrary m_shaderLibrary;

@@ -58,7 +58,6 @@ namespace Framework
 		//create window
 		static Window* Create(const WindowProps& aProps);
 
-		//window data
 		struct WindowData
 		{
 			//title

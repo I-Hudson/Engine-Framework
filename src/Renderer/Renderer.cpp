@@ -23,7 +23,11 @@ namespace Framework
 		{
 			if (m_gBuffer == nullptr)
 			{
-				//m_gBuffer = GBuffer::Create();
+				m_gBuffer = GBuffer::Create();
+				m_gBuffer->AddAttachment(0, GL_RGBA, 1280, 720, 0, GL_RGBA, GL_UNSIGNED_BYTE, GL_COLOR_ATTACHMENT0, "Diffuse");
+				m_gBuffer->AddAttachment(0, GL_RGBA, 1280, 720, 0, GL_RGBA, GL_UNSIGNED_BYTE, GL_COLOR_ATTACHMENT1, "Normal");
+				m_gBuffer->AddAttachment(0, GL_RGBA32F, 1280, 720, 0, GL_RGBA, GL_UNSIGNED_BYTE, GL_COLOR_ATTACHMENT2, "WorldPosition");
+				m_gBuffer->AddAttachment(0, GL_DEPTH24_STENCIL8, 1280, 720, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, GL_DEPTH_STENCIL_ATTACHMENT, "Depth");
 			}
 
 			renderCalls = 0;
@@ -80,6 +84,7 @@ namespace Framework
 
 		void Renderer::Render()
 		{
+			m_gBuffer->Bind();
 			for (size_t i = 0; i < m_sceneData->m_renderQueue.size(); ++i)
 			{
 				m_sceneData->m_renderQueue[i].Material->GetShader()->Bind(m_gBuffer);
@@ -103,6 +108,7 @@ namespace Framework
 				m_sceneData->m_renderQueue[i].Material->GetShader()->Unbind(m_gBuffer);
 				m_sceneData->m_renderQueue[i].VertexArray->Unbind();
 			}
+			m_gBuffer->Unbind();
 		}
 	}
 }

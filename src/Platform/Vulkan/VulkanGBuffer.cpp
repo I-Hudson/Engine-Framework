@@ -39,7 +39,15 @@ namespace Framework
 		{
 		}
 
-		void VulkanGBuffer::AddAttachment()
+		void VulkanGBuffer::Unbind()
+		{
+		}
+
+		void VulkanGBuffer::AddAttachment(int aLevel, int aInternalFormat,
+											int aWidth, int aHeight,
+											int aBorder, int aFormat,
+											int aType, int aAttachment,
+											std::string aName)
 		{
 		}
 	}
